@@ -10,6 +10,10 @@ debmirror:
   pkg:
     - installed
 
+isc-dhcp-server:
+  pkg:
+    - installed
+
 /etc/cobbler/settings:
   file.managed:
     - source: salt://cobbler/settings
