@@ -9,7 +9,11 @@ cobbler-web:
 debmirror:
   pkg:
     - installed
-    
+
+/etc/cobbler/settings:
+  file.managed:
+    - source: salt://cobbler/settings
+        
 cobblerrepo:
   pkgrepo.managed:
     - humanname: Cobbler 2.6 repo
