@@ -6,4 +6,7 @@ cobbler-web:
   pkg:
     - installed
 
+debmirror:
+  pkg:
+    - installed
 
