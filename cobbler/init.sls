@@ -17,7 +17,10 @@ isc-dhcp-server:
 /etc/cobbler/settings:
   file.managed:
     - source: salt://cobbler/settings
-        
+/etc/cobbler/dhcp.template
+  file.managed:
+    - souce: salt://cobbler/dhcp.template
+    
 cobblerrepo:
   pkgrepo.managed:
     - humanname: Cobbler 2.6 repo
