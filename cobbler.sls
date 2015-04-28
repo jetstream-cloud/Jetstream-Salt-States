@@ -1,7 +1,9 @@
 cobbler:
-  pkg.installed
+  pkg:
+    - installed
 
 cobbler-web:
-  pkg.installed
+  pkg:
+    - installed
 
 
