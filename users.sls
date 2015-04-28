@@ -4,6 +4,7 @@ jomlowe:
       - adm
       - sudo
   ssh_auth:
+    - user: jomlowe
     - present
     - source: salt://sshkeys/jomlowe_id_dsa.pub
     - require:
@@ -15,6 +16,7 @@ turnerg:
       - adm
       - sudo
   ssh_auth:
+    - user: turnerg
     - present
     - source: salt://sshkeys/turnerg_id_rsa.pub
     - require:
@@ -26,6 +28,7 @@ plinden:
       - adm
       - sudo
   ssh_auth:
+    - user: plinden
     - present
     - source: salt://sshkeys/plinden_id_rsa.pub
     - require:
@@ -37,6 +40,7 @@ bret:
       - adm
       - sudo
   ssh_auth:
+    - user: bret
     - present
     - source: salt://sshkeys/bret_id_dsa.pub
     - require:
