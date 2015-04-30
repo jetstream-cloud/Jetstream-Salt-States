@@ -18,6 +18,32 @@ set vendorclass = option vendor-class-identifier;
 
 option pxe-system-type code 93 = unsigned integer 16;
 
+subnet 172.16.0.0 netmask 255.255.255.0 {
+     option routers             172.16.0.1;
+     option domain-name-servers 129.79.1.1;
+     option subnet-mask         255.255.255.0;
+     range dynamic-bootp        172.16.0.100 172.16.0.254;
+     default-lease-time         21600;
+     max-lease-time             43200;
+
+    host jas4-idrac {
+                     hardware ethernet 44:a8:42:0a:a4:1f;
+                     fixed-address 172.16.0.14;
+    }
+    host jas3-idrac {
+                     hardware ethernet 44:A8:42:07:EC:21;
+                     fixed-address 172.16.0.13;
+    }
+    host jas2-idrac {
+                     hardware ethernet 44:A8:42:07:ED:59;
+                     fixed-address 172.16.0.12;
+    }
+    host jas1-idrac {
+                     hardware ethernet 44:A8:42:02:3D:DA;
+                     fixed-address 172.16.0.11;
+    }
+}
+
 subnet 172.16.128.0 netmask 255.255.255.0 {
      option routers             172.16.128.1;
      option domain-name-servers 129.79.1.1;
