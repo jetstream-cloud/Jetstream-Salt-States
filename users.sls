@@ -1,6 +1,7 @@
 jomlowe:
   user.present:
     - groups:
+      - wheel
       - adm
       - sudo
   ssh_auth:
@@ -13,6 +14,7 @@ jomlowe:
 turnerg:
   user.present:
     - groups:
+      - wheel
       - adm
       - sudo
   ssh_auth:
@@ -25,6 +27,7 @@ turnerg:
 plinden:
   user.present:
     - groups:
+      - wheel
       - adm
       - sudo
   ssh_auth:
@@ -37,6 +40,7 @@ plinden:
 bret:
   user.present:
     - groups:
+      - wheel
       - adm
       - sudo
   ssh_auth:
