@@ -45,3 +45,10 @@ bret:
     - source: salt://sshkeys/bret_id_dsa.pub
     - require:
       - user: bret
+rootrsa:
+  ssh_auth:
+    - present
+    - user: root
+    - source: salt://sshkeys/jam1_id_rsa.pub
+
+
