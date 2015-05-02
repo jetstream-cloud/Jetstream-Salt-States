@@ -51,59 +51,59 @@ subnet 172.16.0.0 netmask 255.255.255.0 {
                      fixed-address 172.16.0.35;
     }
     host jab14-idrac {
-                     hardware ethernet 4C:76:25:76:82:29
+                     hardware ethernet 4C:76:25:76:82:29;
                     fixed-address 172.16.0.34;
     }
     host jab13-idrac {
-                     hardware ethernet 4C:76:25:76:82:1C 
+                     hardware ethernet 4C:76:25:76:82:1C; 
                      fixed-address 172.16.0.33;
     }
     host jab12-idrac {
-                     hardware ethernet 4C:76:25:76:82:0F 
+                     hardware ethernet 4C:76:25:76:82:0F; 
                      fixed-address 172.16.0.32;
     }
     host jab11-idrac {
-                     hardware ethernet 4C:76:25:76:82:02
+                     hardware ethernet 4C:76:25:76:82:02;
                      fixed-address 172.16.0.31;
     }
     host jab10-idrac {
-                     hardware ethernet 4C:76:25:76:81:F5 
+                     hardware ethernet 4C:76:25:76:81:F5; 
                      fixed-address 172.16.0.30;
     }
     host jab09-idrac {
-                     hardware ethernet 4C:76:25:76:81:E8 
+                     hardware ethernet 4C:76:25:76:81:E8; 
                      fixed-address 172.16.0.29;
     }
     host jab08-idrac {
-                     hardware ethernet 4C:76:25:76:81:DB
+                     hardware ethernet 4C:76:25:76:81:DB;
                      fixed-address 172.16.0.28;
     }
     host jab07-idrac {
-                     hardware ethernet 4C:76:25:76:81:CE 
+                     hardware ethernet 4C:76:25:76:81:CE; 
                      fixed-address 172.16.0.27;
     }
     host jab06-idrac {
-                     hardware ethernet 4C:76:25:76:81:C1
+                     hardware ethernet 4C:76:25:76:81:C1;
                      fixed-address 172.16.0.26;
     }
     host jab05-idrac {
-                     hardware ethernet 4C:76:25:76:81:B4
+                     hardware ethernet 4C:76:25:76:81:B4;
                      fixed-address 172.16.0.25;
     }
     host jab04-idrac {
-                     hardware ethernet 4C:76:25:76:81:A7
+                     hardware ethernet 4C:76:25:76:81:A7;
                      fixed-address 172.16.0.24;
     }
     host jab03-idrac {
-                     hardware ethernet 4C:76:25:76:81:9A 
+                     hardware ethernet 4C:76:25:76:81:9A; 
                      fixed-address 172.16.0.23;
     }
     host jab02-idrac {
-                     hardware ethernet 4C:76:25:76:81:8D
+                     hardware ethernet 4C:76:25:76:81:8D;
                      fixed-address 172.16.0.22;
     }
     host jab01-idrac {
-                     hardware ethernet 4C:76:25:76:81:80
+                     hardware ethernet 4C:76:25:76:81:80;
                      fixed-address 172.16.0.21;
     }
 }
