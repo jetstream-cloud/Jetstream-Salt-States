@@ -1,3 +1,7 @@
+sudogroup:
+  group.present:
+    - name: sudo
+
 jomlowe:
   user.present:
     - groups:
