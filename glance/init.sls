@@ -86,13 +86,30 @@ glance-endpoint:
       - OS_TOKEN: {{ pillar['admin_token'] }}
     - unless: openstack endpoint list | grep  -q glance
     - requires:
-      - service: opensack-keystone
+      - service: openstack-keystone
       
       
-
+include:
+  - glance-apiconf
+  
 openstack-glance:
   pkg.installed
 python-glance:
   pkg.installed
 python-glanceclient:
   pkg.installed
+
+openstack-glance-api:
+  service:
+    - running
+    - enabled: True
+    - watch:
+      - file: /etc/glance/glance-api.conf
+    - require:
+      - cmd: openstack-glance-api
+  cmd.run:
+    - name: su -s /bin/sh -c "glance-manage db_sync" glance
+    - stateful: True
+
+
+su -s /bin/sh -c "glance-manage db_sync" glance
