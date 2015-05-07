@@ -19,7 +19,7 @@
         rabbit_port: 5672
         rabbit_use_ssl: false
         rabbit_userid: guest
-        rabbit_password: {{ pillar['rabbit_pass'] }}
+        rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
         rabbit_virtual_host: /
         rabbit_notification_exchange: glance
         rabbit_notification_topic: notifications
