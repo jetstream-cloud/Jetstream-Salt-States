@@ -89,10 +89,7 @@ glance-endpoint:
       - service: opensack-keystone
       
       
-openstack-glance-api:
-  pkg.installed
-openstack-glance-registry:
-  pkg.installed
+
 openstack-glance:
   pkg.installed
 python-glance:
