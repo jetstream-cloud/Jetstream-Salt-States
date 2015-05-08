@@ -104,7 +104,7 @@ openstack-glance-api:
     - running
     - enabled: True
     - watch:
-      - file: /etc/glance/glance-api.conf
+      - ini: /etc/glance/glance-api.conf
     - require:
       - cmd: openstack-glance-api
   cmd.run:
