@@ -24,14 +24,17 @@
             rabbit_notification_exchange: glance
             rabbit_notification_topic: notifications
             rabbit_durable_queues: False
-            rbd_store_ceph_conf: /etc/ceph/ceph.conf
-            rbd_store_user: glance
-            rbd_store_pool: images
             delayed_delete: False
             scrub_time: 43200
             scrubber_datadir: /var/lib/glance/scrubber
             image_cache_dir: /var/lib/glance/image-cache/
             verbose: True
+          glance_store:
+            stores: rbd
+            rbd_store_pool: images
+            rbd_store_user: glance
+            rbd_store_ceph_conf: /etc/ceph/ceph.conf
+            rbd_store_chunk_size: 8
           database:
             connection: mysql://glance:{{ pillar['glance_dbpass'] }}@localhost/glance
           keystone_authtoken:
