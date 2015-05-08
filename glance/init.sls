@@ -91,6 +91,7 @@ glance-endpoint:
       
 include:
   - glance.glance-apiconf
+  - glance.glance-registryconf
   
 openstack-glance:
   pkg.installed
