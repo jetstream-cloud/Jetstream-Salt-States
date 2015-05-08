@@ -99,6 +99,7 @@ python-glance:
 python-glanceclient:
   pkg.installed
 
+
 openstack-glance-api:
   service:
     - running
@@ -111,4 +112,11 @@ openstack-glance-api:
     - name: su -s /bin/sh -c "glance-manage db_sync" glance
     - stateful: True
 
-
+openstack-glance-registry:
+  service:
+    - running
+    - enable: True
+    - watch:
+      - ini: /etc/glance/glance-api.conf
+    - require:
+      - cmd: openstack-glance-api
