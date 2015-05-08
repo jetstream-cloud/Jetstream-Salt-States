@@ -102,7 +102,7 @@ python-glanceclient:
 openstack-glance-api:
   service:
     - running
-    - enabled: True
+    - enable: True
     - watch:
       - ini: /etc/glance/glance-api.conf
     - require:
