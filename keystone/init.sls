@@ -96,7 +96,7 @@ keystone-identity-service:
       - service: openstack-keystone
 keystone-endpoint:
   cmd.run:
-    - name: openstack endpoint create --publicurl http://172.16.128.2:5000/v2 --internalurl http://172.16.128.2:5000/v2 --adminurl http://172.16.128.2:5000/v2 --region RegionOne identity
+    - name: openstack endpoint create --publicurl http://172.16.128.2:5000/v2.0 --internalurl http://172.16.128.2:5000/v2.0 --adminurl http://172.16.128.2:35357/v2.0 --region RegionOne identity
     - env:
       - OS_URL: http://172.16.128.2:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
