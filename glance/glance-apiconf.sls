@@ -2,6 +2,7 @@
   ini.options_present:
     - sections:
           DEFAULT:
+            test: test
             default_store: rbd
             known_stores: glance.store.rbd.Store
             bind_host: 0.0.0.0
