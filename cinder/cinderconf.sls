@@ -37,6 +37,6 @@
           rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
         oslo_concurrency:
           lock_path: /var/lock/cinder
-  file.chown:
+  file.managed:
     - user: cinder
     - group: cinder
