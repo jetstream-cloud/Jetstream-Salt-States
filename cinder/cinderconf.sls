@@ -22,6 +22,8 @@
           backup_ceph_stripe_unit: 0
           backup_ceph_stripe_count: 0
           restore_discard_excess_bytes: true
+        database:
+          connection: mysql://cinder:{{ pillar['cinder_dbpass'] }}@172.16.128.2/cinder
         keystone_authtoken:
           auth_uri: http://172.16.128.2:5000
           auth_url: http://172.16.128.2:35357
