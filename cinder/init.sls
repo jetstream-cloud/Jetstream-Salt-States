@@ -115,3 +115,15 @@ python-cinderclient:
   pkg.installed
 python-oslo-db:
   pkg.installed
+
+openstack-cinder-api:
+  service:
+    - running
+    - enable: True
+    - watch:
+      - ini: /etc/cinder/cinder-api.conf
+    - require:
+      - cmd: openstack-cinder-api
+  cmd.run:
+    - name: su -s /bin/sh -c "cinder-manage db sync" cinder
+    - stateful: True
