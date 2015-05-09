@@ -121,7 +121,7 @@ openstack-cinder-api:
     - running
     - enable: True
     - watch:
-      - ini: /etc/cinder/cinder-api.conf
+      - ini: /etc/cinder/cinder.conf
     - require:
       - cmd: openstack-cinder-api
   cmd.run:
