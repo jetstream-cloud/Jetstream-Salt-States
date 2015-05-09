@@ -106,10 +106,12 @@ cinderv2-endpoint:
     - requires:
       - service: openstack-keystone      
 
+include:
+  - cinder.cinderconf
+
 openstack-cinder:
   pkg.installed 
 python-cinderclient:
   pkg.installed
 python-oslo-db:
   pkg.installed
-  
