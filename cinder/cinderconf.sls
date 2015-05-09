@@ -18,7 +18,7 @@
         oslo_messaging_rabbit:
           rabbit_host: controller
           rabbit_userid: openstack
-          rabbit_password: {{ pillar['rabbit_pass'] }}
+          rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
         oslo_concurrency:
           lock_path: /var/lock/cinder
   file.chown:
