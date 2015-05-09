@@ -34,7 +34,7 @@
           username: cinder
           password: {{ pillar['cinder_pass'] }}
         oslo_messaging_rabbit:
-          rabbit_host: controller
+          rabbit_host: 172.16.128.2
           rabbit_userid: openstack
           rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
         oslo_concurrency:

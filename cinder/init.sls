@@ -89,7 +89,7 @@ cinderv2-service:
       - service: openstack-keystone      
 cinder-endpoint:
   cmd.run:
-    - name: openstack endpoint create --publicurl http://controller:8776/v2/%\(tenant_id\)s --internalurl http://controller:8776/v2/%\(tenant_id\)s --adminurl http://controller:8776/v2/%\(tenant_id\)s --region RegionOne volume
+    - name: openstack endpoint create --publicurl http://172.16.128.2:8776/v2/%\(tenant_id\)s --internalurl http://172.16.128.2:8776/v2/%\(tenant_id\)s --adminurl http://172.16.128.2:8776/v2/%\(tenant_id\)s --region RegionOne volume
     - env:
       - OS_URL: http://172.16.128.2:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
@@ -98,7 +98,7 @@ cinder-endpoint:
       - service: openstack-keystone
 cinderv2-endpoint:
   cmd.run:
-    - name: openstack endpoint create --publicurl http://controller:8776/v2/%\(tenant_id\)s --internalurl http://controller:8776/v2/%\(tenant_id\)s --adminurl http://controller:8776/v2/%\(tenant_id\)s --region RegionOne volumev2
+    - name: openstack endpoint create --publicurl http://172.16.128.2:8776/v2/%\(tenant_id\)s --internalurl http://172.16.128.2:8776/v2/%\(tenant_id\)s --adminurl http://172.16.128.2:8776/v2/%\(tenant_id\)s --region RegionOne volumev2
     - env:
       - OS_URL: http://172.16.128.2:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
