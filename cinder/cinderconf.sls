@@ -6,6 +6,14 @@
           auth_strategy: keystone
           verbose: True
           my_ip: 172.16.128.2
+          volume_driver: cinder.volume.drivers.rbd.RBDDriver
+          rbd_pool: volumes
+          rbd_ceph_conf: /etc/ceph/ceph.conf
+          rbd_flatten_volume_from_snapshot: false
+          rbd_max_clone_depth: 5
+          rbd_store_chunk_size: 4
+          rados_connect_timeout: -1
+          glance_api_version: 2
         keystone_authtoken:
           auth_uri: http://172.16.128.2:5000
           auth_url: http://172.16.128.2:35357
