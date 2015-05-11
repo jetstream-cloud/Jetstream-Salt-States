@@ -71,7 +71,7 @@ nova-role-project:
       - cmd: service-project
 nova-service:
   cmd.run:
-    - name: openstack service create --type volume --description "OpenStack Compute" nova
+    - name: openstack service create --type compute --description "OpenStack Compute" nova
     - env:
       - OS_URL: http://172.16.128.2:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
