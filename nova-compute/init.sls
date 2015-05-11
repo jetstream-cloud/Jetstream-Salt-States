@@ -37,9 +37,10 @@ setsecret:
         DEFAULT:
           rpc_backend: rabbit
           auth_strategy: keystone
-          
-          my_ip: 172.16.128.2
-          
+          {% for item in grains['fqdn_ip4'] %}
+          {% set privateip = item %}
+          my_ip: {{ privateip }}
+          {% endfor %}
           vnc_enabled: True
           vncserver_listen: 0.0.0.0
           vncserver_proxyclient_address: 172.16.128.2
