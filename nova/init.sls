@@ -92,7 +92,7 @@ nova-endpoint:
 
 openstack-nova-api:
   pkg:
-    installed
+    - installed
   service:
     - running
     - enable: True
@@ -105,7 +105,7 @@ openstack-nova-api:
     - stateful: True
 openstack-nova-cert:
   pkg:
-    installed
+    - installed
   service:
     - running
     - enable: True
@@ -113,7 +113,7 @@ openstack-nova-cert:
       - ini: /etc/nova/nova.conf
 openstack-nova-conductor:
   pkg:
-    installed
+    - installed
   service:
     - running
     - enable: True
@@ -121,7 +121,7 @@ openstack-nova-conductor:
       - ini: /etc/nova/nova.conf
 openstack-nova-console:
   pkg:
-    installed
+    - installed
   service:
     - name: openstack-nova-consoleauth
     - running
@@ -130,7 +130,7 @@ openstack-nova-console:
       - ini: /etc/nova/nova.conf
 openstack-nova-novncproxy:
   pkg:
-    installed
+    - installed
   service:
     - running
     - enable: True
@@ -138,7 +138,7 @@ openstack-nova-novncproxy:
       - ini: /etc/nova/nova.conf
 openstack-nova-scheduler:
   pkg:
-    installed
+    - installed
   service:
     - running
     - enable: True
