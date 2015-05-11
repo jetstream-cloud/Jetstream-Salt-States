@@ -1,8 +1,20 @@
 openstack-nova-compute:
-  pkg.installed
+  pkg:
+    - installed
+  service:
+    - running
+    - enable: True
+    - watch:
+      - ini: /etc/nova/nova.conf
+      
 sysfsutils:
   pkg.installed
 
+libvirtd:
+  service:
+    - running
+    - enable: True
+    
 include:
   - ceph
 
