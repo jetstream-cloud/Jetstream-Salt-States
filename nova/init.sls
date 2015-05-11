@@ -81,6 +81,7 @@ nova-service:
 nova-endpoint:
   cmd.run:
     - name: openstack endpoint create --publicurl http://172.16.128.2:8774/v2/%\(tenant_id\)s --internalurl http://172.16.128.2:8774/v2/%\(tenant_id\)s --adminurl http://172.16.128.2:8774/v2/%\(tenant_id\)s --region RegionOne compute
+    - env:
       - OS_URL: http://172.16.128.2:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
     - unless: openstack endpoint list | grep  -q compute
