@@ -9,7 +9,7 @@
           vncserver_proxyclient_address: 172.16.128.2
           verbose: True
         database:
-          connection: mysql://nova:{{ pillar['nova_dbpass']}}@controller/nova
+          connection: mysql://nova:{{ pillar['nova_dbpass']}}@172.16.128.2/nova
         oslo_messaging_rabbit:
           rabbit_host: 172.16.128.2
           rabbit_userid: openstack
