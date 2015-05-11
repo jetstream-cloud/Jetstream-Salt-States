@@ -56,8 +56,6 @@ setsecret:
           images_rbd_ceph_conf: /etc/ceph/ceph.conf
           rbd_user: cinder
           rbd_secret_uuid: {{ pillar['libvirt_secret_uuid'] }}
-        database:
-          connection: mysql://nova:{{ pillar['nova_dbpass']}}@172.16.128.2/nova
         oslo_messaging_rabbit:
           rabbit_host: 172.16.128.2
           rabbit_userid: openstack
