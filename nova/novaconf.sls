@@ -26,4 +26,4 @@
         glance:
           host: 172.16.128.2
         oslo_concurrency:
-          lock_path = /var/lock/nova
+          lock_path: /var/lock/nova
