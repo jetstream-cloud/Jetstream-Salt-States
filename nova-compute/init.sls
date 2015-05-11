@@ -9,7 +9,9 @@ openstack-nova-compute:
       
 sysfsutils:
   pkg.installed
-
+libvirt:
+  pkg.installed
+  
 libvirtd:
   service:
     - running
