@@ -1,4 +1,4 @@
-/etc/cinder/cinder.conf:
+/etc/nova/nova.conf:
   ini.options_present:
     - sections:
         DEFAULT:
