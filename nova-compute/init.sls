@@ -28,7 +28,7 @@ setsecret:
     - name: virsh secret-set-value --secret {{ pillar['libvirt_secret_uuid'] }} --base64 {{ pillar['cephclientcinderkey'] }}
     - onlyif: virsh secret-list |grep {{ pillar['libvirt_secret_uuid'] }}
     - unless: virsh secret-get-value --secret {{ pillar['libvirt_secret_uuid'] }}
-  requires:
+  require:
     - file: /root/secret.xml
   
 /etc/nova/nova.conf:
