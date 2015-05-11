@@ -148,4 +148,4 @@ python-novaclient:
   pkg.installed
 
 include:
-  - novaconf
+  - nova.novaconf
