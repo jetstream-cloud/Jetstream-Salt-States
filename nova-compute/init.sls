@@ -20,7 +20,7 @@ libvirtd:
     - enable: True
     
 include:
-  - ceph
+  - nova-compute.ceph
 
 /root/secret.xml:
   file.managed:
