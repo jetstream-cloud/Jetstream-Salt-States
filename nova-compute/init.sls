@@ -1,6 +1,8 @@
 openstack-nova-compute:
   pkg:
     - installed
+    - required_in:
+      - ini: /etc/nova/nova.conf
   service:
     - running
     - enable: True
@@ -44,6 +46,12 @@ setsecret:
           vncserver_proxyclient_address: 172.16.128.2
           novncproxy_base_url: http://172.16.128.2:6080/vnc_auto.html
           verbose: True
+{% for item in grains['fqdn_ip4'] %}
+  {% if '172.16.128' in item %}
+    {% set privateip = item %}
+          my_ip: {{ privateip }}
+  {% endif %}
+{% endfor %}          
         libvirt:
           live_migration_flag: "VIR_MIGRATE_UNDEFINE_SOURCE,VIR_MIGRATE_PEER2PEER,VIR_MIGRATE_LIVE,VIR_MIGRATE_PERSIST_DEST"
           inject_password: false
