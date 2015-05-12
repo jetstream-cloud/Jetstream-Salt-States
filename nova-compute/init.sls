@@ -8,6 +8,8 @@ openstack-nova-compute:
     - enable: True
     - watch:
       - ini: /etc/nova/nova.conf
+    - require:
+      service: libvirt
       
 sysfsutils:
   pkg.installed
@@ -18,6 +20,8 @@ libvirtd:
   service:
     - running
     - enable: True
+    - require:
+      pkg: libvirt
     
 include:
   - nova-compute.ceph
@@ -34,6 +38,7 @@ setsecret:
     - unless: virsh secret-get-value --secret {{ pillar['libvirt_secret_uuid'] }}
   require:
     - file: /root/secret.xml
+    - service: libvirtd
   
 /etc/nova/nova.conf:
     ini.options_present:
