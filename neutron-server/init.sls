@@ -112,6 +112,9 @@ openstack-neutron-ml2:
 python-neutronclient:
   pkg.installed
 
+/etc/neutron/plugin.ini:
+  file.symlink:
+    - target: /etc/neutron/plugins/ml2/ml2_conf.ini
 
 /etc/neutron/neutron.conf:
   ini.options_present:
