@@ -72,7 +72,7 @@ neutron-role-project:
       - cmd: service-project
 neutron-service:
   cmd.run:
-    - name: openstack service create --type compute --description "OpenStack Networking" neutron
+    - name: openstack service create --type network --description "OpenStack Networking" neutron
     - env:
       - OS_URL: http://172.16.128.2:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
