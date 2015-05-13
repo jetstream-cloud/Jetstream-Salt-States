@@ -75,7 +75,7 @@ nova-service:
     - env:
       - OS_URL: http://172.16.128.2:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
-    - unless: openstack service list | grep -v volumev2 | grep  -q compute
+    - unless: openstack service list | grep  -q compute
     - requires:
       - service: openstack-keystone
 nova-endpoint:
@@ -98,6 +98,7 @@ openstack-nova-api:
     - enable: True
     - watch:
       - ini: /etc/nova/nova.conf
+      - ini: /etc/neutron/neutron.conf
     - require:
       - cmd: openstack-nova-api
   cmd.run:

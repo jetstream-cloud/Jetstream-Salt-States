@@ -8,6 +8,10 @@
           vncserver_listen: 172.16.128.2
           vncserver_proxyclient_address: 172.16.128.2
           verbose: True
+          network_api_class: nova.network.neutronv2.api.API
+          security_group_api: neutron
+          linuxnet_interface_driver: nova.network.linux_net.LinuxBridgeInterfaceDriver
+          firewall_driver: nova.virt.firewall.NoopFirewallDriver
         database:
           connection: mysql://nova:{{ pillar['nova_dbpass']}}@172.16.128.2/nova
         oslo_messaging_rabbit:
@@ -27,3 +31,10 @@
           host: 172.16.128.2
         oslo_concurrency:
           lock_path: /var/lock/nova
+        neutron:
+          url: http://172.16.128.2:9696
+          auth_strategy: keystone
+          admin_auth_url: http://172.16.128.2:35357/v2.0
+          admin_tenant_name: service
+          admin_username: neutron
+          admin_password: {{ pillar['neutron_pass'] }}
