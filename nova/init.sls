@@ -140,10 +140,6 @@ openstack-nova-novncproxy:
 openstack-nova-scheduler:
   pkg:
     - installed
-  service:
-    - enable: True
-    - watch:
-      - ini: /etc/nova/nova.conf
 python-novaclient:
   pkg.installed
 
