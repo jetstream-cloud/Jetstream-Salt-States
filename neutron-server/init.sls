@@ -90,7 +90,7 @@ neutron-endpoint:
       
 neutron-server:
   pkg:
-    installed
+    - installed
   service:
     - running
     - enable: True
