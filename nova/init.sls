@@ -141,7 +141,7 @@ openstack-nova-scheduler:
   pkg:
     - installed
   service:
-    - running
+#    - running
     - enable: True
     - watch:
       - ini: /etc/nova/nova.conf
