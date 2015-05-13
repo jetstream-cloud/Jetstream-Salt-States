@@ -105,7 +105,7 @@ neutron-server:
       - ini: /etc/neutron/plugins/ml2/ml2_conf.ini
       - ini: /etc/neutron/neutron.conf
 
-neutron-plugin-ml2:
+openstack-neutron-ml2:
   pkg.installed
 python-neutronclient:
   pkg.installed
