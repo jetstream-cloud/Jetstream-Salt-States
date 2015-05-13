@@ -101,7 +101,7 @@ openstack-neutron:
     - require:
       - cmd: openstack-neutron
   cmd.run:
-    - name: su -s /bin/sh -c "nova-manage db sync" nova
+    - name: su -s /bin/sh -c "neutron-manage db sync" neutron
     - stateful: True
     - require:
       - ini: /etc/neutron/plugins/ml2/ml2_conf.ini
