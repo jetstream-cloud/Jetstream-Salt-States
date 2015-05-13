@@ -82,8 +82,9 @@ neutron-service:
 neutron-endpoint:
   cmd.run:
     - name: openstack endpoint create --publicurl http://172.16.128.2:9696 --adminurl http://172.16.128.12:9696 --internalurl http://172.16.128.12:9696 --region RegionOne network
-    - OS_URL: http://172.16.128.2:35357/v2.0
-    - OS_TOKEN: {{ pillar['admin_token'] }}
+    - env:
+      - OS_URL: http://172.16.128.2:35357/v2.0
+      - OS_TOKEN: {{ pillar['admin_token'] }}
     - unless: openstack endpoint list | grep  -q network
     - requires:
       - service: openstack-keystone
