@@ -88,7 +88,7 @@ neutron-endpoint:
     - requires:
       - service: openstack-keystone
       
-neutron-server:
+openstack-neutron:
   pkg:
     - installed
   service:
