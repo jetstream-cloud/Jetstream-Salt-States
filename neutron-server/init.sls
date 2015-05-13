@@ -98,7 +98,7 @@ openstack-neutron:
     - watch:
       - ini: /etc/neutron/neutron.conf
     - require:
-      - cmd: neutron-server
+      - cmd: openstack-neutron
   cmd.run:
     - name: su -s /bin/sh -c "nova-manage db sync" nova
     - stateful: True
@@ -148,7 +148,7 @@ python-neutronclient:
           rabbit_userid: openstack
           rabbit_password: {{pillar['openstack_rabbit_pass'] }}
         database:
-          connection = mysql://neutron:{{ pillar['neutron_dbpass'] }}@172.16.128.2/neutron
+          connection: mysql://neutron:{{ pillar['neutron_dbpass'] }}@172.16.128.2/neutron
 
 /etc/neutron/plugins/ml2/ml2_conf.ini:
   ini.options_present:
