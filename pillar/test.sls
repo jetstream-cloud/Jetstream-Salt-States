@@ -1,4 +1,3 @@
-#!yaml|gpg
 test: test
 encrypted: |
 -----BEGIN PGP MESSAGE-----
