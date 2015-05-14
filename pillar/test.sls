@@ -2,7 +2,6 @@
 encrypted: |
 -----BEGIN PGP MESSAGE-----
 Version: GnuPG v1
-Comment: GPGTools - http://gpgtools.org
 
 hQIMA7HFhGi82gfbAQ//f4buNMCn1zrJrxSKBuR4dTUh/kGbwApE8ccB6oXFGqbi
 FKfeQ7ECOM4TnXJVkOdQ9jzl4aa0wmX/A01Ge7514FzJYGOXcJn4BqMvisL72ynU
