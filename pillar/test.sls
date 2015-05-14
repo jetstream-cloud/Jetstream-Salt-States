@@ -1,4 +1,3 @@
-test: test
 encrypted: |
 -----BEGIN PGP MESSAGE-----
 Version: GnuPG v1
