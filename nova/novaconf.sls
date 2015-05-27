@@ -38,3 +38,5 @@
           admin_tenant_name: service
           admin_username: neutron
           admin_password: {{ pillar['neutron_pass'] }}
+          metadata_proxy_shared_secret: {{ pillar['metadata_proxy_shared_secret'] }}
+          service_metadata_proxy: True

@@ -261,3 +261,23 @@ cephclientcinderkey: |
   YwPKRw==
   =obmr
   -----END PGP MESSAGE-----  
+metadata_proxy_shared_secret:  |
+  -----BEGIN PGP MESSAGE-----
+  Version: GnuPG v1
+  Comment: GPGTools - http://gpgtools.org
+
+  hQILA7HFhGi82gfbAQ/43b5kbD0hTIiSoop9L0OXmTTIaUgqahylnZ4n8C/eZFQA
+  PBeScDbQthjR/Qe786eVXFNzsKZz0+eZLvK5NEtIK8M8LV5HLaBMtK3/OLxvqDtc
+  HZuwFxgm0jvVnVgMrLJ/hkuyRuvThjJ8AQnu37X2D4V8RJjR8feSBt7/GkW9c5xj
+  x1B1LOr3UKG59rw3YY/H0/S06cSgG/RDnAcKYPOb5p5eJSeYyU2kMVdpDCTWvxl9
+  qn9PB721Q+PcTyBiLSaJX+V9OKNQQ/PZ68tmwwWI+bf+i4bOLZ/PuKWFAj2oPnQ/
+  KHZBXqQ0g75VRo3ZlROpu/XEtvH41RPULX1WAZsfsZLUa+Yxowa8UUsYQ7Nxr8G/
+  SmNEQXew1uFlcysYpFzUX72+tN83cxaxkXaKn5qUf59LZ6OADYz/0Y3jbc2EGV0p
+  mEls7oMKI6q0C8zw1EH3K57BR4iE4exiHmRP7ehr/j+zv+7CeuuG45KUjMRtMoKn
+  eCRH7KrCuAWpiQRKrn43Jf+/MnuvIZTZp0OdMAYclImT3p/pH2x/d9GXpj9QQX8H
+  cZRfMBBLFU3ArMuZ8EQCZ4Br8OEHigMT99WR4PeL5Du3OY8mEzTB/mdeEyZCSNhZ
+  cvCsM5veIYzHIqVvYSTfhWIUpWNS0o7itUJ0qCpWlTveKSchOg0s2s/M59W50NJF
+  ATHU2lIFqW/M2PPd4dKUK/VO7jkYXVY0JwI9/lGJvcJnHCCVy/jWEtoH2ZtRrH0V
+  +7Bo4TSMCHgqq/wACLz9ESaq5uwi
+  =+QXo
+  -----END PGP MESSAGE-----
