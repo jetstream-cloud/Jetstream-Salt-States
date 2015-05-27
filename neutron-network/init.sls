@@ -9,7 +9,9 @@ net.ipv4.conf.default.rp_filter:
     - value: 0
 
 openstack-neutron:
+  pkg.installed
 openstack-neutron-ml2:
+  pkg.installed
 openstack-neutron-linuxbridge:
   pkg.installed
 neutron-linuxbridge-agent:
