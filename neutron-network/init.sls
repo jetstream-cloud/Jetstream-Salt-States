@@ -27,21 +27,21 @@ neutron-l3-agent:
     - enable: True
     - watch:
       - ini: /etc/neutron/neutron.conf
-      - ini: /etc/neutron/l3_agent.conf
+      - ini: /etc/neutron/l3_agent.ini
 neutron-dhcp-agent:
   service:
     - running
     - enable: True
     - watch:
       - ini: /etc/neutron/neutron.conf
-      - ini: /etc/neutron/dhcp_agent.conf
+      - ini: /etc/neutron/dhcp_agent.ini
 neutron-metadata-agent:
   service:
     - running
     - enable: True
     - watch:
       - ini: /etc/neutron/neutron.conf
-      - ini: /etc/neutron/metadata_agent.conf
+      - ini: /etc/neutron/metadata_agent.ini
       
 /etc/neutron/neutron.conf:
   ini.options_present:
