@@ -136,15 +136,15 @@ setsecret:
     - sections:
         ml2:
           type_drivers: flat,vlan,gre,vxlan
-		  tenant_network_types: vxlan,gre
-		  mechanism_drivers: linuxbridge
+          tenant_network_types: vxlan,gre
+          mechanism_drivers: linuxbridge
         ml2_type_gre:
-		  tunnel_id_ranges: "1:1000"
-		ml2_type_vxlan:
+          tunnel_id_ranges: "1:1000"
+        ml2_type_vxlan:
           vni_ranges: '100:1000'
           vxlan_group: '239.1.1.1'
-		securitygroup:
-		  enable_security_group: True
+        securitygroup:
+          enable_security_group: True
           enable_ipset: True
         agent:
           tunnel_types: vxlan
