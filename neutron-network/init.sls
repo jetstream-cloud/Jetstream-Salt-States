@@ -21,6 +21,7 @@ neutron-linuxbridge-agent:
     - watch:
       - ini: /etc/neutron/neutron.conf
       - ini: /etc/neutron/plugins/ml2/ml2_conf.ini
+      - ini: /etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini
 neutron-l3-agent:
   service:
     - running
@@ -85,7 +86,14 @@ neutron-metadata-agent:
           firewall_driver: neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
         agent:
           tunnel_types: vxlan
-          
+
+/etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini:
+  ini.options_present:
+    - sections:
+        vxlan:
+          enable_vxlan: True
+          vxlan_group: '239.1.1.1'          
+
 /etc/neutron/l3_agent.ini:
   ini.options_present:
     - sections:
