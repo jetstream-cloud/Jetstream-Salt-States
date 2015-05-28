@@ -131,3 +131,24 @@ setsecret:
           rabbit_host: 172.16.128.2
           rabbit_userid: openstack
           rabbit_password: {{pillar['openstack_rabbit_pass'] }}
+/etc/neutron/plugins/ml2/ml2_conf.ini:
+  ini.options_present:
+    - sections:
+        ml2:
+          type_drivers: flat,vlan,gre,vxlan
+		  tenant_network_types: vxlan,gre
+		  mechanism_drivers = linuxbridge
+		ml2_type_gre:
+		  tunnel_id_ranges: "1:1000"
+		ml2_type_vxlan:
+          vni_ranges: '100:1000'
+          vxlan_group: '239.1.1.1'
+		securitygroup:
+		  enable_security_group: True
+          enable_ipset: True
+        agent:
+          tunnel_types: vxlan
+          
+/etc/neutron/plugin.ini:
+  file.symlink:
+    - target: /etc/neutron/plugins/ml2/ml2_conf.ini
