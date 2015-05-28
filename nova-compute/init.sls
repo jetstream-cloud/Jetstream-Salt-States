@@ -12,9 +12,11 @@ openstack-nova-compute:
       - service: libvirtd
       
 sysfsutils:
-  pkg.installed
+  pkg:
+    - installed
 libvirt:
-  pkg.installed
+  pkg:
+    - installed
   
 libvirtd:
   service:
