@@ -23,7 +23,7 @@ libvirtd:
     - running
     - enable: True
     - require:
-      pkg: libvirt
+      - pkg: libvirt
     
 include:
   - nova-compute.ceph
