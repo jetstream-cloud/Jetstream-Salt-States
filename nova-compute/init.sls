@@ -10,7 +10,17 @@ openstack-nova-compute:
       - ini: /etc/nova/nova.conf
     - require:
       - service: libvirtd
-      
+openstack-neutron:
+  pkg:
+   - installed
+openstack-neutron-ml2:
+  pkg:
+   - installed
+   - require_in:
+     - ini: /etc/neutron/plugin/ml2/ml2_conf.ini
+openstack-neutron-linuxbridge:
+  pkg:
+   - installed
 sysfsutils:
   pkg:
     - installed
@@ -24,7 +34,15 @@ libvirtd:
     - enable: True
     - require:
       - pkg: libvirt
-    
+
+neutron-linuxbridge-agent:
+  service:
+    - running
+    - enable: True
+    - watch:
+      - ini: /etc/neutron/neutron.conf
+      - ini: /etc/neutron/plugins/ml2/ml2_conf.ini
+      - ini: /etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini
 include:
   - nova-compute.ceph
 
@@ -150,6 +168,18 @@ setsecret:
           enable_ipset: True
         agent:
           tunnel_types: vxlan
+/etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini:
+  ini.options_present:
+    - sections:
+        vxlan:
+          enable_vxlan: True
+          vxlan_group: '239.1.1.1'
+{% for item in grains['fqdn_ip4'] %}
+  {% if '172.16.128' in item %}
+    {% set privateip = item %}
+          local_ip: {{ privateip }}
+  {% endif %}
+{% endfor %}                    
 /etc/neutron/plugin.ini:
   file.symlink:
     - target: /etc/neutron/plugins/ml2/ml2_conf.ini
