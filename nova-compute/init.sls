@@ -17,7 +17,7 @@ openstack-neutron-ml2:
   pkg:
    - installed
    - require_in:
-     - ini: /etc/neutron/plugin/ml2/ml2_conf.ini
+     - ini: /etc/neutron/plugins/ml2/ml2_conf.ini
 openstack-neutron-linuxbridge:
   pkg:
    - installed
