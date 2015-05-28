@@ -9,7 +9,7 @@ openstack-nova-compute:
     - watch:
       - ini: /etc/nova/nova.conf
     - require:
-      service: libvirt
+      - service: libvirtd
       
 sysfsutils:
   pkg.installed
