@@ -138,7 +138,7 @@ setsecret:
           type_drivers: flat,vlan,gre,vxlan
 		  tenant_network_types: vxlan,gre
 		  mechanism_drivers: linuxbridge
-		ml2_type_gre:
+        ml2_type_gre:
 		  tunnel_id_ranges: "1:1000"
 		ml2_type_vxlan:
           vni_ranges: '100:1000'
@@ -148,7 +148,6 @@ setsecret:
           enable_ipset: True
         agent:
           tunnel_types: vxlan
-          
 /etc/neutron/plugin.ini:
   file.symlink:
     - target: /etc/neutron/plugins/ml2/ml2_conf.ini
