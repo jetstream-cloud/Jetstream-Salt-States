@@ -90,7 +90,7 @@ neutron-metadata-agent:
   ini.options_present:
     - sections:
         DEFAULT:
-          interface_driver: neutron.agent.linux.interface.LinuxBridgeInterfaceDriver
+          interface_driver: neutron.agent.linux.interface.BridgeInterfaceDriver
           external_network_bridge: ""
           router_delete_namespaces: True
           
