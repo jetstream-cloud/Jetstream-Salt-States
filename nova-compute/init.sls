@@ -4,10 +4,10 @@ net.ipv4.conf.all.rp_filter:
 net.ipv4.conf.default.rp_filter:
   sysctl.present:
     - value: 0
-net.bridge.bridge-nf-call-iptables
+net.bridge.bridge-nf-call-iptables:
   sysctl.present:
     - value: 1
-net.bridge.bridge-nf-call-ip6tables
+net.bridge.bridge-nf-call-ip6tables:
   sysctl.present:
     - value: 1
 
