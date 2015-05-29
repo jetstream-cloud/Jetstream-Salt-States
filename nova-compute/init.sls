@@ -26,6 +26,8 @@ openstack-nova-compute:
 openstack-neutron:
   pkg:
    - installed
+   - require_in:
+     - ini: /etc/neutron/neutron.conf
 openstack-neutron-ml2:
   pkg:
    - installed
@@ -34,6 +36,8 @@ openstack-neutron-ml2:
 openstack-neutron-linuxbridge:
   pkg:
    - installed
+   - require_in:
+     - ini: /etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini
 sysfsutils:
   pkg:
     - installed
