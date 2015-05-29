@@ -134,6 +134,7 @@ setsecret:
   ini.options_present:
     - sections:
         DEFAULT:
+          debug: True
           rpc_backend: rabbit
           auth_strategy: keystone
           core_plugin: ml2

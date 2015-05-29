@@ -92,7 +92,13 @@ neutron-metadata-agent:
     - sections:
         vxlan:
           enable_vxlan: True
-          vxlan_group: '239.1.1.1'          
+          vxlan_group: '239.1.1.1'
+{% for item in grains['fqdn_ip4'] %}
+  {% if '172.16.128' in item %}
+    {% set privateip = item %}
+          local_ip: {{ privateip }}
+  {% endif %}
+{% endfor %}                             
 
 /etc/neutron/l3_agent.ini:
   ini.options_present:
@@ -106,10 +112,11 @@ neutron-metadata-agent:
   ini.options_present:
     - sections:
         DEFAULT:
-          interface_driver: neutron.agent.linux.interface.LinuxBridgeInterfaceDriver
+          interface_driver: neutron.agent.linux.interface.BridgeInterfaceDriver
           dhcp_driver: neutron.agent.linux.dhcp.Dnsmasq
           dhcp_delete_namespaces: True
           verbose: True
+          dnsmasq_dns_servers: 129.79.1.1
 
 /etc/neutron/metadata_agent.ini:
   ini.options_present:
