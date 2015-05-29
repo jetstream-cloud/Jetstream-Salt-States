@@ -3,7 +3,7 @@ openstack-kilo:
     - humanname: Temporary OpenStack Kilo new deps
     - baseurl: http://repos.fedorapeople.org/repos/openstack/openstack-kilo/epel-7/
     - gpgcheck: 0
-    - enabled: 1
+    - enabled: 0 
 
 openstack-kilo-testing:
   pkgrepo.managed:
