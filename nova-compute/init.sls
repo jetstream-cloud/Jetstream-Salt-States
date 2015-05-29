@@ -122,7 +122,7 @@ setsecret:
         oslo_concurrency:
           lock_path: /var/lock/nova
         neutron:
-          url: http://172.166.128.2:9696
+          url: http://172.16.128.2:9696
           auth_strategy: keystone
           admin_auth_url: http://172.16.128.2:35357/v2.0
           admin_tenant_name: service
