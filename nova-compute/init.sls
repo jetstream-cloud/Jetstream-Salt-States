@@ -1,3 +1,16 @@
+net.ipv4.conf.all.rp_filter:
+  sysctl.present:
+    - value: 0
+net.ipv4.conf.default.rp_filter:
+  sysctl.present:
+    - value: 0
+net.bridge.bridge-nf-call-iptables
+  sysctl.present:
+    - value: 1
+net.bridge.bridge-nf-call-ip6tables
+  sysctl.present:
+    - value: 1
+
 openstack-nova-compute:
   pkg:
     - installed
@@ -156,7 +169,7 @@ setsecret:
     - sections:
         ml2:
           type_drivers: flat,vlan,gre,vxlan
-          tenant_network_types: vxlan,gre
+          tenant_network_types: vxlan,vlan
           mechanism_drivers: linuxbridge
         ml2_type_gre:
           tunnel_id_ranges: "1:1000"
