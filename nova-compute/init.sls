@@ -68,6 +68,14 @@ include:
     - source: salt://nova-compute/secret.xml
     - mode: 600
 
+virsh secret-define /root/secret.xml:
+  cmd.run:
+    - unless: virsh secret-list |grep {{ pillar['libvirt_secret_uuid'] }}
+    - require:
+      - file: /root/secret.xml
+    - require_in:
+      - cmd: setsecret
+
 setsecret:
   cmd.run:
     - name: virsh secret-set-value --secret {{ pillar['libvirt_secret_uuid'] }} --base64 {{ pillar['cephclientcinderkey'] }}
