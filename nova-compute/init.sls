@@ -109,6 +109,8 @@ setsecret:
           images_rbd_ceph_conf: /etc/ceph/ceph.conf
           rbd_user: cinder
           rbd_secret_uuid: {{ pillar['libvirt_secret_uuid'] }}
+          disk_cachemodes: "network=writeback"
+          hw_disk_discard: unmap
         oslo_messaging_rabbit:
           rabbit_host: 172.16.128.2
           rabbit_userid: openstack
