@@ -89,7 +89,7 @@ setsecret:
 /etc/nova/nova.conf:
   ini:
     -  options_present:
-      - sections:
+      sections:
           DEFAULT:
             debug: True
             rpc_backend: rabbit
