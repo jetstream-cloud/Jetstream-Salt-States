@@ -88,7 +88,7 @@ setsecret:
   
 /etc/nova/nova.conf:
   ini:
-    -  options_present:
+    options_present:
       sections:
           DEFAULT:
             debug: True
