@@ -88,7 +88,7 @@ setsecret:
   
 /etc/nova/nova.conf:
   ini:
-    - options_absetnt:
+    - options_absent:
       - sections:
         libvirt:
           hw_disk_discard: ignore
