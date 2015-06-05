@@ -73,6 +73,7 @@ virsh secret-define /root/secret.xml:
     - unless: virsh secret-list |grep {{ pillar['libvirt_secret_uuid'] }}
     - require:
       - file: /root/secret.xml
+      - service: libvirtd
     - require_in:
       - cmd: setsecret
 
@@ -86,8 +87,13 @@ setsecret:
     - service: libvirtd
   
 /etc/nova/nova.conf:
-    ini.options_present:
-    - sections:
+  ini:
+    - options_absetnt:
+      - sections:
+        libvirt:
+          hw_disk_discard: ignore
+    - options_present:
+      - sections:
         DEFAULT:
           debug: True
           rpc_backend: rabbit
@@ -118,7 +124,6 @@ setsecret:
           rbd_user: cinder
           rbd_secret_uuid: {{ pillar['libvirt_secret_uuid'] }}
           disk_cachemodes: "network=writeback"
-          hw_disk_discard: ignore
         oslo_messaging_rabbit:
           rabbit_host: 172.16.128.2
           rabbit_userid: openstack
