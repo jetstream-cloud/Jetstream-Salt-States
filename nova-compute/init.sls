@@ -90,60 +90,60 @@ setsecret:
   ini:
     -  options_present:
       - sections:
-        DEFAULT:
-          debug: True
-          rpc_backend: rabbit
-          auth_strategy: keystone
-          vnc_enabled: True
-          vncserver_listen: 0.0.0.0
-          vncserver_proxyclient_address: 172.16.128.2
-          novncproxy_base_url: http://172.16.128.2:6080/vnc_auto.html
-          network_api_class: nova.network.neutronv2.api.API
-          security_group_api: neutron
-          linuxnet_interface_driver: nova.network.linux_net.NeutronLinuxBridgeInterfaceDriver
-          firewall_driver: nova.virt.firewall.NoopFirewallDriver
-          verbose: True
-{% for item in grains['fqdn_ip4'] %}
-  {% if '172.16.128' in item %}
-    {% set privateip = item %}
-          my_ip: {{ privateip }}
-  {% endif %}
-{% endfor %}          
-        libvirt:
-          live_migration_flag: "VIR_MIGRATE_UNDEFINE_SOURCE,VIR_MIGRATE_PEER2PEER,VIR_MIGRATE_LIVE,VIR_MIGRATE_PERSIST_DEST"
-          inject_password: false
-          inject_key: false
-          inject_partition: -2
-          images_type: rbd
-          images_rbd_pool: vms
-          images_rbd_ceph_conf: /etc/ceph/ceph.conf
-          rbd_user: cinder
-          rbd_secret_uuid: {{ pillar['libvirt_secret_uuid'] }}
-          disk_cachemodes: "network=writeback"
-        oslo_messaging_rabbit:
-          rabbit_host: 172.16.128.2
-          rabbit_userid: openstack
-          rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
-        keystone_authtoken:
-          auth_uri: http://172.16.128.2:5000
-          auth_url: http://172.16.128.2:35357
-          auth_plugin: password
-          project_domain_id: default
-          user_domain_id: default
-          project_name: service
-          username: nova
-          password: {{ pillar['nova_pass'] }}
-        glance:
-          host: 172.16.128.2
-        oslo_concurrency:
-          lock_path: /var/lock/nova
-        neutron:
-          url: http://172.16.128.2:9696
-          auth_strategy: keystone
-          admin_auth_url: http://172.16.128.2:35357/v2.0
-          admin_tenant_name: service
-          admin_username: neutron
-          admin_password: {{ pillar['neutron_pass'] }}
+          DEFAULT:
+            debug: True
+            rpc_backend: rabbit
+            auth_strategy: keystone
+            vnc_enabled: True
+            vncserver_listen: 0.0.0.0
+            vncserver_proxyclient_address: 172.16.128.2
+            novncproxy_base_url: http://172.16.128.2:6080/vnc_auto.html
+            network_api_class: nova.network.neutronv2.api.API
+            security_group_api: neutron
+            linuxnet_interface_driver: nova.network.linux_net.NeutronLinuxBridgeInterfaceDriver
+            firewall_driver: nova.virt.firewall.NoopFirewallDriver
+            verbose: True
+  {% for item in grains['fqdn_ip4'] %}
+    {% if '172.16.128' in item %}
+      {% set privateip = item %}
+            my_ip: {{ privateip }}
+    {% endif %}
+  {% endfor %}          
+          libvirt:
+            live_migration_flag: "VIR_MIGRATE_UNDEFINE_SOURCE,VIR_MIGRATE_PEER2PEER,VIR_MIGRATE_LIVE,VIR_MIGRATE_PERSIST_DEST"
+            inject_password: false
+            inject_key: false
+            inject_partition: -2
+            images_type: rbd
+            images_rbd_pool: vms
+            images_rbd_ceph_conf: /etc/ceph/ceph.conf
+            rbd_user: cinder
+            rbd_secret_uuid: {{ pillar['libvirt_secret_uuid'] }}
+            disk_cachemodes: "network=writeback"
+          oslo_messaging_rabbit:
+            rabbit_host: 172.16.128.2
+            rabbit_userid: openstack
+            rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
+          keystone_authtoken:
+            auth_uri: http://172.16.128.2:5000
+            auth_url: http://172.16.128.2:35357
+            auth_plugin: password
+            project_domain_id: default
+            user_domain_id: default
+            project_name: service
+            username: nova
+            password: {{ pillar['nova_pass'] }}
+          glance:
+            host: 172.16.128.2
+          oslo_concurrency:
+            lock_path: /var/lock/nova
+          neutron:
+            url: http://172.16.128.2:9696
+            auth_strategy: keystone
+            admin_auth_url: http://172.16.128.2:35357/v2.0
+            admin_tenant_name: service
+            admin_username: neutron
+            admin_password: {{ pillar['neutron_pass'] }}
 
 /etc/neutron/neutron.conf:
   ini.options_present:
