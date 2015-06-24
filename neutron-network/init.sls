@@ -64,6 +64,8 @@ neutron-metadata-agent:
           service_plugins: router
           allow_overlapping_ips: True
           verbose: True
+          network_device_mtu: 8950
+          advertise_mtu: True
         keystone_authtoken:
           auth_uri: http://172.16.128.2:5000
           auth_url: http://172.16.128.2:35357

@@ -129,6 +129,8 @@ python-neutronclient:
           notify_nova_on_port_data_changes: True
           nova_url: http://172.16.128.2:8774/v2
           verbose: True
+          network_device_mtu: 8950
+          advertise_mtu: True
         nova:
           auth_url: http://172.16.128.2:35357
           auth_plugin: password
