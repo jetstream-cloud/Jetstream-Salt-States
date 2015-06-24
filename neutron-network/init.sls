@@ -129,7 +129,8 @@ neutron-metadata-agent:
           dhcp_delete_namespaces: True
           verbose: True
           dnsmasq_dns_servers: 129.79.1.1
-
+          advertise_mtu: True
+          
 /etc/neutron/metadata_agent.ini:
   ini.options_present:
     - sections:
