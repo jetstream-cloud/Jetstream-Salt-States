@@ -5,7 +5,7 @@
           rpc_backend: rabbit
           auth_strategy: keystone
           verbose: True
-          my_ip: 172.16.128.2
+          my_ip: {{ pillar['cinderprivatehost'] }}
           volume_driver: cinder.volume.drivers.rbd.RBDDriver
           rbd_pool: volumes
           rbd_ceph_conf: /etc/ceph/ceph.conf
@@ -23,10 +23,10 @@
           backup_ceph_stripe_count: 0
           restore_discard_excess_bytes: true
         database:
-          connection: mysql://cinder:{{ pillar['cinder_dbpass'] }}@172.16.128.2/cinder
+          connection: mysql://cinder:{{ pillar['cinder_dbpass'] }}@{{ pillar['mysqlhost'] }}/cinder
         keystone_authtoken:
-          auth_uri: http://172.16.128.2:5000
-          auth_url: http://172.16.128.2:35357
+          auth_uri: http://{{ pillar['keystonehost'] }}:5000
+          auth_url: http://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
           project_domain_id: default
           user_domain_id: default
@@ -34,7 +34,7 @@
           username: cinder
           password: {{ pillar['cinder_pass'] }}
         oslo_messaging_rabbit:
-          rabbit_host: 172.16.128.2
+          rabbit_host: {{ pillar['rabbit_controller'] }}
           rabbit_userid: openstack
           rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
         oslo_concurrency:

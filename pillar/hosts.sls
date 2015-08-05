@@ -1,1 +1,13 @@
-rabbit_controller: 172.16.128.2
+rabbit_controller: 172.16.128.22
+mysqlhost: 172.16.128.22
+keystonehost: 172.16.128.22
+cinderprivatehost: 172.16.128.22
+cinderpublichost: jac1.jetstream.iu.edu
+glancepublichost: jac1.jetstream.iu.edu
+glanceprivatehost: 172.16.128.22
+keystonepublichost: jac1.jetstream.iu.edu
+novaprivatehost: 172.16.128.22
+novapublichost: jac1.jetstream.iu.edu
+novametadatahost: 172.16.128.22
+neutronprivatehost: 172.16.128.22
+neutronpublichost: jac1.jetstream.iu.edu

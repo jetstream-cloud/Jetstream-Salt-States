@@ -55,7 +55,7 @@ neutron-user:
   cmd.run:
     - name: openstack user create --password {{pillar['neutron_pass']}} neutron
     - env:
-      - OS_URL: http://172.16.128.2:35357/v2.0
+      - OS_URL: http://{{ pillar['keystonehost'] }}:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
     - unless: openstack user list | grep  -q neutron
 
@@ -63,7 +63,7 @@ neutron-role-project:
   cmd.run:
     - name: openstack role add --project service --user neutron admin
     - env:
-      - OS_URL: http://172.16.128.2:35357/v2.0
+      - OS_URL: http://{{ pillar['keystonehost'] }}:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
     - unless: openstack user role list neutron --project service | grep  -q admin
     - requires:
@@ -74,16 +74,16 @@ neutron-service:
   cmd.run:
     - name: openstack service create --type network --description "OpenStack Networking" neutron
     - env:
-      - OS_URL: http://172.16.128.2:35357/v2.0
+      - OS_URL: http://{{ pillar['keystonehost'] }}:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
     - unless: openstack service list | grep  -q network
     - requires:
       - service: openstack-keystone
 neutron-endpoint:
   cmd.run:
-    - name: openstack endpoint create --publicurl http://172.16.128.2:9696 --adminurl http://172.16.128.12:9696 --internalurl http://172.16.128.12:9696 --region RegionOne network
+    - name: openstack endpoint create --publicurl http://{{ pillar['neutronpublichost'] }}:9696 --adminurl http://{{ pillar['neutronprivatehost'] }}:9696 --internalurl http://{{ pillar['neutronprivatehost'] }}:9696 --region RegionOne network
     - env:
-      - OS_URL: http://172.16.128.2:35357/v2.0
+      - OS_URL: http://{{ pillar['keystonehost'] }}:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
     - unless: openstack endpoint list | grep  -q network
     - requires:
@@ -127,12 +127,12 @@ python-neutronclient:
           allow_overlapping_ips: True
           notify_nova_on_port_status_changes: True
           notify_nova_on_port_data_changes: True
-          nova_url: http://172.16.128.2:8774/v2
+          nova_url: http://{{ pillar['novaprivatehost'] }}:8774/v2
           verbose: True
           network_device_mtu: 8950
           advertise_mtu: True
         nova:
-          auth_url: http://172.16.128.2:35357
+          auth_url: http://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
           project_domain_id: default
           user_domain_id: default
@@ -141,8 +141,8 @@ python-neutronclient:
           username: nova
           password: {{ pillar['nova_pass'] }}
         keystone_authtoken:
-          auth_uri: http://172.16.128.2:5000
-          auth_url: http://172.16.128.2:35357
+          auth_uri: http://{{ pillar['keystonehost'] }}:5000
+          auth_url: http://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
           project_domain_id: default
           user_domain_id: default
@@ -150,11 +150,11 @@ python-neutronclient:
           username: neutron
           password: {{ pillar['neutron_pass'] }}
         oslo_messaging_rabbit:
-          rabbit_host: 172.16.128.2
+          rabbit_host: {{ pillar['rabbit_controller'] }}
           rabbit_userid: openstack
           rabbit_password: {{pillar['openstack_rabbit_pass'] }}
         database:
-          connection: mysql://neutron:{{ pillar['neutron_dbpass'] }}@172.16.128.2/neutron
+          connection: mysql://neutron:{{ pillar['neutron_dbpass'] }}@{{ pillar['mysqlhost'] }}/neutron
 
 /etc/neutron/plugins/ml2/ml2_conf.ini:
   ini.options_present:

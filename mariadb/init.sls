@@ -30,6 +30,9 @@ mysql:
 /etc/my.cnf.d/server.cnf:
   file.managed:
     - source: salt://mariadb/server.cnf
+    - template: jinja
+    - context:
+      mysqlhost: {{ pillar['mysqlhost'] }}
 
 mysql_root_password:
   cmd.run:

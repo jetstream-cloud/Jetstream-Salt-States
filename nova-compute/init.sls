@@ -95,8 +95,8 @@ setsecret:
           auth_strategy: keystone
           vnc_enabled: True
           vncserver_listen: 0.0.0.0
-          vncserver_proxyclient_address: 172.16.128.2
-          novncproxy_base_url: http://172.16.128.2:6080/vnc_auto.html
+          vncserver_proxyclient_address: {{ pillar['novaprivatehost'] }}
+          novncproxy_base_url: http://{{ pillar['novaprivatehost'] }}:6080/vnc_auto.html
           network_api_class: nova.network.neutronv2.api.API
           security_group_api: neutron
           linuxnet_interface_driver: nova.network.linux_net.NeutronLinuxBridgeInterfaceDriver
@@ -120,12 +120,12 @@ setsecret:
           rbd_secret_uuid: {{ pillar['libvirt_secret_uuid'] }}
           disk_cachemodes: "network=writeback"
         oslo_messaging_rabbit:
-          rabbit_host: 172.16.128.2
+          rabbit_host: {{ pillar['rabbit_controller'] }}
           rabbit_userid: openstack
           rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
         keystone_authtoken:
-          auth_uri: http://172.16.128.2:5000
-          auth_url: http://172.16.128.2:35357
+          auth_uri: http://{{ pillar['keystonehost'] }}:5000
+          auth_url: http://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
           project_domain_id: default
           user_domain_id: default
@@ -133,13 +133,13 @@ setsecret:
           username: nova
           password: {{ pillar['nova_pass'] }}
         glance:
-          host: 172.16.128.2
+          host: {{ pillar['glanceprivatehost'] }}
         oslo_concurrency:
           lock_path: /var/lock/nova
         neutron:
-          url: http://172.16.128.2:9696
+          url: http://{{ pillar['neutronprivatehost'] }}:9696
           auth_strategy: keystone
-          admin_auth_url: http://172.16.128.2:35357/v2.0
+          admin_auth_url: http://{{ pillar['keystonehost'] }}:35357/v2.0
           admin_tenant_name: service
           admin_username: neutron
           admin_password: {{ pillar['neutron_pass'] }}
@@ -156,11 +156,11 @@ setsecret:
           allow_overlapping_ips: True
           notify_nova_on_port_status_changes: True
           notify_nova_on_port_data_changes: True
-          nova_url: http://172.16.128.2:8774/v2
+          nova_url: http://{{ pillar['novaprivatehost'] }}:8774/v2
           verbose: True
           network_device_mtu: 8950
         nova:
-          auth_url: http://172.16.128.2:35357
+          auth_url: http://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
           project_domain_id: default
           user_domain_id: default
@@ -169,8 +169,8 @@ setsecret:
           username: nova
           password: {{ pillar['nova_pass'] }}
         keystone_authtoken:
-          auth_uri: http://172.16.128.2:5000
-          auth_url: http://172.16.128.2:35357
+          auth_uri: http://{{ pillar['keystonehost'] }}:5000
+          auth_url: http://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
           project_domain_id: default
           user_domain_id: default
@@ -178,7 +178,7 @@ setsecret:
           username: neutron
           password: {{ pillar['neutron_pass'] }}
         oslo_messaging_rabbit:
-          rabbit_host: 172.16.128.2
+          rabbit_host: {{ pillar['rabbit_controller'] }}
           rabbit_userid: openstack
           rabbit_password: {{pillar['openstack_rabbit_pass'] }}
         

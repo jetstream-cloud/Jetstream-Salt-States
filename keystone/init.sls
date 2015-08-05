@@ -89,16 +89,16 @@ keystone-identity-service:
   cmd.run:
     - name: openstack service create --type identity   --description "OpenStack Identity" keystone
     - env:
-      - OS_URL: http://172.16.128.2:35357/v2.0
+      - OS_URL: http://{{ pillar['keystonehost'] }}:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
     - unless: openstack service list | grep  -q keystone
     - requires:
       - service: openstack-keystone
 keystone-endpoint:
   cmd.run:
-    - name: openstack endpoint create --publicurl http://172.16.128.2:5000/v2.0 --internalurl http://172.16.128.2:5000/v2.0 --adminurl http://172.16.128.2:35357/v2.0 --region RegionOne identity
+    - name: openstack endpoint create --publicurl http://{{ pillar['keystonepublichost'] }}:5000/v2.0 --internalurl http://{{ pillar['keystonehost'] }}:5000/v2.0 --adminurl http://{{ pillar['keystonehost'] }}:35357/v2.0 --region RegionOne identity
     - env:
-      - OS_URL: http://172.16.128.2:35357/v2.0
+      - OS_URL: http://{{ pillar['keystonehost'] }}:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
     - unless: openstack endpoint list | grep  -q keystone
     - requires:
@@ -107,7 +107,7 @@ admin-project:
   cmd.run:
     - name: openstack project create --description "Admin Project" admin
     - env:
-      - OS_URL: http://172.16.128.2:35357/v2.0
+      - OS_URL: http://{{ pillar['keystonehost'] }}:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
     - unless: openstack project list | grep  -q admin
     - requires:
@@ -116,7 +116,7 @@ admin-user:
   cmd.run:
     - name: openstack user create --password {{pillar['admin_pass']}} admin
     - env:
-      - OS_URL: http://172.16.128.2:35357/v2.0
+      - OS_URL: http://{{ pillar['keystonehost'] }}:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
     - unless: openstack user list | grep  -q admin
     - requires:
@@ -125,7 +125,7 @@ admin-role:
   cmd.run:
     - name: openstack role create admin
     - env:
-      - OS_URL: http://172.16.128.2:35357/v2.0
+      - OS_URL: http://{{ pillar['keystonehost'] }}:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
     - unless: openstack role list | grep  -q admin
     - requires:
@@ -134,7 +134,7 @@ admin-role-project:
   cmd.run:
     - name: openstack role add --project admin --user admin admin
     - env:
-      - OS_URL: http://172.16.128.2:35357/v2.0
+      - OS_URL: http://{{ pillar['keystonehost'] }}:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
     - unless: openstack user role list admin --project admin | grep  -q admin
     - requires:
@@ -145,7 +145,7 @@ service-project:
   cmd.run:
     - name: openstack project create --description "Service Project" service
     - env:
-      - OS_URL: http://172.16.128.2:35357/v2.0
+      - OS_URL: http://{{ pillar['keystonehost'] }}:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
     - unless: openstack project list | grep  -q service
     - requires:

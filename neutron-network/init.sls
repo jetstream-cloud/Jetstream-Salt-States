@@ -67,8 +67,8 @@ neutron-metadata-agent:
           network_device_mtu: 8950
           advertise_mtu: True
         keystone_authtoken:
-          auth_uri: http://172.16.128.2:5000
-          auth_url: http://172.16.128.2:35357
+          auth_uri: http://{{ pillar['keystonehost'] }}:5000
+          auth_url: http://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
           project_domain_id: default
           user_domain_id: default
@@ -76,7 +76,7 @@ neutron-metadata-agent:
           username: neutron
           password: {{ pillar['neutron_pass'] }}
         oslo_messaging_rabbit:
-          rabbit_host: 172.16.128.2
+          rabbit_host: {{ pillar['rabbit_controller'] }}
           rabbit_userid: openstack
           rabbit_password: {{pillar['openstack_rabbit_pass'] }}
 
@@ -135,10 +135,10 @@ neutron-metadata-agent:
   ini.options_present:
     - sections:
         DEFAULT:
-          nova_metadata_ip: 172.16.128.2
+          nova_metadata_ip: {{ pillar['novametadatahost'] }}
           metadata_proxy_shared_secret: {{ pillar['metadata_proxy_shared_secret'] }}
-          auth_uri: http://172.16.128.2:5000
-          auth_url: http://172.16.128.2:35357
+          auth_uri: http://{{ pillar['keystonehost'] }}:5000
+          auth_url: http://{{ pillar['keystonehost'] }}:35357
           auth_region: RegionOne
           auth_plugin: password
           project_domain_id: default
