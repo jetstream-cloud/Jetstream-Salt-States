@@ -1,7 +1,7 @@
 {{env}}:
   '*':
     - test
-  'jam*':
+  'jab02':
     - passwords
     - mysql
     - hosts
