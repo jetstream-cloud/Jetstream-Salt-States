@@ -2,10 +2,10 @@
   ini.options_present:
     - sections:
           DEFAULT:
-            default_store: rbd
             show_image_direct_url: True
             verbose: True
           glance_store:
+            default_store: rbd
             stores: rbd
             rbd_store_pool: images
             rbd_store_user: glance
