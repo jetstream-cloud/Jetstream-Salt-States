@@ -7,6 +7,8 @@
           verbose: True
           my_ip: {{ pillar['cinderprivatehost'] }}
           volume_driver: cinder.volume.drivers.rbd.RBDDriver
+          rbd_user = cinder
+          rbd_secret_uuid: {{ pillar['libvirt_secret_uuid'] }} 
           rbd_pool: volumes
           rbd_ceph_conf: /etc/ceph/ceph.conf
           rbd_flatten_volume_from_snapshot: false
