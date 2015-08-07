@@ -7,3 +7,4 @@
     - hosts
   'jab*':
     - passwords
+    - hosts
