@@ -1,3 +1,5 @@
+{% set os_family = salt['grains.get']('os_family', '') %}
+
 sudogroup:
   group.present:
     - name: sudo
@@ -5,7 +7,9 @@ sudogroup:
 jomlowe:
   user.present:
     - groups:
+{% if os_family == 'RedHat' %}
       - wheel
+{% endif %}
       - adm
       - sudo
   ssh_auth:
@@ -18,7 +22,9 @@ jomlowe:
 turnerg:
   user.present:
     - groups:
+{% if os_family == 'RedHat' %}
       - wheel
+{% endif %}
       - adm
       - sudo
   ssh_auth:
@@ -31,7 +37,9 @@ turnerg:
 plinden:
   user.present:
     - groups:
+{% if os_family == 'RedHat' %}
       - wheel
+{% endif %}
       - adm
       - sudo
   ssh_auth:
@@ -44,7 +52,9 @@ plinden:
 bret:
   user.present:
     - groups:
+{% if os_family == 'RedHat' %}
       - wheel
+{% endif %}
       - adm
       - sudo
   ssh_auth:
