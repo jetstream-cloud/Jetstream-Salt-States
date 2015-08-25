@@ -14,13 +14,21 @@ cephrepo:
       - pkg: ceph
 
 ceph:
-  pkg.installed
+  pkg:
+    - installed
+    - require:
+      - pkgrepo: cephrepo
+  
 
 /etc/ceph/ceph.conf:
   file.managed:
     - source: salt://ceph/ceph.conf
+    - require:
+      - pkg: ceph
 
 
 /etc/ceph/ceph.client.cinder.keyring:
   file.managed:
     - source: salt://ceph/ceph.client.cinder.keyring
+    - require:
+      - pkg: ceph
