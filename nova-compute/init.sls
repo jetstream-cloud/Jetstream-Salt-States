@@ -45,7 +45,7 @@ openstack-neutron-ml2:
 openstack-neutron-linuxbridge:
   pkg:
 {% if os_family == 'Debian' %}
-    - name: neutron-plugin-linuxbridge-agent
+   - name: neutron-plugin-linuxbridge-agent
 {% endif %}  
    - installed
    - require_in:
