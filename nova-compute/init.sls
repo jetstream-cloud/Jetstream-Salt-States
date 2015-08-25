@@ -1,3 +1,5 @@
+{% set os_family = salt['grains.get']('os_family', '') %}
+
 net.ipv4.conf.all.rp_filter:
   sysctl.present:
     - value: 0
@@ -13,18 +15,24 @@ net.bridge.bridge-nf-call-ip6tables:
 
 openstack-nova-compute:
   pkg:
+{% if os_family == 'Debian' %}
+    - name: nova-compute
+{% endif %}  
     - installed
     - required_in:
       - ini: /etc/nova/nova.conf
   service:
+{% if os_family == 'Debian' %}
+    - name: nova-compute
+{% endif %}  
     - running
     - enable: True
     - watch:
       - ini: /etc/nova/nova.conf
     - require:
       - service: libvirtd
+{% if os_family == 'RedHat' %}
 openstack-neutron:
-  pkg:
    - installed
    - require_in:
      - ini: /etc/neutron/neutron.conf
@@ -33,8 +41,12 @@ openstack-neutron-ml2:
    - installed
    - require_in:
      - ini: /etc/neutron/plugins/ml2/ml2_conf.ini
+{% endif %}
 openstack-neutron-linuxbridge:
   pkg:
+{% if os_family == 'Debian' %}
+    - name: neutron-plugin-linuxbridge-agent
+{% endif %}  
    - installed
    - require_in:
      - ini: /etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini
@@ -43,10 +55,16 @@ sysfsutils:
     - installed
 libvirt:
   pkg:
+{% if os_family == 'Debian' %}
+    - name: libvirt-bin
+{% endif %}  
     - installed
   
 libvirtd:
   service:
+{% if os_family == 'Debian' %}
+    - name: libvirt-bin
+{% endif %}  
     - running
     - enable: True
     - require:
@@ -210,7 +228,10 @@ setsecret:
     {% set privateip = item %}
           local_ip: {{ privateip }}
   {% endif %}
-{% endfor %}                    
+{% endfor %}         
+
+{% if os_family == 'RedHat' %}
 /etc/neutron/plugin.ini:
   file.symlink:
     - target: /etc/neutron/plugins/ml2/ml2_conf.ini
+{% endif %}             
