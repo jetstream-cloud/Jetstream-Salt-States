@@ -85,7 +85,7 @@ neutron-metadata-agent:
     - sections:
         ml2:
           type_drivers: flat,vlan,gre,vxlan
-          tenant_network_types: gre,vxlan
+          tenant_network_types: vxlan
           mechanism_drivers: linuxbridge,l2population
         ml2_type_gre:
           tunnel_id_ranges: '1:1000'
