@@ -36,12 +36,16 @@ openstack-neutron:
    - installed
    - require_in:
      - ini: /etc/neutron/neutron.conf
+{% endif %}
 openstack-neutron-ml2:
   pkg:
+{% if os_family == 'Debian' %}
+   - name: neutron-plugin-ml2
+{% endif %}  
    - installed
    - require_in:
      - ini: /etc/neutron/plugins/ml2/ml2_conf.ini
-{% endif %}
+
 openstack-neutron-linuxbridge:
   pkg:
 {% if os_family == 'Debian' %}
