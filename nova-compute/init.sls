@@ -33,9 +33,10 @@ openstack-nova-compute:
       - service: libvirtd
 {% if os_family == 'RedHat' %}
 openstack-neutron:
-   - installed
-   - require_in:
-     - ini: /etc/neutron/neutron.conf
+  pkg:
+    - installed
+    - require_in:
+      - ini: /etc/neutron/neutron.conf
 {% endif %}
 openstack-neutron-ml2:
   pkg:
