@@ -4,7 +4,7 @@
 mariadbrepo:
   pkgrepo.managed:
     - humanname: MariaDB
-{% if os_family == 'Debian' %}    
+{% if os_family == 'RedHat' %}    
     - baseurl: http://yum.mariadb.org/10.0/centos7-amd64
     - gpgcheck: 1
     - gpgkey: https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
@@ -19,12 +19,22 @@ mariadbrepo:
       - pkg: MariaDB-client
 
 MariaDB-server:
-  pkg.installed 
+  pkg:
+{% if os_family == 'Debian' %}
+    - name: mariadb-server
+{% endif %}
+    - installed 
+{% if os_family == 'RedHat' %}    
 MariaDB-client:
-  pkg.installed 
+  pkg.installed
+   
 MySQL-python:
   pkg.installed
-
+{% endif %}
+{% if os_family == 'Debian' %}
+python-mysqldb:
+  pkg.installed
+{% endif %}
  
 mysql:
   service:
