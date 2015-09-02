@@ -4,7 +4,11 @@
   'jab02':
     - passwords
     - mysql
-    - hosts
-  'jab*':
+    - c1hosts
+  'jab0[3-5]':
     - passwords
-    - hosts
+    - c1hosts
+  'jab12':
+    - passwords
+    - mysql
+    - c2hosts
