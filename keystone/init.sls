@@ -1,4 +1,5 @@
 {% set mysql_root_password = salt['pillar.get']('mysql:server:root_password', salt['grains.get']('server_id')) %}
+{% set os_family = salt['grains.get']('os_family', '') %}
 
 
 keystone:
@@ -75,8 +76,14 @@ include:
   - keystone.keystoneconf
 openstack-keystone:
   pkg:
+{% if os_family == 'Debian' %}
+    - name: keystone
+{% endif %}  
     - installed
   service:
+{% if os_family == 'Debian' %}
+    - name: keystone
+{% endif %}    
     - running
     - enable: True
     - watch:
