@@ -42,15 +42,19 @@ mysql:
     - enable: True
     - require:
       - pkg: MariaDB-server
+{% if os_family == 'RedHat' %}         
     - watch:
       - file: /etc/my.cnf.d/server.cnf
+{% endif %}
 
+{% if os_family == 'RedHat' %}
 /etc/my.cnf.d/server.cnf:
   file.managed:
     - source: salt://mariadb/server.cnf
     - template: jinja
     - context:
       mysqlhost: {{ pillar['mysqlhost'] }}
+{% endif %}
 
 mysql_root_password:
   cmd.run:
