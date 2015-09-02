@@ -80,6 +80,11 @@ openstack-keystone:
     - name: keystone
 {% endif %}  
     - installed
+    - require_in:
+      - ini: /etc/keystone/keystone.conf
+      - file: /var/log/keystone
+      - file: /etc/keystone/ssl
+      - cmd: openstack-keystone
   service:
 {% if os_family == 'Debian' %}
     - name: keystone
@@ -101,6 +106,7 @@ keystone-identity-service:
     - unless: openstack service list | grep  -q keystone
     - requires:
       - service: openstack-keystone
+      - pkg: python-openstackclient
 keystone-endpoint:
   cmd.run:
     - name: openstack endpoint create --publicurl http://{{ pillar['keystonepublichost'] }}:5000/v2.0 --internalurl http://{{ pillar['keystonehost'] }}:5000/v2.0 --adminurl http://{{ pillar['keystonehost'] }}:35357/v2.0 --region RegionOne identity
@@ -110,6 +116,7 @@ keystone-endpoint:
     - unless: openstack endpoint list | grep  -q keystone
     - requires:
       - service: openstack-keystone
+      - pkg: python-openstackclient
 admin-project:
   cmd.run:
     - name: openstack project create --description "Admin Project" admin
@@ -119,6 +126,7 @@ admin-project:
     - unless: openstack project list | grep  -q admin
     - requires:
       - service: openstack-keystone
+      - pkg: python-openstackclient
 admin-user:
   cmd.run:
     - name: openstack user create --password {{pillar['admin_pass']}} admin
@@ -128,6 +136,7 @@ admin-user:
     - unless: openstack user list | grep  -q admin
     - requires:
       - cmd: openstack-keystone
+      - pkg: python-openstackclient
 admin-role:
   cmd.run:
     - name: openstack role create admin
@@ -137,6 +146,7 @@ admin-role:
     - unless: openstack role list | grep  -q admin
     - requires:
       - service: openstack-keystone
+      - pkg: python-openstackclient
 admin-role-project:
   cmd.run:
     - name: openstack role add --project admin --user admin admin
@@ -148,6 +158,7 @@ admin-role-project:
       - cmd: admin-role
       - cmd: admin-user
       - cmd: admin-project
+      - pkg: python-openstackclient
 service-project:
   cmd.run:
     - name: openstack project create --description "Service Project" service
@@ -157,6 +168,7 @@ service-project:
     - unless: openstack project list | grep  -q service
     - requires:
       - service: openstack-keystone
+      - pkg: python-openstackclient
 python-openstackclient: 
   pkg.installed
 memcached: 
@@ -166,4 +178,8 @@ memcached:
     - enable: True
     - running
 python-memcached:
-  pkg.installed
+  pkg:
+{% if os_family == 'Debian' %}
+    - name: python-memcache
+{% endif %}      
+    - installed
