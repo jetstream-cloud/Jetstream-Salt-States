@@ -1,4 +1,5 @@
 {% set mysql_root_password = salt['pillar.get']('mysql:server:root_password', salt['grains.get']('server_id')) %}
+{% set os_family = salt['grains.get']('os_family', '') %}
 
 
 glance:
@@ -94,15 +95,24 @@ include:
   - glance.glance-registryconf
   
 openstack-glance:
-  pkg.installed
+  pkg:
+{% if os_family == 'Debian' %}
+      - name: glance
+{% endif %}    
+    - installed
+{% if os_family == 'RedHat' %}
 python-glance:
   pkg.installed
+{% endif %}
 python-glanceclient:
   pkg.installed
 
 
 openstack-glance-api:
   service:
+{% if os_family == 'Debian' %}
+    - name: glance-api  
+{% endif %}
     - running
     - enable: True
     - watch:
@@ -112,9 +122,16 @@ openstack-glance-api:
   cmd.run:
     - name: su -s /bin/sh -c "glance-manage db_sync" glance
     - stateful: True
+    - require:
+      - pkg: openstack-glance
+      - mysql_user: glancelocalhost
+      
 
 openstack-glance-registry:
   service:
+{% if os_family == 'Debian' %}
+    - name: glance-registry  
+{% endif %}  
     - running
     - enable: True
     - watch:
