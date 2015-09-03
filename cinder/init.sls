@@ -115,7 +115,8 @@ openstack-cinder:
     - name: {{ pillar['openstack-cinder'] }}
     - installed
     - require_in:
-      - cmd: openstack-cinder-api   
+      - cmd: openstack-cinder-api
+      - ini: /etc/cinder/cinder.conf 
 python-cinderclient:
   pkg.installed
 python-oslo-db:
