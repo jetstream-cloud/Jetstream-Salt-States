@@ -1,4 +1,5 @@
 {% set mysql_root_password = salt['pillar.get']('mysql:server:root_password', salt['grains.get']('server_id')) %}
+{% set os_family = salt['grains.get']('os_family', '') %}
 
 
 nova:
@@ -92,8 +93,12 @@ nova-endpoint:
 
 openstack-nova-api:
   pkg:
+    - name: {{ pillar['openstack-nova-api'] }}
     - installed
+    - require_in:
+      - cmd: openstack-nova-api
   service:
+    - name: {{ pillar['openstack-nova-api'] }}
     - running
     - enable: True
     - watch:
@@ -106,40 +111,69 @@ openstack-nova-api:
     - stateful: True
 openstack-nova-cert:
   pkg:
+    - name: {{ pillar['openstack-nova-cert'] }}
     - installed
   service:
+    - name: {{ pillar['openstack-nova-cert'] }}
     - running
     - enable: True
     - watch:
       - ini: /etc/nova/nova.conf
+    - require:
+      - pkg: openstack-nova-cert
+      - service: openstack-nova-api
 openstack-nova-conductor:
   pkg:
+    - name: {{ pillar['openstack-nova-conductor'] }}
     - installed
   service:
+    - name: {{ pillar['openstack-nova-conductor'] }}
     - running
     - enable: True
     - watch:
       - ini: /etc/nova/nova.conf
+    - require:
+      - pkg: openstack-nova-conductor
+      - service: openstack-nova-api
 openstack-nova-console:
   pkg:
+    - name: {{ pillar['openstack-nova-console'] }}
     - installed
   service:
-    - name: openstack-nova-consoleauth
+    - name: {{ pillar['openstack-nova-console-service'] }}
     - running
     - enable: True
     - watch:
       - ini: /etc/nova/nova.conf
+    - require:
+      - pkg: openstack-nova-console
+      - service: openstack-nova-api
 openstack-nova-novncproxy:
   pkg:
+    - name: {{ pillar['openstack-nova-novncproxy'] }}
     - installed
   service:
+    - name: {{ pillar['openstack-nova-novncproxy'] }}
     - running
     - enable: True
     - watch:
       - ini: /etc/nova/nova.conf
+    - require:
+      - pkg: openstack-nova-novncproxy
+      - service: openstack-nova-api
 openstack-nova-scheduler:
   pkg:
+    - name: {{ pillar['openstack-nova-scheduler'] }}
     - installed
+  service:
+    - name: {{ pillar['openstack-nova-scheduler'] }}
+    - running
+    - enable: True
+    - watch:
+      - ini: /etc/nova/nova.conf
+    - require:
+      - pkg: openstack-nova-scheduler
+      - service: openstack-nova-api
 python-novaclient:
   pkg.installed
 
