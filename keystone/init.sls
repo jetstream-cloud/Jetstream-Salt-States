@@ -76,9 +76,7 @@ include:
   - keystone.keystoneconf
 openstack-keystone:
   pkg:
-{% if os_family == 'Debian' %}
-    - name: keystone
-{% endif %}  
+    - name: {{ pillar['openstack-keystone'] }}
     - installed
     - require_in:
       - ini: /etc/keystone/keystone.conf
@@ -86,9 +84,7 @@ openstack-keystone:
       - file: /etc/keystone/ssl
       - cmd: openstack-keystone
   service:
-{% if os_family == 'Debian' %}
-    - name: keystone
-{% endif %}    
+    - name: {{ pillar['openstack-keystone'] }}
     - running
     - enable: True
     - watch:
@@ -179,7 +175,5 @@ memcached:
     - running
 python-memcached:
   pkg:
-{% if os_family == 'Debian' %}
-    - name: python-memcache
-{% endif %}      
+    - name: {{ pillar['python-memcached'] }}
     - installed

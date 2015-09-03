@@ -1,5 +1,5 @@
 {% set mysql_root_password = salt['pillar.get']('mysql:server:root_password', salt['grains.get']('server_id')) %}
-
+{% set os_family = salt['grains.get']('os_family', '') %}
 
 neutron:
     mysql_database.present:
@@ -91,6 +91,7 @@ neutron-endpoint:
       
 openstack-neutron:
   pkg:
+    - name: {{ pillar['openstack-neutron'] }}
     - installed
   service:
     - name: neutron-server
@@ -108,13 +109,17 @@ openstack-neutron:
       - ini: /etc/neutron/neutron.conf
 
 openstack-neutron-ml2:
-  pkg.installed
+  pkg:
+    - name: {{ pillar['openstack-neutron-ml2'] }}
+    - installed
 python-neutronclient:
   pkg.installed
 
+{% if os_family == 'RedHat' %}
 /etc/neutron/plugin.ini:
   file.symlink:
     - target: /etc/neutron/plugins/ml2/ml2_conf.ini
+{% endif %}    
 
 /etc/neutron/neutron.conf:
   ini.options_present:

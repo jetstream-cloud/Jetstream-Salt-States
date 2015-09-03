@@ -1,3 +1,5 @@
+{% set os_family = salt['grains.get']('os_family', '') %}
+
 net.ipv4.ip_forward:
   sysctl.present:
     - value: 1
@@ -8,13 +10,16 @@ net.ipv4.conf.default.rp_filter:
   sysctl.present:
     - value: 0
 
+{% if os_family=='RedHat' %}
 openstack-neutron:
   pkg:
     - installed
     - require_in:
       - ini: /etc/neutron/neutron.conf
+{% endif %}
 openstack-neutron-ml2:
   pkg:
+    - name: {{ pillar['openstack-neutron-ml2'] }}
     - installed
     - require_in:
       - ini: /etc/neutron/plugins/ml2/ml2_conf.ini
@@ -23,9 +28,9 @@ openstack-neutron-linuxbridge:
     - installed
     - require_in:
       - ini: /etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini
-      - service: neutron-linuxbridge-agent
-neutron-linuxbridge-agent:
+      - service: openstack-neutron-linuxbridge
   service:
+    - name: {{ pillar['openstack-neutron-linuxbridge'] }}
     - running
     - enable: True
     - watch:

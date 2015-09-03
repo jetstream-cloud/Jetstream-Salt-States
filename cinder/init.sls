@@ -112,9 +112,7 @@ include:
 
 openstack-cinder:
   pkg:
-{% if os_family == 'Debian' %}
-    - name: cinder-api
-{% endif %}    
+    - name: {{ pillar['openstack-cinder'] }}
     - installed
     - require_in:
       - cmd: openstack-cinder-api   
@@ -125,9 +123,7 @@ python-oslo-db:
 
 openstack-cinder-api:
   service:
-{% if os_family == 'Debian' %}
-    - name: cinder-api
-{% endif %}      
+    - name: {{ pillar['openstack-cinder-api'] }}
     - running
     - enable: True
     - watch:
@@ -142,9 +138,7 @@ openstack-cinder-api:
 
 openstack-cinder-scheduler:
   service:
-{% if os_family == 'Debian' %}
-    - name: cinder-scheduler
-{% endif %}      
+    - name: {{ pillar['openstack-cinder-scheduler'] }}
     - running
     - enable: True
     - watch:

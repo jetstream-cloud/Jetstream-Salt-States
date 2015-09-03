@@ -15,16 +15,12 @@ net.bridge.bridge-nf-call-ip6tables:
 
 openstack-nova-compute:
   pkg:
-{% if os_family == 'Debian' %}
-    - name: nova-compute
-{% endif %}  
+    - name: {{ pillar['openstack-nova-compute'] }}
     - installed
     - required_in:
       - ini: /etc/nova/nova.conf
   service:
-{% if os_family == 'Debian' %}
-    - name: nova-compute
-{% endif %}  
+    - name: {{ pillar['openstack-nova-compute'] }}
     - running
     - enable: True
     - watch:
@@ -40,18 +36,14 @@ openstack-neutron:
 {% endif %}
 openstack-neutron-ml2:
   pkg:
-{% if os_family == 'Debian' %}
-   - name: neutron-plugin-ml2
-{% endif %}  
+   - name: {{ pillar['openstack-neutron-ml2'] }}
    - installed
    - require_in:
      - ini: /etc/neutron/plugins/ml2/ml2_conf.ini
 
 openstack-neutron-linuxbridge:
   pkg:
-{% if os_family == 'Debian' %}
-   - name: neutron-plugin-linuxbridge-agent
-{% endif %}  
+   - name: {{ pillar['openstack-neutron-linuxbridge'] }}
    - installed
    - require_in:
      - ini: /etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini
@@ -60,16 +52,12 @@ sysfsutils:
     - installed
 libvirt:
   pkg:
-{% if os_family == 'Debian' %}
-    - name: libvirt-bin
-{% endif %}  
+    - name: {{ pillar['libvirt'] }}
     - installed
   
 libvirtd:
   service:
-{% if os_family == 'Debian' %}
-    - name: libvirt-bin
-{% endif %}  
+    - name: {{ pillar['libvirtd'] }}
     - running
     - enable: True
     - require:
