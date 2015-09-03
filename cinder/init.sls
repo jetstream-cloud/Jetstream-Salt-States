@@ -138,7 +138,7 @@ openstack-cinder-api:
       - mysql_database: cinder
 
 openstack-cinder-scheduler:
-{% if os_family='Debain' %}
+{% if os_family=='Debain' %}
   pkg:
     - name: cinder-scheduler
     - installed
