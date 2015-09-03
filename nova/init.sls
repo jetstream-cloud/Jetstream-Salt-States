@@ -97,6 +97,7 @@ openstack-nova-api:
     - installed
     - require_in:
       - cmd: openstack-nova-api
+      - ini: /etc/nova/nova.conf
   service:
     - name: {{ pillar['openstack-nova-api'] }}
     - running
