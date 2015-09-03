@@ -98,6 +98,8 @@ openstack-glance:
   pkg:
     - name: {{ pillar['openstack-glance'] }}
     - installed
+    - required_in:
+      - ini: /etc/glance/glance-api.conf
 {% if os_family == 'RedHat' %}
 python-glance:
   pkg.installed
