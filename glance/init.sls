@@ -96,9 +96,7 @@ include:
   
 openstack-glance:
   pkg:
-{% if os_family == 'Debian' %}
-      - name: glance
-{% endif %}    
+    - name: {{ pillar['openstack-glance'] }}
     - installed
 {% if os_family == 'RedHat' %}
 python-glance:
@@ -110,9 +108,7 @@ python-glanceclient:
 
 openstack-glance-api:
   service:
-{% if os_family == 'Debian' %}
-    - name: glance-api  
-{% endif %}
+    - name: {{ pillar['openstack-glance-api'] }}
     - running
     - enable: True
     - watch:
@@ -129,9 +125,7 @@ openstack-glance-api:
 
 openstack-glance-registry:
   service:
-{% if os_family == 'Debian' %}
-    - name: glance-registry  
-{% endif %}  
+    - name: {{ pillar['openstack-glance-registry'] }}
     - running
     - enable: True
     - watch:

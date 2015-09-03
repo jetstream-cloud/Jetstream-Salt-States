@@ -6,6 +6,9 @@ openstack-nova-console: openstack-nova-console
 openstack-nova-novncproxy: openstack-nova-novncproxy
 openstack-nova-scheduler: openstack-nova-scheduler
 openstack-nova-console-service: openstack-nova-consoleauth
+openstack-glance: openstack-glance
+openstack-glance-api: openstack-glance-api
+openstack-glance-registry: openstack-glance-registry
 {% elif grains['os_family'] == 'Debian' %}
 openstack-nova-api: nova-api
 openstack-nova-cert: nova-cert
@@ -14,4 +17,7 @@ openstack-nova-console: nova-consoleauth
 openstack-nova-novncproxy: nova-novncproxy
 openstack-nova-scheduler: nova-scheduler
 openstack-nova-console-service: nova-consoleauth
+openstack-glance: glance
+openstack-glance-api: glance-api
+openstack-glance-registry: glance-registry
 {% endif %}
