@@ -93,6 +93,8 @@ openstack-neutron:
   pkg:
     - name: {{ pillar['openstack-neutron'] }}
     - installed
+    - require-in:
+      - ini: /etc/neutron/neutron.conf
   service:
     - name: neutron-server
     - running
