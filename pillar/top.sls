@@ -1,6 +1,7 @@
 {{env}}:
   '*':
     - test
+    - distro_specific
   'jab02':
     - passwords
     - mysql
