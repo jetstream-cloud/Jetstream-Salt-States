@@ -1,4 +1,5 @@
 {% set mysql_root_password = salt['pillar.get']('mysql:server:root_password', salt['grains.get']('server_id')) %}
+{% set os_family = salt['grains.get']('os_family', '') %}
 
 
 cinder:
@@ -110,7 +111,13 @@ include:
   - cinder.cinderconf
 
 openstack-cinder:
-  pkg.installed 
+  pkg:
+{% if os_family == 'Debian' %}
+    - name: cinder-api
+{% endif %}    
+    - installed
+    - require_in:
+      - cmd: openstack-cinder-api   
 python-cinderclient:
   pkg.installed
 python-oslo-db:
@@ -118,6 +125,9 @@ python-oslo-db:
 
 openstack-cinder-api:
   service:
+{% if os_family == 'Debian' %}
+    - name: cinder-api
+{% endif %}      
     - running
     - enable: True
     - watch:
@@ -127,3 +137,18 @@ openstack-cinder-api:
   cmd.run:
     - name: su -s /bin/sh -c "cinder-manage db sync" cinder
     - stateful: True
+    - require:
+      - mysql_database: cinder
+
+openstack-cinder-scheduler:
+  service:
+{% if os_family == 'Debian' %}
+    - name: cinder-scheduler
+{% endif %}      
+    - running
+    - enable: True
+    - watch:
+      - ini: /etc/cinder/cinder.conf
+    - require:
+      - cmd: openstack-cinder-api
+      
