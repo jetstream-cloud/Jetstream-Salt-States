@@ -28,7 +28,6 @@ openstack-neutron-linuxbridge:
     - name: {{ pillar['openstack-neutron-linuxbridge'] }}
     - installed
     - require_in:
-      - ini: /etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini
       - service: openstack-neutron-linuxbridge
   service:
     - name: {{ pillar['openstack-neutron-linuxbridge'] }}
@@ -37,7 +36,6 @@ openstack-neutron-linuxbridge:
     - watch:
       - ini: /etc/neutron/neutron.conf
       - ini: /etc/neutron/plugins/ml2/ml2_conf.ini
-      - ini: /etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini
 neutron-l3-agent:
   service:
     - running
@@ -104,11 +102,10 @@ neutron-metadata-agent:
           firewall_driver: neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
         agent:
           tunnel_types: vxlan
-
-/etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini:
-  ini.options_present:
-    - sections:
+        linux_bridge:
+          physical_interface_mappings: 'external:bond0.2'
         vxlan:
+          l2_population: True
           enable_vxlan: True
           vxlan_group: '239.1.1.1'
 {% for item in grains['fqdn_ip4'] %}
@@ -117,6 +114,7 @@ neutron-metadata-agent:
           local_ip: {{ privateip }}
   {% endif %}
 {% endfor %}                             
+
 
 /etc/neutron/l3_agent.ini:
   ini.options_present:
