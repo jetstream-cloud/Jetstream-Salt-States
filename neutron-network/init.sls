@@ -37,7 +37,7 @@ openstack-neutron-linuxbridge:
       - ini: /etc/neutron/neutron.conf
       - ini: /etc/neutron/plugins/ml2/ml2_conf.ini
 neutron-l3-agent:
-{% if osfamily=='Debian' %}
+{% if os_family=='Debian' %}
   pkg:
    - installed
 {% endif %}
@@ -48,7 +48,7 @@ neutron-l3-agent:
       - ini: /etc/neutron/neutron.conf
       - ini: /etc/neutron/l3_agent.ini
 neutron-dhcp-agent:
-{% if osfamily=='Debian' %}
+{% if os_family=='Debian' %}
   pkg:
    - installed
 {% endif %}
@@ -59,7 +59,7 @@ neutron-dhcp-agent:
       - ini: /etc/neutron/neutron.conf
       - ini: /etc/neutron/dhcp_agent.ini
 neutron-metadata-agent:
-{% if osfamily=='Debian' %}
+{% if os_family=='Debian' %}
   pkg:
    - installed
 {% endif %}
