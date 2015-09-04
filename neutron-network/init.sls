@@ -25,6 +25,7 @@ openstack-neutron-ml2:
       - ini: /etc/neutron/plugins/ml2/ml2_conf.ini
 openstack-neutron-linuxbridge:
   pkg:
+    - name: {{ pillar['openstack-neutron-linuxbridge'] }}
     - installed
     - require_in:
       - ini: /etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini
