@@ -145,6 +145,7 @@ setsecret:
           password: {{ pillar['nova_pass'] }}
         glance:
           host: {{ pillar['glanceprivatehost'] }}
+          protocol: https
         oslo_concurrency:
           lock_path: /var/lock/nova
         neutron:
