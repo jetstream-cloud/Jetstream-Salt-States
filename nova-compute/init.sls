@@ -135,8 +135,8 @@ setsecret:
           rabbit_userid: openstack
           rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
         keystone_authtoken:
-          auth_uri: http://{{ pillar['keystonehost'] }}:5000
-          auth_url: http://{{ pillar['keystonehost'] }}:35357
+          auth_uri: https://{{ pillar['keystonehost'] }}:5000
+          auth_url: https://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
           project_domain_id: default
           user_domain_id: default
@@ -148,9 +148,9 @@ setsecret:
         oslo_concurrency:
           lock_path: /var/lock/nova
         neutron:
-          url: http://{{ pillar['neutronprivatehost'] }}:9696
+          url: https://{{ pillar['neutronprivatehost'] }}:9696
           auth_strategy: keystone
-          admin_auth_url: http://{{ pillar['keystonehost'] }}:35357/v2.0
+          admin_auth_url: https://{{ pillar['keystonehost'] }}:35357/v2.0
           admin_tenant_name: service
           admin_username: neutron
           admin_password: {{ pillar['neutron_pass'] }}
@@ -167,11 +167,11 @@ setsecret:
           allow_overlapping_ips: True
           notify_nova_on_port_status_changes: True
           notify_nova_on_port_data_changes: True
-          nova_url: http://{{ pillar['novaprivatehost'] }}:8774/v2
+          nova_url: https://{{ pillar['novaprivatehost'] }}:8774/v2
           verbose: True
           network_device_mtu: 8950
         nova:
-          auth_url: http://{{ pillar['keystonehost'] }}:35357
+          auth_url: https://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
           project_domain_id: default
           user_domain_id: default
@@ -180,8 +180,8 @@ setsecret:
           username: nova
           password: {{ pillar['nova_pass'] }}
         keystone_authtoken:
-          auth_uri: http://{{ pillar['keystonehost'] }}:5000
-          auth_url: http://{{ pillar['keystonehost'] }}:35357
+          auth_uri: https://{{ pillar['keystonehost'] }}:5000
+          auth_url: https://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
           project_domain_id: default
           user_domain_id: default
