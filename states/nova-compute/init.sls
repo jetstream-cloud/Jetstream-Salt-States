@@ -211,10 +211,8 @@ setsecret:
           enable_ipset: True
         agent:
           tunnel_types: vxlan
-/etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini:
-  ini.options_present:
-    - sections:
         vxlan:
+          l2_population: True
           enable_vxlan: True
           vxlan_group: '239.1.1.1'
 {% for item in grains['fqdn_ip4'] %}
