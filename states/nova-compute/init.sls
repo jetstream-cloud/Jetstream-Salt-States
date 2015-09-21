@@ -45,8 +45,6 @@ openstack-neutron-linuxbridge:
   pkg:
    - name: {{ pillar['openstack-neutron-linuxbridge'] }}
    - installed
-   - require_in:
-     - ini: /etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini
 sysfsutils:
   pkg:
     - installed
