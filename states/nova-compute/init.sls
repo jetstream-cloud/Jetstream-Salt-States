@@ -68,7 +68,6 @@ neutron-linuxbridge-agent:
     - watch:
       - ini: /etc/neutron/neutron.conf
       - ini: /etc/neutron/plugins/ml2/ml2_conf.ini
-      - ini: /etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini
 include:
   - nova-compute.ceph
 
