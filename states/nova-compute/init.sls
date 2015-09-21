@@ -102,6 +102,9 @@ setsecret:
     -  sections:
         DEFAULT:
           debug: True
+          log_dir: /var/log/nova
+          state_path: /var/lib/nova
+          compute_driver: libvirt.LibvirtDriver
           rpc_backend: rabbit
           auth_strategy: keystone
           vnc_enabled: True
