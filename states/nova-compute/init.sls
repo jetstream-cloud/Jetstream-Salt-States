@@ -230,4 +230,11 @@ setsecret:
 /etc/neutron/plugin.ini:
   file.symlink:
     - target: /etc/neutron/plugins/ml2/ml2_conf.ini
+
+python-devel:
+  pkg.installed
+libffi-devel:
+  pkg.installed
+openssl-devel:
+  pkg.installed
 {% endif %}             
