@@ -144,7 +144,7 @@ setsecret:
           username: nova
           password: {{ pillar['nova_pass'] }}
         glance:
-          api_severs: https://jac1.jetstream.iu.edu:9292
+          api_severs: https://{{ pillar['glancepublichost'] }}:9292
           host: {{ pillar['glanceprivatehost'] }}
           protocol: https
         oslo_concurrency:
