@@ -201,7 +201,7 @@ setsecret:
         ml2:
           type_drivers: flat,vlan,gre,vxlan
           tenant_network_types: vxlan,vlan
-          mechanism_drivers: linuxbridge
+          mechanism_drivers: linuxbridge,l2population
         ml2_type_gre:
           tunnel_id_ranges: "1:1000"
         ml2_type_vxlan:
