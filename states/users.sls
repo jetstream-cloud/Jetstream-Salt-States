@@ -68,5 +68,9 @@ rootrsa:
     - present
     - user: root
     - source: salt://sshkeys/jam1_id_rsa.pub
-
+rooted25519:
+  ssh_auth:
+    - present
+    - user: root
+    - source: salt://sshkeys/jbm_id_ed25519.pub
 
