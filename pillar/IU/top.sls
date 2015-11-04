@@ -1,0 +1,3 @@
+{{env}}:
+  '*':
+    - distro_specific
