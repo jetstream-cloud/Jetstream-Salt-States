@@ -1,4 +1,5 @@
-
+dkms:
+  pkg.installed
 
 i40e-tarball:
   archive.extracted:
