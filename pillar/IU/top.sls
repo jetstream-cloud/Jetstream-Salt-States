@@ -5,3 +5,5 @@
     - jblb1_keepalived
   'jblb2*':
     - jblb2_keepalived
+  'jbdb*':
+    - mysql_cluster_passwords
