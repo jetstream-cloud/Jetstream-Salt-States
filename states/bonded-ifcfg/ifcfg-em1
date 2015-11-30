@@ -1,0 +1,9 @@
+DEVICE=em1
+NAME=bond0-slave
+TYPE=Ethernet
+BOOTPROTO=none
+NM_CONTROLLED=no
+ONBOOT=yes
+MASTER=bond0
+SLAVE=yes
+MTU=9000
