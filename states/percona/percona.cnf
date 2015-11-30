@@ -1,0 +1,10 @@
+[mysqld]
+
+wsrep_provider=/usr/lib/galera3/libgalera_smm.so
+wsrep_cluster_address=gcomm://172.16.128.253,172.16.128.252,172.16.128.250
+wsrep_sst_method=xtrabackup-v2
+wsrep_slave_threads=8
+wsrep_sst_auth="bkpuser:{{ bkpuser_password }}"
+binlog_format=ROW
+default_storage_engine=InnoDB
+innodb_autoinc_lock_mode=2
