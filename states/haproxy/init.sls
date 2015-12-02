@@ -1,6 +1,7 @@
 mysql_ufw_rule:
   cmd.run:
     - name: ufw allow from 172.16.128.0/20 to any port 3306 proto tcp
+    - unless: ufw status verbose | grep -q '3306/tcp                   ALLOW IN    172.16.128.0/20'
 /etc/haproxy/haproxy.cfg:
   file.managed:
     - source: salt://haproxy/haproxy.cfg
