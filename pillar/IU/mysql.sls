@@ -1,3 +1,4 @@
+#!yaml|gpg
 mysql:
   server:
     root_password: |
