@@ -1,16 +1,11 @@
-openstack-kilo:
+openstack-liberty-repo:
   pkgrepo.managed:
     - humanname: Temporary OpenStack Kilo new deps
-    - baseurl: http://repos.fedorapeople.org/repos/openstack/openstack-kilo/el7/
+    - baseurl: http://mirror.centos.org/centos/7/cloud/x86_64/openstack-liberty/ 
     - gpgcheck: 0
     - enabled: 1 
 
-openstack-kilo-testing:
-  pkgrepo.managed:
-    - humanname: Temporary OpenStack Kilo new deps
-    - baseurl: http://repos.fedorapeople.org/repos/openstack/openstack-kilo/testing/el7/
-    - gpgcheck: 0
-    - enabled: 1
-
 openstack-selinux:
   pkg.installed
+    - require:
+      - pkgrepo: openstack-liberty-repo
