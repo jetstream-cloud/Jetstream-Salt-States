@@ -6,7 +6,7 @@ keystone:
     mysql_database.present:
     - connection_user: root
     - connection_pass: {{ mysql_root_password }}
-    - connection_host: localhost
+    - connection_host: {{ pillar['mysqlhost'] }}
     - connection_charset: utf8
     - requirein:
       - mysql_user: keystonelocalhost
@@ -18,7 +18,7 @@ keystonelocalhost:
   mysql_user.present:
     - connection_user: root
     - connection_pass: {{ mysql_root_password }}
-    - connection_host: localhost
+    - connection_host: {{ pillar['mysqlhost'] }}
     - connection_charset: utf8
     - host: localhost
     - name: keystone
@@ -26,7 +26,7 @@ keystonelocalhost:
   mysql_grants.present:
     - connection_user: root
     - connection_pass: {{ mysql_root_password  }}
-    - connection_host: localhost
+    - connection_host: {{ pillar['mysqlhost'] }}
     - connection_charset: utf8
     - grant: all privileges
     - database: keystone.*
@@ -37,7 +37,7 @@ keystonewildcard:
   mysql_user.present:
     - connection_user: root
     - connection_pass: {{ mysql_root_password }}
-    - connection_host: localhost
+    - connection_host: {{ pillar['mysqlhost'] }}
     - connection_charset: utf8
     - host: "%"
     - name: keystone
@@ -45,7 +45,7 @@ keystonewildcard:
   mysql_grants.present:
     - connection_user: root
     - connection_pass: {{ mysql_root_password }}
-    - connection_host: localhost
+    - connection_host: {{ pillar['mysqlhost'] }}
     - connection_charset: utf8
     - grant: all privileges
     - database: keystone.*
