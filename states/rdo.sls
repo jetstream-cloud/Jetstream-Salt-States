@@ -6,6 +6,6 @@ openstack-liberty-repo:
     - enabled: 1 
 
 openstack-selinux:
-  pkg.installed
+  pkg.installed:
     - require:
       - pkgrepo: openstack-liberty-repo
