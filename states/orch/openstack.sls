@@ -8,4 +8,10 @@ haproxy_setup:
     - tgt: 'jblb*'
     - highstate: True
 
+keystonedb_setup:
+  salt.state:
+    - tgt: 'jbdb1*'
+    - sls: keystone.keystonedb
+    - require:
+      - salt: databasecluster_setup
 
