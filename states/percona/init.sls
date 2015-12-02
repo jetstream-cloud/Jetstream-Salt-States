@@ -41,6 +41,10 @@ mysql:
     - enable: True
     - watch:
       - file: /etc/mysql/conf.d/percona.cnf
-
+{% if os_family =='RedHat' %}
 MySQL-python:
-  pkg.installed     
+  pkg.installed 
+{% else %}
+python-mysqldb:
+  pkg.installed
+{% endif %}   
