@@ -1,12 +1,14 @@
 databasecluster_setup:
   salt.state:
     - tgt: 'jbdb*'
-    - highstate: True
+    - sls: percona
 
 haproxy_setup:
   salt.state:
     - tgt: 'jblb*'
-    - highstate: True
+    - sls: 
+      - haproxy
+      - keepalived
 
 keystonedb_setup:
   salt.state:
@@ -14,4 +16,6 @@ keystonedb_setup:
     - sls: keystone.keystonedb
     - require:
       - salt: databasecluster_setup
+      - salt: haproxy_setup
+      - salt: keepalived_setup
 
