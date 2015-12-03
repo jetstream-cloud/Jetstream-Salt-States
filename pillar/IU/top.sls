@@ -10,5 +10,7 @@
     - mysql_cluster_passwords
     - passwords
     - mysql
+    - mysqlhost
   'r01c3b16':
     - passwords
+    - mysqlhost
