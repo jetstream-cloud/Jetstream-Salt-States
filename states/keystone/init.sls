@@ -1,5 +1,3 @@
-include:
-  - keystone.keystonedb
   
 keystone-manage pki_setup --keystone-user keystone --keystone-group keystone:
   cmd.run:
