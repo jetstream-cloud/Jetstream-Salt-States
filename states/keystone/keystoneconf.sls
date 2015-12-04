@@ -6,7 +6,7 @@
            admin_token: {{ pillar['admin_token'] }}
            log_dir: /var/log/keystone
         database:
-           connection: mysql://keystone:{{ pillar['keystone_dbpass'] }}@localhost/keystone
+           connection: mysql://keystone:{{ pillar['keystone_dbpass'] }}@{{ pillar['mysqlhost'] }}/keystone
         revoke:
            driver: keystone.contrib.revoke.backends.sql.Revoke
         token:
