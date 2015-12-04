@@ -3,6 +3,26 @@ keystone-manage pki_setup --keystone-user keystone --keystone-group keystone:
   cmd.run:
     - creates: /etc/keystone/ssl
 
+/etc/httpd/conf.d/wsgi-keystone.conf:
+  file.managed:
+    - source: salt://keystone/wsgi-keystone.conf
+openstack-keystone-httpd:
+  pkg:
+    - name: httpd
+    - installed
+  service:
+    - name: httpd
+    - running
+    - enable: True
+    - require:
+      - pkg: {{ pillar['openstack-keystone'] }}
+    - watch:
+      - file: /etc/httpd/conf.d/wsgi-keystone.conf
+      - ini: /etc/keystone/keystone.conf
+      - cmd: openstack-keystone
+mod_wsgi:
+  pkg.installed
+
 /etc/keystone/ssl:
   file.directory:
     - user: keystone
@@ -30,13 +50,6 @@ openstack-keystone:
       - file: /var/log/keystone
       - file: /etc/keystone/ssl
       - cmd: openstack-keystone
-  service:
-    - name: {{ pillar['openstack-keystone'] }}
-    - running
-    - enable: True
-    - watch:
-      - ini: /etc/keystone/keystone.conf
-      - cmd: openstack-keystone 
   cmd.run:
     - name: su -s /bin/sh -c "keystone-manage db_sync" keystone
     - stateful: True
@@ -48,7 +61,7 @@ keystone-identity-service:
       - OS_TOKEN: {{ pillar['admin_token'] }}
     - unless: openstack service list | grep  -q keystone
     - requires:
-      - service: openstack-keystone
+      - service: openstack-keystone-httpd
       - pkg: python-openstackclient
 keystone-endpoint:
   cmd.run:
@@ -58,7 +71,7 @@ keystone-endpoint:
       - OS_TOKEN: {{ pillar['admin_token'] }}
     - unless: openstack endpoint list | grep  -q keystone
     - requires:
-      - service: openstack-keystone
+      - service: openstack-keystone-httpd
       - pkg: python-openstackclient
 admin-project:
   cmd.run:
@@ -68,7 +81,7 @@ admin-project:
       - OS_TOKEN: {{ pillar['admin_token'] }}
     - unless: openstack project list | grep  -q admin
     - requires:
-      - service: openstack-keystone
+      - service: openstack-keystone-httpd
       - pkg: python-openstackclient
 admin-user:
   cmd.run:
@@ -88,7 +101,7 @@ admin-role:
       - OS_TOKEN: {{ pillar['admin_token'] }}
     - unless: openstack role list | grep  -q admin
     - requires:
-      - service: openstack-keystone
+      - service: openstack-keystone-httpd
       - pkg: python-openstackclient
 admin-role-project:
   cmd.run:
@@ -110,7 +123,7 @@ service-project:
       - OS_TOKEN: {{ pillar['admin_token'] }}
     - unless: openstack project list | grep  -q service
     - requires:
-      - service: openstack-keystone
+      - service: openstack-keystone-httpd
       - pkg: python-openstackclient
 python-openstackclient: 
   pkg.installed
