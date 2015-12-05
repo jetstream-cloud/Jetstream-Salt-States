@@ -240,7 +240,69 @@ neutron_dbpass: |
   =A43U
   -----END PGP MESSAGE-----
 libvirt_secret_uuid: 1a790a26-dd49-4825-8d16-3dd627cf05a9
-cephclientcinderkey: TBD
+cephclientglancekey: |
+  -----BEGIN PGP MESSAGE-----
+  Version: GnuPG v1
+  Comment: GPGTools - http://gpgtools.org
+  
+  hQIMA4VjTU4mltuAAQ/9E5SZsJ7+sm13O3Enqan33/ExQqYKMGtxQA59kQHhl2Gz
+  MaZflGOxYIg1Cj3YCi1nkKbJI9OqYfCKTYN1BlGE63ZjeAcnDEvsx0SbLQ8Z2LAu
+  xoAwsVoiaMdAjEwlIu68rfS+SQtEoJLL+bvYZvqIzglStT+/U43sd0kjCjZ2vwm2
+  DinUzbEsn4KXPGelybMxq8KH1fTfSNKkqnWKexvXv8CGvhl8VkOKK0InON3KYv2u
+  YZ35LyJ7zdw6tZkCwUSXB6PzNjp0hu+4a+04SpZ3Eyuwnueii1yQ5qhoU0JxLth2
+  C+GDdqcFJf9RJAkJNvdcqgCtsqaxXKJK4rcB6PjMSJX/27U6q/TdeUeJWatJQQmX
+  4ZhoK3fLobCQWhCxS4q88vfG2Y9Sv6aVw9aJgI/BNtdaBjGcz0vHxyAOHZ7uux4p
+  X4BETsRwhC8WSpiKAlkDS3Ke1xJoPYHTBXeneq3+w97+/CxfQTz1SMIkB5UZ1dET
+  4kFNbw7FDKiv+YMQgmfFaL0/FdHqVmOHwGm/4xwkQ3pgLKx6VUMrD2ceWMZBTZMI
+  f1ogB1eej+6s0corQcjMIJsinyFh15m6C+guCUGQW2M2ayqeH4IikdxIPeEYr2C3
+  oT4N3lAWOos4qx70TmqboOv9NPQy5K20N0jFr4xDAsviJvzG09DNZ/zIpmvCpN3S
+  YwFgA/zdPPMvVOlWbbW1d3AnkaNnQZo+5+REleyevc2SVyAeDIji94a/A8HFODeG
+  y7rDpsMbaPndJac1xNkaiQDI+3AvjbNZ8Mc8tQAXnuiKp53AmC6ZzkyTQGJwSgNm
+  RkzXnA==
+  =MbTI
+  -----END PGP MESSAGE-----
+cephclientcinderkey: |
+  -----BEGIN PGP MESSAGE-----
+  Version: GnuPG v1
+  Comment: GPGTools - http://gpgtools.org
+  
+  hQIMA4VjTU4mltuAAQ/+JL5Cmlce2KvnL8ZB/+Bj2ny/RtUFTyb+mehBdRG1bH2R
+  DyoaPz/IhB/+wrutM2B4D3hGhibT3LruO1YCdcH/wp09oZ7kMmjkkyNYisCehCTQ
+  ALuno0J4iaZvzWbC3od7Bk8N2/iI+9CGJPlCMtD3pJYNFKtQ+xXq5QtTVsrfAK01
+  N74SP8LVtlglw/pKbqNHXPR1YN6QKPiCqMOEYBp3/NfrUdCM4Azt9BBoVICb4Y2y
+  M3U0yL9MOvvCgn52jc9LkmqmLfPs9m8S7bzEMSf2KWfqQ4YPiBqhvbjc2/+hWFEC
+  bD2qyRJwiyCTSpfqipBFt209+Fxi0+H9Kxm1C4yr+u1Vhr0jsSFjmHY+LngnLP7i
+  eXe7RRhNCkoT4oSq3I7FgODI2MrHo2eZem0yzxcp2Lw+puU7vjZ7c915dlyEAkDx
+  dVCVDhQxTMQcM4X4nk3QTIZfxC86awMXvcKFQyHOt9lwV2b7YzK77JhP+84/KsnS
+  aFxW99HWRKfNUYoOt2notpAAkfvboeFvGEdFLxPRk6G1K4syh00ATk0b/RvKssei
+  RrkC6lD6KonPPhGOdIxBkHM/tWYlb/hgewpnG9ldLSS4mc04LlLppmf8g/VNsXsW
+  /wLKBMY/PgMH4Usr4zn6xDv8fApmomgzw5F8c3HEzRwcrgK8YJ0x4OiqQPK5QOnS
+  YwEwaeWHL5lDR6JKfhEejR9jowvI6p8LR0FNocOol4gt9BabvuQdp9s2B5KBA7Ed
+  wK2QoYjkxr69ijfFv+he2DM2p28PE01nyx9pFfT/yaP+oqfYlz4kruemLd9yhwOY
+  XaY2bQ==
+  =4Wsc
+  -----END PGP MESSAGE-----
+cephclientcinderbackupkey: |
+  -----BEGIN PGP MESSAGE-----
+  Version: GnuPG v1
+  Comment: GPGTools - http://gpgtools.org
+  
+  hQIMA4VjTU4mltuAARAAjjmcr3XGJ8+B4Q05d67ThaQCM2woiNBkDufF9ktBEBvj
+  r1XpBxh1JK+Gvy2Hi54IXFH+QloM+o1Xu6rxtQWD3JRo+TgahHnwed50VYQ+fkoI
+  4ww9aO2OHoyoGdVDiZL1SWw5z6LwcRgCDQVQeWLDoqHjIVoBQJCjZcHe/NxLCqE+
+  nq3X9fqjPzJ4UNC+kk0FEDbobUwq691mFLdtZSsVDkp3GCNpzFHAFg8rpy2l2C7b
+  De6QMPWHxWzkTbVzUMbHt5dMW1vX1HjPZENM3lqKr7F2tvmePkbRCJqXk8f2nKMI
+  zM/MFwhlZzbrJRK0qU9h46LclL42xCkKf1EDriDxcU/RrjI0WYVudcRoIKgDV0u4
+  aPZLxcixSLIypt6C+0c05BLygxomcxdXjVxQeQN9NODCemGnzZnNeXRPjOQH6gTH
+  SiAo8O5y2SXRT0LvseEpMkYWn7yHTcbVvThHnOIb+U666q4u6irS+dExyhcgOHml
+  02h0Mh75Hm6H1H2V3KnQd/oxDYca05rZe0O/YFTPU4tLDMqfCH7B5m8zxqdsgS+U
+  tXP8gbvj836Pz2cRzrPLovcVTkjq9IQ21FWDp5RsSjMpbJZx/KKvDyuv5EKaQMRh
+  LoVIxpv/LGOjI7jNMi1md1YSJu+voJGsPlsul7WyQhH9Cx9EptqOa8CFc3RAAonS
+  YwEE3u4nJxWHHoYNZku6O1IcoG7nigK4neF4WgayJsDYWVfUqiSvdnR8Y9jVp9nw
+  dtSvIIk465CNvRyfAzH2dJ/TQ4sfDA14FEMXs+Q0kP3wVqN4QcOIJpypMtbIpdQM
+  +dVq/A==
+  =6jZK
+  -----END PGP MESSAGE----- 
 metadata_proxy_shared_secret:  |
   -----BEGIN PGP MESSAGE-----
   Version: GnuPG v1
