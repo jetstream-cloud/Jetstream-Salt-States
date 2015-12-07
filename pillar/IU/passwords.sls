@@ -240,7 +240,7 @@ neutron_dbpass: |
   =A43U
   -----END PGP MESSAGE-----
 libvirt_secret_uuid: 1a790a26-dd49-4825-8d16-3dd627cf05a9
-cephclientglancekey: |
+cephkey-glance: |
   -----BEGIN PGP MESSAGE-----
   Version: GnuPG v1
   Comment: GPGTools - http://gpgtools.org
@@ -261,7 +261,7 @@ cephclientglancekey: |
   RkzXnA==
   =MbTI
   -----END PGP MESSAGE-----
-cephclientcinderkey: |
+cephkey-cinder: |
   -----BEGIN PGP MESSAGE-----
   Version: GnuPG v1
   Comment: GPGTools - http://gpgtools.org
@@ -282,7 +282,7 @@ cephclientcinderkey: |
   XaY2bQ==
   =4Wsc
   -----END PGP MESSAGE-----
-cephclientcinderbackupkey: |
+cephkey-cinderbackup: |
   -----BEGIN PGP MESSAGE-----
   Version: GnuPG v1
   Comment: GPGTools - http://gpgtools.org
