@@ -1,5 +1,4 @@
 {% set os_family = salt['grains.get']('os_family', '') %}
-{% set bkpuser_password = salt['pillar.get']('mysql_cluster_passwords:server:bkpuser_password', salt['grains.get']('server_id')) %}
 {% set clustercheckuser_password = salt['pillar.get']('mysql_cluster_passwords:server:clustercheckuser_password', salt['grains.get']('server_id')) %}
 
 perconarepo:
@@ -20,7 +19,7 @@ percona-xtradb-cluster-56:
     - source: salt://percona/percona.cnf
     - template: jinja
     - context:
-      bkpuser_password: {{ bkpuser_password }}
+      bkpuser_password: {{ pillar['bkpuser_password'] }}
 /etc/xinetd.d/mysqlchk:
   file.managed:
     - source: salt://percona/mysqlchk
