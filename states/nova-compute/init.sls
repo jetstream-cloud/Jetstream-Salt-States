@@ -125,7 +125,7 @@ setsecret:
           inject_key: false
           inject_partition: -2
           images_type: rbd
-          images_rbd_pool: vms
+          images_rbd_pool: ephemeral-vms
           images_rbd_ceph_conf: /etc/ceph/ceph.conf
           rbd_user: cinder
           rbd_secret_uuid: {{ pillar['libvirt_secret_uuid'] }}
