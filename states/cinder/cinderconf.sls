@@ -9,7 +9,7 @@
           volume_driver: cinder.volume.drivers.rbd.RBDDriver
           rbd_user: cinder
           rbd_secret_uuid: {{ pillar['libvirt_secret_uuid'] }} 
-          rbd_pool: volumes
+          rbd_pool: cinder-volumes
           rbd_ceph_conf: /etc/ceph/ceph.conf
           rbd_flatten_volume_from_snapshot: false
           rbd_max_clone_depth: 5
@@ -20,7 +20,7 @@
           backup_ceph_conf: /etc/ceph/ceph.conf
           backup_ceph_user: cinder-backup
           backup_ceph_chunk_size: 134217728
-          backup_ceph_pool: backups
+          backup_ceph_pool: cinder-backups
           backup_ceph_stripe_unit: 0
           backup_ceph_stripe_count: 0
           restore_discard_excess_bytes: true
@@ -36,7 +36,8 @@
           username: cinder
           password: {{ pillar['cinder_pass'] }}
         oslo_messaging_rabbit:
-          rabbit_host: {{ pillar['rabbit_controller'] }}
+          rabbit_ha_queues = True
+          rabbit_hosts: {{ pillar['rabbit_hosts'] }}
           rabbit_userid: openstack
           rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
         oslo_concurrency:
