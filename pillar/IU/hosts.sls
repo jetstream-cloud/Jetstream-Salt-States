@@ -4,4 +4,6 @@ keystonehost: jblb.jetstream-cloud.org
 keystonepublichost: jblb.jetstream-cloud.org
 glancepublichost: jblb.jetstream-cloud.org
 glanceprivatehost: 172.16.128.2
+cinderpublichost: jblb.jetstream-cloud.org
+cinderprivatehost: jblb.jetstream-cloud.org
  
