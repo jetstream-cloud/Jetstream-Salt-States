@@ -4,7 +4,7 @@ glance:
     mysql_database.present:
     - connection_user: root
     - connection_pass: {{ mysql_root_password }}
-    - connection_host: localhost
+    - connection_host: {{ pillar['mysqlhost'] }} 
     - connection_charset: utf8
     - requirein:
       - mysql_user: glancelocalhost
