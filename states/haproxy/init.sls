@@ -38,6 +38,16 @@ glance-registry_ufw_rule:
     - name: ufw allow glance-registry
     - unless: ufw status verbose | grep -q '9292/tcp (glance-registry) ALLOW IN    Anywhere'
 
+/etc/ufw/applications.d/cinder-api:
+  file.managed:
+    - source: salt://haproxy/cinder-api.ufw.app
+    - require_in:
+      - cmd: cinder-api_ufw_rule
+glance-api_ufw_rule:
+  cmd.run:
+    - name: ufw allow cinder-api
+    - unless: ufw status verbose | grep -q '9292/tcp (cinder-api)     ALLOW IN    Anywhere'
+
 mysql_ufw_rule:
   cmd.run:
     - name: ufw allow from 172.16.128.0/20 to any port 3306 proto tcp
