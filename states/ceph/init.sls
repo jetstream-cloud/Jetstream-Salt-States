@@ -45,4 +45,4 @@ ceph:
     - group: cinder
     - template: jinja
     - context:
-      cephkey: {{ pillar['cephkey-cinder-backup'] }}
+      cephkey: {{ pillar['cephkey-cinderbackup'] }}
