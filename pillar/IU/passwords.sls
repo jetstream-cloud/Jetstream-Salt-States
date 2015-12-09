@@ -245,21 +245,21 @@ cephkey-glance: |
   Version: GnuPG v1
   Comment: GPGTools - http://gpgtools.org
   
-  hQIMA4VjTU4mltuAAQ/9E5SZsJ7+sm13O3Enqan33/ExQqYKMGtxQA59kQHhl2Gz
-  MaZflGOxYIg1Cj3YCi1nkKbJI9OqYfCKTYN1BlGE63ZjeAcnDEvsx0SbLQ8Z2LAu
-  xoAwsVoiaMdAjEwlIu68rfS+SQtEoJLL+bvYZvqIzglStT+/U43sd0kjCjZ2vwm2
-  DinUzbEsn4KXPGelybMxq8KH1fTfSNKkqnWKexvXv8CGvhl8VkOKK0InON3KYv2u
-  YZ35LyJ7zdw6tZkCwUSXB6PzNjp0hu+4a+04SpZ3Eyuwnueii1yQ5qhoU0JxLth2
-  C+GDdqcFJf9RJAkJNvdcqgCtsqaxXKJK4rcB6PjMSJX/27U6q/TdeUeJWatJQQmX
-  4ZhoK3fLobCQWhCxS4q88vfG2Y9Sv6aVw9aJgI/BNtdaBjGcz0vHxyAOHZ7uux4p
-  X4BETsRwhC8WSpiKAlkDS3Ke1xJoPYHTBXeneq3+w97+/CxfQTz1SMIkB5UZ1dET
-  4kFNbw7FDKiv+YMQgmfFaL0/FdHqVmOHwGm/4xwkQ3pgLKx6VUMrD2ceWMZBTZMI
-  f1ogB1eej+6s0corQcjMIJsinyFh15m6C+guCUGQW2M2ayqeH4IikdxIPeEYr2C3
-  oT4N3lAWOos4qx70TmqboOv9NPQy5K20N0jFr4xDAsviJvzG09DNZ/zIpmvCpN3S
-  YwFgA/zdPPMvVOlWbbW1d3AnkaNnQZo+5+REleyevc2SVyAeDIji94a/A8HFODeG
-  y7rDpsMbaPndJac1xNkaiQDI+3AvjbNZ8Mc8tQAXnuiKp53AmC6ZzkyTQGJwSgNm
-  RkzXnA==
-  =MbTI
+  hQIMA4VjTU4mltuAAQ/+MeNpq+UraWx5T1YQ7uO+LmGe2H506XtZLp/Wk5aegYuB
+  pnDVPsV1DEeIEqGmO2KprUldQq7a3xbZvNnWcuu+2zzHGUuNf7O/mLzcJATFxtuY
+  ZjBNXQbH/2mVG5ZgLPX+D1d2DrSnKxolNiZIWDB816wxuKa70WCQHtUIX7EkrJs+
+  WBkVpPLp8nJXdDxuK0N4tJtXddlOuVRiaRL77+aP1h3Zzu/oXN02B8w6TWUahz1H
+  ue+2cHpBt6RlVch2uwgL7GzmROXFLeqqewHAeTF3JsVQ+ewg8ACrjntH7/pbdzmR
+  eUJsd07cXT2SMQPHa+DjIcAgVKETsv09HNJXg8yQXndOUztB5pWfuNQlOyKG45Zq
+  5V+sPTtjN+VUCkf69/xD97ZymGYqzeYhDBeq0KhNymc79jD9bz7LGMx83KGmWIEs
+  1pPT0Nwz25r8Qho46lBa7HmAOtbDJHoU2BM537CaKoOAIHadVf/9xacoogTMLpT5
+  536VKeFOTemFbVO+XNJpPjf4neeyEGnwBd6HmXcVFR2RKktCCO3Z3mdCLgHz6Q39
+  FSUpfw0pOLH4YdZdDdc1eZSxUtQavXG6wC/2+jxZhnApW/vhl+QcaOijDaxv7Gu0
+  SFNpINk/6cfOXwhIg5BSqeys3g4lqeIg+5qtGJ0pFWBGrSfjBOExjaej7/uYIsrS
+  YwGY35fFGMYhboQFLoPJqKXbuhEGexrlBbqWObJTYB4G3ZFF6uLvIMF7bF7W8uSq
+  1hqjQsAG+Y7ouzOEO27M25+SqygJ/J/TBSablfS/EDBWJJjMfmzZ3/h2juwmvDLk
+  htwTHA==
+  =Zlx9
   -----END PGP MESSAGE-----
 cephkey-cinder: |
   -----BEGIN PGP MESSAGE-----
