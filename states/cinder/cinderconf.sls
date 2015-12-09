@@ -36,7 +36,7 @@
           username: cinder
           password: {{ pillar['cinder_pass'] }}
         oslo_messaging_rabbit:
-          rabbit_ha_queues = True
+          rabbit_ha_queues: True
           rabbit_hosts: {{ pillar['rabbit_hosts'] }}
           rabbit_userid: openstack
           rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
