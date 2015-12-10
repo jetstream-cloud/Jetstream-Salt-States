@@ -19,6 +19,7 @@ openstack-glance-registry: openstack-glance-registry
 openstack-cinder: openstack-cinder
 openstack-cinder-api: openstack-cinder-api
 openstack-cinder-scheduler: openstack-cinder-scheduler
+openstack-cinder-volume: openstack-cinder-volume
 python-memcached: python-memcached
 openstack-keystone: openstack-keystone
 {% elif grains['os_family'] == 'Debian' %}
@@ -42,6 +43,7 @@ openstack-glance-registry: glance-registry
 openstack-cinder: cinder-api
 openstack-cinder-api: cinder-api
 openstack-cinder-scheduler: cinder-scheduler
+openstack-cinder-volume: cinder-volume
 python-memcached: python-memcache
 openstack-keystone: keystone
 {% endif %}
