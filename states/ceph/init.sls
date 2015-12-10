@@ -19,13 +19,16 @@ ceph:
 /etc/ceph/ceph.conf:
   file.managed:
     - source: salt://ceph/ceph.conf
-
+    - require:
+      - pkg: ceph
 /etc/ceph/ceph.client.glance.keyring:
   file.managed:
     - source: salt://ceph/ceph.client.glance.keyring
     - owner: glance
     - group: glance
     - template: jinja
+    - require:
+      - pkg: ceph
     - context:
       cephkey: {{ pillar['cephkey-glance'] }}
 
@@ -35,6 +38,8 @@ ceph:
     - owner: cinder
     - group: cinder
     - template: jinja
+    - require:
+      - pkg: ceph
     - context:
       cephkey: {{ pillar['cephkey-cinder'] }}
 
@@ -44,5 +49,7 @@ ceph:
     - owner: cinder
     - group: cinder
     - template: jinja
+    - require:
+      - pkg: ceph
     - context:
       cephkey: {{ pillar['cephkey-cinderbackup'] }}
