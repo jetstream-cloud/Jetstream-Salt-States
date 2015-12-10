@@ -13,7 +13,6 @@ openstack-nova-api:
     - enable: True
     - watch:
       - ini: /etc/nova/nova.conf
-      - ini: /etc/neutron/neutron.conf
     - require:
       - cmd: openstack-nova-api
   cmd.run:
