@@ -28,6 +28,15 @@ openstack-cinder-api:
     - name: su -s /bin/sh -c "cinder-manage db sync" cinder
     - stateful: True
 
+openstack-cinder-volume:
+  service:
+    - name: {{ pillar['openstack-cinder-volume'] }}
+    - running
+    - enable: True
+    - watch:
+      - ini: /etc/cinder/cinder.conf
+    - require:
+      - cmd: openstack-cinder-api
 
 openstack-cinder-scheduler:
 {% if os_family=='Debian' %}
