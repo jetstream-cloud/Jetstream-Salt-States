@@ -26,7 +26,7 @@ keystone-admin_ufw_rule:
 glance-api_ufw_rule:
   cmd.run:
     - name: ufw allow glance-api
-    - unless: ufw status verbose | grep -q '9292/tcp (glance-api)     ALLOW IN    Anywhere'
+    - unless: ufw status verbose | grep -q '9292/tcp (glance-api)      ALLOW IN    Anywhere'
 
 /etc/ufw/applications.d/glance-regsitry:
   file.managed:
