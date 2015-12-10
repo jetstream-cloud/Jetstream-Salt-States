@@ -48,6 +48,26 @@ cinder-api_ufw_rule:
     - name: ufw allow cinder-api
     - unless: ufw status verbose | grep -q '8776/tcp (cinder-api)      ALLOW IN    Anywhere'
 
+/etc/ufw/applications.d/nova-api:
+  file.managed:
+    - source: salt://haproxy/nova-api.ufw.app
+    - require_in:
+      - cmd: nova-api_ufw_rule
+nova-api_ufw_rule:
+  cmd.run:
+    - name: ufw allow nova-api
+    - unless: ufw status verbose | grep -q '8774/tcp (nova-api)      ALLOW IN    Anywhere'
+
+/etc/ufw/applications.d/nova-metadata:
+  file.managed:
+    - source: salt://haproxy/nova-metadata.ufw.app
+    - require_in:
+      - cmd: nova-metadata_ufw_rule
+nova-metadata_ufw_rule:
+  cmd.run:
+    - name: ufw allow nova-metadata
+    - unless: ufw status verbose | grep -q '8775/tcp (nova-metadata)      ALLOW IN    Anywhere'
+
 mysql_ufw_rule:
   cmd.run:
     - name: ufw allow from 172.16.128.0/20 to any port 3306 proto tcp
