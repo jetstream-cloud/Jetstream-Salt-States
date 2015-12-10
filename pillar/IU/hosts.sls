@@ -6,4 +6,6 @@ glancepublichost: jblb.jetstream-cloud.org
 glanceprivatehost: 172.16.128.2
 cinderpublichost: jblb.jetstream-cloud.org
 cinderprivatehost: jblb.jetstream-cloud.org
+novapublichost: jblb.jetstream-cloud.org
+novaprivatehost: 172.16.128.2
  
