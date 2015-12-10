@@ -8,4 +8,5 @@ cinderpublichost: jblb.jetstream-cloud.org
 cinderprivatehost: jblb.jetstream-cloud.org
 novapublichost: jblb.jetstream-cloud.org
 novaprivatehost: 172.16.128.2
- 
+neutronpublichost: jblb.jetstream-cloud.org
+neutronprivatehost: 172.16.128.2 
