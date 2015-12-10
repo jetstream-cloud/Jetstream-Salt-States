@@ -36,7 +36,7 @@ glance-api_ufw_rule:
 glance-registry_ufw_rule:
   cmd.run:
     - name: ufw allow glance-registry
-    - unless: ufw status verbose | grep -q '9292/tcp (glance-registry) ALLOW IN    Anywhere'
+    - unless: ufw status verbose | grep -q '9191/tcp (glance-registry) ALLOW IN    Anywhere'
 
 /etc/ufw/applications.d/cinder-api:
   file.managed:
@@ -46,7 +46,7 @@ glance-registry_ufw_rule:
 cinder-api_ufw_rule:
   cmd.run:
     - name: ufw allow cinder-api
-    - unless: ufw status verbose | grep -q '9292/tcp (cinder-api)     ALLOW IN    Anywhere'
+    - unless: ufw status verbose | grep -q '8776/tcp (cinder-api)      ALLOW IN    Anywhere'
 
 mysql_ufw_rule:
   cmd.run:
