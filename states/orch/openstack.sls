@@ -33,11 +33,64 @@ glancedb_setup:
       - salt: databasecluster_setup
       - salt: haproxy_keepalived_setup
 
+glancekeystone_setup:
+  salt.state:
+    - tgt: 'r01c3b16'
+    - sls: glance.glancekeystone
+    - require:
+      - salt: keystoneservice
+
 glanceservice:
   salt.state:
     - tgt: 'r01c3b16'
-    - sls: keystone
+    - sls: glance
     - require:
       - salt: glancedb_setup
+      - salt: glancekeystone_setup
 
+cinderdb_setup:
+  salt.state:
+    - tgt: 'jbdb1*'
+    - sls: cinder.cinderdb
+    - require:
+      - salt: databasecluster_setup
+      - salt: haproxy_keepalived_setup
+
+cinderkeystone_setup:
+  salt.state:
+    - tgt: 'r01c3b16'
+    - sls: cinder.cinderkeystone
+    - require:
+      - salt: keystoneservice
+
+cinderservice:
+  salt.state:
+    - tgt: 'r01c3b16'
+    - sls: cinder
+    - require:
+      - salt: cinderdb_setup
+      - salt: cinderkeystone_setup
+
+novadb_setup:
+  salt.state:
+    - tgt: 'jbdb1*'
+    - sls: nova.novadb
+    - require:
+      - salt: databasecluster_setup
+      - salt: haproxy_keepalived_setup
+
+novakeystone_setup:
+  salt.state:
+    - tgt: 'r01c3b16'
+    - sls: nova.novakeystone
+    - require:
+      - salt: keystoneservice
+
+novaservice:
+  salt.state:
+    - tgt: 'r01c3b16'
+    - sls: nova
+    - require:
+      - salt: novadb_setup
+      - salt: novakeystone_setup
 
