@@ -15,7 +15,8 @@
         database:
           connection: mysql://nova:{{ pillar['nova_dbpass']}}@{{ pillar['mysqlhost'] }}/nova
         oslo_messaging_rabbit:
-          rabbit_host: {{ pillar['rabbit_controller'] }}
+          rabbit_ha_queues: True
+          rabbit_hosts: {{ pillar['rabbit_hosts'] }}
           rabbit_userid: openstack
           rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
         keystone_authtoken:
