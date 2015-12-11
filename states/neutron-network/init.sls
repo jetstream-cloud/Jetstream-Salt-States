@@ -30,7 +30,7 @@ openstack-neutron-linuxbridge:
     - require_in:
       - service: openstack-neutron-linuxbridge
   service:
-    - name: {{ pillar['openstack-neutron-linuxbridge'] }}
+    - name: {{ pillar['openstack-neutron-linuxbridge-service'] }}
     - running
     - enable: True
     - watch:
