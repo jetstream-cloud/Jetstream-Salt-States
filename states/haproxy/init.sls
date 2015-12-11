@@ -56,7 +56,7 @@ cinder-api_ufw_rule:
 nova-api_ufw_rule:
   cmd.run:
     - name: ufw allow nova-api
-    - unless: ufw status verbose | grep -q '8774/tcp (nova-api)      ALLOW IN    Anywhere'
+    - unless: ufw status verbose | grep -q '8774/tcp (Nova-api)        ALLOW IN    Anywhere'
 
 /etc/ufw/applications.d/nova-metadata:
   file.managed:
@@ -66,7 +66,17 @@ nova-api_ufw_rule:
 nova-metadata_ufw_rule:
   cmd.run:
     - name: ufw allow nova-metadata
-    - unless: ufw status verbose | grep -q '8775/tcp (nova-metadata)      ALLOW IN    Anywhere'
+    - unless: ufw status verbose | grep -q '8775/tcp (Nova-Metadata)   ALLOW IN    Anywhere'
+
+/etc/ufw/applications.d/neutron:
+  file.managed:
+    - source: salt://haproxy/neutron.ufw.app
+    - require_in:
+      - cmd: neutron_ufw_rule
+neutron_ufw_rule:
+  cmd.run:
+    - name: ufw allow Neutron
+    - unless: ufw status verbose | grep -q '8775/tcp (neutron)         ALLOW IN    Anywhere'
 
 mysql_ufw_rule:
   cmd.run:
