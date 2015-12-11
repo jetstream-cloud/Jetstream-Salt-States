@@ -114,7 +114,7 @@ setsecret:
           firewall_driver: nova.virt.firewall.NoopFirewallDriver
           verbose: True
 {% for item in grains['fqdn_ip4'] %}
-  {% if '172.16.128' in item %}
+  {% if '172.16.' in item %}
     {% set privateip = item %}
           my_ip: {{ privateip }}
   {% endif %}
@@ -218,7 +218,7 @@ setsecret:
           enable_vxlan: True
           vxlan_group: '239.1.1.1'
 {% for item in grains['fqdn_ip4'] %}
-  {% if '172.16.128' in item %}
+  {% if '172.16.' in item %}
     {% set privateip = item %}
           local_ip: {{ privateip }}
   {% endif %}
