@@ -9,7 +9,7 @@ cephrepo:
     - name: deb http://ceph.com/debian-hammer/ trusty main
     - file: /etc/apt/sources.list.d/ceph.list
 {% endif %}
-    - key_url: https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/release.asc
+    - key_url: https://git.ceph.com/release.asc 
     - require_in:
       - pkg: ceph
 
