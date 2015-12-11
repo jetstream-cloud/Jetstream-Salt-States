@@ -87,7 +87,7 @@ virsh secret-define /root/secret.xml:
 
 setsecret:
   cmd.run:
-    - name: virsh secret-set-value --secret {{ pillar['libvirt_secret_uuid'] }} --base64 {{ pillar['cephclientcinderkey'] }}
+    - name: virsh secret-set-value --secret {{ pillar['libvirt_secret_uuid'] }} --base64 {{ pillar['cephkey-cinder'] }}
     - onlyif: virsh secret-list |grep {{ pillar['libvirt_secret_uuid'] }}
     - unless: virsh secret-get-value --secret {{ pillar['libvirt_secret_uuid'] }}
   require:
