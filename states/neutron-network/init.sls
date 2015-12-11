@@ -80,7 +80,7 @@ neutron-metadata-agent:
           service_plugins: router
           allow_overlapping_ips: True
           verbose: True
-          network_device_mtu: 8950
+          network_device_mtu: 9000
           advertise_mtu: True
         keystone_authtoken:
           auth_uri: http://{{ pillar['keystonehost'] }}:5000

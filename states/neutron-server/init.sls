@@ -47,7 +47,7 @@ python-neutronclient:
           notify_nova_on_port_data_changes: True
           nova_url: http://{{ pillar['novaprivatehost'] }}:8774/v2
           verbose: True
-          network_device_mtu: 8950
+          network_device_mtu: 9000 
           advertise_mtu: True
         nova:
           auth_url: http://{{ pillar['keystonehost'] }}:35357

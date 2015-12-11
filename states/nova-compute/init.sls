@@ -171,7 +171,7 @@ setsecret:
           notify_nova_on_port_data_changes: True
           nova_url: https://{{ pillar['novaprivatehost'] }}:8774/v2
           verbose: True
-          network_device_mtu: 8950
+          network_device_mtu: 9000 
         nova:
           auth_url: https://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
