@@ -6,4 +6,4 @@ NM_CONTROLLED=no
 ONBOOT=yes
 BOOTPROTO=dhcp
 BONDING_OPTS="xmit_hash_policy=1 mode=4"
-MTU=9000
+MTU=9050
