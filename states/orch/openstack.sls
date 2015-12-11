@@ -94,3 +94,34 @@ novaservice:
       - salt: novadb_setup
       - salt: novakeystone_setup
 
+neutrondb_setup:
+  salt.state:
+    - tgt: 'jbdb1*'
+    - sls: neutron.neutrondb
+    - require:
+      - salt: databasecluster_setup
+      - salt: haproxy_keepalived_setup
+
+neutronkeystone_setup:
+  salt.state:
+    - tgt: 'r01c3b16'
+    - sls: neutron.neutronkeystone
+    - require:
+      - salt: keystoneservice
+
+neutronservice:
+  salt.state:
+    - tgt: 'r01c3b16'
+    - sls: neutron
+    - require:
+      - salt: neutrondb_setup
+      - salt: neutronkeystone_setup
+
+neutronnetwork:
+  salt.state:
+    - tgt: 'r04c4b16'
+    - sls: neutron-network
+    - require:
+      - salt: neutronservice
+
+
