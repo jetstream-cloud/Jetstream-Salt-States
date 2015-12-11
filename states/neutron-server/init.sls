@@ -85,7 +85,7 @@ python-neutronclient:
         ml2_type_gre:
           tunnel_id_ranges: '1:1000'
         ml2_type_vxlan:
-          vni_ranges: '100:1000'
+          vni_ranges: '100:10000'
           vxlan_group: '239.1.1.1'
         securitygroup:
           enable_security_group: 'True'

@@ -92,7 +92,8 @@ neutron-metadata-agent:
           username: neutron
           password: {{ pillar['neutron_pass'] }}
         oslo_messaging_rabbit:
-          rabbit_host: {{ pillar['rabbit_controller'] }}
+          rabbit_ha_queues: True
+          rabbit_hosts: {{ pillar['rabbit_hosts'] }}
           rabbit_userid: openstack
           rabbit_password: {{pillar['openstack_rabbit_pass'] }}
 
@@ -106,7 +107,7 @@ neutron-metadata-agent:
         ml2_type_gre:
           tunnel_id_ranges: '1:1000'
         ml2_type_vxlan:
-          vni_ranges: '100:1000'
+          vni_ranges: '100:10000'
           vxlan_group: '239.1.1.1'
         securitygroup:
           enable_security_group: 'True'
@@ -115,13 +116,13 @@ neutron-metadata-agent:
         agent:
           tunnel_types: vxlan
         linux_bridge:
-          physical_interface_mappings: 'external:bond0.2'
+          physical_interface_mappings: 'external:bond0.330'
         vxlan:
           l2_population: True
           enable_vxlan: True
           vxlan_group: '239.1.1.1'
 {% for item in grains['fqdn_ip4'] %}
-  {% if '172.16.128' in item %}
+  {% if '172.16.' in item %}
     {% set privateip = item %}
           local_ip: {{ privateip }}
   {% endif %}
