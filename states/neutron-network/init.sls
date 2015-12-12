@@ -128,6 +128,36 @@ neutron-metadata-agent:
   {% endif %}
 {% endfor %}                             
 
+/etc/neutron/plugins/ml2/linuxbridge_agent.ini:
+  ini.options_present:
+    - sections:
+        ml2:
+          type_drivers: flat,vlan,gre,vxlan
+          tenant_network_types: vxlan
+          mechanism_drivers: linuxbridge,l2population
+        ml2_type_gre:
+          tunnel_id_ranges: '1:1000'
+        ml2_type_vxlan:
+          vni_ranges: '100:10000'
+          vxlan_group: '239.1.1.1'
+        securitygroup:
+          enable_security_group: 'True'
+          enable_ipset: True
+          firewall_driver: neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
+        agent:
+          tunnel_types: vxlan
+        linux_bridge:
+          physical_interface_mappings: 'external:bond0.330'
+        vxlan:
+          l2_population: True
+          enable_vxlan: True
+          vxlan_group: '239.1.1.1'
+{% for item in grains['fqdn_ip4'] %}
+  {% if '172.16.' in item %}
+    {% set privateip = item %}
+          local_ip: {{ privateip }}
+  {% endif %}
+{% endfor %}                       
 
 /etc/neutron/l3_agent.ini:
   ini.options_present:
