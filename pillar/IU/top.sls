@@ -11,6 +11,6 @@
     - passwords
     - mysql
     - hosts
-  'r01c[34]b*':
+  'r0[1-7]c[1234]b*':
     - passwords
     - hosts
