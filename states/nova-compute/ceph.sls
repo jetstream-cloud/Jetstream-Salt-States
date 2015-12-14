@@ -30,8 +30,6 @@ ceph:
 /etc/ceph/ceph.client.cinder.keyring:
   file.managed:
     - source: salt://ceph/ceph.client.cinder.keyring
-    - owner: cinder
-    - group: cinder
     - template: jinja
     - require:
       - pkg: ceph
