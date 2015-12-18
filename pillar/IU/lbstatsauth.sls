@@ -1,3 +1,4 @@
+#!yaml|gpg
 lbstatsauth: |
   -----BEGIN PGP MESSAGE-----
   Version: GnuPG v1
