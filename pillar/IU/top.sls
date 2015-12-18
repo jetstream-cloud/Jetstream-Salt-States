@@ -4,8 +4,10 @@
     - hosts
   'jblb1*':
     - jblb1_keepalived
+    - lbstatsauth
   'jblb2*':
     - jblb2_keepalived
+    - lbstatsauth
   'jbdb*':
     - mysql_cluster_passwords
     - passwords
