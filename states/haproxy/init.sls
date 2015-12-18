@@ -86,7 +86,7 @@ mysql_ufw_rule:
 /etc/haproxy/haproxy.cfg:
   file.managed:
     - source: salt://haproxy/haproxy.cfg
-    - template: jinga
+    - template: jinja
     - context:
       statsauth: {{ pillar['lbstatsauth'] }}
 haproxy:
