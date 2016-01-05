@@ -76,7 +76,7 @@ nova-metadata_ufw_rule:
 neutron_ufw_rule:
   cmd.run:
     - name: ufw allow Neutron
-    - unless: ufw status verbose | grep -q '8775/tcp (neutron)         ALLOW IN    Anywhere'
+    - unless: ufw status verbose | grep -q '9696/tcp (Neutron)         ALLOW IN    Anywhere'
 
 mysql_ufw_rule:
   cmd.run:
