@@ -145,8 +145,8 @@ setsecret:
           username: nova
           password: {{ pillar['nova_pass'] }}
         glance:
-          api_severs: https://{{ pillar['glancepublichost'] }}:9292
-          host: {{ pillar['glanceprivatehost'] }}
+          api_servers: https://{{ pillar['glancepublichost'] }}:9292
+          host: {{ pillar['glancepublichost'] }}
           protocol: https
         oslo_concurrency:
           lock_path: /var/lock/nova
@@ -170,7 +170,7 @@ setsecret:
           allow_overlapping_ips: True
           notify_nova_on_port_status_changes: True
           notify_nova_on_port_data_changes: True
-          nova_url: https://{{ pillar['novaprivatehost'] }}:8774/v2
+          nova_url: https://{{ pillar['novapublichost'] }}:8774/v2
           verbose: True
           network_device_mtu: 9000 
         nova:
