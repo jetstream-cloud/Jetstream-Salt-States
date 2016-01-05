@@ -23,7 +23,7 @@ neutron-service:
     - unless: openstack service list | grep  -q network
 neutron-endpoint:
   cmd.run:
-    - name: openstack endpoint create --publicurl https://{{ pillar['neutronpublichost'] }}:9696 --adminurl https://{{ pillar['neutronprivatehost'] }}:9696 --internalurl https://{{ pillar['neutronprivatehost'] }}:9696 --region RegionOne network
+    - name: openstack endpoint create --publicurl https://{{ pillar['neutronpublichost'] }}:9696 --adminurl http://{{ pillar['neutronprivatehost'] }}:9696 --internalurl http://{{ pillar['neutronprivatehost'] }}:9696 --region RegionOne network
     - env:
       - OS_URL: https://{{ pillar['keystonehost'] }}:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
