@@ -26,7 +26,7 @@ glance-service:
 
 glance-endpoint:
   cmd.run:
-    - name: openstack endpoint create --publicurl https://{{ pillar['glancepublichost'] }}:9292 --internalurl https://{{ pillar['glanceprivatehost'] }}:9292 --adminurl https://{{ pillar['glanceprivatehost'] }}:9292 --region RegionOne image
+    - name: openstack endpoint create --publicurl https://{{ pillar['glancepublichost'] }}:9292 --internalurl http://{{ pillar['glanceprivatehost'] }}:9292 --adminurl http://{{ pillar['glanceprivatehost'] }}:9292 --region RegionOne image
     - env:
       - OS_URL: https://{{ pillar['keystonehost'] }}:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}

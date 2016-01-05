@@ -28,7 +28,7 @@ nova-service:
       - service: openstack-keystone
 nova-endpoint:
   cmd.run:
-    - name: openstack endpoint create --publicurl http://{{ pillar['novapublichost'] }}:8774/v2/%\(tenant_id\)s --internalurl http://{{ pillar['novaprivatehost'] }}:8774/v2/%\(tenant_id\)s --adminurl http://{{ pillar['novaprivatehost'] }}:8774/v2/%\(tenant_id\)s --region RegionOne compute
+    - name: openstack endpoint create --publicurl https://{{ pillar['novapublichost'] }}:8774/v2/%\(tenant_id\)s --internalurl http://{{ pillar['novaprivatehost'] }}:8774/v2/%\(tenant_id\)s --adminurl http://{{ pillar['novaprivatehost'] }}:8774/v2/%\(tenant_id\)s --region RegionOne compute
     - env:
       - OS_URL: https://{{ pillar['keystonehost'] }}:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
