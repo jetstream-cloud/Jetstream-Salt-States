@@ -83,8 +83,8 @@ neutron-metadata-agent:
           network_device_mtu: 9000
           advertise_mtu: True
         keystone_authtoken:
-          auth_uri: http://{{ pillar['keystonehost'] }}:5000
-          auth_url: http://{{ pillar['keystonehost'] }}:35357
+          auth_uri: https://{{ pillar['keystonehost'] }}:5000
+          auth_url: https://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
           project_domain_id: default
           user_domain_id: default
@@ -184,8 +184,8 @@ neutron-metadata-agent:
         DEFAULT:
           nova_metadata_ip: {{ pillar['novametadatahost'] }}
           metadata_proxy_shared_secret: {{ pillar['metadata_proxy_shared_secret'] }}
-          auth_uri: http://{{ pillar['keystonehost'] }}:5000
-          auth_url: http://{{ pillar['keystonehost'] }}:35357
+          auth_uri: https://{{ pillar['keystonehost'] }}:5000
+          auth_url: https://{{ pillar['keystonehost'] }}:35357
           auth_region: RegionOne
           auth_plugin: password
           project_domain_id: default

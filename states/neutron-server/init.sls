@@ -50,7 +50,7 @@ python-neutronclient:
           network_device_mtu: 9000 
           advertise_mtu: True
         nova:
-          auth_url: http://{{ pillar['keystonehost'] }}:35357
+          auth_url: https://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
           project_domain_id: default
           user_domain_id: default
@@ -59,8 +59,8 @@ python-neutronclient:
           username: nova
           password: {{ pillar['nova_pass'] }}
         keystone_authtoken:
-          auth_uri: http://{{ pillar['keystonehost'] }}:5000
-          auth_url: http://{{ pillar['keystonehost'] }}:35357
+          auth_uri: https://{{ pillar['keystonehost'] }}:5000
+          auth_url: https://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
           project_domain_id: default
           user_domain_id: default

@@ -5,6 +5,7 @@
            debug: 'True'
            admin_token: {{ pillar['admin_token'] }}
            log_dir: /var/log/keystone
+           secure_proxy_ssl_header: "HTTP_X_FORWARDED_PROTO"
         database:
            connection: mysql://keystone:{{ pillar['keystone_dbpass'] }}@{{ pillar['mysqlhost'] }}/keystone
         revoke:
