@@ -151,7 +151,7 @@ setsecret:
         oslo_concurrency:
           lock_path: /var/lock/nova
         neutron:
-          url: https://{{ pillar['neutronprivatehost'] }}:9696
+          url: https://{{ pillar['neutronpublichost'] }}:9696
           auth_strategy: keystone
           admin_auth_url: https://{{ pillar['keystonehost'] }}:35357/v2.0
           admin_tenant_name: service
