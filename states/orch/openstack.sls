@@ -124,4 +124,13 @@ neutronnetwork:
     - require:
       - salt: neutronservice
 
-
+nova-compute-setup:
+  salt.sate:
+    - tgt: 'r*c[12]b*'
+    - sls: nova-compute
+    - require: 
+      - salt: novaservice
+      - salt: neutronservice
+      - salt: neutronnetwork
+      - salt: glanceservice
+      - salt: cinderservice
