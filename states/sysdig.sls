@@ -6,6 +6,7 @@ sysdigrepo:
     - name: draios
     - baseurl: http://download.draios.com/stable/rpm/$basearch
     - gpgcheck: 1
+    - gpgkey: https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public 
 {% elif os_family == 'Debian' %}
     - name: deb http://download.draios.com/stable/deb stable-$(ARCH)/
     - file: /etc/apt/sources.list.d/draios.list
