@@ -1,5 +1,8 @@
 {% set os_family = salt['grains.get']('os_family', '') %}
 
+include:
+  - iplibpatch
+
 net.ipv4.ip_forward:
   sysctl.present:
     - value: 1
@@ -39,7 +42,9 @@ openstack-neutron-linuxbridge:
 neutron-l3-agent:
 {% if os_family=='Debian' %}
   pkg:
-   - installed
+   - installed:
+     - requirein:
+       - patch: ip_libpatch 
 {% endif %}
   service:
     - running
@@ -47,6 +52,8 @@ neutron-l3-agent:
     - watch:
       - ini: /etc/neutron/neutron.conf
       - ini: /etc/neutron/l3_agent.ini
+    - require:
+      - patch: ip_libpatch
 neutron-dhcp-agent:
 {% if os_family=='Debian' %}
   pkg:
