@@ -29,7 +29,9 @@
           username: nova
           password: {{ pillar['nova_pass'] }}
         glance:
-          host: {{ pillar['glanceprivatehost'] }}
+          host: {{ pillar['glancepublichost'] }}
+          api_servers: https://{{ pillar['glancepublichost'] }}:9292
+          protocol: https
         oslo_concurrency:
           lock_path: /var/lock/nova
         neutron:
