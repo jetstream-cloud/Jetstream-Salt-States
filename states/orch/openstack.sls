@@ -23,7 +23,7 @@ keystoneservice:
     - tgt: 'r01c3b16'
     - sls: keystone
     - require:
-      - salt: keystonedb_setup:
+      - salt: keystonedb_setup
 
 glancedb_setup:
   salt.state:
