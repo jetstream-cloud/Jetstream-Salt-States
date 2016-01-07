@@ -29,6 +29,11 @@ openstack-cinder-api:
     - stateful: True
 
 openstack-cinder-volume:
+{% if os_family=='Debian' %}
+  pkg:
+    - name: cinder-volume
+    - installed
+{% endif %}
   service:
     - name: {{ pillar['openstack-cinder-volume'] }}
     - running
