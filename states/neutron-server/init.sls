@@ -38,6 +38,7 @@ python-neutronclient:
   ini.options_present:
     - sections:
         DEFAULT:
+          api_workers: 4
           rpc_backend: rabbit
           auth_strategy: keystone
           core_plugin: ml2

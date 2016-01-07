@@ -24,6 +24,7 @@
           backup_ceph_stripe_unit: 0
           backup_ceph_stripe_count: 0
           restore_discard_excess_bytes: true
+          osapi_volume_workers: 4
         database:
           connection: mysql://cinder:{{ pillar['cinder_dbpass'] }}@{{ pillar['mysqlhost'] }}/cinder
         keystone_authtoken:
