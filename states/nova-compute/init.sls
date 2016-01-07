@@ -243,6 +243,12 @@ setsecret:
   file.symlink:
     - target: /etc/neutron/plugins/ml2/ml2_conf.ini
 
+/etc/rc.local:
+  file.managed:
+    - source: salt://nova-compute/rc.local
+    - mode: 700
+    - owner: root
+
 python-devel:
   pkg.installed
 libffi-devel:
