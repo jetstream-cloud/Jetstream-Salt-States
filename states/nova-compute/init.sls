@@ -68,6 +68,7 @@ neutron-linuxbridge-agent:
     - watch:
       - ini: /etc/neutron/neutron.conf
       - ini: /etc/neutron/plugins/ml2/ml2_conf.ini
+      - ini: /etc/neutron/plugins/ml2/linuxbridge_agent.ini
 include:
   - nova-compute.ceph
 
@@ -197,6 +198,18 @@ setsecret:
           rabbit_userid: openstack
           rabbit_password: {{pillar['openstack_rabbit_pass'] }}
         
+/etc/neutron/plugins/ml2/linuxbridge_agent.ini:
+  ini.options_present:
+    - sections:
+        vxlan:
+{% for item in grains['fqdn_ip4'] %}
+  {% if '172.16.' in item %}
+    {% set privateip = item %}
+          local_ip: {{ privateip }}
+  {% endif %}
+{% endfor %}
+          l2_population: True
+
 /etc/neutron/plugins/ml2/ml2_conf.ini:
   ini.options_present:
     - sections:
