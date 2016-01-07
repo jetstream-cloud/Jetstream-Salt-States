@@ -112,7 +112,7 @@ neutronkeystone_setup:
 neutronservice:
   salt.state:
     - tgt: 'r01c3b16'
-    - sls: neutron
+    - sls: neutron-server
     - require:
       - salt: neutrondb_setup
       - salt: neutronkeystone_setup
