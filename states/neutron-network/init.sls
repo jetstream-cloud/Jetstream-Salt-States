@@ -178,12 +178,17 @@ neutron-metadata-agent:
   ini.options_present:
     - sections:
         DEFAULT:
+          dnsmasq_config_file: /etc/neutron/dnsmasq-neutron.conf
           interface_driver: neutron.agent.linux.interface.BridgeInterfaceDriver
           dhcp_driver: neutron.agent.linux.dhcp.Dnsmasq
           dhcp_delete_namespaces: True
           verbose: True
           dnsmasq_dns_servers: 129.79.1.1
           advertise_mtu: True
+
+/etc/neutron/dnsmasq-neutron.conf:
+  file.managed:
+    - source: salt://neutron-network/dnsmasq-neutron.conf
           
 /etc/neutron/metadata_agent.ini:
   ini.options_present:
