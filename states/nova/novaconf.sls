@@ -12,6 +12,11 @@
           security_group_api: neutron
           linuxnet_interface_driver: nova.network.linux_net.LinuxBridgeInterfaceDriver
           firewall_driver: nova.virt.firewall.NoopFirewallDriver
+          ec2_workers: 4
+          osapi_compute_workers: 4
+          metadata_workers: 4
+        conductor:
+          workers: 4
         database:
           connection: mysql://nova:{{ pillar['nova_dbpass']}}@{{ pillar['mysqlhost'] }}/nova
         oslo_messaging_rabbit:
