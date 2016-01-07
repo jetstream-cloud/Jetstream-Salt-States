@@ -108,7 +108,7 @@ neutron-metadata-agent:
   ini.options_present:
     - sections:
         ml2:
-          type_drivers: flat,vlan,gre,vxlan
+          type_drivers: flat,vxlan
           tenant_network_types: vxlan
           mechanism_drivers: linuxbridge,l2population
         ml2_type_gre:
@@ -123,7 +123,7 @@ neutron-metadata-agent:
         agent:
           tunnel_types: vxlan
         linux_bridge:
-          physical_interface_mappings: 'external:bond0.330'
+          physical_interface_mappings: 'public:bond0.330'
         vxlan:
           l2_population: True
           enable_vxlan: True
@@ -154,7 +154,7 @@ neutron-metadata-agent:
         agent:
           tunnel_types: vxlan
         linux_bridge:
-          physical_interface_mappings: 'external:bond0.330'
+          physical_interface_mappings: 'public:bond0.330'
         vxlan:
           l2_population: True
           enable_vxlan: True
