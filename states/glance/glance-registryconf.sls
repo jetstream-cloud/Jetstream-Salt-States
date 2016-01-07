@@ -2,6 +2,7 @@
   ini.options_present:
     - sections:
           DEFAULT:
+            workers: 4
             verbose: True
             notification_driver: noop
           database:

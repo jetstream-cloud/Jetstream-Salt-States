@@ -2,6 +2,7 @@
   ini.options_present:
     - sections:
           DEFAULT:
+            workers: 4
             show_image_direct_url: True
             verbose: True
           glance_store:
