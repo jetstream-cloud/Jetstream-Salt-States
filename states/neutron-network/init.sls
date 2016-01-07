@@ -44,7 +44,7 @@ neutron-l3-agent:
   pkg:
    - installed:
      - requirein:
-       - patch: ip_libpatch 
+       - patch: iplibpatch 
 {% endif %}
   service:
     - running
