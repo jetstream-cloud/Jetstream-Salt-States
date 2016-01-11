@@ -46,7 +46,6 @@ neutron-l3-agent:
   pkg:
    - installed:
      - require_in:
-       - patch: iplibpatch
        - ini: /etc/neutron/l3_agent.ini
        - ini: /etc/neutron/neutron.conf
 {% endif %}
@@ -57,7 +56,6 @@ neutron-l3-agent:
       - ini: /etc/neutron/neutron.conf
       - ini: /etc/neutron/l3_agent.ini
     - require:
-      - patch: iplibpatch
 neutron-dhcp-agent:
 {% if os_family=='Debian' %}
   pkg:
