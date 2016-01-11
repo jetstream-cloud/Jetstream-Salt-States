@@ -32,6 +32,8 @@ openstack-neutron-linuxbridge:
     - installed
     - require_in:
       - service: openstack-neutron-linuxbridge
+      - ini: /etc/neutron/neutron.conf
+      - ini: /etc/neutron/plugins/ml2/linuxbridge_agent.ini 
   service:
     - name: {{ pillar['openstack-neutron-linuxbridge-service'] }}
     - running
@@ -43,8 +45,10 @@ neutron-l3-agent:
 {% if os_family=='Debian' %}
   pkg:
    - installed:
-     - requirein:
-       - patch: iplibpatch 
+     - require_in:
+       - patch: iplibpatch
+       - ini: /etc/neutron/l3_agent.ini
+       - ini: /etc/neutron/neutron.conf
 {% endif %}
   service:
     - running
@@ -53,11 +57,14 @@ neutron-l3-agent:
       - ini: /etc/neutron/neutron.conf
       - ini: /etc/neutron/l3_agent.ini
     - require:
-      - patch: ip_libpatch
+      - patch: iplibpatch
 neutron-dhcp-agent:
 {% if os_family=='Debian' %}
   pkg:
    - installed
+   - require_in:
+     - ini: /etc/neutron/dhcp_agent.ini
+     - ini: /etc/neutron/neutron.conf
 {% endif %}
   service:
     - running
@@ -69,6 +76,9 @@ neutron-metadata-agent:
 {% if os_family=='Debian' %}
   pkg:
    - installed
+   - require_in:
+     - ini: /etc/neutron/metadata_agent.ini
+     - ini: /etc/neutron/neutron.conf
 {% endif %}
   service:
     - running
