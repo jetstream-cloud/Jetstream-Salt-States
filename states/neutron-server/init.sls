@@ -50,6 +50,11 @@ python-neutronclient:
           verbose: True
           network_device_mtu: 9000 
           advertise_mtu: True
+          dhcp_agents_per_network: 2
+          allow_automatic_l3agent_failover: True
+          max_l3_agents_per_router: 2
+          min_l3_agents_per_router: 2
+          l3_ha: True
         nova:
           auth_url: https://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
