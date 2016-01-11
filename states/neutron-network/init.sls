@@ -55,7 +55,6 @@ neutron-l3-agent:
     - watch:
       - ini: /etc/neutron/neutron.conf
       - ini: /etc/neutron/l3_agent.ini
-    - require:
 neutron-dhcp-agent:
 {% if os_family=='Debian' %}
   pkg:
