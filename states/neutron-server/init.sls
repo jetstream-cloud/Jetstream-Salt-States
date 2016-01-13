@@ -44,6 +44,7 @@ python-neutronclient:
           core_plugin: ml2
           service_plugins: router
           allow_overlapping_ips: True
+          router_distributed: False
           notify_nova_on_port_status_changes: True
           notify_nova_on_port_data_changes: True
           nova_url: http://{{ pillar['novaprivatehost'] }}:8774/v2
@@ -52,9 +53,10 @@ python-neutronclient:
           advertise_mtu: True
           dhcp_agents_per_network: 2
           allow_automatic_l3agent_failover: True
-          max_l3_agents_per_router: 2
+          max_l3_agents_per_router: 3
           min_l3_agents_per_router: 2
           l3_ha: True
+          l3_ha_net_cidr: 169.254.192.0/18
         nova:
           auth_url: https://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password

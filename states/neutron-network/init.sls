@@ -185,6 +185,9 @@ neutron-metadata-agent:
   ini.options_present:
     - sections:
         DEFAULT:
+          agent_mode: legacy
+          router_delete_namespaces: True
+          use_namespaces: True
           dnsmasq_config_file: /etc/neutron/dnsmasq-neutron.conf
           interface_driver: neutron.agent.linux.interface.BridgeInterfaceDriver
           dhcp_driver: neutron.agent.linux.dhcp.Dnsmasq
