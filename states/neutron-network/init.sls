@@ -9,9 +9,16 @@ net.ipv4.ip_forward:
 net.ipv4.conf.all.rp_filter:
   sysctl.present:
     - value: 0
+net.ipv6.conf.default.forwarding:
+  sysctl.present:
+    - value: 1
+net.ipv6.conf.all.forwarding:
+  sysctl.present:
+    - value: 1
 net.ipv4.conf.default.rp_filter:
   sysctl.present:
     - value: 0
+
 
 {% if os_family=='RedHat' %}
 openstack-neutron:
