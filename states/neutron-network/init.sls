@@ -211,6 +211,8 @@ neutron-metadata-agent:
   ini.options_present:
     - sections:
         DEFAULT:
+          nova_metadata_insecure: True
+          nova_metadata_protocol: https
           nova_metadata_ip: {{ pillar['novametadatahost'] }}
           metadata_proxy_shared_secret: {{ pillar['metadata_proxy_shared_secret'] }}
           auth_uri: https://{{ pillar['keystonehost'] }}:5000
