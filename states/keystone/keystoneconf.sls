@@ -14,5 +14,9 @@
            provider: keystone.token.providers.uuid.Provider
            driver: keystone.token.persistence.backends.memcache.Token
         memcache:
-           servers: localhost:11211   
-        
+           servers: 172.16.129.48:11211,172.16.129.112:11211,172.16.129.176:11211   
+        identity:
+           domain_specific_drivers_enabled: true
+        cache:
+           backend: keystone.cache.memcache_pool
+           memcache_servers: 172.16.129.48:11211,172.16.129.112:11211,172.16.129.176:11211
