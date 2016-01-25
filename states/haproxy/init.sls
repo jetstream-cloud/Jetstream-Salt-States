@@ -48,6 +48,16 @@ cinder-api_ufw_rule:
     - name: ufw allow cinder-api
     - unless: ufw status verbose | grep -q '8776/tcp (cinder-api)      ALLOW IN    Anywhere'
 
+/etc/ufw/applications.d/swift:
+  file.managed:
+    - source: salt://haproxy/swift.ufw.app
+    - require_in:
+      - cmd: swift_ufw_rule
+cinder-api_ufw_rule:
+  cmd.run:
+    - name: ufw allow swift
+    - unless: ufw status verbose | grep -q '8776/tcp (swift)      ALLOW IN    Anywhere'
+
 /etc/ufw/applications.d/nova-api:
   file.managed:
     - source: salt://haproxy/nova-api.ufw.app
