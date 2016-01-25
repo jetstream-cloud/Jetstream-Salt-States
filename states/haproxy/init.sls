@@ -53,7 +53,7 @@ cinder-api_ufw_rule:
     - source: salt://haproxy/swift.ufw.app
     - require_in:
       - cmd: swift_ufw_rule
-cinder-api_ufw_rule:
+swift_ufw_rule:
   cmd.run:
     - name: ufw allow swift
     - unless: ufw status verbose | grep -q '8776/tcp (swift)      ALLOW IN    Anywhere'
