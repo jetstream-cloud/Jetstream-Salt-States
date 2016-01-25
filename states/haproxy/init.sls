@@ -18,6 +18,16 @@ keystone-admin_ufw_rule:
     - name: ufw allow keystone-admin
     - unless: ufw status verbose | grep -q '35357/tcp (keystone-admin) ALLOW IN    Anywhere'
 
+/etc/ufw/applications.d/horizon:
+  file.managed:
+    - source: salt://haproxy/horizon.ufw.app
+    - require_in:
+      - cmd: horizon_ufw_rule
+horizon_ufw_rule:
+  cmd.run:
+    - name: ufw allow horizon
+    - unless: ufw status verbose | grep -q '443/tcp (keystone-admin) ALLOW IN    Anywhere'
+
 /etc/ufw/applications.d/glance-api:
   file.managed:
     - source: salt://haproxy/glance-api.ufw.app
