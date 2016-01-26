@@ -121,7 +121,8 @@ setsecret:
   {% endif %}
 {% endfor %}          
         libvirt:
-          live_migration_flag: "VIR_MIGRATE_UNDEFINE_SOURCE,VIR_MIGRATE_PEER2PEER,VIR_MIGRATE_LIVE,VIR_MIGRATE_PERSIST_DEST"
+          live_migration_flag: "VIR_MIGRATE_UNDEFINE_SOURCE,VIR_MIGRATE_PEER2PEER,VIR_MIGRATE_LIVE,VIR_MIGRATE_TUNNELLED"
+          live_migration_uri=qemu+ssh://%s/system
           inject_password: false
           inject_key: false
           inject_partition: -2
