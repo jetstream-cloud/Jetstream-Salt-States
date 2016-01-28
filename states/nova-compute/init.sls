@@ -210,6 +210,9 @@ setsecret:
   {% endif %}
 {% endfor %}
           l2_population: True
+        securitygroup:
+          firewall_driver: neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
+          enable_security_group: True
 
 /etc/neutron/plugins/ml2/ml2_conf.ini:
   ini.options_present:
