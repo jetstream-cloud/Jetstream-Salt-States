@@ -25,6 +25,7 @@ openstack-nova-compute:
     - enable: True
     - watch:
       - ini: /etc/nova/nova.conf
+      - patch: nova_qemu_discard_patch
     - require:
       - service: libvirtd
 {% if os_family == 'RedHat' %}
@@ -132,6 +133,7 @@ setsecret:
           rbd_user: cinder
           rbd_secret_uuid: {{ pillar['libvirt_secret_uuid'] }}
           disk_cachemodes: "network=writeback"
+          hw_disk_discard: unmap
         oslo_messaging_rabbit:
           rabbit_ha_queues: True
           rabbit_hosts: {{ pillar['rabbit_hosts'] }}
@@ -241,6 +243,16 @@ setsecret:
           local_ip: {{ privateip }}
   {% endif %}
 {% endfor %}         
+
+nova_qemu_discard_patch:
+  file.patch:
+{% if os_family == 'RedHat' %}
+    - name: /usr/lib/python2.7/site-packages/nova/virt/libvirt/driver.py 
+{% elif os_family == 'Debian' %}
+    - name: /usr/lib/python2.7/dist-packages/nova/virt/libvirt/driver.py
+{% endif %}
+    - source: salt://nova-compute/qemu_min_discard.diff
+    - hash: md5=b385876ddc1257483e8cec985cada480
 
 {% if os_family == 'RedHat' %}
 /etc/neutron/plugin.ini:
