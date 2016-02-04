@@ -25,7 +25,6 @@ openstack-nova-compute:
     - enable: True
     - watch:
       - ini: /etc/nova/nova.conf
-      - patch: nova_qemu_discard_patch
     - require:
       - service: libvirtd
 {% if os_family == 'RedHat' %}
@@ -253,6 +252,8 @@ nova_qemu_discard_patch:
 {% endif %}
     - source: salt://nova-compute/qemu_min_discard.diff
     - hash: md5=b385876ddc1257483e8cec985cada480
+    - watch_in:
+      - service: openstack-nova-compute
 
 {% if os_family == 'RedHat' %}
 /etc/neutron/plugin.ini:
