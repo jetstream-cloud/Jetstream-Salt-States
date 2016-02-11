@@ -251,7 +251,7 @@ nova_qemu_discard_patch:
     - name: /usr/lib/python2.7/dist-packages/nova/virt/libvirt/driver.py
 {% endif %}
     - source: salt://nova-compute/qemu_min_discard.diff
-    - hash: md5=b385876ddc1257483e8cec985cada480
+    - hash: md5=d5d259059967cb5f7ba31a6e82194649
     - watch_in:
       - service: openstack-nova-compute
 
