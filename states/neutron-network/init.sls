@@ -52,9 +52,9 @@ neutron-l3-agent:
 {% if os_family=='Debian' %}
   pkg:
    - installed:
-     - require_in:
-       - ini: /etc/neutron/l3_agent.ini
-       - ini: /etc/neutron/neutron.conf
+   - require_in:
+     - ini: /etc/neutron/l3_agent.ini
+     - ini: /etc/neutron/neutron.conf
 {% endif %}
   service:
     - running
