@@ -51,7 +51,7 @@ openstack-neutron-linuxbridge:
 neutron-l3-agent:
 {% if os_family=='Debian' %}
   pkg:
-   - installed:
+   - installed
    - require_in:
      - ini: /etc/neutron/l3_agent.ini
      - ini: /etc/neutron/neutron.conf
