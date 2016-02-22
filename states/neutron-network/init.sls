@@ -18,6 +18,15 @@ net.ipv6.conf.all.forwarding:
 net.ipv4.conf.default.rp_filter:
   sysctl.present:
     - value: 0
+net.ipv4.neigh.default.gc_thresh1:
+  sysctl.present:
+    - value: 10240
+net.ipv4.neigh.default.gc_thresh2: 
+  sysctl.present:
+    - value: 40960
+net.ipv4.neigh.default.gc_thresh3:
+  sysctl.present:
+    - value: 81920
 
 
 {% if os_family=='RedHat' %}
