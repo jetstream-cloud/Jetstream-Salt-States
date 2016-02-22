@@ -1,0 +1,10 @@
+211c211
+<         return [l.strip() for l in output.split('\n')]
+---
+>         return [l.split()[0] for l in output.splitlines()]
+824,825c824,825
+<         for line in output.split('\n'):
+<             if name == line.strip():
+---
+>         for line in [l.split()[0] for l in output.splitlines()]:
+>             if name == line:
