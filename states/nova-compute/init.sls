@@ -13,6 +13,11 @@ net.bridge.bridge-nf-call-ip6tables:
   sysctl.present:
     - value: 1
 
+firewalld:
+  service:
+    - disabled
+    - dead
+
 openstack-nova-compute:
   pkg:
     - name: {{ pillar['openstack-nova-compute'] }}
