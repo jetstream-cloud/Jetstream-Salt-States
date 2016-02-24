@@ -118,6 +118,8 @@ setsecret:
   {% if '172.16.' in item %}
     {% set privateip = item %}
           my_ip: {{ privateip }}
+        vnc:
+          vncserver_proxyclient_address: {{ privateip }}  
   {% endif %}
 {% endfor %}          
         libvirt:
