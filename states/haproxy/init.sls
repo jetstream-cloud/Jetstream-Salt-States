@@ -28,6 +28,16 @@ horizon_ufw_rule:
     - name: ufw allow horizon
     - unless: ufw status verbose | grep -q '443/tcp (keystone-admin) ALLOW IN    Anywhere'
 
+/etc/ufw/applications.d/gnocchi-api:
+  file.managed:
+    - source: salt://haproxy/gnocchi-api.ufw.app
+    - require_in:
+      - cmd: gnocchi-api_ufw_rule
+gnocchi-api_ufw_rule:
+  cmd.run:
+    - name: ufw allow gnocchi-api
+    - unless: ufw status verbose | grep -q '8041/tcp (gnocchi-api)      ALLOW IN    Anywhere'
+
 /etc/ufw/applications.d/glance-api:
   file.managed:
     - source: salt://haproxy/glance-api.ufw.app
@@ -77,6 +87,17 @@ nova-api_ufw_rule:
   cmd.run:
     - name: ufw allow nova-api
     - unless: ufw status verbose | grep -q '8774/tcp (Nova-api)        ALLOW IN    Anywhere'
+
+/etc/ufw/applications.d/nova-ec2:
+  file.managed:
+    - source: salt://haproxy/nova-ec2.ufw.app
+    - require_in:
+      - cmd: nova-ec2_ufw_rule
+nova-ec2_ufw_rule:
+  cmd.run:
+    - name: ufw allow nova-ec2
+    - unless: ufw status verbose | grep -q '8773/tcp (Nova-ec2)        ALLOW IN    Anywhere'
+
 
 /etc/ufw/applications.d/nova-metadata:
   file.managed:
