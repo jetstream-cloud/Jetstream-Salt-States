@@ -3,7 +3,7 @@ ceilometer_pass: |
   -----BEGIN PGP MESSAGE-----
   Version: GnuPG v1
   Comment: GPGTools - http://gpgtools.org
-  
+
   hQIMA7HFhGi82gfbARAAl56vnGOfEO1vVGnfDsPGzZdj4LZftAcnQAMjbBeA7KPP
   UeFkWeB1qAVjU2TodjrPJVk/fGvDb94wU8AxIQRln8IZx6y/OujsJ6MVFaeF9+zL
   NdGw8vnSW2Vbq3caMc3pv2E0j0c4zYB4n5fN+VX+oCtRrLwUEPf51zuqGf90sP33
