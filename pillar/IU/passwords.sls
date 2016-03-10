@@ -1,5 +1,5 @@
 #!yaml|gpg
-celiometer_pass: |
+ceilometer_pass: |
   -----BEGIN PGP MESSAGE-----
   Version: GnuPG v1
   Comment: GPGTools - http://gpgtools.org
