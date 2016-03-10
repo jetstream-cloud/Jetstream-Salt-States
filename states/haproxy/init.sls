@@ -26,7 +26,7 @@ keystone-admin_ufw_rule:
 horizon_ufw_rule:
   cmd.run:
     - name: ufw allow horizon
-    - unless: ufw status verbose | grep -q '443/tcp (keystone-admin) ALLOW IN    Anywhere'
+    - unless: ufw status verbose | grep -q '443/tcp (horizon)          ALLOW IN    Anywhere'
 
 /etc/ufw/applications.d/gnocchi-api:
   file.managed:
@@ -76,7 +76,7 @@ cinder-api_ufw_rule:
 swift_ufw_rule:
   cmd.run:
     - name: ufw allow swift
-    - unless: ufw status verbose | grep -q '8776/tcp (swift)      ALLOW IN    Anywhere'
+    - unless: ufw status verbose | grep -q '8080/tcp (swift)           ALLOW IN    Anywhere'
 
 /etc/ufw/applications.d/nova-api:
   file.managed:
