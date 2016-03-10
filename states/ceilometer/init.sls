@@ -18,6 +18,7 @@ python-ceilometerclient:
           rpc_backend: rabbit
           auth_strategy: keystone
           verbose: True
+          dispatcher: gnocchi
         oslo_messaging_rabbit:
           rabbit_ha_queues: True
           rabbit_hosts: {{ pillar['rabbit_hosts'] }}
