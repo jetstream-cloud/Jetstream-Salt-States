@@ -38,5 +38,5 @@ python-ceilometerclient:
           os_username: ceilometer
           os_tenant_name: service
           os_password: {{ pillar['ceilometer_pass'] }}
-          os_endpoint_type = internalURL
-          os_region_name = RegionOne
+          os_endpoint_type: internalURL
+          os_region_name: RegionOne
