@@ -1,4 +1,24 @@
 #!yaml|gpg
+celiometer_pass: |
+  -----BEGIN PGP MESSAGE-----
+  Version: GnuPG v1
+  Comment: GPGTools - http://gpgtools.org
+  
+  hQIMA7HFhGi82gfbARAAl56vnGOfEO1vVGnfDsPGzZdj4LZftAcnQAMjbBeA7KPP
+  UeFkWeB1qAVjU2TodjrPJVk/fGvDb94wU8AxIQRln8IZx6y/OujsJ6MVFaeF9+zL
+  NdGw8vnSW2Vbq3caMc3pv2E0j0c4zYB4n5fN+VX+oCtRrLwUEPf51zuqGf90sP33
+  Vl2lmfyCl1HFqCfjyCiqjskMeQGFrLLi3fLq5LH3OvOtQ9Ls5agYCjX+Deez6J9B
+  v59x2VCGDHIEc5ZXB6JHZk+txAskWiU1wKlpLEWJ0eOox5IOSxgbGh3xDKWSLJ7s
+  IVkRBgr46Z1Ggc29zThOz+LTum9/SX9Us3258zT+K0N0av1i2DWirrr3epcu0pEc
+  olR0KwHtxM0NRzh65LBhDMxqzYevED7J/dHoLpYIX0qsez6SII2UKw4tPSPnv383
+  hUPKfOKAS6SAAL6QwZ7TumMAwhel6QqVEuHmMCcmuE+PHbjVto4G4i0R3LL3OqbQ
+  eL/8nIpavlFC6ci5PKimyjYJnq9ciPZw+4FFGBTt+CkwUH8uNUarr0w8Eo0sEmyt
+  jpLT9zqLGYr5Kak+dUJyzQYnyjnXRhPlALryhVEYiz9RZg6y7SdFAS6HjO/mCD0o
+  0d+j3AMqNff8NZft2vG+3gMkFy12GZuZ2m328cES39FQvygJ7ZNXXeYD9nawhFXS
+  RwEvzZzwBNJUQRj1U7Lj4j3lUt3dDKd4KfqcWhdz5pXE8XJY55WLECkFYtvc4WwW
+  UqD9S1NsNVjBndI8vpV0jIxvED7VF+Ns
+  =/G/b
+  -----END PGP MESSAGE-----
 openstack_rabbit_pass: |
   -----BEGIN PGP MESSAGE-----
   Version: GnuPG v1
