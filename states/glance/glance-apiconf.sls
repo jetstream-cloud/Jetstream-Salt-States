@@ -5,6 +5,8 @@
             workers: 4
             show_image_direct_url: True
             verbose: True
+            notification_driver: messagingv2
+            rpc_backend: rabbit
           glance_store:
             default_store: rbd
             stores: rbd
@@ -23,5 +25,10 @@
             project_name: service
             username: glance
             password: {{ pillar['glance_pass'] }}
+          oslo_messaging_rabbit:
+            rabbit_ha_queues: True
+            rabbit_hosts: {{ pillar['rabbit_hosts'] }}
+            rabbit_userid: openstack
+            rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
           paste_deploy:
             flavor: keystone
