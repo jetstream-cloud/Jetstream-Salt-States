@@ -4,7 +4,6 @@
           DEFAULT:
             workers: 4
             verbose: True
-            notification_driver: noop
             notification_driver: messagingv2
             rpc_backend: rabbit
           database:
