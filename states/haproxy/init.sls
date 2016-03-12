@@ -38,6 +38,17 @@ gnocchi-api_ufw_rule:
     - name: ufw allow gnocchi-api
     - unless: ufw status verbose | grep -q '8041/tcp (gnocchi-api)      ALLOW IN    Anywhere'
 
+/etc/ufw/applications.d/ceilometer-api:
+  file.managed:
+    - source: salt://haproxy/ceilometer-api.ufw.app
+    - require_in:
+      - cmd: ceilometer-api_ufw_rule
+ceilometer-api_ufw_rule:
+  cmd.run:
+    - name: ufw allow ceilometer-api
+    - unless: ufw status verbose | grep -q '8777/tcp (ceilometer-api)      ALLOW IN    Anywhere'
+
+
 /etc/ufw/applications.d/glance-api:
   file.managed:
     - source: salt://haproxy/glance-api.ufw.app
