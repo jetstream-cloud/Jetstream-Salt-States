@@ -1,4 +1,24 @@
 #!yaml|gpg
+ceilometer_dbpass |
+  -----BEGIN PGP MESSAGE-----
+  Version: GnuPG v1
+  Comment: GPGTools - http://gpgtools.org
+
+  hQIMA4VjTU4mltuAAQ//T9cEN2qkjuLq2b+yPjgjcxudq7U4tkNMI6mmnpEUN2eh
+  o4uJdqjjCGbQVG93y24o8cavOe7VOXZ4HRHJw7gvVq90ywtwRTu32/mKenPmrtzk
+  bBxCXDoIP/+lFpI/Rh4kckQL54K4KSkV48ew2o5ZzAgY4pw0d7YXDcjvsk4A3ABw
+  vSbxM4z8tqEo45QSZH+F94s1e7xs/dsuV2GVPp+qr2uP5uwe8nBXIM1lyP9JHhAu
+  BVsm0VxJwrFY6ceUgRHSMjvIHrM7ds3/9Zv2mewLsHCDH8Z4ESuTpvaRNDtEmq2w
+  bmgSB8nI8j7t4ZqkW89PDdK6a2HGvDRa0cT+NUgZhJjFbyl2qHvz39dKG5tRHHlG
+  DtDt+oxiXlTc1jaMam45DzybsJkjpJ58+57cKQtelr6j8HTGAa+NIqOptGAdwN7q
+  wGIanfq/jRk3HJQU4E5ULZ1R5fOqfNXvGG4ECMC3oZPAmm+OomYpPOLmgkct7TAA
+  m/8tCY9KKyeoNFyodNAEyWGKhMwPwCBloqSxOgw2V2Kjvtz7UiLvO6Zb6uNIgDC0
+  qwjQ4Gnw1AJc9XBrErD+exqC/nfGImqDRqdI/lvlxcePDwnAyhvUoPSP8REYp5vd
+  OzsizXBqK8Dj4TSL8rkry6NjjbcClgy5rCmSDB6FEgGr+jJJ3c/7SdFXABHfm8zS
+  RwGTfwnOtZNSeRMVsBHo5mKsx+i9gBuOAIrod7nxDxNbCLivXUKpzr7QSfvUjwTm
+  94zVYrjS8OvRRDcpZN71mQWBEEO9uJp6
+  =t05C
+  -----END PGP MESSAGE-----
 ceilometer_pass: |
   -----BEGIN PGP MESSAGE-----
   Version: GnuPG v1
