@@ -285,9 +285,13 @@ openssl-devel:
 openstack-ceilometer-compute:
   pkg:
     - installed
+    - require_in:
+      - ini: /etc/ceilometer/ceilometer.conf
   service:
     - enable: True
     - running
+    - watch:
+      - ini: /etc/ceilometer/ceilometer.conf
 python-ceilometerclient:
   pkg.installed
 python-pecan:
