@@ -1,4 +1,4 @@
-[Gnocchi-api]
-title=Gnocchi-API
-description=Gnocchi API
+[Ceilometer-api]
+title=Ceilometer-API
+description=Ceilometer API
 ports=8041/tcp
