@@ -110,6 +110,10 @@ setsecret:
           compute_driver: libvirt.LibvirtDriver
           rpc_backend: rabbit
           auth_strategy: keystone
+          instance_usage_audit: True
+          instance_usage_audit_period: hour
+          notify_on_state_change: vm_and_task_state
+          notification_driver: messagingv2
           vnc_enabled: True
           vncserver_listen: 0.0.0.0
           novncproxy_base_url: http://{{ pillar['novaprivatehost'] }}:6080/vnc_auto.html
@@ -277,4 +281,43 @@ libffi-devel:
   pkg.installed
 openssl-devel:
   pkg.installed
-{% endif %}             
+{% endif %}
+openstack-ceilometer-compute:
+  pkg:
+    - installed
+  service:
+    - enabled: True
+    - running
+python-ceilometerclient:
+  pkg.installed
+python-pecan:
+  pkg.installed 
+
+/etc/ceilometer/ceilometer.conf:
+  ini.options_present:
+    -  sections:
+        DEFAULT:
+          rpc_backend: rabbit
+          auth_strategy: keystone
+          verbose: True
+        oslo_messaging_rabbit:
+          rabbit_ha_queues: True
+          rabbit_hosts: {{ pillar['rabbit_hosts'] }}
+          rabbit_userid: openstack
+          rabbit_password: {{pillar['openstack_rabbit_pass'] }}
+        keystone_authtoken:
+          auth_uri: https://{{ pillar['keystonehost'] }}:5000
+          auth_url: https://{{ pillar['keystonehost'] }}:35357
+          auth_plugin: password
+          project_domain_id: default
+          user_domain_id: default
+          project_name: service
+          username: ceilometer
+          password: {{ pillar['ceilometer_pass'] }}
+        service_credentials:
+          os_auth_url = https://{{ pillar['keystonehost'] }}:5000/v2.0
+          os_username = ceilometer
+          os_tenant_name = service
+          os_password = {{ pillar['ceilometer_pass'] }}
+          os_endpoint_type = publicURL
+          os_region_name = RegionOne
