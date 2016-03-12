@@ -15,6 +15,7 @@
           rbd_max_clone_depth: 5
           rbd_store_chunk_size: 4
           rados_connect_timeout: -1
+          notification_driver: messagingv2
           glance_api_version: 2
           backup_driver: cinder.backup.drivers.ceph
           backup_ceph_conf: /etc/ceph/ceph.conf
