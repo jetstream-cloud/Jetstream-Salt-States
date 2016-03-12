@@ -286,7 +286,7 @@ openstack-ceilometer-compute:
   pkg:
     - installed
   service:
-    - enabled: True
+    - enable: True
     - running
 python-ceilometerclient:
   pkg.installed
