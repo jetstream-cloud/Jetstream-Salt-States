@@ -321,3 +321,5 @@ python-pecan:
           os_password = {{ pillar['ceilometer_pass'] }}
           os_endpoint_type = publicURL
           os_region_name = RegionOne
+
+
