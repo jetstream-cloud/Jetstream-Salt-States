@@ -15,7 +15,7 @@ net.bridge.bridge-nf-call-ip6tables:
 
 firewalld:
   service:
-    - disabled
+    - enable: False
     - dead
 
 openstack-nova-compute:
