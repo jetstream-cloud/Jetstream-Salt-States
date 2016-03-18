@@ -295,8 +295,6 @@ openstack-ceilometer-compute:
       - ini: /etc/ceilometer/ceilometer.conf
 python-ceilometerclient:
   pkg.installed
-python-pecan:
-  pkg.installed 
 
 /etc/ceilometer/ceilometer.conf:
   ini.options_present:
