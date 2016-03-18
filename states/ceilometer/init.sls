@@ -36,7 +36,7 @@ python-ceilometerclient:
           username: ceilometer
           password: {{ pillar['ceilometer_pass'] }}
         service_credentials:
-          os_auth_url: https://{{ pillar['keystonehost'] }}:5000
+          os_auth_url: https://{{ pillar['keystonehost'] }}:5000/v2.0
           os_username: ceilometer
           os_tenant_name: service
           os_password: {{ pillar['ceilometer_pass'] }}
