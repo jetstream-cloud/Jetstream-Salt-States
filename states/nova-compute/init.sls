@@ -304,6 +304,7 @@ python-pecan:
           rpc_backend: rabbit
           auth_strategy: keystone
           verbose: True
+          host: {{ grains['host'] }}
         oslo_messaging_rabbit:
           rabbit_ha_queues: True
           rabbit_hosts: {{ pillar['rabbit_hosts'] }}
