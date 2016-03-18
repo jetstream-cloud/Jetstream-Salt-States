@@ -108,7 +108,7 @@ setsecret:
           log_dir: /var/log/nova
           state_path: /var/lib/nova
           compute_driver: libvirt.LibvirtDriver
-          compute_monitors: ComputeDriverCPUMonitor
+          compute_monitors: ComputeDriverCPUMonitor,cpu.virt_driver
           rpc_backend: rabbit
           auth_strategy: keystone
           instance_usage_audit: True
