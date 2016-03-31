@@ -1,5 +1,5 @@
 [mysqld]
-
+max_connections = 600
 wsrep_provider=/usr/lib/galera3/libgalera_smm.so
 wsrep_cluster_address=gcomm://172.16.128.253,172.16.128.252,172.16.128.250
 wsrep_sst_method=rsync
