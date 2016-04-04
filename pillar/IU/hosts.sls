@@ -13,3 +13,4 @@ neutronpublichost: jblb.jetstream-cloud.org
 neutronprivatehost: 172.16.128.2 
 ceilometerpublichost: jblb.jetstream-cloud.org
 ceilometerprivatehost: 172.16.128.2
+gnocchi_url: https://jblb.jetstream-cloud.org:8041
