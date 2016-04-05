@@ -11,6 +11,22 @@ openstack-ceilometer-alarm:
 python-ceilometerclient:
   pkg.installed
 
+/etc/ceilometer/gnocchi_resources.yaml:
+  file.managed:
+    - source: salt://ceilometer/gnocchi_resources.yaml
+/etc/ceilometer/event_definitions.yaml:
+  file.managed:
+    - source: salt://ceilometer/event_definitions.yaml
+/etc/ceilometer/event_pipeline.yaml:
+  file.managed:
+    - source: salt://ceilometer/event_pipeline.yaml
+/etc/ceilometer/meters.yaml:
+  file.managed:
+    - source: salt://ceilometer/meters.yaml
+/etc/ceilometer/pipeline.yaml:
+  file.managed:
+    - source: salt://ceilometer/pipeline.yaml
+
 /etc/ceilometer/ceilometer.conf:
   ini.options_present:
     - sections:
@@ -19,6 +35,26 @@ python-ceilometerclient:
           auth_strategy: keystone
           verbose: True
           dispatcher: gnocchi
+          notification_driver: messagingv2
+          host: {{ grains['id'] }}
+          meter_dispatchers: gnocchi
+        api:
+          gnocchi_is_enabled: true
+        alarms:
+          gnocchi_url: {{ pillar['gnocchi_url'] }}}
+        alarm:
+          gnocchi_url: {{ pillar['gnocchi_url'] }}}
+        notification:
+          workers: 4
+        collector:
+          workers: 16
+        dispatcher_gnocchi
+          archive_policy: low
+          archive_policy_file: gnocchi_archive_policy_map.yaml
+          filter_project: gnocchi
+          filter_service_activity: False
+          resources_definition_file: gnocchi_resources.yaml
+          url: {{ pillar['gnocchi_url'] }}}
         oslo_messaging_rabbit:
           rabbit_ha_queues: True
           rabbit_hosts: {{ pillar['rabbit_hosts'] }}
