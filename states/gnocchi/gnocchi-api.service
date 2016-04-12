@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenStack Gnocchi API Server
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=gnocchi
+ExecStart=/usr/bin/gnocchi-api --config-file /etc/gnocchi/gnocchi.conf --logfile /var/log/gnocchi/api.log
+
+[Install]
+WantedBy=multi-user.target

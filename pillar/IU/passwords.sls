@@ -1,4 +1,44 @@
 #!yaml|gpg
+gnocchi_pass: |
+  -----BEGIN PGP MESSAGE-----
+  Version: GnuPG v1
+  Comment: GPGTools - http://gpgtools.org
+  
+  hQIMA4VjTU4mltuAAQ/8D6hY8jn0jpLyJBYRQibbrQwYjf7rmc5xSl7GJnYOFVXH
+  WP33+3Ct+q83KzmBZ1NydF0cJSuUrBFEIaI+vmxy7hN+XwkP2AqQ69EwN3XuGgEA
+  AiycLP08+J4Oxl5Kk1QRKBOvagusXbifDAYq2OWqCjEPwsJ/iA+4KECJVdF52jyI
+  xGyK2fN+2M4vpJ1GOesa0R+TQTX/rxQzxwmg/dEEtahM4jysk9PgMeFsj9I4FtZC
+  sTKJIqRADSX0/vJJNSExyj/xcNRSa4LzaygG/NfQsxCoQyA3ngJVtpEUwjuqQoGN
+  jA2+VeXgZbrdAU2u3m3dDHslPBXgLuhxJBkzKkVQuUc+/4l+Qbb6Ragb7kJs5/rm
+  P6vlgPSS7OxZlFsdAf43pCybKtHp5mSlczQltlMEqALnhoYv8Q7sOxiO9j1NFMab
+  vVHZSH5kqvjtoMwsbVCY7qDhwrNodTq+RtSTVkCZX1aZLHkit6Wubr0GsCRv/iYE
+  2dpKtxzu0SllDjp1MyxJmjMomAW+U+8fVnwDGq5XZBoSqaLI81oBjEljARERXHJe
+  vCzIQHQC/W603RZmThHPho0vcHvsDo9fsBPJmyyUmGRmGYXc9q0A3tQHixYdXDDR
+  X6XukwsV8fEquflf3vUDHes1cj79AvcjAjqqtTeB62SmHQRWigJn4JWIl54xEF7S
+  RwGzAUuXY1rfDQGMN78C/xBHoO1Uza/DF/E3x8+m9+bF6MIgCbmPsA/HtW052U3V
+  +NTXczOU2B19fZJ9fy0yJ3h+0MPfOJ1+
+  =GW79
+  -----END PGP MESSAGE-----
+gnocchi_dbpass: |
+  -----BEGIN PGP MESSAGE-----
+  Version: GnuPG v1
+  Comment: GPGTools - http://gpgtools.org
+  
+  hQIMA4VjTU4mltuAARAAm5SZtvVdgHe4/A/mEciz+mPMMZXa/fi9SrhjvtL9hPJv
+  Ij4BOE7F4KmFNn2OgXZUlx50d0+DunbcQxHAX0+e8VvovJIrIw+Oj4G3jaWJY2pa
+  XFEGYxpExbP8ptUWLzRudcOOzDC+GlJnNKY/QWTWQbXXmSWC/JhMZbJ8urAZOLYf
+  v1Y2swm10ozMKbfCfUtLEE5iUAB1CMbxqaX61fzAkJLyMQ+oOD/9fEMkoPAC9Xsz
+  cl10lxrnDLN56pfXBJuuu5M5JfjzzEBeHWcpOQI7GJ0G+KECYU62q/5nWe5jyMiW
+  /QSrNCK9pjN93ynYrHHKS9SMfJq0NiEzfFK8c7FZiqgbDfxBPx79ZDiHaH+StLXw
+  oItRKRxJInAGPMFeV6iPeKVsQXCJ75kAiEo9nGtAQ1yaJabbqVXdFdfl/2TbQLwF
+  4zmF4SD2vjOwNgzAIEpta5X9Pu25QRNR+zh4wpMlxxultNfUORQkhra6xLQRJCZs
+  ZLk9wV+Q/tDyWI/dYdZ17kA1v1SBiHveFhU1jld7xjoeQc0uVbOJ8IRgJFtK7x2V
+  IZUWQ/S3zBDxXf/y7opDAkIIiB/RJEeIGh58ce7HaLto9DgrbH7hua5E9iUPpkJq
+  4Uc8eRlrWE7w9gAkdqsSiuJWbQdBdNmq0++sYXZ1G3sZr7p4KvgGhD/ttGq/veHS
+  TwEyJv+0GzawrBl2pZkWGoNFf3fwK/k0dHMwCg3phAHZQXAr0s4WZdotlb+pqLKc
+  okJ7yD0gFcD4eYE1AK5UB0NAf2GvLAimWfQO2oCFE1E=
+  =gbp0
+  -----END PGP MESSAGE-----
 ceilometer_dbpass: |
   -----BEGIN PGP MESSAGE-----
   Version: GnuPG v1
@@ -280,6 +320,27 @@ neutron_dbpass: |
   =A43U
   -----END PGP MESSAGE-----
 libvirt_secret_uuid: 1a790a26-dd49-4825-8d16-3dd627cf05a9
+cephkey-gnocchi: |
+  -----BEGIN PGP MESSAGE-----
+  Version: GnuPG v1
+  Comment: GPGTools - http://gpgtools.org
+  
+  hQIMA4VjTU4mltuAAQ/+IQ/rA0YJ88iBRVX508UJOW9mp7UbhsCWKjnYjhdzW7vC
+  VNz2HoCBXcNjPmcGoJNhHY3is0lfD6sq4GBhfjJbR+QppfY90qdh/+rEG9Vrugmj
+  fdBsh48ml8lpMlkqARnTd4mXD2U+ZIR3B0P3grKzicTQNKSSCiEcUkNQGnYYGz6g
+  yurQ6L9mObTsk68iDljLbwTqrRwveao/5DK6yuKXEeEbg8rmzY3/JYT3rthjieEf
+  DbINC17RKNPoFDquyBashC3dUhhSLU2XzTkT6g1ecl4G4HjAn6+WZicwIFVbkHES
+  7LCILCcrmg5SFIgN4Q1Ik/zSoSy3VTyV4ojwCbpe4CpSzNYpjG5MqktLMt3PVM5J
+  fCFqLVGi5OvRf+RO97UkclnpI7NOowRoHXX6dSV2zB9GfqpRgd/G8kW4fYRhPAtv
+  3eJil9JlJvmMoMsnZfed/mYYW33peMfEDWE7ZFFFCwdLS8myeTAF1rzlUtJ9IN0m
+  uzX737Ps/XvsuznrgI9mKJWXHlOC6/8zh2eBVzCKpppGkspsHXvXJNAOtvQp3COw
+  A1wEs1eI0LXtlXsmuPoJdSqzJgDYugAyMFDbqPQlCsluCnYaAco0rreGow7oWIw5
+  adKrqSM3n5IKZEuMdORsBp7xrE9N+1uxRDBJh+Wgk9Goj6JW0/O2O06svNYeJdTS
+  YwG1J6DbB7AjXd3xK0h0tDDAPx0yNz+CwSmgYFvt25CfVVAm+YJdfF0K081SreQt
+  ILQlX+pa8mc36O2rktYKj8gsXdizn+9e4GlT6igNoot9jzdxQwVSUNHAIRK/kdIG
+  34Jlxw==
+  =I9A3
+  -----END PGP MESSAGE-----
 cephkey-glance: |
   -----BEGIN PGP MESSAGE-----
   Version: GnuPG v1

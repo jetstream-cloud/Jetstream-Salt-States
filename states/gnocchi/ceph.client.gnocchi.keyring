@@ -1,0 +1,2 @@
+[client.gnocchi]
+	key = {{ cephkey-gnocchi }} 
