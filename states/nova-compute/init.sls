@@ -129,7 +129,7 @@ setsecret:
         vnc:
           enabled: True
           novncproxy_base_url: https://jblb.jetstream-cloud.org:6080/vnc_auto.html
-          vncserver_listen = 0.0.0.0
+          vncserver_listen:  0.0.0.0
 {% for item in grains['fqdn_ip4'] %}
   {% if '172.16.' in item %}
     {% set privateip = item %}
