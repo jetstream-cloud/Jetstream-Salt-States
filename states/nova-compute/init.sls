@@ -115,9 +115,6 @@ setsecret:
           instance_usage_audit_period: hour
           notify_on_state_change: vm_and_task_state
           notification_driver: messagingv2
-          vnc_enabled: True
-          vncserver_listen: 0.0.0.0
-          novncproxy_base_url: http://{{ pillar['novaprivatehost'] }}:6080/vnc_auto.html
           network_api_class: nova.network.neutronv2.api.API
           security_group_api: neutron
           linuxnet_interface_driver: nova.network.linux_net.NeutronLinuxBridgeInterfaceDriver
@@ -127,9 +124,19 @@ setsecret:
   {% if '172.16.' in item %}
     {% set privateip = item %}
           my_ip: {{ privateip }}
-          vncserver_proxyclient_address: {{ privateip }}  
   {% endif %}
-{% endfor %}          
+{% endfor %}
+        vnc:
+          enabled: True
+          novncproxy_base_url: https://jblb.jetstream-cloud.org:6080/vnc_auto.html
+          vncserver_listen = 0.0.0.0
+{% for item in grains['fqdn_ip4'] %}
+  {% if '172.16.' in item %}
+    {% set privateip = item %}
+          vncserver_proxyclient_address: {{ privateip }}
+  {% endif %}
+{% endfor %}
+          xvpvncproxy_base_url = https://jblb.jetstream-cloud.org:6081/console         
         libvirt:
           live_migration_flag: "VIR_MIGRATE_UNDEFINE_SOURCE,VIR_MIGRATE_PEER2PEER,VIR_MIGRATE_LIVE,VIR_MIGRATE_TUNNELLED"
           live_migration_uri: qemu+ssh://%s/system
