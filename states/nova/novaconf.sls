@@ -4,7 +4,12 @@
         DEFAULT:
           rpc_backend: rabbit
           auth_strategy: keystone
-          my_ip: {{ pillar['novaprivatehost'] }}
+{% for item in grains['fqdn_ip4'] %}
+  {% if '172.16.' in item %}
+    {% set privateip = item %}
+          my_ip: {{ privateip }}
+  {% endif %}
+{% endfor %}
           vncserver_listen: {{ pillar['novaprivatehost'] }}
           vncserver_proxyclient_address: {{ pillar['novaprivatehost'] }}
           verbose: True
