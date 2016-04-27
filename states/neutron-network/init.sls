@@ -233,3 +233,8 @@ neutron-metadata-agent:
           project_name: service
           username: neutron
           password: {{ pillar['neutron_pass'] }}
+
+/etc/cron.hourly/restart_linuxbridge-agent.cron
+  file.managed:
+    - source: salt://neutron-network/restart_linuxbridge-agent.cron
+    - mode: 744
