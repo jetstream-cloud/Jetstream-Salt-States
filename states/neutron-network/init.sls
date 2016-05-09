@@ -112,6 +112,7 @@ neutron-metadata-agent:
           verbose: True
           network_device_mtu: 9000
           advertise_mtu: True
+          dhcp_lease_duration: 300
         keystone_authtoken:
           auth_uri: https://{{ pillar['keystonehost'] }}:5000
           auth_url: https://{{ pillar['keystonehost'] }}:35357
@@ -234,7 +235,7 @@ neutron-metadata-agent:
           username: neutron
           password: {{ pillar['neutron_pass'] }}
 
-/etc/cron.hourly/restart_linuxbridge-agent.cron
+/etc/cron.hourly/restart_linuxbridge-agent.cron:
   file.managed:
     - source: salt://neutron-network/restart_linuxbridge-agent.cron
     - mode: 744

@@ -47,7 +47,7 @@ python-neutronclient:
           router_distributed: False
           notify_nova_on_port_status_changes: True
           notify_nova_on_port_data_changes: True
-          nova_url: http://{{ pillar['novaprivatehost'] }}:8774/v2
+          nova_url: https://{{ pillar['novapublichost'] }}:8774/v2
           verbose: True
           network_device_mtu: 9000 
           advertise_mtu: True
