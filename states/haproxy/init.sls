@@ -38,6 +38,26 @@ gnocchi-api_ufw_rule:
     - name: ufw allow gnocchi-api
     - unless: ufw status verbose | grep -q '8041/tcp (gnocchi-api)      ALLOW IN    Anywhere'
 
+/etc/ufw/applications.d/heat-api:
+  file.managed:
+    - source: salt://haproxy/heat-api.ufw.app
+    - require_in:
+      - cmd: heat-api_ufw_rule
+heat-api_ufw_rule:
+  cmd.run:
+    - name: ufw allow heat-api
+    - unless: ufw status verbose | grep -q '8004/tcp (heat-api)         ALLOW IN    Anywhere'
+
+/etc/ufw/applications.d/heat-api-cfn:
+  file.managed:
+    - source: salt://haproxy/heat-api-cfn.ufw.app
+    - require_in:
+      - cmd: heat-api-cfn_ufw_rule
+heat-api-cfn_ufw_rule:
+  cmd.run:
+    - name: ufw allow heat-api-cfn
+    - unless: ufw status verbose | grep -q '8000/tcp (heat-api-cfn)     ALLOW IN    Anywhere'
+
 /etc/ufw/applications.d/ceilometer-api:
   file.managed:
     - source: salt://haproxy/ceilometer-api.ufw.app
