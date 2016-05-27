@@ -56,7 +56,7 @@ python-heatclient:
           heat_metadata_server_url: http://{{ pillar['heathost'] }}:8000
           heat_waitcondition_server_url: http://{{ pillar['heathost'] }}:8000/v1/waitcondition
           stack_domain_admin: heat_domain_admin
-          stack_domain_admin_password: {{ pillar['heat_domain_pass'] }}
+          stack_domain_admin_password: {{ pillar['heat_domain_admin_pass'] }}
           stack_user_domain_name: heat
           verbose: True
         database:
