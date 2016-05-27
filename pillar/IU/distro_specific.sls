@@ -22,6 +22,9 @@ openstack-cinder-scheduler: openstack-cinder-scheduler
 openstack-cinder-volume: openstack-cinder-volume
 python-memcached: python-memcached
 openstack-keystone: openstack-keystone
+openstack-heat-api:  openstack-heat-api
+openstack-heat-api-cfn: openstack-heat-api-cfn
+openstack-heat-engine: openstack-heat-engine
 {% elif grains['os_family'] == 'Debian' %}
 openstack-nova-api: nova-api
 openstack-nova-cert: nova-cert
@@ -46,4 +49,7 @@ openstack-cinder-scheduler: cinder-scheduler
 openstack-cinder-volume: cinder-volume
 python-memcached: python-memcache
 openstack-keystone: keystone
+openstack-heat-engine: heat-engine
+openstack-heat-api-cfn: heat-api-cfn
+openstack-heat-api: heat-api
 {% endif %}
