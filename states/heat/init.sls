@@ -46,7 +46,7 @@ heat-engine:
       - cmd: openstack-heat-api
 python-heatclient:
   pkg:
-    installed
+    - installed
 
 /etc/heat/heat.conf:
   ini.options_present:
