@@ -26,7 +26,7 @@ heat-service:
     - unless: openstack service list | grep -v heat-cfn |grep -q heat
 heat-endpoint:
   cmd.run:
-    - name: openstack endpoint create --publicurl https://{{ pillar['heatpublichost'] }}:8004/ --internalurl https://{{ pillar['heatprivatehost'] }}:8004/ --adminurl https://{{ pillar['heatprivatehost'] }}:8004/ --region RegionOne orchestration 
+    - name: openstack endpoint create --publicurl https://{{ pillar['heathost'] }}:8004/ --internalurl https://{{ pillar['heathost'] }}:8004/ --adminurl https://{{ pillar['heathost'] }}:8004/ --region RegionOne orchestration 
     - env:
       - OS_URL: https://{{ pillar['keystonehost'] }}:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
@@ -41,7 +41,7 @@ heat-cfn-service:
     - unless: openstack service list | grep -q heat-cfn
 heat-cfn-endpoint:
   cmd.run:
-    - name: openstack endpoint create --publicurl https://{{ pillar['heatpublichost'] }}:8000/ --internalurl https://{{ pillar['heatprivatehost'] }}:8000/ --adminurl https://{{ pillar['heatprivatehost'] }}:8000/ --region RegionOne cloudformation 
+    - name: openstack endpoint create --publicurl https://{{ pillar['heathost'] }}:8000/ --internalurl https://{{ pillar['heathost'] }}:8000/ --adminurl https://{{ pillar['heathost'] }}:8000/ --region RegionOne cloudformation 
     - env:
       - OS_URL: https://{{ pillar['keystonehost'] }}:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
