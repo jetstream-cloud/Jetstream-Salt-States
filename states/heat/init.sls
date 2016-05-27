@@ -1,4 +1,4 @@
-heat-api:
+openstack-heat-api:
   pkg:
     - name: {{ pillar['openstack-heat-api'] }}
     - installed
@@ -16,7 +16,7 @@ heat-api:
   cmd.run:
     - name: su -s /bin/sh -c "heat-manage db_sync" heat
     - stateful: True
-heat-api-cfn:
+openstack-heat-api-cfn:
   pkg:
     - name: {{ pillar['openstack-heat-api-cfn'] }}
     - installed
@@ -30,7 +30,7 @@ heat-api-cfn:
       - ini: /etc/heat/heat.conf
     - require:
       - cmd: openstack-heat-api
-heat-engine:
+openstack-heat-engine:
   pkg:
     - name: {{ pillar['openstack-heat-engine'] }}
     - installed
