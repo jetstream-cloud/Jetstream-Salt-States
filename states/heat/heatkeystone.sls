@@ -57,7 +57,7 @@ heat-domain:
 
 heat-domain-admin:
   cmd.run:
-    - name: openstack user create --domain heat -password {{pillar['heat_domain_admin_pass']}} heat_domain_admin
+    - name: openstack user create --domain heat --password {{pillar['heat_domain_admin_pass']}} heat_domain_admin
     - env:
       - OS_URL: https://{{ pillar['keystonehost'] }}:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
