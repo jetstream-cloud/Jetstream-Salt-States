@@ -64,7 +64,7 @@ python-heatclient:
         oslo_messaging_rabbit:
           rabbit_hosts: {{ pillar['rabbit_hosts'] }}
           rabbit_userid: openstack
-          rabbit_password: {{ pillar['rabbit_pass'] }}
+          rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
         keystone_authtoken:
           auth_uri: https://{{ pillar['keystonehost'] }}:5000
           auth_url: https://{{ pillar['keystonehost'] }}:35357
