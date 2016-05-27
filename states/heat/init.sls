@@ -60,7 +60,7 @@ python-heatclient:
           stack_user_domain_name: heat
           verbose: True
         database:
-          connection: mysql+pymysql://heat:{{ pillar['head_dbpass'] }}@controller/heat
+          connection: mysql+pymysql://heat:{{ pillar['heat_dbpass'] }}@controller/heat
         oslo_messaging_rabbit:
           rabbit_hosts: {{ pillar['rabbit_hosts'] }}
           rabbit_userid: openstack
