@@ -3,7 +3,7 @@ cephrepo:
   pkgrepo.managed:
     - humanname: Ceph Repo
 {% if os_family == 'RedHat' %}
-    - baseurl: http://ceph.com/rpm-hammer/el7/x86_64/
+    - baseurl: http://download.ceph.com/rpm-jewel/el7/x86_64/
     - gpgcheck: 1
     - gpgkey: https://git.ceph.com/release.asc
 {% elif os_family == 'Debian' %}
