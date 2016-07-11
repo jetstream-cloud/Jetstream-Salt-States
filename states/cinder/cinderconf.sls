@@ -29,6 +29,7 @@
         database:
           connection: mysql://cinder:{{ pillar['cinder_dbpass'] }}@{{ pillar['mysqlhost'] }}/cinder
         keystone_authtoken:
+          memcached_servers: 172.16.129.48:11211,172.16.129.112:11211,172.16.129.176:11211
           auth_uri: https://{{ pillar['keystonehost'] }}:5000
           auth_url: https://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
