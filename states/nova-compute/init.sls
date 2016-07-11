@@ -172,7 +172,7 @@ setsecret:
           lock_path: /var/lock/nova
         neutron:
           url: https://{{ pillar['neutronpublichost'] }}:9696
-          auth_strategy=keystone
+          auth_strategy: keystone
           auth_type: password
           auth_url: https://{{ pillar['keystonehost'] }}:35357
           project_name: service
