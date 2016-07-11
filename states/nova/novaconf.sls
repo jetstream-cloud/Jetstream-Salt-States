@@ -32,6 +32,8 @@
           workers: 4
         database:
           connection: mysql://nova:{{ pillar['nova_dbpass']}}@{{ pillar['mysqlhost'] }}/nova
+        api_database:
+          connection: mysql://nova:{{ pillar['nova_dbpass']}}@{{ pillar['mysqlhost'] }}/nova_api
         oslo_messaging_rabbit:
           rabbit_ha_queues: True
           rabbit_hosts: {{ pillar['rabbit_hosts'] }}
