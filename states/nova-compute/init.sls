@@ -172,11 +172,12 @@ setsecret:
           lock_path: /var/lock/nova
         neutron:
           url: https://{{ pillar['neutronpublichost'] }}:9696
-          auth_strategy: keystone
-          admin_auth_url: https://{{ pillar['keystonehost'] }}:35357/v2.0
-          admin_tenant_name: service
-          admin_username: neutron
-          admin_password: {{ pillar['neutron_pass'] }}
+          auth_strategy=keystone
+          auth_type: password
+          auth_url: https://{{ pillar['keystonehost'] }}:35357
+          project_name: service
+          username: neutron
+          password: {{ pillar['neutron_pass'] }}
 
 /etc/neutron/neutron.conf:
   ini.options_present:
