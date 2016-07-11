@@ -127,6 +127,15 @@ neutron-metadata-agent:
           rabbit_hosts: {{ pillar['rabbit_hosts'] }}
           rabbit_userid: openstack
           rabbit_password: {{pillar['openstack_rabbit_pass'] }}
+        service_providers:
+          service_provider: "LOADBALANCER:Haproxy:neutron_lbaas.drivers.haproxy.plugin_driver.HaproxyOnHostPluginDriver:default"
+
+/etc/neutron/lbaas_agent.ini:
+  ini.options_present:
+    - sections:
+        DEFAULT:
+          interface_driver: neutron.agent.linux.interface.BridgeInterfaceDriver
+          device_driver: neutron.services.loadbalancer.drivers.haproxy.namespace_driver.HaproxyNSDriver
 
 /etc/neutron/plugins/ml2/ml2_conf.ini:
   ini.options_present:
@@ -180,6 +189,7 @@ neutron-metadata-agent:
         linux_bridge:
           physical_interface_mappings: 'public:bond0.330'
         vxlan:
+          arp_responder: True
           l2_population: True
           enable_vxlan: True
           vxlan_group: '239.1.1.1'

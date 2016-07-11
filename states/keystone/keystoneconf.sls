@@ -12,16 +12,23 @@
            connection: mysql://keystone:{{ pillar['keystone_dbpass'] }}@{{ pillar['mysqlhost'] }}/keystone
         revoke:
            driver: keystone.contrib.revoke.backends.sql.Revoke
+        shadow_users:
+           driver: sql
         token:
            provider: keystone.token.providers.uuid.Provider
-           driver: keystone.token.persistence.backends.memcache.Token
+           driver: memcache_pool 
         memcache:
            servers: 172.16.129.48:11211,172.16.129.112:11211,172.16.129.176:11211   
         identity:
            domain_specific_drivers_enabled: true
+           default_domain_name: Default
         cache:
-           backend: keystone.cache.memcache_pool
+           expiration_time: 3600
+           backend: oslo_cache.memcache_pool
            memcache_servers: 172.16.129.48:11211,172.16.129.112:11211,172.16.129.176:11211
+        resource:
+          admin_project_domain_name: default
+          admin_project_name: admin
         oslo_messaging_rabbit:
           rabbit_ha_queues: True
           rabbit_hosts: {{ pillar['rabbit_hosts'] }}

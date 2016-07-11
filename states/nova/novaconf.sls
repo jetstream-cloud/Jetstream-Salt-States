@@ -1,6 +1,14 @@
 /etc/nova/nova.conf:
-  ini.options_present:
-    - sections:
+  ini:
+    options_absent:
+      - sections:
+        neutron:
+          admin_auth_url: https://{{ pillar['keystonehost'] }}:35357/v2.0
+          admin_tenant_name: service
+          admin_username: neutron
+          admin_password: {{ pillar['neutron_pass'] }}
+    options_present:
+      - sections:
         DEFAULT:
           rpc_backend: rabbit
           auth_strategy: keystone
@@ -46,10 +54,17 @@
           lock_path: /var/lock/nova
         neutron:
           url: https://{{ pillar['neutronpublichost'] }}:9696
+          auth_type: password
           auth_strategy: keystone
-          admin_auth_url: https://{{ pillar['keystonehost'] }}:35357/v2.0
-          admin_tenant_name: service
-          admin_username: neutron
-          admin_password: {{ pillar['neutron_pass'] }}
+          auth_url: https://jblb.jetstream-cloud.org:35357
+          project_name: service
+          username: neutron
+          password: {{ pillar['neutronpass'] }} 
           metadata_proxy_shared_secret: {{ pillar['metadata_proxy_shared_secret'] }}
           service_metadata_proxy: True
+        vnc:
+          enabled: True
+          novncproxy_base_url: https://jblb.jetstream-cloud.org:6080/vnc_auto.html
+          vncserver_listen: 0.0.0.0
+          vncserver_proxyclient_address: 127.0.0.1
+          xvpvncproxy_base_url: https://jblb.jetstream-cloud.org:6081/console

@@ -228,6 +228,7 @@ setsecret:
   {% endif %}
 {% endfor %}
           l2_population: True
+          arp_responder: True
         securitygroup:
           firewall_driver: neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
           enable_security_group: True

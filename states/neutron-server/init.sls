@@ -49,6 +49,7 @@ python-neutronclient:
           notify_nova_on_port_data_changes: True
           nova_url: https://{{ pillar['novapublichost'] }}:8774/v2
           verbose: True
+          global_physnet_mtu: 9050
           network_device_mtu: 9000 
           advertise_mtu: True
           dhcp_agents_per_network: 2
@@ -67,13 +68,15 @@ python-neutronclient:
           username: nova
           password: {{ pillar['nova_pass'] }}
         keystone_authtoken:
+          memcached_servers: 172.16.129.48:11211,172.16.129.112:11211,172.16.129.176:11211
+          token_cache_time: 3600
           auth_uri: https://{{ pillar['keystonehost'] }}:5000
           auth_url: https://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
           project_domain_id: default
           user_domain_id: default
           project_name: service
-          username: neutron
+          user-name: neutron
           password: {{ pillar['neutron_pass'] }}
         oslo_messaging_rabbit:
           rabbit_ha_queues: True
@@ -82,7 +85,8 @@ python-neutronclient:
           rabbit_password: {{pillar['openstack_rabbit_pass'] }}
         database:
           connection: mysql://neutron:{{ pillar['neutron_dbpass'] }}@{{ pillar['mysqlhost'] }}/neutron
-
+        service_providers:
+          service_provider: "LOADBALANCER:Haproxy:neutron_lbaas.drivers.haproxy.plugin_driver.HaproxyOnHostPluginDriver:default"
 /etc/neutron/plugins/ml2/ml2_conf.ini:
   ini.options_present:
     - sections:
