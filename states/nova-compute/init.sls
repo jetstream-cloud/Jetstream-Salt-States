@@ -262,18 +262,6 @@ setsecret:
   {% endif %}
 {% endfor %}         
 
-nova_qemu_discard_patch:
-  file.patch:
-{% if os_family == 'RedHat' %}
-    - name: /usr/lib/python2.7/site-packages/nova/virt/libvirt/driver.py 
-{% elif os_family == 'Debian' %}
-    - name: /usr/lib/python2.7/dist-packages/nova/virt/libvirt/driver.py
-{% endif %}
-    - source: salt://nova-compute/qemu_min_discard.diff
-    - hash: md5=d5d259059967cb5f7ba31a6e82194649
-    - watch_in:
-      - service: openstack-nova-compute
-
 {% if os_family == 'RedHat' %}
 /etc/neutron/plugin.ini:
   file.symlink:
