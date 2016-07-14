@@ -1,13 +1,14 @@
-/etc/nova/nova.conf:
-  ini:
-    options_absent:
+/etc/nova/nova.conf-absent:
+  ini.options_absent:
+      - name: /etc/nova/nova.conf
       - sections:
         neutron:
           admin_auth_url: https://{{ pillar['keystonehost'] }}:35357/v2.0
           admin_tenant_name: service
           admin_username: neutron
           admin_password: {{ pillar['neutron_pass'] }}
-    options_present:
+/etc/nova/nova.conf:
+    - options_present:
       - sections:
         DEFAULT:
           rpc_backend: rabbit
