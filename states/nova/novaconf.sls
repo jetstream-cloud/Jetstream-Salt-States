@@ -8,7 +8,7 @@
           admin_username: neutron
           admin_password: {{ pillar['neutron_pass'] }}
 /etc/nova/nova.conf:
-    - options_present:
+  ini.options_present:
       - sections:
         DEFAULT:
           rpc_backend: rabbit
