@@ -61,7 +61,7 @@
           auth_url: https://jblb.jetstream-cloud.org:35357
           project_name: service
           username: neutron
-          password: {{ pillar['neutronpass'] }} 
+          password: {{ pillar['neutron_pass'] }} 
           metadata_proxy_shared_secret: {{ pillar['metadata_proxy_shared_secret'] }}
           service_metadata_proxy: True
         vnc:
