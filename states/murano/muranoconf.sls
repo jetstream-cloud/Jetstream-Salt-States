@@ -33,10 +33,10 @@
           external_network: public
         rabbitmq:
           ssl: True
-          password:
-          user:
-          host:
-          virtual_host:
+          password: {{ pillar['murano_guest_rabbitmq_pass'] }}
+          user: murano
+          host: jblb.jetstream-cloud.org
+          virtual_host: murano
   file.managed:
     - user: murano
     - group: murano
