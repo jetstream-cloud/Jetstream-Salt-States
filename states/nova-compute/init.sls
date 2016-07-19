@@ -138,6 +138,7 @@ setsecret:
 {% endfor %}
           xvpvncproxy_base_url: https://jblb.jetstream-cloud.org:6081/console         
         libvirt:
+          cpu_mode: host-passthrough
           live_migration_flag: "VIR_MIGRATE_UNDEFINE_SOURCE,VIR_MIGRATE_PEER2PEER,VIR_MIGRATE_LIVE,VIR_MIGRATE_TUNNELLED"
           live_migration_uri: qemu+ssh://%s/system
           inject_password: false
@@ -271,6 +272,12 @@ setsecret:
   file.managed:
     - source: salt://nova-compute/rc.local
     - mode: 700
+    - owner: root
+
+/etc/modules.d/kvm-intel.conf
+  file.managed:
+    - source: salt://nova-compute/kvm-intel.conf
+    - mode:644
     - owner: root
 
 python-devel:
