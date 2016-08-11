@@ -220,7 +220,8 @@ neutron-metadata-agent:
           dhcp_driver: neutron.agent.linux.dhcp.Dnsmasq
           dhcp_delete_namespaces: True
           verbose: True
-          dnsmasq_dns_servers: 129.79.1.1
+          dnsmasq_dns_servers: 129.79.1.1,129.79.5.100,129.79.8.50
+          dhcp_domain: jetstreamlocal
           advertise_mtu: True
 
 /etc/neutron/dnsmasq-neutron.conf:
