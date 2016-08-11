@@ -27,6 +27,10 @@ openstack-neutron-ml2:
     - installed
 python-neutronclient:
   pkg.installed
+openstack-neutron-vpnaas:
+  pkg.installed
+openstack-neutron-lbaas:
+  pkg.installed
 
 {% if os_family == 'RedHat' %}
 /etc/neutron/plugin.ini:
@@ -42,7 +46,7 @@ python-neutronclient:
           rpc_backend: rabbit
           auth_strategy: keystone
           core_plugin: ml2
-          service_plugins: router
+          service_plugins: router,neutron_lbaas.services.loadbalancer.plugin.LoadBalancerPlugin,neutron_vpnaas.services.vpn.plugin.VPNPlugin
           allow_overlapping_ips: True
           router_distributed: False
           notify_nova_on_port_status_changes: True
@@ -87,6 +91,7 @@ python-neutronclient:
           connection: mysql://neutron:{{ pillar['neutron_dbpass'] }}@{{ pillar['mysqlhost'] }}/neutron
         service_providers:
           service_provider: "LOADBALANCER:Haproxy:neutron_lbaas.drivers.haproxy.plugin_driver.HaproxyOnHostPluginDriver:default"
+          service_provider: "VPN:openswan:neutron_vpnaas.service.vpn.service_drivers.ipsec.IPsecVPNDriver.default"
 /etc/neutron/plugins/ml2/ml2_conf.ini:
   ini.options_present:
     - sections:
