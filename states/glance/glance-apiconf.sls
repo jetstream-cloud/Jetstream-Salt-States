@@ -32,3 +32,5 @@
             rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
           paste_deploy:
             flavor: keystone
+          taskflow_executor:
+            converstion_format: raw
