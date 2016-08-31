@@ -112,6 +112,20 @@ neutron-lbaas-agent:
     - watch:
       - ini: /etc/neutron/neutron.conf
       - ini: /etc/neutron/lbaas_agent.ini 
+
+neutron-vpnaas-agent:
+  pkg:
+    - installed
+    - name: openstack-neutron-vpnaas
+    - require_in:
+      - ini: /etc/neutron/neutron.conf
+  service:
+    - running
+    - enable: True
+    - watch:
+      - ini: /etc/neutron/neutron.conf
+strongswan:
+  pkg.installed
       
 /etc/neutron/neutron.conf:
   ini.options_present:
