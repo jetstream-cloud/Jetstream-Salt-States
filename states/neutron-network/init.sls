@@ -103,7 +103,9 @@ neutron-metadata-agent:
 neutron-lbaas-agent:
   pkg:
     - installed
+{% if os_family=='RedHat' %}
     - name: openstack-neutron-lbaas
+{% endif %}
     - require_in:
       - ini: /etc/neutron/neutron.conf
       - ini: /etc/neutron/lbaas_agent.ini
@@ -117,7 +119,9 @@ neutron-lbaas-agent:
 neutron-vpn-agent:
   pkg:
     - installed
+{% if os_family=='RedHat' %}
     - name: openstack-neutron-vpnaas
+{% endif %}
     - require_in:
       - ini: /etc/neutron/neutron.conf
   service:
