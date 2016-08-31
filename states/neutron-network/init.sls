@@ -99,6 +99,19 @@ neutron-metadata-agent:
     - watch:
       - ini: /etc/neutron/neutron.conf
       - ini: /etc/neutron/metadata_agent.ini
+neutron-lbaas-agent:
+  pkg:
+    - installed
+    - name: openstack-neutron-lbaas
+    - require_in:
+      - ini: /etc/neutron/neutron.conf
+      - ini: /etc/neutron/lbaas_agent.ini
+  service:
+    - running
+    - enable: True
+    - watch:
+      - ini: /etc/neutron/neutron.conf
+      - ini: /etc/neutron/lbaas_agent.ini 
       
 /etc/neutron/neutron.conf:
   ini.options_present:
