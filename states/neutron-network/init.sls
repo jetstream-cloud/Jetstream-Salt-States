@@ -114,7 +114,7 @@ neutron-lbaas-agent:
       - ini: /etc/neutron/neutron.conf
       - ini: /etc/neutron/lbaas_agent.ini 
 
-neutron-vpnaas-agent:
+neutron-vpn-agent:
   pkg:
     - installed
     - name: openstack-neutron-vpnaas
