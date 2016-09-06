@@ -61,7 +61,7 @@ python-ceilometerclient:
           rabbit_userid: openstack
           rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
         database:
-          connection = mysql://nova:{{ pillar['nova_dbpass']}}@{{ pillar['mysqlhost'] }}/nova
+          connection = mysql://ceilometer:{{ pillar['ceilometer_dbpass']}}@{{ pillar['mysqlhost'] }}/ceilometer
         keystone_authtoken:
           auth_uri: https://{{ pillar['keystonehost'] }}:5000
           auth_url: https://{{ pillar['keystonehost'] }}:35357
