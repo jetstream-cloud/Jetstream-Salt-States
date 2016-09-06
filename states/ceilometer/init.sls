@@ -31,6 +31,7 @@ python-ceilometerclient:
   ini.options_present:
     - sections:
         DEFAULT:
+          debug: true
           rpc_backend: rabbit
           auth_strategy: keystone
           verbose: True
@@ -38,6 +39,7 @@ python-ceilometerclient:
           notification_driver: messagingv2
           host: {{ grains['id'] }}
           meter_dispatchers: gnocchi
+          event_dispatchers: database
         api:
           gnocchi_is_enabled: true
         alarms:
@@ -45,10 +47,16 @@ python-ceilometerclient:
         alarm:
           gnocchi_url: {{ pillar['gnocchi_url'] }}}
         notification:
-          workers: 4
+          workers: 8
+          batch_size: 16
+          batch_timeout: 300
+          store_events: true
+          workload_partitioning: true 
         collector:
           workers: 16
-        dispatcher_gnocchi
+        coordination:
+          backend_url = zookeeper://172.16.128.253:2181?hosts=172.16.128.250:2181,172.16.128.252:2181
+        dispatcher_gnocchi:
           archive_policy: low
           archive_policy_file: gnocchi_archive_policy_map.yaml
           filter_project: gnocchi
@@ -72,9 +80,11 @@ python-ceilometerclient:
           username: ceilometer
           password: {{ pillar['ceilometer_pass'] }}
         service_credentials:
-          os_auth_url: https://{{ pillar['keystonehost'] }}:5000/v2.0
-          os_username: ceilometer
-          os_tenant_name: service
-          os_password: {{ pillar['ceilometer_pass'] }}
-          os_endpoint_type: internalURL
-          os_region_name: RegionOne
+          auth_url: https://{{ pillar['keystonehost'] }}:5000/v3
+          username: ceilometer
+          user_domain_name: default
+          project_domain_id: default
+          project: service
+          password: {{ pillar['ceilometer_pass'] }}
+          interface: publicURL
+          region_name: RegionOne
