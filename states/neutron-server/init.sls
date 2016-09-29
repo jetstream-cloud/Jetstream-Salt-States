@@ -58,7 +58,7 @@ openstack-neutron-lbaas:
           advertise_mtu: True
           dhcp_agents_per_network: 2
           allow_automatic_l3agent_failover: True
-          max_l3_agents_per_router: 3
+          max_l3_agents_per_router: 2 
           min_l3_agents_per_router: 2
           l3_ha: True
           l3_ha_net_cidr: 169.254.192.0/18
@@ -99,6 +99,7 @@ openstack-neutron-lbaas:
           type_drivers: flat,vlan,gre,vxlan
           tenant_network_types: vxlan,vlan
           mechanism_drivers: linuxbridge,l2population
+          path_mtu: 9050
         ml2_type_gre:
           tunnel_id_ranges: '1:1000'
         ml2_type_vxlan:
