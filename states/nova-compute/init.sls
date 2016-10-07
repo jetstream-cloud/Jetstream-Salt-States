@@ -151,6 +151,7 @@ setsecret:
           rbd_secret_uuid: {{ pillar['libvirt_secret_uuid'] }}
           disk_cachemodes: "network=writeback"
           hw_disk_discard: unmap
+          volume_clear: none
         oslo_messaging_rabbit:
           rabbit_ha_queues: True
           rabbit_hosts: {{ pillar['rabbit_hosts'] }}
