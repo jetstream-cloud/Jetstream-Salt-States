@@ -1,4 +1,23 @@
 #!yaml|gpg
+swift_keystone_pass: |
+  -----BEGIN PGP MESSAGE-----
+  Comment: GPGTools - http://gpgtools.org
+  
+  hQIMA4VjTU4mltuAAQ//ZlhwCoVW0S81r3OaKM8amgtYblC29Dud/Dpe20l4zdn5
+  nN+o/iFLv0GSoL6ZcTxxBNIAVHYEcpXRX2EmgTNfonylGsUXhLXYuYijGW6KnKUY
+  6LQkfLvCt7Ty9jSz/Vsi3HLF48j2tQyVO7jFm1+UjW+KTNdgux9LNWMh3iYpXcvN
+  U+KrMxI/IoUqvccWtlFAXIGZuYT/7FjpslncBEWGToH60ROG3bp/KdhoPJkUc0lp
+  7rztFHv54wL91vkG0ee43QXbz7LAk09MS8gTL0EPunlM4x4/4yjqupW0Joqn4K+R
+  E+ZbSQ78Qn0rAeAKN+UuutiwbXPl9j4Wp9VNPWL/dLrtM59FQHu63ifyIgsk2Fko
+  pITMS7q5S46qOCbTy/LPSXjJEd/UBfntjOAVpGVlu3LBExD+ulJ7OaUOVvIbo7UN
+  syHhsgU9I8vVnO5ScYz2RbUZiVVecfJm4I3UBgewY4Z33Rxf4LLYZqggBGeeO9s0
+  2RpkJHgAJ1CUCB4t+JW1zoRsL2W0HafNQC6+D/0q5smN2D7h3MzigZH1ZzEIZFpb
+  nMxgGjQujHRlYYiETrpzcLLL/W9OFoI7DS5BjWUvIoPe7GzVVrQsOqfc4ufnCTUJ
+  Czk4E7iHRxOBjB/Kqk17+LxgwO6W27gWHUmuE3OZi2YoX0fH+ticbt1FJhIOp5LS
+  SAGNAWhjUTVJNIxRV1UJ01bDyOfaSCBkfD3TcfuuOYUJiCeOV9pjQABHj4VMwds0
+  GeuYpqfLhzsrXiiJJdHPA4rHuO2KxQnZKw==
+  =B2uv
+  -----END PGP MESSAGE-----
 magnum_domain_admin_pass: |
   -----BEGIN PGP MESSAGE-----
   Version: GnuPG v1
