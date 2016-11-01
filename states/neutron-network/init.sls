@@ -221,8 +221,8 @@ strongswan:
         linux_bridge:
           physical_interface_mappings: 'public:bond0.330'
         vxlan:
-          arp_responder: False
-          l2_population: False
+          arp_responder: True
+          l2_population: True 
           enable_vxlan: True
           vxlan_group: '239.0.0.0/8'
 {% for item in grains['fqdn_ip4'] %}
