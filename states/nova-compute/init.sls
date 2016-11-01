@@ -279,7 +279,7 @@ setsecret:
 /etc/modules.d/kvm-intel.conf:
   file.managed:
     - source: salt://nova-compute/kvm-intel.conf
-    - mode:644
+    - mode: 644
     - owner: root
 
 python-devel:
