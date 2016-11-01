@@ -231,8 +231,8 @@ setsecret:
   {% endif %}
 {% endfor %}
           vxlan_group: 239.0.0.0/8
-          l2_population: False 
-          arp_responder: False
+          l2_population: True 
+          arp_responder: True
         securitygroup:
           firewall_driver: neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
           enable_security_group: True
