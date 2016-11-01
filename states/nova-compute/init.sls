@@ -276,6 +276,9 @@ setsecret:
     - mode: 700
     - owner: root
 
+/etc/modules.d:
+  file.directory
+
 /etc/modules.d/kvm-intel.conf:
   file.managed:
     - source: salt://nova-compute/kvm-intel.conf
