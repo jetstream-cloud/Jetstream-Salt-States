@@ -180,7 +180,7 @@ strongswan:
           tunnel_id_ranges: '1:1000'
         ml2_type_vxlan:
           vni_ranges: '100:10000'
-          vxlan_group: '239.1.1.1'
+          vxlan_group: '239.0.0.0/8'
         securitygroup:
           enable_security_group: 'True'
           enable_ipset: True
@@ -190,9 +190,9 @@ strongswan:
         linux_bridge:
           physical_interface_mappings: 'public:bond0.330'
         vxlan:
-          l2_population: True
+          l2_population: False
           enable_vxlan: True
-          vxlan_group: '239.1.1.1'
+          vxlan_group: '239.0.0.0/8'
 {% for item in grains['fqdn_ip4'] %}
   {% if '172.16.' in item %}
     {% set privateip = item %}
@@ -211,7 +211,7 @@ strongswan:
           tunnel_id_ranges: '1:1000'
         ml2_type_vxlan:
           vni_ranges: '100:10000'
-          vxlan_group: '239.1.1.1'
+          vxlan_group: 'vxlan_group = 239.0.0.0/8'
         securitygroup:
           enable_security_group: 'True'
           enable_ipset: True
@@ -221,10 +221,10 @@ strongswan:
         linux_bridge:
           physical_interface_mappings: 'public:bond0.330'
         vxlan:
-          arp_responder: True
-          l2_population: True
+          arp_responder: False
+          l2_population: False
           enable_vxlan: True
-          vxlan_group: '239.1.1.1'
+          vxlan_group: '239.0.0.0/8'
 {% for item in grains['fqdn_ip4'] %}
   {% if '172.16.' in item %}
     {% set privateip = item %}

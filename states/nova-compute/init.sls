@@ -230,8 +230,9 @@ setsecret:
           local_ip: {{ privateip }}
   {% endif %}
 {% endfor %}
-          l2_population: True
-          arp_responder: True
+          vxlan_group: 239.0.0.0/8
+          l2_population: False 
+          arp_responder: False
         securitygroup:
           firewall_driver: neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
           enable_security_group: True
