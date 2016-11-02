@@ -28,7 +28,9 @@ net.ipv4.neigh.default.gc_thresh2:
 net.ipv4.neigh.default.gc_thresh3:
   sysctl.present:
     - value: 81920
-
+net.ipv4.igmp_max_memberships:
+  sysctl.present:
+    - value: 200
 
 {% if os_family=='RedHat' %}
 openstack-neutron:
@@ -180,7 +182,7 @@ strongswan:
           tunnel_id_ranges: '1:1000'
         ml2_type_vxlan:
           vni_ranges: '100:10000'
-          vxlan_group: '239.0.0.0/8'
+          vxlan_group: '239.0.0.0/25'
         securitygroup:
           enable_security_group: 'True'
           enable_ipset: True
@@ -192,7 +194,7 @@ strongswan:
         vxlan:
           l2_population: False
           enable_vxlan: True
-          vxlan_group: '239.0.0.0/8'
+          vxlan_group: '239.0.0.0/25'
 {% for item in grains['fqdn_ip4'] %}
   {% if '172.16.' in item %}
     {% set privateip = item %}
@@ -211,7 +213,7 @@ strongswan:
           tunnel_id_ranges: '1:1000'
         ml2_type_vxlan:
           vni_ranges: '100:10000'
-          vxlan_group: 'vxlan_group = 239.0.0.0/8'
+          vxlan_group: 'vxlan_group = 239.0.0.0/25'
         securitygroup:
           enable_security_group: 'True'
           enable_ipset: True
@@ -221,10 +223,10 @@ strongswan:
         linux_bridge:
           physical_interface_mappings: 'public:bond0.330'
         vxlan:
-          arp_responder: True
-          l2_population: True 
+          arp_responder: False
+          l2_population: False 
           enable_vxlan: True
-          vxlan_group: '239.0.0.0/8'
+          vxlan_group: '239.0.0.0/25'
 {% for item in grains['fqdn_ip4'] %}
   {% if '172.16.' in item %}
     {% set privateip = item %}
