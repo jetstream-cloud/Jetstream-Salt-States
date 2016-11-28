@@ -29,6 +29,7 @@
           ec2_workers: 4
           osapi_compute_workers: 4
           metadata_workers: 4
+          ram_allocation_ratio: 1
         conductor:
           workers: 4
         database:
