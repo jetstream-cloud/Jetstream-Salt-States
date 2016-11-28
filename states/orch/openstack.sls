@@ -19,7 +19,7 @@ keystonedb_setup:
       - salt: haproxy_keepalived_setup
 
 keystoneservice:
-  salt.sate:
+  salt.state:
     - tgt: 'r01c3b16'
     - sls: keystone
     - require:
@@ -125,7 +125,7 @@ neutronnetwork:
       - salt: neutronservice
 
 nova-compute-setup:
-  salt.sate:
+  salt.state:
     - tgt: 'r*c[12]b*'
     - sls: nova-compute
     - require: 
