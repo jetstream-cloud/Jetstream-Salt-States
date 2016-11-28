@@ -102,7 +102,20 @@ setsecret:
   require:
     - file: /root/secret.xml
     - service: libvirtd
-  
+
+/etc/nova/nova.conf-absent:
+  ini.options_absent:
+    - name: /etc/nova/nova.conf
+    - sections:
+        DEFAULT:
+          - network_api_class
+          - security_group_api
+          - 
+        libvirt:
+          - live_migration_flag
+        glance:
+          - host
+          - protocol
 /etc/nova/nova.conf:
   ini.options_present:
     -  sections:
@@ -118,11 +131,10 @@ setsecret:
           instance_usage_audit_period: hour
           notify_on_state_change: vm_and_task_state
           notification_driver: messagingv2
-          network_api_class: nova.network.neutronv2.api.API
-          security_group_api: neutron
           linuxnet_interface_driver: nova.network.linux_net.NeutronLinuxBridgeInterfaceDriver
           firewall_driver: nova.virt.firewall.NoopFirewallDriver
           verbose: True
+          use_neutron: True
 {% for item in grains['fqdn_ip4'] %}
   {% if '172.16.' in item %}
     {% set privateip = item %}
@@ -155,6 +167,8 @@ setsecret:
           disk_cachemodes: "network=writeback"
           hw_disk_discard: unmap
           volume_clear: none
+        workarounds:
+          disable_libvirt_livesnapshot: False
         oslo_messaging_rabbit:
           rabbit_ha_queues: True
           rabbit_hosts: {{ pillar['rabbit_hosts'] }}
