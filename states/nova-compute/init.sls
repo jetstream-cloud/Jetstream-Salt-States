@@ -272,7 +272,7 @@ setsecret:
         agent:
           tunnel_types: vxlan
         vxlan:
-          l2_population: True
+          l2_population: False 
           enable_vxlan: True
           vxlan_group: '239.1.1.1'
 {% for item in grains['fqdn_ip4'] %}
