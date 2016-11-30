@@ -19,7 +19,7 @@ murano-role-project:
       - cmd: service-project
 murano-service:
   cmd.run:
-    - name: openstack service create --type volume --description "OpenStack Block Storage" murano
+    - name: openstack service create --type volume --description "Application Catalog for OpenStack" murano
     - env:
       - OS_URL: https://{{ pillar['keystonehost'] }}:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
@@ -28,11 +28,11 @@ murano-service:
       - service: openstack-keystone
 murano-endpoint:
   cmd.run:
-    - name: openstack endpoint create --publicurl https://{{ pillar['muranopublichost'] }}:8776/v2/%\(tenant_id\)s --internalurl https://{{ pillar['muranoprivatehost'] }}:8776/v2/%\(tenant_id\)s --adminurl https://{{ pillar['muranoprivatehost'] }}:8776/v2/%\(tenant_id\)s --region RegionOne volume
+    - name: openstack endpoint create --publicurl https://{{ pillar['muranopublichost'] }}:8082 --internalurl https://{{ pillar['muranoprivatehost'] }}:8082 --adminurl https://{{ pillar['muranoprivatehost'] }}:8082 --region RegionOne murano
     - env:
       - OS_URL: https://{{ pillar['keystonehost'] }}:35357/v2.0
       - OS_TOKEN: {{ pillar['admin_token'] }}
-    - unless: openstack endpoint list | grep -v volumev2 |grep  -q volume
+    - unless: openstack endpoint list  |grep  -q murano
     - requires:
       - service: openstack-keystone
 
