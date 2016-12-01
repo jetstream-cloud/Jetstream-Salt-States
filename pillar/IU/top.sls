@@ -1,4 +1,4 @@
-{{env}}:
+base:
   '*':
     - distro_specific
     - hosts
