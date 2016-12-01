@@ -1,6 +1,6 @@
 mistral-user:
   keystone.user_present:
-    - password: {{pillar['murano_pass']}}
+    - password: {{pillar['mistral_pass']}}
     - project: service
     - roles:
         service:
