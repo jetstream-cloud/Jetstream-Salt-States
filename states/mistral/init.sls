@@ -1,11 +1,11 @@
 openstack-mistral-api:
-  pkg.install
+  pkg.installed
 openstack-mistral-engine:
-  pkg.install
+  pkg.installed
 openstack-mistral-executor:
-  pkg.install
+  pkg.installed
 openstack-mistral-all:
-  pkg.install
+  pkg.installed
 
 /etc/mistral/mistral.conf:
   ini.options_present:
