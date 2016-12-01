@@ -16,3 +16,5 @@ base:
   'r0[1-7]c[1234]b*':
     - passwords
     - hosts
+  'jbm1':
+    - passwords
