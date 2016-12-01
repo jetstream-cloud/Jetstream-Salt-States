@@ -1,7 +1,6 @@
 mistral-user:
   keystone.user_present:
     - password: {{pillar['mistral_pass']}}
-    - project: service
     - email: jethelp@jetstream-cloud.org
     - roles:
         service:
