@@ -154,7 +154,6 @@ setsecret:
           xvpvncproxy_base_url: https://jblb.jetstream-cloud.org:6081/console         
         libvirt:
           cpu_mode: host-passthrough
-          live_migration_flag: "VIR_MIGRATE_UNDEFINE_SOURCE,VIR_MIGRATE_PEER2PEER,VIR_MIGRATE_LIVE,VIR_MIGRATE_TUNNELLED"
           live_migration_uri: qemu+ssh://%s/system
           inject_password: false
           inject_key: false
@@ -185,8 +184,6 @@ setsecret:
           password: {{ pillar['nova_pass'] }}
         glance:
           api_servers: https://{{ pillar['glancepublichost'] }}:9292
-          host: {{ pillar['glancepublichost'] }}
-          protocol: https
         oslo_concurrency:
           lock_path: /var/lock/nova
         neutron:
