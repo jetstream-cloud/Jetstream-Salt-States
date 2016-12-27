@@ -2,11 +2,20 @@
   ini.options_absent:
       - name: /etc/nova/nova.conf
       - sections:
-        neutron:
-          admin_auth_url: https://{{ pillar['keystonehost'] }}:35357/v2.0
-          admin_tenant_name: service
-          admin_username: neutron
-          admin_password: {{ pillar['neutron_pass'] }}
+          neutron:
+            - admin_auth_url
+            - admin_tenant_name
+            - admin_username
+            - admin_password
+            - auth_strategy
+          glance:
+            - host
+            - port
+            - protocol
+          DEFAULT:
+            - network_api_class
+            - security_group_api
+            - memcached_servers
 /etc/nova/nova.conf:
   ini.options_present:
       - sections:
@@ -22,14 +31,14 @@
           vncserver_listen: {{ pillar['novaprivatehost'] }}
           vncserver_proxyclient_address: {{ pillar['novaprivatehost'] }}
           verbose: True
-          network_api_class: nova.network.neutronv2.api.API
-          security_group_api: neutron
           linuxnet_interface_driver: nova.network.linux_net.LinuxBridgeInterfaceDriver
           firewall_driver: nova.virt.firewall.NoopFirewallDriver
           ec2_workers: 4
           osapi_compute_workers: 4
           metadata_workers: 4
           ram_allocation_ratio: 1
+          ram_weight_multiplier: -1.0
+          use_neutron: True
         conductor:
           workers: 4
         database:
@@ -50,6 +59,7 @@
           project_name: service
           username: nova
           password: {{ pillar['nova_pass'] }}
+          memcached_servers: {{ pillar['memcached_servers'] }} 
         glance:
           host: {{ pillar['glancepublichost'] }}
           api_servers: https://{{ pillar['glancepublichost'] }}:9292
@@ -59,9 +69,11 @@
         neutron:
           url: https://{{ pillar['neutronpublichost'] }}:9696
           auth_type: password
-          auth_strategy: keystone
           auth_url: https://jblb.jetstream-cloud.org:35357
           project_name: service
+          project_domain_name: default
+          user_domain_name: default
+          region_name: RegionOne
           username: neutron
           password: {{ pillar['neutron_pass'] }} 
           metadata_proxy_shared_secret: {{ pillar['metadata_proxy_shared_secret'] }}
@@ -72,3 +84,5 @@
           vncserver_listen: 0.0.0.0
           vncserver_proxyclient_address: 127.0.0.1
           xvpvncproxy_base_url: https://jblb.jetstream-cloud.org:6081/console
+        cache:
+          memcache_servers: {{ pillar['memcached_servers'] }}
