@@ -293,7 +293,7 @@ setsecret:
 /etc/modules.d:
   file.directory
 
-/etc/modules.d/kvm-intel.conf:
+/etc/modprobe.d/kvm-intel.conf:
   file.managed:
     - source: salt://nova-compute/kvm-intel.conf
     - mode: 644
