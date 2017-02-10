@@ -1,34 +1,33 @@
 glance-user:
-  cmd.run:
-    - name: openstack user create --password {{pillar['glance_pass']}} glance
-    - env:
-      - OS_URL: https://{{ pillar['keystonehost'] }}:35357/v2.0
-      - OS_TOKEN: {{ pillar['admin_token'] }}
-    - unless: openstack user list | grep  -q glance
-
-glance-role-project:
-  cmd.run:
-    - name: openstack role add --project service --user glance admin
-    - env:
-      - OS_URL: https://{{ pillar['keystonehost'] }}:35357/v2.0
-      - OS_TOKEN: {{ pillar['admin_token'] }}
-    - unless: openstack user role list glance --project service | grep  -q admin
-    - requires:
-      - cmd: glance-user
+  keystone.user_present:
+    - name: glance
+    - password: {{pillar['glance_pass']}}
+    - email: jethelp@jetstream-cloud.org
+    - roles:
+        service:
+          - admin
 
 glance-service:
-  cmd.run:
-    - name: openstack service create --type image --description "OpenStack Image service" glance
-    - env:
-      - OS_URL: https://{{ pillar['keystonehost'] }}:35357/v2.0
-      - OS_TOKEN: {{ pillar['admin_token'] }}
-    - unless: openstack service list | grep  -q glance
+  keystone.service_present:
+    - name: glance
+    - service_type: image 
+    - description: OpenStack Image Service
 
-glance-endpoint:
-  cmd.run:
-    - name: openstack endpoint create --publicurl https://{{ pillar['glancepublichost'] }}:9292 --internalurl http://{{ pillar['glanceprivatehost'] }}:9292 --adminurl http://{{ pillar['glanceprivatehost'] }}:9292 --region RegionOne image
-    - env:
-      - OS_URL: https://{{ pillar['keystonehost'] }}:35357/v2.0
-      - OS_TOKEN: {{ pillar['admin_token'] }}
-    - unless: openstack endpoint list | grep  -q glance
-
+glance-public-endpoint:
+  keystone.endpoint_present:
+    - name: image
+    - url: https://{{ pillar['glancepublichost'] }}:9292
+    - interface: public
+    - region: RegionOne
+glance-private-endpoint:
+  keystone.endpoint_present:
+    - name: image
+    - url: https://{{ pillar['glancepublichost'] }}:9292
+    - interface: private
+    - region: RegionOne
+glance-admin-endpoint:
+  keystone.endpoint_present:
+    - name: image
+    - url: https://{{ pillar['glancepublichost'] }}:9292
+    - interface: admin
+    - region: RegionOne

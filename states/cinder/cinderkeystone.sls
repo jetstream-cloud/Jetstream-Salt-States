@@ -1,56 +1,59 @@
 cinder-user:
-  cmd.run:
-    - name: openstack user create --password {{pillar['cinder_pass']}} cinder
-    - env:
-      - OS_URL: https://{{ pillar['keystonehost'] }}:35357/v2.0
-      - OS_TOKEN: {{ pillar['admin_token'] }}
-    - unless: openstack user list | grep  -q cinder
+  keystone.user_present:
+    - name: cinder
+    - password: {{pillar['ceilometer_pass']}}
+    - email: jethelp@jetstream-cloud.org
+    - roles:
+        service:
+          - admin
 
-cinder-role-project:
-  cmd.run:
-    - name: openstack role add --project service --user cinder admin
-    - env:
-      - OS_URL: https://{{ pillar['keystonehost'] }}:35357/v2.0
-      - OS_TOKEN: {{ pillar['admin_token'] }}
-    - unless: openstack user role list cinder --project service | grep  -q admin
-    - requires:
-      - cmd: admin-role
-      - cmd: cinder-user
-      - cmd: service-project
 cinder-service:
-  cmd.run:
-    - name: openstack service create --type volume --description "OpenStack Block Storage" cinder
-    - env:
-      - OS_URL: https://{{ pillar['keystonehost'] }}:35357/v2.0
-      - OS_TOKEN: {{ pillar['admin_token'] }}
-    - unless: openstack service list | grep -v volumev2 | grep  -q volume
-    - requires:
-      - service: openstack-keystone
+  keystone.service_present:
+    - name: cinder
+    - service_type: volume
+    - description: OpenStack Block Storage
+
 cinderv2-service:
-  cmd.run:
-    - name: openstack service create --type volumev2 --description "OpenStack Block Storage" cinderv2
-    - env:
-      - OS_URL: https://{{ pillar['keystonehost'] }}:35357/v2.0
-      - OS_TOKEN: {{ pillar['admin_token'] }}
-    - unless: openstack service list | grep  -q volumev2
-    - requires:
-      - service: openstack-keystone      
-cinder-endpoint:
-  cmd.run:
-    - name: openstack endpoint create --publicurl https://{{ pillar['cinderpublichost'] }}:8776/v2/%\(tenant_id\)s --internalurl https://{{ pillar['cinderprivatehost'] }}:8776/v2/%\(tenant_id\)s --adminurl https://{{ pillar['cinderprivatehost'] }}:8776/v2/%\(tenant_id\)s --region RegionOne volume
-    - env:
-      - OS_URL: https://{{ pillar['keystonehost'] }}:35357/v2.0
-      - OS_TOKEN: {{ pillar['admin_token'] }}
-    - unless: openstack endpoint list | grep -v volumev2 |grep  -q volume
-    - requires:
-      - service: openstack-keystone
+  keystone.service_present:
+    - name: cinderv2
+    - service_type: volumev2
+    - description: OpenStack Block Storage
+
+cinder-public-endpoint:
+ keystone.endpoint_present:
+    - name: volume
+    - url: https://{{ pillar['cinderpublichost'] }}:8776/v1/%\(tenant_id\)s
+    - interface: public
+    - region: RegionOne
+cinder-private-endpoint:
+ keystone.endpoint_present:
+    - name: volume
+    - url: https://{{ pillar['cinderprivatehost'] }}:8776/v1/%\(tenant_id\)s
+    - interface: private
+    - region: RegionOne
+cinder-admin-endpoint:
+ keystone.endpoint_present:
+    - name: volume
+    - url: https://{{ pillar['cinderprivatehost'] }}:8776/v1/%\(tenant_id\)s
+    - interface: admin
+    - region: RegionOne
+
+cinderv2-public-endpoint:
+ keystone.endpoint_present:
+    - name: volume
+    - url: https://{{ pillar['cinderpublichost'] }}:8776/v2/%\(tenant_id\)s
+    - interface: public
+    - region: RegionOne
+cinderv2-private-endpoint:
+ keystone.endpoint_present:
+    - name: volume
+    - url: https://{{ pillar['cinderprivatehost'] }}:8776/v2/%\(tenant_id\)s
+    - interface: private
+    - region: RegionOne
 cinderv2-endpoint:
-  cmd.run:
-    - name: openstack endpoint create --publicurl https://{{ pillar['cinderpublichost'] }}:8776/v2/%\(tenant_id\)s --internalurl https://{{ pillar['cinderprivatehost'] }}:8776/v2/%\(tenant_id\)s --adminurl https://{{ pillar['cinderprivatehost'] }}:8776/v2/%\(tenant_id\)s --region RegionOne volumev2
-    - env:
-      - OS_URL: https://{{ pillar['keystonehost'] }}:35357/v2.0
-      - OS_TOKEN: {{ pillar['admin_token'] }}
-    - unless: openstack endpoint list | grep  -q volumev2
-    - requires:
-      - service: openstack-keystone      
+ keystone.endpoint_present:
+    - name: volume
+    - url: https://{{ pillar['cinderprivatehost'] }}:8776/v2/%\(tenant_id\)s
+    - interface: admin
+    - region: RegionOne
 
