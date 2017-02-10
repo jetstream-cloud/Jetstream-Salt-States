@@ -4,11 +4,11 @@ dkms:
 i40e-tarball:
   archive.extracted:
    - name: /usr/src/
-   - source: salt://i40e-1.5.25.tar.gz
+   - source: salt://i40e-1.6.42.tar.gz
    - archive_format: tar
-   - source_hash: md5=395dbcbb2792b6681f4482404e8f070c
-   - if_missing: /usr/src/i40e-1.5.25/
-/usr/src/i40e-1.5.25/dkms.conf:
+   - source_hash: md5=27ab74640f3fbab64b88f2c8d5dccaa9
+   - if_missing: /usr/src/i40e-1.6.42/
+/usr/src/i40e-1.6.42/dkms.conf:
   file.managed:
     - source: salt://i40e/dkms.conf
     - mode: 644
