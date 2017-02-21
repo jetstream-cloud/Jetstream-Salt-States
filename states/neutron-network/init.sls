@@ -168,8 +168,8 @@ strongswan:
   ini.options_present:
     - sections:
         DEFAULT:
-          interface_driver: neutron.agent.linux.interface.BridgeInterfaceDriver
-          device_driver: neutron.services.loadbalancer.drivers.haproxy.namespace_driver.HaproxyNSDriver
+          interface_driver: linuxbridge
+          device_driver: neutron_lbaas.drivers.haproxy.namespace_driver.HaproxyNSDriver 
 
 /etc/neutron/plugins/ml2/ml2_conf.ini:
   ini.options_present:
@@ -250,7 +250,7 @@ strongswan:
           router_delete_namespaces: True
           use_namespaces: True
           dnsmasq_config_file: /etc/neutron/dnsmasq-neutron.conf
-          interface_driver: neutron.agent.linux.interface.BridgeInterfaceDriver
+          interface_driver: linuxbridge
           dhcp_driver: neutron.agent.linux.dhcp.Dnsmasq
           dhcp_delete_namespaces: True
           verbose: True
