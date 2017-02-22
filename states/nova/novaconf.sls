@@ -16,6 +16,9 @@
             - network_api_class
             - security_group_api
             - memcached_servers
+            - ec2_workers
+          keystone_authtoken:
+            - auth_plugin
 /etc/nova/nova.conf:
   ini.options_present:
       - sections:
@@ -33,12 +36,12 @@
           verbose: True
           linuxnet_interface_driver: nova.network.linux_net.LinuxBridgeInterfaceDriver
           firewall_driver: nova.virt.firewall.NoopFirewallDriver
-          ec2_workers: 4
           osapi_compute_workers: 4
           metadata_workers: 4
           ram_allocation_ratio: 1
           ram_weight_multiplier: -1.0
           use_neutron: True
+          notification_driver: messagingv2
         conductor:
           workers: 4
         database:
@@ -53,7 +56,7 @@
         keystone_authtoken:
           auth_uri: https://{{ pillar['keystonehost'] }}:5000
           auth_url: https://{{ pillar['keystonehost'] }}:35357
-          auth_plugin: password
+          auth_type: password
           project_domain_id: default
           user_domain_id: default
           project_name: service
