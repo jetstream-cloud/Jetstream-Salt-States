@@ -116,6 +116,8 @@ setsecret:
         glance:
           - host
           - protocol
+        neutron:
+          - auth_strategy
 /etc/nova/nova.conf:
   ini.options_present:
     -  sections:
@@ -188,13 +190,15 @@ setsecret:
           lock_path: /var/lock/nova
         neutron:
           url: https://{{ pillar['neutronpublichost'] }}:9696
-          auth_strategy: keystone
           auth_type: password
           auth_url: https://{{ pillar['keystonehost'] }}:35357
           project_name: service
           username: neutron
           password: {{ pillar['neutron_pass'] }}
-
+          project_domain_name: Default
+          user_domain_name = Default
+          region_name = RegionOne
+           
 /etc/neutron/neutron.conf:
   ini.options_present:
     - sections:
