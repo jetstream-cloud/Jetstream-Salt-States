@@ -196,8 +196,8 @@ setsecret:
           username: neutron
           password: {{ pillar['neutron_pass'] }}
           project_domain_name: Default
-          user_domain_name = Default
-          region_name = RegionOne
+          user_domain_name:  Default
+          region_name: RegionOne
            
 /etc/neutron/neutron.conf:
   ini.options_present:
