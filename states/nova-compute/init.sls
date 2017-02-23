@@ -168,6 +168,8 @@ setsecret:
           disk_cachemodes: "network=writeback"
           hw_disk_discard: unmap
           volume_clear: none
+          live_migration_permit_auto_converge: True
+          live_migration_permit_post_copy: True
         workarounds:
           disable_libvirt_livesnapshot: False
         oslo_messaging_rabbit:
