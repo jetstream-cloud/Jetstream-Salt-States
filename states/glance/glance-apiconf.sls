@@ -4,6 +4,7 @@
           DEFAULT:
             workers: 4
             show_image_direct_url: True
+            show_multiple_locations: true
             verbose: True
             notification_driver: messagingv2
             rpc_backend: rabbit
