@@ -1,5 +1,6 @@
 mysqlhost: 172.16.128.2
 rabbit_hosts: 172.16.128.253,172.16.128.252,172.16.128.250
+ceph_mons: 172.16.128.101,172.16.128.121,172.16.128.130
 keystonehost: jblb.jetstream-cloud.org
 keystonepublichost: jblb.jetstream-cloud.org
 glancepublichost: jblb.jetstream-cloud.org
