@@ -25,12 +25,7 @@
         DEFAULT:
           rpc_backend: rabbit
           auth_strategy: keystone
-{% for item in grains['fqdn_ip4'] %}
-  {% if '172.16.' in item %}
-    {% set privateip = item %}
-          my_ip: {{ privateip }}
-  {% endif %}
-{% endfor %}
+          my_ip: {{ salt['grains.get']('ip4_interfaces:bond0:0') }} 
           vncserver_listen: {{ pillar['novaprivatehost'] }}
           vncserver_proxyclient_address: {{ pillar['novaprivatehost'] }}
           verbose: True
@@ -72,7 +67,7 @@
         neutron:
           url: https://{{ pillar['neutronpublichost'] }}:9696
           auth_type: password
-          auth_url: https://jblb.jetstream-cloud.org:35357
+          auth_url: https://{{ pillar['keystonehost'] }}:35357
           project_name: service
           project_domain_name: default
           user_domain_name: default
@@ -83,9 +78,9 @@
           service_metadata_proxy: True
         vnc:
           enabled: True
-          novncproxy_base_url: https://jblb.jetstream-cloud.org:6080/vnc_auto.html
+          novncproxy_base_url: https://{{ pillar['novapublichost'] }}:6080/vnc_auto.html
           vncserver_listen: 0.0.0.0
           vncserver_proxyclient_address: 127.0.0.1
-          xvpvncproxy_base_url: https://jblb.jetstream-cloud.org:6081/console
+          xvpvncproxy_base_url: https://{{ pillar['novapublichost'] }}:6081/console
         cache:
           memcache_servers: {{ pillar['memcached_servers'] }}
