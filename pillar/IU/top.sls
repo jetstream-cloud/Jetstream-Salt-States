@@ -2,6 +2,7 @@ base:
   '*':
     - distro_specific
     - hosts
+    - openstack_settings
   'jblb1*':
     - jblb1_keepalived
     - lbstatsauth
