@@ -251,8 +251,8 @@ setsecret:
   {% endif %}
 {% endfor %}
           vxlan_group: 239.0.0.0/25
-          l2_population: False 
-          arp_responder: False
+          l2_population: {{ pillar['multicast_vxlan'] }} 
+          arp_responder: {{ pillar['multicast_vxlan'] }}
         securitygroup:
           firewall_driver: neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
           enable_security_group: True
@@ -275,7 +275,7 @@ setsecret:
         agent:
           tunnel_types: vxlan
         vxlan:
-          l2_population: False 
+          l2_population: {{ pillar['multicast_vxlan'] }} 
           enable_vxlan: True
           vxlan_group: '239.1.1.1'
 {% for item in grains['fqdn_ip4'] %}
