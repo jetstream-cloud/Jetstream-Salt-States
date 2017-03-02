@@ -192,7 +192,7 @@ strongswan:
         linux_bridge:
           physical_interface_mappings: 'public:bond0.330'
         vxlan:
-          l2_population: {{ pillar['multicast_vxlan'] }} 
+          l2_population: {{ pillar['unicast_vxlan'] }} 
           enable_vxlan: True
           vxlan_group: '239.0.0.0/25'
 {% for item in grains['fqdn_ip4'] %}
@@ -223,8 +223,8 @@ strongswan:
         linux_bridge:
           physical_interface_mappings: 'public:bond0.330'
         vxlan:
-          arp_responder: {{ pillar['multicast_vxlan'] }}
-          l2_population: {{ pillar['multicast_vxlan'] }} 
+          arp_responder: {{ pillar['unicast_vxlan'] }}
+          l2_population: {{ pillar['unicast_vxlan'] }} 
           enable_vxlan: True
           vxlan_group: '239.0.0.0/25'
 {% for item in grains['fqdn_ip4'] %}
