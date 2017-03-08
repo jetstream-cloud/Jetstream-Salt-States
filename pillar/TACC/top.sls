@@ -1,9 +1,9 @@
 base:
   '*':
-    - test
-    #- distro_specific
-    #- hosts
-    #- openstack_settings
+    - salt-minion
+#    - distro_specific
+#    - hosts
+#    - openstack_settings
   'jblb1*':
     - jblb1_keepalived
     - lbstatsauth
