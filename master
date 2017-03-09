@@ -2,7 +2,7 @@ worker_threads: 16
 file_ignore_glob: []
 fileserver_backend:
   - git
-#  - roots
+  - roots
 gitfs_provider: gitpython
 gitfs_remotes:
   - https://github.com/jetstream-cloud/Jetstream-Salt-States.git:
@@ -12,7 +12,8 @@ pillar_roots:
   base:
     - /srv/pillar
 ext_pillar:
-  - git: TACC_testing https://github.com/jetstream-cloud/Jetstream-Salt-States.git root: pillar/TACC env: base 
+  - git: TACC_testing https://github.com/jetstream-cloud/Jetstream-Salt-States.git root=pillar/TACC env=base 
+
  
 nodegroups:
   database: 'db*'
