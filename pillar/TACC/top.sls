@@ -1,6 +1,7 @@
 base:
   '*':
-    - salt-minion
+    - tacc
+#    - salt-minion
 #    - distro_specific
 #    - hosts
 #    - openstack_settings
