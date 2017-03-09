@@ -5,16 +5,12 @@ fileserver_backend:
   - roots
 gitfs_provider: gitpython
 gitfs_remotes:
-  - https://github.com/jetstream-cloud/Jetstream-Salt-States.git:
-    - root: states
-    - base: TACC_testing
+  - https://github.com/jetstream-cloud/Jetstream-Salt-States.git root=states base=TACC_testing
 pillar_roots:
   base:
     - /srv/pillar
 ext_pillar:
-  - git: TACC_testing https://github.com/jetstream-cloud/Jetstream-Salt-States.git 
-    - root: pillar/TACC 
-    - env: base 
+  - git: TACC_testing https://github.com/jetstream-cloud/Jetstream-Salt-States.git root=pillar/TACC env=base 
 
  
 nodegroups:
