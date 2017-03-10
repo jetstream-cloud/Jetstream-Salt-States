@@ -10,7 +10,7 @@ openstack-barbican-api:
     - name: su -s /bin/sh -c "barbican-manage db_sync" glance
     - stateful: True
     - require:
-      - pkg: openstack-barbican
+      - pkg: openstack-barbican-api
       - ini: /etc/barbican/barbican.conf
 
 /etc/barbican/barbican.conf:
