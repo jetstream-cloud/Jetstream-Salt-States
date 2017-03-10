@@ -19,4 +19,4 @@ heathost: jblb.jetstream-cloud.org
 muranoprivatehost: jblb.jetstream-cloud.org
 mistralpublichost: jblb.jetstream-cloud.org
 memcached_servers: 172.16.129.48:11211,172.16.129.112:11211,172.16.129.176:11211
-
+barbicanpublichost: jblb.jetstream-cloud.org
