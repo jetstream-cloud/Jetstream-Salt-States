@@ -41,8 +41,7 @@ openstack-sahara-engine:
           database:
             connection: mysql://sahara:{{ pillar['sahara_dbpass']}}@{{ pillar['mysqlhost'] }}/sahara
           oslo_messaging_notifications:
-            driver: messaging
-          oslo_messaging_notifications:
+            driver: messagingv2
             enable: True
           oslo_messaging_rabbit:
             rabbit_ha_queues: True
