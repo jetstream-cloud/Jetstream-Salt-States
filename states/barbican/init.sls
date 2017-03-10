@@ -23,7 +23,7 @@ openstack-barbican-api:
             rabbit_ha_queues: True
             rabbit_hosts: {{ pillar['rabbit_hosts'] }}
             rabbit_userid: openstack
-            rabbit_password: {{ pillar['openstack_rabbit_pass'] }
+            rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
           keystone_authtoken:
             auth_uri: https://{{ pillar['keystonehost'] }}:5000
             auth_url: https://{{ pillar['keystonehost'] }}:35357
