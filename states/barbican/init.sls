@@ -5,6 +5,7 @@ openstack-barbican-api:
     - installed
     - required_in:
       - ini: /etc/barbican/barbican.conf
+      - ini: /etc/barbican/barbican-api-paste.ini
   cmd.run:
     - name: su -s /bin/sh -c "barbican-manage db_sync" glance
     - stateful: True
