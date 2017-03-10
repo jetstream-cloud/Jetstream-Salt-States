@@ -16,21 +16,21 @@ sahara-service:
 
 sahara-pubilc-endpoint:
  keystone.endpoint_present:
-    - name: sahara
+    - name: data-processing 
     - url: https://{{ pillar['saharapublichost'] }}:8386/v1.1/%\(project_id\)s
     - interface: public
     - region: RegionOne
 
 sahara-internal-endpoint:
  keystone.endpoint_present:
-    - name: sahara
+    - name: data-processing
     - url: https://{{ pillar['saharapublichost'] }}:8386/v1.1/%\(project_id\)s
     - interface: internal
     - region: RegionOne
 
 sahara-admin-endpoint:
  keystone.endpoint_present:
-    - name: sahara
+    - name: data-processing
     - url: https://{{ pillar['saharapublichost'] }}:8386/v1.1/%\(project_id\)s
     - interface: admin
     - region: RegionOne
