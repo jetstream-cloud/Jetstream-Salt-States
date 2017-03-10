@@ -25,7 +25,7 @@ openstack-keystone: openstack-keystone
 openstack-heat-api:  openstack-heat-api
 openstack-heat-api-cfn: openstack-heat-api-cfn
 openstack-heat-engine: openstack-heat-engine
-openstack-barbican-api: barbican-api
+openstack-barbican-api: openstack-barbican-api
 {% elif grains['os_family'] == 'Debian' %}
 openstack-nova-api: nova-api
 openstack-nova-cert: nova-cert
