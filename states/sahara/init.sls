@@ -38,6 +38,7 @@ openstack-sahara-engine:
             rpc_backend: rabbit
             use_neutron: True
             use_namespaces: True
+            use_rootwrap: True
           database:
             connection: mysql://sahara:{{ pillar['sahara_dbpass']}}@{{ pillar['mysqlhost'] }}/sahara
           oslo_messaging_notifications:
@@ -58,4 +59,6 @@ openstack-sahara-engine:
             project_name: service
             username: sahara
             password: {{ pillar['sahara_pass'] }}
-
+            admin_tenant_name: service
+            admin_user: sahara
+            admin_password: {{ pillar['sahara_pass'] }}
