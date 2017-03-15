@@ -21,7 +21,8 @@
             - auth_plugin
 /etc/nova/nova.conf:
   ini.options_present:
-      - sections:
+    - separator: '='
+    - sections:
         DEFAULT:
           rpc_backend: rabbit
           auth_strategy: keystone
