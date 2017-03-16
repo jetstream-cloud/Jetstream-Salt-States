@@ -62,7 +62,6 @@
           memcached_servers: {{ pillar['memcached_servers'] }} 
         glance:
           api_servers: https://{{ pillar['glancepublichost'] }}:9292
-          protocol: https
         oslo_concurrency:
           lock_path: /var/lock/nova
         neutron:
