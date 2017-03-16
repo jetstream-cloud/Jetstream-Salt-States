@@ -61,7 +61,6 @@
           password: {{ pillar['nova_pass'] }}
           memcached_servers: {{ pillar['memcached_servers'] }} 
         glance:
-          host: {{ pillar['glancepublichost'] }}
           api_servers: https://{{ pillar['glancepublichost'] }}:9292
           protocol: https
         oslo_concurrency:
