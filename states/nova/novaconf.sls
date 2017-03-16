@@ -38,7 +38,7 @@
           ram_weight_multiplier: -1.0
           use_neutron: True
           notification_driver: messagingv2
-          reserved_host_memory_mb: 1024
+          reserved_host_memory_mb: 1536
         conductor:
           workers: 4
         database:
