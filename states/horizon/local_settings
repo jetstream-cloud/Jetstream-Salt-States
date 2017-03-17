@@ -105,7 +105,7 @@ LOCAL_PATH = '/tmp'
 # (usually behind a load-balancer). Either you have to make sure that a session
 # gets all requests routed to the same dashboard instance or you set the same
 # SECRET_KEY for all of them.
-SECRET_KEY='f71a25164551bf465376'
+SECRET_KEY="{{ pillar['openstack-dashboard-shared-secret'] }}"
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
 CACHES = {

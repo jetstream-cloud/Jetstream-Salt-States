@@ -1,4 +1,25 @@
 #!yaml|gpg
+openstack-dashboard-shared-secret: |
+  -----BEGIN PGP MESSAGE-----
+  Comment: GPGTools - http://gpgtools.org
+  
+  hQIMA4VjTU4mltuAAQ/+ODynBU8xE7PdSOuQKxA1+Hgb7XNctrksSem2EMPNdbq0
+  Ka9xUMwIOf3f040on1mw+B37H2hOYg1m4sS9DcYeMNwQbbl5wWY0OCjDTjxzog54
+  IneCNMHp5pF9lsnR4W0iI+1d7lPg4Q3kaP2jv4usTr9kDe2qYzG77n2IJYtLqSPI
+  WEBhzap1pOp09KUwgbGhk/KVVr7LHkLYbdClz9KXrmtRN05yZmbcSxwhjToOuUsv
+  82xPj7ZzYnuba6UJaYoHLzgtufXU/H4Z71C/PFGj0FLuvhZIJl8d5Lij9+9G/r7o
+  dnbxTNfSWqr3cGCnfYQQ2TnmGYDUrDTZb95L14eN8r03JfcbQBVTdIvBNgMsTyC9
+  pyGc2IQz1E+E8KZRQeQGu4GG6wW3nGPlBYanhrhJHNg1FpuweLjHSWUMQFHA8vBN
+  Z9oo1Zcf1NX4msZnhbqxQGapHDLrnJb8+NAh0YQAA2ZI2JlX52hkmjrQUrLduaP6
+  jf7LmLKWW9yACM2ZHfPizgZAgxd9JLC+UWDgx5S5b/C+GJAG2pF/8X9x4LcJla4y
+  qTrHe6meOlxmsNcyNp5OfLkhKO4K0sow0udySu6a8ZJfPRgQt4X7fXrsM0g3dRG8
+  1NZ7vxH8pZ6rcFuIvlBfRfNV9W+OchG1VAt2oHxLruVKu3uY253Egy4zd0Fbor/S
+  uwEcH9IJ7419LiOJGBj4RtXUWtfb5/aRoTuP/fbNJCgj1adgbcrxqHgEF8Mrlx+2
+  Z2uGSJT8+Y66d4TBDnWTLWT7CrOjdhU3qvWvkeoOo4K5xX7mPLtVmKn4fLJ+crBw
+  0wgXYjrhBtwSeOix4Nol1gIRojOAvQ0xKtxY8mMoCRu1PqJMUSP9I7aAoGuY0U89
+  uUhfjlnx4updFU88Jlu5aOc7f5BMrWgPfTx6KujSl+vNxK9eGK3yWms7FiY=
+  =1zr5
+  -----END PGP MESSAGE-----
 sahara_pass: |
   -----BEGIN PGP MESSAGE-----
   Comment: GPGTools - http://gpgtools.org
