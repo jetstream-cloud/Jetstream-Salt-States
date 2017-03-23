@@ -2,9 +2,9 @@ base:
   '*':
 #    - tacc2
 #    - salt-minion
-    - distro_specific
-    - hosts
-    - openstack_settings
+#    - distro_specific
+#    - hosts
+#    - openstack_settings
   'jblb1*':
     - jblb1_keepalived
     - lbstatsauth
@@ -25,4 +25,4 @@ base:
     - distro_specific
     - hosts
     - openstack_settings
-    - nova-compute
+#    - nova-compute
