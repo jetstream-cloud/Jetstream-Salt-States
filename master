@@ -11,14 +11,18 @@ gitfs_remotes:
     - base: TACC_testing
     - root: states
 
-#pillar_roots:
-#  base:
-#    - /srv/pillar
+pillar_roots:
+  base:
+    - /srv/pillar
+
+file_roots:
+  base:
+    - /srv/salt/states
 
 # pillar source
 ext_pillar:
   - git: 
-    - base https://github.com/jetstream-cloud/Jetstream-Salt-States.git:
+    - TACC_testing https://github.com/jetstream-cloud/Jetstream-Salt-States.git:
       - root: pillar/TACC
       - env: TACC_testing
 

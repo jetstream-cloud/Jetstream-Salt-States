@@ -1,6 +1,6 @@
 base:
   '*':
-    - tacc
+    - tacc2
 #    - salt-minion
 #    - distro_specific
 #    - hosts
@@ -21,3 +21,5 @@ base:
     - hosts
   'jbm1':
     - passwords
+  'compute*':
+    - nova-compute

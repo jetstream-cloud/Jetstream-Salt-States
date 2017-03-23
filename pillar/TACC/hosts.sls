@@ -18,6 +18,7 @@ heathost: jblb.jetstream-cloud.org
 muranoprivatehost: jblb.jetstream-cloud.org
 mistralpublichost: jblb.jetstream-cloud.org
 memcached_servers: 172.16.129.48:11211,172.16.129.112:11211,172.16.129.176:11211
+openstack-nova-compute: 129.114.19.144
 
 master: 129.114.16.133
 compute: 129.114.19.144
