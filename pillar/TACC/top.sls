@@ -1,6 +1,7 @@
 base:
   '*':
     - distro_specific
+    - hosts
   'jblb1*':
     - jblb1_keepalived
     - lbstatsauth
@@ -18,6 +19,4 @@ base:
   'jbm1':
     - passwords
   'compute*':
-    - distro_specific
-    - hosts
     - openstack_settings
