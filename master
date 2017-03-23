@@ -3,16 +3,27 @@ file_ignore_glob: []
 fileserver_backend:
   - git
   - roots
-gitfs_provider: gitpython
-gitfs_remotes:
-  - https://github.com/jetstream-cloud/Jetstream-Salt-States.git root=states base=TACC_testing
-pillar_roots:
-  base:
-    - /srv/pillar
-ext_pillar:
-  - git: TACC_testing https://github.com/jetstream-cloud/Jetstream-Salt-States.git root=pillar/TACC env=base 
+#gitfs_provider: gitpython
 
- 
+# states source
+gitfs_remotes:
+  - https://github.com/jetstream-cloud/Jetstream-Salt-States.git:
+    - base: TACC_testing
+    - root: states
+
+#pillar_roots:
+#  base:
+#    - /srv/pillar
+
+# pillar source
+ext_pillar:
+  - git: 
+    - base https://github.com/jetstream-cloud/Jetstream-Salt-States.git:
+      - root: pillar/TACC
+      - env: TACC_testing
+
+
+
 nodegroups:
   database: 'db*'
   loadbalancer: 'master*'
