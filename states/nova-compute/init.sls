@@ -243,6 +243,8 @@ setsecret:
 /etc/neutron/plugins/ml2/linuxbridge_agent.ini:
   ini.options_present:
     - sections:
+        linux_bridge:
+          physical_interface_mappings: "iris-wrangler:bond0.360"
         vxlan:
 {% for item in grains['fqdn_ip4'] %}
   {% if '172.16.' in item %}
