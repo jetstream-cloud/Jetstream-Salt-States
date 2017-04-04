@@ -27,6 +27,7 @@
           restore_discard_excess_bytes: true
           osapi_volume_workers: 4
           report_discard_supported:  true
+          allow_availability_zone_fallback: True
         database:
           connection: mysql://cinder:{{ pillar['cinder_dbpass'] }}@{{ pillar['mysqlhost'] }}/cinder
         keystone_authtoken:
