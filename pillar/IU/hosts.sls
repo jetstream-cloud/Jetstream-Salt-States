@@ -22,3 +22,4 @@ memcached_servers: 172.16.129.48:11211,172.16.129.112:11211,172.16.129.176:11211
 saharapublichost: iu.jetstream-cloud.org
 barbicanpublichost: iu.jetstream-cloud.org
 horizonhost: iu.jetstram-cloud.org
+manilapublichost: iu.jetstream-cloud.org
