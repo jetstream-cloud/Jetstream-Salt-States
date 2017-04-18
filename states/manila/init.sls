@@ -1,4 +1,6 @@
-
+python-manilaclient:
+  pkg:
+    - installed
 
 openstack-manila:
   pkg:
@@ -20,7 +22,7 @@ openstack-manila-api:
       - ini: /etc/manila/manila.conf
     - require:
       - cmd: openstack-manila
-openstack-manila-engine:
+openstack-manila-scheduler:
   service:
     - running
     - enable: True
@@ -46,6 +48,7 @@ openstack-manila-engine:
             driver_handles_share_servers: True
             enabled_share_backends: generic
             enabled_share_protocols: NFS
+            manila_service_keypair_name: manilaservicekey
           database:
             connection: mysql+pymysql://manila:{{ pillar['manila_dbpass']}}@{{ pillar['mysqlhost'] }}/manila
           oslo_concurrency:
