@@ -1,4 +1,42 @@
 #!yaml|gpg
+manila_dbpass: |
+  -----BEGIN PGP MESSAGE-----
+  Comment: GPGTools - http://gpgtools.org
+  
+  hQIMA4VjTU4mltuAAQ//em6M3qNoJ9EgkCFKOs8jscfYfEsNJwzykHw556dSxaJL
+  VVOP2C3+zmM4exYLcBKcTufztDVM2Z7hE4cMb6XeEek4zW5uWr9TtixvgbcA/bd0
+  akwtdDEPQAJSwyA3NIyqISN8VPKfLt9lbRfeI6i794b+r9HhoJnQhyRqh0m5jBTZ
+  nGUUMG/7hX/1TAYaFVoykf5P7sToawyoKj+b7EfqTSPjHlqg+xfE8l8yEOnQI5ap
+  0fMnGZ7YIl3I7qCatYgM018CbWO8tKK8CLDPlU5BbejEv7OFBkRoAO6lhQn7b1oj
+  Kmd3+/7dakk0DwES/L9NoLeaChx0Qzkv9Ztl8+tvfB3A9lzadLx3Gr9gK77/Cpvt
+  3n7ryu2Y8quihkdo1yMoIspyL3sKxqDGW4XJ/AR95YchlU0lFmXmPJdtJEtZfCWp
+  55jpR6zUGvHvS+zDUZCAhTLmpiYQ/bokTdr68lvGhF0hr9JgqUj1zNk4krya2wTX
+  2hxSTYcfdbAvTA57MCRkUtwHHYq6jT3xCjBq37sGhrM0fHP2cGcPqnQIyBJILgsc
+  K73oTgoRg+qS5eeXBSP+EnbUzuYZRuQaAF78aNa5AOEMlvOBQ9IwVz+NwKxt8mMd
+  OCU6jcXcS0pgZ7qv5tRjBpgJllJ4LRyBS9cWfh4kuKThwoY1R6lsZMpEiU9ovJLS
+  TwEZgtt0SgOzP/37B5Vfu/xaJzMMAFC0UQNq8p+Kgwo01XKKS7bLmbojIecIPLej
+  fVyEo8MHnorp9pkh0XJ9G3lVkl8saBGAopvLB6Ob0do=
+  =OAtS
+  -----END PGP MESSAGE-----
+manila_pass: |
+  -----BEGIN PGP MESSAGE-----
+  Comment: GPGTools - http://gpgtools.org
+  
+  hQIMA4VjTU4mltuAARAA3DKwC5xs3ClkDoN40IhT3VeHLbmTaTANGF5VCZTw22UJ
+  oYQovohoVFTLHwS3CRa2hulmitvivcyyZkwzmgAQ7E+dd2rdKSv8R0MrJ0UxPDFX
+  RFvRYl/1wLyVTXJtvGgH/Wv6seH4OtzFEQTC+KF4DmPnqn+63FuEhbcpcsHsAwDU
+  SbckO7h0VWqlJOYCHpTcx1zZwh6CeSL4LloTj+aiIU0ucDJ+knNX6s34kGadraPP
+  63zYfttsSFURZn2Bjj26Nss/gTYcJr28E4vFufQFjjrFuICxHp4O3OCqhRdpYi2e
+  zQb2HeQ3njafhEfOQftM5iYUDlmLtyMnE//bBrwywwKjPCjUgdKfO6z4U7FxnpiZ
+  vHLmU1Va1UlG2ZAajBf/rqUzG5zfOwfjryI2pm/x3o81WbgaPKOL1nTbBHLv8HXw
+  fM1JXxILZ073YvT00a1sfHv9RdmDd44soaxGkVaAc+ezaEEHn3lSgG+ypSFgECxY
+  FyBsRhUYOZ8dhtp+Cp8l3IdKB59wHXnhKi9KlPME1rtsbqMYV5/T640U8UCrdcx8
+  sszclb6kh15pK1dMSpELAHx2zLDAtkKIMfuQSN2GnsSyOlbPcocujPz6yVlvQu4g
+  0POxkhn23MsmXj35yXOeyqtk4RlqPe7o8Z/niUWAzxa+oaijLtKw7AIoNGeKlobS
+  TwG+cpz15WmDkfxzKf1l2s9O0Mt/ejjah2VdHN59U6QjBJFngzeo2s/Hc2FmNnVo
+  py0GHVdpX2tixpBGZ3BMUydbNDSXe+ky27AFopI3T4Q=
+  =EkJj
+  -----END PGP MESSAGE-----
 openstack-dashboard-shared-secret: |
   -----BEGIN PGP MESSAGE-----
   Comment: GPGTools - http://gpgtools.org
