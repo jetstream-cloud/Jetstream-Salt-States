@@ -21,21 +21,21 @@ manila-service-v2:
 
 manila-pubilc-endpoint:
  keystone.endpoint_present:
-    - name: share 
+    - name: manila 
     - url: https://{{ pillar['manilapublichost'] }}:8786/v1/%\(tenant_id\)s
     - interface: public
     - region: RegionOne
 
 manila-internal-endpoint:
  keystone.endpoint_present:
-    - name: share
+    - name: manila
     - url: https://{{ pillar['manilapublichost'] }}:8786/v1/%\(tenant_id\)s
     - interface: internal
     - region: RegionOne
 
 manila-admin-endpoint:
  keystone.endpoint_present:
-    - name: share
+    - name: manila
     - url: https://{{ pillar['manilapublichost'] }}:8786/v1/%\(tenant_id\)s
     - interface: admin
     - region: RegionOne
