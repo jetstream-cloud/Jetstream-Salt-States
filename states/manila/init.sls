@@ -8,7 +8,7 @@ openstack-manila:
     - required_in:
       - ini: /etc/manila/manila.conf
   cmd.run:
-    - name: su -s /bin/sh -c "manila-db-manage upgrade head" manila
+    - name: su -s /bin/sh -c "manila-manage db sync" manila
     - stateful: True
     - require:
       - pkg: openstack-manila
