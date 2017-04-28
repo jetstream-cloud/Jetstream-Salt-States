@@ -244,7 +244,7 @@ setsecret:
   ini.options_present:
     - sections:
         linux_bridge:
-          physical_interface_mappings: "iris-wrangler:bond0.360"
+          physical_interface_mappings: "iris-wrangler:bond0.360,sra-wrangler:bond0.361"
         vxlan:
 {% for item in grains['fqdn_ip4'] %}
   {% if '172.16.' in item %}
@@ -270,7 +270,7 @@ setsecret:
           tunnel_id_ranges: "1:1000"
         ml2_type_vxlan:
           vni_ranges: '100:10000'
-          vxlan_group: '239.1.1.1'
+          vxlan_group: '239.0.0.0/25'
         securitygroup:
           enable_security_group: True
           enable_ipset: True
@@ -279,7 +279,7 @@ setsecret:
         vxlan:
           l2_population: {{ pillar['unicast_vxlan'] }} 
           enable_vxlan: True
-          vxlan_group: '239.1.1.1'
+          vxlan_group: '239.0.0.0/25'
 {% for item in grains['fqdn_ip4'] %}
   {% if '172.16.' in item %}
     {% set privateip = item %}
