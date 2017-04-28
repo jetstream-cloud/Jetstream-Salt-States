@@ -190,7 +190,7 @@ strongswan:
         agent:
           tunnel_types: vxlan
         linux_bridge:
-          physical_interface_mappings: 'public:bond0.330,iris-wrangler:bond0.360,sra-wrangler:bond0.361'
+          physical_interface_mappings: 'public:bond0.330,iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362'
         vxlan:
           l2_population: {{ pillar['unicast_vxlan'] }} 
           enable_vxlan: True
@@ -221,7 +221,7 @@ strongswan:
         agent:
           tunnel_types: vxlan
         linux_bridge:
-          physical_interface_mappings: 'public:bond0.330,iris-wrangler:bond0.360,sra-wrangler:bond0.361,unidata-wrangler:bond0.362'
+          physical_interface_mappings: 'public:bond0.330,iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362'
         vxlan:
           arp_responder: {{ pillar['unicast_vxlan'] }}
           l2_population: {{ pillar['unicast_vxlan'] }} 
