@@ -112,6 +112,7 @@ neutron-lbaas-agent:
       - ini: /etc/neutron/neutron.conf
       - ini: /etc/neutron/lbaas_agent.ini
   service:
+    - name: neutron-lbaasv2-agent
     - running
     - enable: True
     - watch:
@@ -127,8 +128,8 @@ neutron-vpn-agent:
     - require_in:
       - ini: /etc/neutron/neutron.conf
   service:
-    - running
-    - enable: True
+    - dead
+    - enable: False 
     - watch:
       - ini: /etc/neutron/neutron.conf
 strongswan:
@@ -162,7 +163,7 @@ strongswan:
           rabbit_userid: openstack
           rabbit_password: {{pillar['openstack_rabbit_pass'] }}
         service_providers:
-          service_provider: "LOADBALANCER:Haproxy:neutron_lbaas.drivers.haproxy.plugin_driver.HaproxyOnHostPluginDriver:default"
+          service_provider: "LOADBALANCERV2:Haproxy:neutron_lbaas.drivers.haproxy.plugin_driver.HaproxyOnHostPluginDriver:default"
 
 /etc/neutron/lbaas_agent.ini:
   ini.options_present:
