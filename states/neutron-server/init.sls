@@ -100,11 +100,12 @@ openstack-neutron-lbaas:
           tenant_network_types: vxlan,vlan
           mechanism_drivers: linuxbridge,l2population
           path_mtu: 9050
+          physical_network_mtus: "iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000"
         ml2_type_gre:
           tunnel_id_ranges: '1:1000'
         ml2_type_vxlan:
           vni_ranges: '100:10000'
-          vxlan_group: '239.1.1.1'
+          vxlan_group: '239.0.0.0/25'
         securitygroup:
           enable_security_group: 'True'
           enable_ipset: True

@@ -266,6 +266,7 @@ setsecret:
           type_drivers: flat,vlan,gre,vxlan
           tenant_network_types: vxlan,vlan
           mechanism_drivers: linuxbridge,l2population
+          physical_network_mtus: "iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000"
         ml2_type_gre:
           tunnel_id_ranges: "1:1000"
         ml2_type_vxlan:
