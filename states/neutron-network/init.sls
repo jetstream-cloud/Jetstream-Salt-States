@@ -197,12 +197,8 @@ strongswan:
           l2_population: {{ pillar['unicast_vxlan'] }} 
           enable_vxlan: True
           vxlan_group: '239.0.0.0/25'
-{% for item in grains['fqdn_ip4'] %}
-  {% if '172.16.' in item %}
-    {% set privateip = item %}
-          local_ip: {{ privateip }}
-  {% endif %}
-{% endfor %}                             
+          local_ip: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
+                      
 
 /etc/neutron/plugins/ml2/linuxbridge_agent.ini:
   ini.options_present:
@@ -229,12 +225,8 @@ strongswan:
           l2_population: {{ pillar['unicast_vxlan'] }} 
           enable_vxlan: True
           vxlan_group: '239.0.0.0/25'
-{% for item in grains['fqdn_ip4'] %}
-  {% if '172.16.' in item %}
-    {% set privateip = item %}
-          local_ip: {{ privateip }}
-  {% endif %}
-{% endfor %}                       
+          local_ip: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
+            
 
 /etc/neutron/l3_agent.ini:
   ini.options_present:
