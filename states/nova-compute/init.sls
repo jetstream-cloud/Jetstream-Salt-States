@@ -137,22 +137,13 @@ setsecret:
           firewall_driver: nova.virt.firewall.NoopFirewallDriver
           verbose: True
           use_neutron: True
-{% for item in grains['fqdn_ip4'] %}
-  {% if '172.16.' in item %}
-    {% set privateip = item %}
-          my_ip: {{ privateip }}
-  {% endif %}
-{% endfor %}
+          my_ip: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
+
         vnc:
           enabled: True
           novncproxy_base_url: https://{{ pillar['novapublichost'] }}:6080/vnc_auto.html
           vncserver_listen:  0.0.0.0
-{% for item in grains['fqdn_ip4'] %}
-  {% if '172.16.' in item %}
-    {% set privateip = item %}
-          vncserver_proxyclient_address: {{ privateip }}
-  {% endif %}
-{% endfor %}
+          vncserver_proxyclient_address: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
           xvpvncproxy_base_url: https://{{ pillar['novapublichost'] }}:6081/console         
         libvirt:
           cpu_mode: host-passthrough
@@ -246,12 +237,8 @@ setsecret:
         linux_bridge:
           physical_interface_mappings: "iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362"
         vxlan:
-{% for item in grains['fqdn_ip4'] %}
-  {% if '172.16.' in item %}
-    {% set privateip = item %}
-          local_ip: {{ privateip }}
-  {% endif %}
-{% endfor %}
+
+          local_ip: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
           vxlan_group: 239.0.0.0/25
           l2_population: {{ pillar['unicast_vxlan'] }} 
           arp_responder: {{ pillar['unicast_vxlan'] }}
@@ -281,12 +268,9 @@ setsecret:
           l2_population: {{ pillar['unicast_vxlan'] }} 
           enable_vxlan: True
           vxlan_group: '239.0.0.0/25'
-{% for item in grains['fqdn_ip4'] %}
-  {% if '172.16.' in item %}
-    {% set privateip = item %}
-          local_ip: {{ privateip }}
-  {% endif %}
-{% endfor %}         
+
+          local_ip: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
+
 
 {% if os_family == 'RedHat' %}
 /etc/neutron/plugin.ini:
