@@ -52,7 +52,7 @@ openstack-sahara-engine:
           keystone_authtoken:
             auth_uri: https://{{ pillar['keystonehost'] }}:5000
             auth_url: https://{{ pillar['keystonehost'] }}:35357
-            memcached_servers: 172.16.129.48:11211,172.16.129.112:11211,172.16.129.176:11211
+            memcached_servers: {{ pillar['memcached_servers'] }}
             auth_type: password
             project_domain_name: default
             user_domain_name: default
