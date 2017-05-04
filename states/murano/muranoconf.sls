@@ -12,7 +12,7 @@
         database:
           connection: mysql://murano:{{ pillar['murano_dbpass'] }}@{{ pillar['mysqlhost'] }}/murano
         keystone_authtoken:
-          memcached_servers: 172.16.129.48:11211,172.16.129.112:11211,172.16.129.176:11211
+          memcached_servers: {{ pillar['memcached_servers'] }} 
           token_cache_time: 3600
           auth_uri: https://{{ pillar['keystonehost'] }}:5000
           auth_url: https://{{ pillar['keystonehost'] }}:35357
