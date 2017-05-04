@@ -55,7 +55,7 @@ python-ceilometerclient:
         collector:
           workers: 16
         coordination:
-          backend_url = zookeeper://172.16.128.253:2181?hosts=172.16.128.250:2181,172.16.128.252:2181
+          backend_url = {{ pillar['zookeeper_url'] }}
         dispatcher_gnocchi:
           archive_policy: low
           archive_policy_file: gnocchi_archive_policy_map.yaml
