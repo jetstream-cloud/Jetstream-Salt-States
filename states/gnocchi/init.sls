@@ -52,9 +52,9 @@ gnocchi:
         archive_policy:
           default_aggregation_methods: mean,min,max,sum,std,median,count,95pct
         database:
-          connection: mysql://gnocchi:{{ pillar['gnocchi_dbpass'] }}@172.16.128.2/gnocchi?charset=utf8
+          connection: mysql://gnocchi:{{ pillar['gnocchi_dbpass'] }}@{{ pillar['mysqlhost'] }}/gnocchi?charset=utf8
         indexer:
-          url: mysql://gnocchi:{{ pillar['gnocchi_dbpass'] }}@172.16.128.2/gnocchi?charset=utf8
+          url: mysql://gnocchi:{{ pillar['gnocchi_dbpass'] }}@{{ pillar['mysqlhost'] }}/gnocchi?charset=utf8
           driver: sqlalchemy
         keystone_authtoken:
           auth_uri: https://{{ pillar['keystonehost'] }}:5000
