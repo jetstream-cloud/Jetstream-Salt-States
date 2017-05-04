@@ -72,7 +72,7 @@ openstack-neutron-lbaas:
           username: nova
           password: {{ pillar['nova_pass'] }}
         keystone_authtoken:
-          memcached_servers: 172.16.129.48:11211,172.16.129.112:11211,172.16.129.176:11211
+          memcached_servers: {{ pillar['memcached_servers'] }}
           token_cache_time: 3600
           auth_uri: https://{{ pillar['keystonehost'] }}:5000
           auth_url: https://{{ pillar['keystonehost'] }}:35357
@@ -90,8 +90,8 @@ openstack-neutron-lbaas:
         database:
           connection: mysql://neutron:{{ pillar['neutron_dbpass'] }}@{{ pillar['mysqlhost'] }}/neutron
         service_providers:
-          service_provider: "LOADBALANCER:Haproxy:neutron_lbaas.drivers.haproxy.plugin_driver.HaproxyOnHostPluginDriver:default"
-          service_provider: "VPN:openswan:neutron_vpnaas.service.vpn.service_drivers.ipsec.IPsecVPNDriver.default"
+          service_provider: "LOADBALANCERV2:Haproxy:neutron_lbaas.drivers.haproxy.plugin_driver.HaproxyOnHostPluginDriver:default"
+          service_provider: "VPN:openswan:neutron_vpnaas.service.vpn.service_drivers.ipsec.IPsecVPNDriver:default"
 /etc/neutron/plugins/ml2/ml2_conf.ini:
   ini.options_present:
     - sections:
