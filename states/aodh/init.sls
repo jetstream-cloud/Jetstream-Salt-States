@@ -77,5 +77,5 @@ python-ceilometerclient:
           interface: internalURL
           region_name: RegionOne
         database:
-          connection: mysql://aodh:{{ pillar['aodh_dbpass'] }}@172.16.128.2/aodh
+          connection: mysql://aodh:{{ pillar['aodh_dbpass'] }}@{{ pillar['mysqlhost'] }}/aodh
 
