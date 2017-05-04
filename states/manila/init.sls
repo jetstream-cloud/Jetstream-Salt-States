@@ -101,7 +101,7 @@ openstack-manila-scheduler:
             share_backend_name: GENERIC
             share_driver: manila.share.drivers.generic.GenericShareDriver
             driver_handles_share_servers: True
-            service_instance_flavor_id: 100
+            service_instance_flavor_id: 2 
             service_image_name: manila-service-image
             service_instance_user: manila
             service_instance_password: manila
