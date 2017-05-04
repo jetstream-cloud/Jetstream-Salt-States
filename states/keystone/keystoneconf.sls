@@ -18,14 +18,14 @@
            provider: keystone.token.providers.uuid.Provider
            driver: memcache_pool 
         memcache:
-           servers: 172.16.129.48:11211,172.16.129.112:11211,172.16.129.176:11211   
+           servers: {{ pillar['memcached_servers'] }}   
         identity:
            domain_specific_drivers_enabled: true
            default_domain_name: Default
         cache:
            expiration_time: 3600
            backend: oslo_cache.memcache_pool
-           memcache_servers: 172.16.129.48:11211,172.16.129.112:11211,172.16.129.176:11211
+           memcache_servers: {{ pillar['memcached_servers'] }}
         resource:
           admin_project_domain_name: default
           admin_project_name: admin
