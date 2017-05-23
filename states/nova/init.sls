@@ -84,5 +84,12 @@ openstack-nova-scheduler:
 python-novaclient:
   pkg.installed
 
+/var/lock/nova:
+  file.directory:
+    - user: nova
+    - group: nova
+
+    
+
 include:
   - nova.novaconf
