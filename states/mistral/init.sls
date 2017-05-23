@@ -15,7 +15,7 @@ openstack-mistral-all:
             debug: True
             verbose: True
           database:
-            connection: mysql://mistral:{{ pillar['mistral_dbpass']}}@{{ pillar['mysqlhost'] }}/mistral
+            connection: mysql+pymysql://mistral:{{ pillar['mistral_dbpass']}}@{{ pillar['mysqlhost'] }}/mistral
           oslo_messaging_notifications:
             driver: messagingv2
           oslo_messaging_rabbit:

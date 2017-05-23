@@ -29,7 +29,7 @@
           report_discard_supported:  true
           allow_availability_zone_fallback: True
         database:
-          connection: mysql://cinder:{{ pillar['cinder_dbpass'] }}@{{ pillar['mysqlhost'] }}/cinder
+          connection: mysql+pymysql://cinder:{{ pillar['cinder_dbpass'] }}@{{ pillar['mysqlhost'] }}/cinder
         keystone_authtoken:
           memcached_servers: {{ pillar['memcached_servers'] }}
           auth_uri: https://{{ pillar['keystonehost'] }}:5000

@@ -40,7 +40,7 @@ openstack-sahara-engine:
             use_namespaces: True
             use_rootwrap: True
           database:
-            connection: mysql://sahara:{{ pillar['sahara_dbpass']}}@{{ pillar['mysqlhost'] }}/sahara
+            connection: mysql+pymysql://sahara:{{ pillar['sahara_dbpass']}}@{{ pillar['mysqlhost'] }}/sahara
           oslo_messaging_notifications:
             driver: messagingv2
             enable: True

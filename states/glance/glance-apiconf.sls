@@ -16,7 +16,7 @@
             rbd_store_ceph_conf: /etc/ceph/ceph.conf
             rbd_store_chunk_size: 8
           database:
-            connection: mysql://glance:{{ pillar['glance_dbpass'] }}@{{ pillar['mysqlhost'] }}/glance
+            connection: mysql+pymysql://glance:{{ pillar['glance_dbpass'] }}@{{ pillar['mysqlhost'] }}/glance
           keystone_authtoken:
             auth_uri: https://{{ pillar['keystonehost'] }}:5000
             auth_url: https://{{ pillar['keystonehost'] }}:35357

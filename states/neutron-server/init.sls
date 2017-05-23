@@ -88,7 +88,7 @@ openstack-neutron-lbaas:
           rabbit_userid: openstack
           rabbit_password: {{pillar['openstack_rabbit_pass'] }}
         database:
-          connection: mysql://neutron:{{ pillar['neutron_dbpass'] }}@{{ pillar['mysqlhost'] }}/neutron
+          connection: mysql+pymysql://neutron:{{ pillar['neutron_dbpass'] }}@{{ pillar['mysqlhost'] }}/neutron
         service_providers:
           service_provider: "LOADBALANCERV2:Haproxy:neutron_lbaas.drivers.haproxy.plugin_driver.HaproxyOnHostPluginDriver:default"
           service_provider: "VPN:openswan:neutron_vpnaas.service.vpn.service_drivers.ipsec.IPsecVPNDriver:default"

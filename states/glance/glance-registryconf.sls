@@ -7,7 +7,7 @@
             notification_driver: messagingv2
             rpc_backend: rabbit
           database:
-            connection: mysql://glance:{{ pillar['glance_dbpass'] }}@{{ pillar['mysqlhost'] }}/glance
+            connection: mysql+pymysql://glance:{{ pillar['glance_dbpass'] }}@{{ pillar['mysqlhost'] }}/glance
           keystone_authtoken:
             auth_uri: https://{{ pillar['keystonehost'] }}:5000
             auth_url: https://{{ pillar['keystonehost'] }}:35357
