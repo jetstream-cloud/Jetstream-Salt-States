@@ -13,8 +13,6 @@ openstack-nova-api:
     - enable: True
     - watch:
       - ini: /etc/nova/nova.conf
-    - require:
-      - cmd: openstack-nova-api
   cmd.run:
     - name: su -s /bin/sh -c "nova-manage db sync" nova
     - stateful: True
