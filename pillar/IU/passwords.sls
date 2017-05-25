@@ -1,4 +1,42 @@
 #!yaml|gpg
+tacc_ldap_pass: |
+  -----BEGIN PGP MESSAGE-----
+  Comment: GPGTools - http://gpgtools.org
+  
+  hQIMA4VjTU4mltuAAQ//QwL2aa4n/H4WC/6WqW/9TccV9+u8+Sq0fmam2sZVVFNq
+  J4rckU48pbu4bK6mNugN3iObucbeSe7fHuFIOLX6aGcmY/cRVgGWJrBEolshhPMZ
+  3rCpsZIPDJWcFyK8BAPJAmWuKLJU5P+tGXLEAvJpnrZYpK/SLQX4nPw0i1e/lvQ8
+  krHOuRCgOovhwjP9okp6Qb+Nqr+kFzRtfylgmFVFH8EwZ6txMaLem7jrrcVGlgbs
+  xKXocDWfJdUk7uRl2R+SwV/YzR1LEIjj+rgmO1QILRzUTrGyb2nZWI5WAUOFM0co
+  y+Co0/j1dOOEhzuND4KkJLn/PEdFZW8i+UeDP7qdlL+F391QwvJyxtO6s1oUFOll
+  O0n5djlCrehEuWOgwiV31AqUk5NKnSz9u/vUQwjPr6pMGlOBDaXm0Fc3H0KZr2m1
+  lVf6rjnFLAsZUIerLnVgHNQ61FYQSnXM8fmNzNJap+wc0Wp9gbBWD5nB8xwfUkNp
+  pX5p/BxbJLBqPp2TcjCgIoaqKoIWyt2ogWMFURVs8+/1WZCpAjTiJMNDe96J49bZ
+  hwWOHUenW2T78zRAHmEqbCuVSBMfP5f3OMFyQ94q3iILxSHA05no1Y01aThlKokU
+  HKMtVfIZj48ajNbno0rLMivIFJwmeClK4dKH9tgG2jFav3BdaVWdLSKl9ScchPjS
+  TwHqcknGQhhg5dV7zn23BebCpBrUVPVLqhdB0q4Nleh4lFa4ZUD/NYGSre3u6XrA
+  ybVyGcmMPu9X/ibTJLSbL2t8r7l9IN9iv3EwALobLUE=
+  =Yflx
+  -----END PGP MESSAGE-----
+ldap_password: |
+  -----BEGIN PGP MESSAGE-----
+  Comment: GPGTools - http://gpgtools.org
+  
+  hQIMA4VjTU4mltuAARAAtLgT86YREDk/6/SNgWLU/SuirV/hTnCY9tkWQXFPpen+
+  ZhQ07HGxgU6JhVi+R5Be5W0bBYILbD6olb9vWbE1P56OD4dZ8qH0hAuWYve/UC1R
+  A0EySymepWwz2qJYJ4IK8bMuNAJEOebKltJdVWoC8tCI9ymqPysGx643huNQ67vy
+  1aQe59M86cSiZ8pkZ38xOxY8hSDBkGiLbsSXcdpX+JK5Sc60YyZOC/YJGnVgtpdD
+  Kek940jr1oMpjsScfK0D2aowwkmvyoVgNLEzmDUO5DjPbGt4zwycZEJkVnf6slbg
+  OglYgL+o4zD/hw1Ao/JeHpxsUVi7HIiLbzd+VWW+0Dxw4dv3hVrYYwssSP8ApN8p
+  SKd8J9dyxjBj66EwsC1WCo+WFRHt+vlz66dTIWtH0oIGVNRQZNAUD+UWkeDQ2fKn
+  e8MG1/rIVSWSgPF489Zz9IkoxiK5FtVbqikqkN/SbXJAAKpePd07racnbHUhZrdj
+  jzXU9GVwpyk4nHF4+KO4oM6IFdcuMf37Cv8Jx/CGDuJVy96n5aD5rdvSVr0YhMCV
+  a3AcWSjDYlHX3nMObd/81kpqWHh/500lncWnwqa4TRwKOnKDTIkFPFl7b7qT6Pv4
+  srwl0GTzEp5HbQNWWkAyr4bOKdnHpiNQmoLeps3wA9rtWcW/BV8AOn/FmnfdoO3S
+  RwEspo/CgnqsA71mH0b953/AnHAoGV5ZQT0D4XmFh+mhF8/dxMvJMo+BXWG/yA21
+  EhsN+nCVUDqWf0XwwuzOTdSdl+0chlrV
+  =8un3
+  -----END PGP MESSAGE-----
 manila_dbpass: |
   -----BEGIN PGP MESSAGE-----
   Comment: GPGTools - http://gpgtools.org

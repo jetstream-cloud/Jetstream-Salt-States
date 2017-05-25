@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Ensure only one instance is running
+exec 200<$0
+flock -n 200 || exit 1
+
+# Absolute path is better for cron
+rundir="/etc/openldap/bin"
+
+# yum install perl-LDAP-0.56-3.el7.noarch
+perl_LDAP_dir='/usr/share/doc/perl-LDAP-0.56/contrib'
+if ! [ -d $perl_LDAP_dir ]; then
+	echo "perl_LDAP not found!"
+	exit 1
+fi
+
+# Set up temporary files
+current_ldif='/tmp/current.ldif'
+current_sorted_ldif='/tmp/current-sorted.ldif'
+new_ldif='/tmp/new.ldif'
+new_sorted_ldif='/tmp/new-sorted.ldif'
+modify_ldif='/tmp/modify.ldif'
+
+for f in $current_ldif $current_sorted_ldif $new_ldif $new_sorted_ldif $modify_ldif ; do
+    touch $f
+    chmod 600 $f
+done
+
+
+# Get current LDAP state
+ldapsearch  -b "dc=tacc,dc=utexas,dc=edu" -LLL -H ldapi:/// -D "cn=Manager,dc=tacc,dc=utexas,dc=edu" -y $rundir/iu.secret > $current_ldif
+
+# Generate target LDAP state
+$rundir/pull.sh > $new_ldif
+
+# Sort and compare states, storing the required modifications in $modify_ldif
+perl $perl_LDAP_dir/ldifsort.pl -ac -k "dn" $new_ldif > $new_sorted_ldif
+perl $perl_LDAP_dir/ldifsort.pl -ac -k "dn" $current_ldif > $current_sorted_ldif
+perl $perl_LDAP_dir/ldifdiff.pl -k "dn" $new_sorted_ldif $current_sorted_ldif > $modify_ldif
+
+
+# Apply changes
+ldapmodify -x -H ldapi:/// -D "cn=Manager,dc=tacc,dc=utexas,dc=edu" -y $rundir/iu.secret -f $modify_ldif -c -v 2>&1 | logger
+
+# Clean up
+rm -f $new_ldif $new_sorted_ldif $current_ldif $current_sorted_ldif $modify_ldif
