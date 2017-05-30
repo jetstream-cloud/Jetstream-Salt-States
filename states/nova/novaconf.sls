@@ -17,6 +17,7 @@
             - security_group_api
             - memcached_servers
             - ec2_workers
+            - notification_driver
           keystone_authtoken:
             - auth_plugin
 /etc/nova/nova.conf:
@@ -37,7 +38,6 @@
           ram_allocation_ratio: 1
           ram_weight_multiplier: -1.0
           use_neutron: True
-          notification_driver: messagingv2
           reserved_host_memory_mb: 1536
         conductor:
           workers: 4
@@ -50,6 +50,8 @@
           rabbit_hosts: {{ pillar['rabbit_hosts'] }}
           rabbit_userid: openstack
           rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
+        oslo_messaging_notifications:
+          driver: messagingv2
         keystone_authtoken:
           auth_uri: https://{{ pillar['keystonehost'] }}:5000
           auth_url: https://{{ pillar['keystonehost'] }}:35357
