@@ -5,7 +5,7 @@ memcached:
     - running
     - enable: True
     - watch:
-      - ini: /etc/sysconfig/memcached
+      - file: /etc/sysconfig/memcached
 /etc/sysconfig/memcached:
   file.managed:
     - source: salt://memcache/memcached
