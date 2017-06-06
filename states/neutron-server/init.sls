@@ -91,7 +91,7 @@ openstack-neutron-lbaas:
           connection: mysql+pymysql://neutron:{{ pillar['neutron_dbpass'] }}@{{ pillar['mysqlhost'] }}/neutron
         service_providers:
           service_provider: "LOADBALANCERV2:Haproxy:neutron_lbaas.drivers.haproxy.plugin_driver.HaproxyOnHostPluginDriver:default"
-          service_provider: "VPN:openswan:neutron_vpnaas.service.vpn.service_drivers.ipsec.IPsecVPNDriver:default"
+#          service_provider: "VPN:openswan:neutron_vpnaas.service.vpn.service_drivers.ipsec.IPsecVPNDriver:default"
 /etc/neutron/plugins/ml2/ml2_conf.ini:
   ini.options_present:
     - sections:
