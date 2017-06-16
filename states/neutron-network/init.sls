@@ -1,4 +1,6 @@
 {% set os_family = salt['grains.get']('os_family', '') %}
+{% set rabbit_credential = ['openstack',pillar['openstack_rabbit_pass']]|join(':') %}
+{% set rabbit_hosts_list = pillar['rabbit_hosts'].split(',') %}
 
 # this has been fixed
 #include:
@@ -179,7 +181,7 @@ strongswan:
           type_drivers: flat,vxlan
           tenant_network_types: vxlan
           mechanism_drivers: linuxbridge,l2population
-          physical_network_mtus: "iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000"
+          physical_network_mtus: "iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000,tg-cie160046-wrangler:9000"
         ml2_type_gre:
           tunnel_id_ranges: '1:1000'
         ml2_type_vxlan:
@@ -192,7 +194,7 @@ strongswan:
         agent:
           tunnel_types: vxlan
         linux_bridge:
-          physical_interface_mappings: 'public:bond0.330,iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362'
+          physical_interface_mappings: 'public:bond0.330,iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362,tg-cie160046-wrangler:bond0.363'
         vxlan:
           l2_population: {{ pillar['unicast_vxlan'] }} 
           enable_vxlan: True
