@@ -243,7 +243,7 @@ setsecret:
   ini.options_present:
     - sections:
         linux_bridge:
-          physical_interface_mappings: "iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362,tg-cie160046-wrangler:363"
+          physical_interface_mappings: "iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362,tg-cie160046-wrangler:bond0.363"
         vxlan:
 
           local_ip: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
