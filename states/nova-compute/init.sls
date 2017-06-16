@@ -114,10 +114,6 @@ setsecret:
           - security_group_api
         libvirt:
           - live_migration_flag
-        oslo_messaging_rabbit:
-          - rabbit_hosts
-          - rabbit_userid
-          - rabbit_password
         glance:
           - host
           - protocol
@@ -171,6 +167,9 @@ setsecret:
           disable_libvirt_livesnapshot: False
         oslo_messaging_rabbit:
           rabbit_ha_queues: True
+          rabbit_hosts: {{ pillar['rabbit_hosts'] }}
+          rabbit_userid: openstack
+          rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
         keystone_authtoken:
           auth_uri: https://{{ pillar['keystonehost'] }}:5000
           auth_url: https://{{ pillar['keystonehost'] }}:35357
@@ -197,7 +196,7 @@ setsecret:
 
 /etc/neutron/neutron.conf-absent:
   ini.options_absent:
-    - name: /etc/nova/neutron.conf
+    - name: /etc/neutron/neutron.conf
     - sections:
         oslo_messaging_rabbit:
           - rabbit_hosts
