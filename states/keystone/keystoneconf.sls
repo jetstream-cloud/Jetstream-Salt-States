@@ -1,4 +1,4 @@
-/etc/keystone/keystone.conf:
+/etc/keystone/domains/keystone.tacc.conf:
   ini.options_present:
     - sections:
         identity:
