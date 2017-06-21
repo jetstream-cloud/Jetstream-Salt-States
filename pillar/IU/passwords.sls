@@ -1,4 +1,23 @@
 #!yaml|gpg
+placement_pass: |
+  -----BEGIN PGP MESSAGE-----
+  Comment: GPGTools - http://gpgtools.org
+  
+  hQIMA4VjTU4mltuAARAA07ipjRwMs9NTn5iB7he0KaqaYMwIle3AyjYJhrw6Ewwv
+  E8TSfTMsaql0wwgcelJaUHPbbo/c2D3obpe/Ytvfz50HWtL75ARwwNvwdGas7vog
+  HH7PD4xztQmK1KTdSAY2hwv7hXLP/8FUtsHdDvfSH2nCD7+2uKnMuk1FIK/8YqXy
+  rcKUpeomyeCRyLJ5J3s0ZIKI85Z1RR4DulgZALjTjGPzTd+qX9eJHoX8asEjcD6j
+  7g7d5opb/jVCfy9oh5ZV7SSl4lXXm3VlfiCcM65OYfI69gPbe1MX6XfO1s3hv9kA
+  IpwCRIsoYfMOgTaDgt3R9ydgFL86kCE4rbBig0la90V4pxohHroN9HdBGSTZ41Bz
+  BcTji2d0xIWPePy8Ne8ZlmNZ1QBtCmHIAs6UpXRgcYOpDTPcaOtWMM1i/slMUxXW
+  HcL+CTjjOz9BPatd/VbKIEA7F1ATM2bKBstODT9Q7lKCuXJY3uMzaHsMbUGaU9Mt
+  MrvJ8hfSyGLeWvrqxYUaJTKdFbm9HMJMb89z1VIQAxD3tsaYo4pMOocizm+IE33E
+  Kiesoyi50i9R3l42khIOfUGl8rIi4pJfv2r/wc1L3U8u8wXS14vGhNei4jZxnDa+
+  GLjh7i4UpC//3P7ld+s3eaWHW/9+CezJiV6++kd07VjTNEDIksR9xc0hc6ygZU3S
+  VwHf+Yld2PuMBEjwJyQTnMvYpQH5QeUD7E7SCK0hzlfJVT8oHzYArYDxtJsjRekC
+  sVzYy1I8WTOqHQwY0btGKK8NKm66NfZjhyuUi1vIl/zdQsF0hRCRbw==
+  =ZS50
+  -----END PGP MESSAGE-----
 tacc_ldap_pass: |
   -----BEGIN PGP MESSAGE-----
   Comment: GPGTools - http://gpgtools.org
