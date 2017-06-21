@@ -139,7 +139,15 @@ setsecret:
           verbose: True
           use_neutron: True
           my_ip: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
-
+        placement:
+          os_region_name: RegionOne
+          project_domain_name: Default
+          project_name: service
+          auth_type: password
+          user_domain_name: Default
+          auth_url: https://{{ pillar['keystonehost'] }}:35357/v3
+          username: placement
+          password: {{ pillar['placement_pass'] }}
         vnc:
           enabled: True
           novncproxy_base_url: https://{{ pillar['novapublichost'] }}:6080/vnc_auto.html
