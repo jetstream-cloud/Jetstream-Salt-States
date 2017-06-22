@@ -6,17 +6,8 @@
           auth_strategy: keystone
           verbose: True
           my_ip: {{ pillar['cinderprivatehost'] }}
-          volume_driver: cinder.volume.drivers.rbd.RBDDriver
-          rbd_user: cinder
-          rbd_secret_uuid: {{ pillar['libvirt_secret_uuid'] }} 
-          rbd_pool: cinder-volumes
-          rbd_ceph_conf: /etc/ceph/ceph.conf
-          rbd_flatten_volume_from_snapshot: false
-          rbd_max_clone_depth: 5
-          rbd_store_chunk_size: 4
-          rados_connect_timeout: -1
+          enabled_backends: ceph
           notification_driver: messagingv2
-          glance_api_version: 2
           backup_driver: cinder.backup.drivers.ceph
           backup_ceph_conf: /etc/ceph/ceph.conf
           backup_ceph_user: cinder-backup
@@ -28,6 +19,18 @@
           osapi_volume_workers: 4
           report_discard_supported:  true
           allow_availability_zone_fallback: True
+        ceph:
+          volume_backend_name: ceph
+          volume_driver: cinder.volume.drivers.rbd.RBDDriver
+          rbd_user: cinder
+          rbd_secret_uuid: {{ pillar['libvirt_secret_uuid'] }}
+          rbd_pool: cinder-volumes
+          rbd_ceph_conf: /etc/ceph/ceph.conf
+          rbd_flatten_volume_from_snapshot: false
+          rbd_max_clone_depth: 5
+          rbd_store_chunk_size: 4
+          rados_connect_timeout: -1
+          glance_api_version: 2
         database:
           connection: mysql+pymysql://cinder:{{ pillar['cinder_dbpass'] }}@{{ pillar['mysqlhost'] }}/cinder
         keystone_authtoken:
