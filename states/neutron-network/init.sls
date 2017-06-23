@@ -148,6 +148,7 @@ strongswan:
           allow_overlapping_ips: True
           verbose: True
           network_device_mtu: 9000
+          global_physnet_mtu: 9050
           advertise_mtu: True
           dhcp_lease_duration: 300
         keystone_authtoken:
@@ -181,6 +182,7 @@ strongswan:
           type_drivers: flat,vxlan
           tenant_network_types: vxlan
           mechanism_drivers: linuxbridge,l2population
+          path_mtu: 9050
           physical_network_mtus: "iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000,tg-cie160046-wrangler:9000"
         ml2_type_gre:
           tunnel_id_ranges: '1:1000'

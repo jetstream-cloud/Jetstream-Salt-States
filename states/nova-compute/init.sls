@@ -224,7 +224,8 @@ setsecret:
           notify_nova_on_port_data_changes: True
           nova_url: https://{{ pillar['novapublichost'] }}:8774/v2
           verbose: True
-          network_device_mtu: 9000 
+          network_device_mtu: 9000
+          global_physnet_mtu: 9050
           transport_url: rabbit://{% for item in rabbit_hosts_list %}{{rabbit_credential}}@{{item}}:5672,{% endfor %}
         nova:
           auth_url: https://{{ pillar['keystonehost'] }}:35357
@@ -270,6 +271,7 @@ setsecret:
           tenant_network_types: vxlan,vlan
           mechanism_drivers: linuxbridge,l2population
           physical_network_mtus: "iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000,tg-cie160046-wrangler:9000"
+          path_mtu: 9050
         ml2_type_gre:
           tunnel_id_ranges: "1:1000"
         ml2_type_vxlan:
