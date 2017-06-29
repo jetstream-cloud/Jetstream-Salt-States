@@ -450,10 +450,29 @@ fileserver_backend:
 #gitfs_remotes:
 #  - git://github.com/saltstack/salt-states.git
 #  - file:///var/git/saltmaster
+
 gitfs_provider: gitpython
+
 gitfs_remotes:
   - https://github.com/jetstream-cloud/Jetstream-Salt-States.git:
     - root: states
+    - base: tacc
+
+
+#pillar_roots:
+#  base:
+#    - /srv/pillar
+
+
+
+
+
+
+
+
+
+
+
 #    - root: states
 #  - git@github.iu.edu:jomlowe/Jetstream-AZ.git
 #
@@ -478,7 +497,9 @@ gitfs_remotes:
 # a top file and sls files. However, pillar data does not need to be in the
 # highstate format, and is generally just key/value pairs.
 ext_pillar:
-  - git: tacc https://github.com/jetstream-cloud/Jetstream-Salt-States.git root=pillar
+  - git: tacc https://github.com/jetstream-cloud/Jetstream-Salt-States.git root=pillar/TEST
+
+#  - git: tacc https://github.com/jetstream-cloud/Jetstream-Salt-States.git root=pillar/TEST env=base
 #  - git: master git@github.iu.edu:jomlowe/Jetstream-AZ.git root=pillar 
 #  - hiera: /etc/hiera.yaml
 #  - cmd_yaml: cat /etc/salt/yaml
