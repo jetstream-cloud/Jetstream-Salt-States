@@ -454,6 +454,7 @@ gitfs_provider: gitpython
 gitfs_remotes:
   - https://github.com/jetstream-cloud/Jetstream-Salt-States.git:
     - root: states
+    - root: states
 #  - git@github.iu.edu:jomlowe/Jetstream-AZ.git
 #
 # The gitfs_ssl_verify option specifies whether to ignore ssl certificate
