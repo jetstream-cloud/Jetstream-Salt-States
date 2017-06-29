@@ -472,7 +472,6 @@ gitfs_remotes:
 
 
 
-
 #    - root: states
 #  - git@github.iu.edu:jomlowe/Jetstream-AZ.git
 #
@@ -496,8 +495,14 @@ gitfs_remotes:
 # Pillar is laid out in the same fashion as the file server, with environments,
 # a top file and sls files. However, pillar data does not need to be in the
 # highstate format, and is generally just key/value pairs.
+#ext_pillar:
+#  - git: tacc https://github.com/jetstream-cloud/Jetstream-Salt-States.git root=pillar/TEST
+
 ext_pillar:
-  - git: tacc https://github.com/jetstream-cloud/Jetstream-Salt-States.git root=pillar/TEST
+  - git:
+    - tacc https://github.com/jetstream-cloud/Jetstream-Salt-States.git:
+      - root: pillar/TEST
+#      - env: tacc 
 
 #  - git: tacc https://github.com/jetstream-cloud/Jetstream-Salt-States.git root=pillar/TEST env=base
 #  - git: master git@github.iu.edu:jomlowe/Jetstream-AZ.git root=pillar 
