@@ -454,7 +454,7 @@ gitfs_provider: gitpython
 gitfs_remotes:
   - https://github.com/jetstream-cloud/Jetstream-Salt-States.git:
     - root: states
-    - root: states
+#    - root: states
 #  - git@github.iu.edu:jomlowe/Jetstream-AZ.git
 #
 # The gitfs_ssl_verify option specifies whether to ignore ssl certificate
@@ -478,7 +478,7 @@ gitfs_remotes:
 # a top file and sls files. However, pillar data does not need to be in the
 # highstate format, and is generally just key/value pairs.
 ext_pillar:
-  - git: master https://github.com/jetstream-cloud/Jetstream-Salt-States.git root=pillar
+  - git: tacc https://github.com/jetstream-cloud/Jetstream-Salt-States.git root=pillar
 #  - git: master git@github.iu.edu:jomlowe/Jetstream-AZ.git root=pillar 
 #  - hiera: /etc/hiera.yaml
 #  - cmd_yaml: cat /etc/salt/yaml
