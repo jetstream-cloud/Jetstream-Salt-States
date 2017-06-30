@@ -1,0 +1,12 @@
+#!/bin/bash
+
+cp /root/Jetstream-Salt-States/master /etc/salt
+
+mkdir -p /srv/pillar
+rsync -avx /root/Jetstream-Salt-States/pillar/ /srv/pillar
+
+mkdir -p /srv/salt
+rsync -avx /root/Jetstream-Salt-States/states/ /srv/salt
+
+
+

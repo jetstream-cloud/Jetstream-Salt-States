@@ -7,4 +7,6 @@ salt-minion:
 
 /etc/salt/minion:
   ini.options_present:
-    master: {{ salt_master_ip }}
+    - separator: ':'
+    - sections: 
+          master: {{ pillar['salt-master-ip'] }} 

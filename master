@@ -48,7 +48,8 @@
 
 # The number of worker threads to start. These threads are used to manage
 # return calls made from minions to the master. If the master seems to be
-# running slowly, increase the number of threads.
+# running slowly, increase the number of threads. This setting can not be
+# set lower than 3.
 #worker_threads: 5
 
 # The port used by the communication interface. The ret (return) port is the
@@ -74,6 +75,13 @@
 # "states", "returners", etc.
 #extension_modules: <no default>
 
+# Directory for custom modules. This directory can contain subdirectories for
+# each of Salt's module types such as "runners", "output", "wheel", "modules",
+# "states", "returners", etc.
+# Like 'extension_modules' but can take an array of paths
+#module_dirs: <no default>
+#   - /var/cache/salt/minion/extmods
+
 # Verify and set permissions on configuration directories at startup:
 #verify_env: True
 
@@ -91,6 +99,9 @@
 
 # Set the default outputter used by the salt command. The default is "nested".
 #output: nested
+
+# Return minions that timeout when running commands like test.ping
+#show_timeout: True
 
 # By default, output is colored. To disable colored output, set the color value
 # to False.
@@ -116,6 +127,29 @@
 
 # Cache minion grains and pillar data in the cachedir.
 #minion_data_cache: True
+
+# Store all returns in the given returner.
+# Setting this option requires that any returner-specific configuration also 
+# be set. See various returners in salt/returners for details on required
+# configuration values. (See also, event_return_queue below.)
+#
+#event_return: mysql
+
+# On busy systems, enabling event_returns can cause a considerable load on
+# the storage system for returners. Events can be queued on the master and
+# stored in a batched fashion using a single transaction for multiple events.
+# By default, events are not queued.
+#event_return_queue: 0
+
+# Only events returns matching tags in a whitelist
+# event_return_whitelist:
+#   - salt/master/a_tag
+#   - salt/master/another_tag
+
+# Store all event returns _except_ the tags in a blacklist
+# event_return_blacklist:
+#   - salt/master/not_this_tag
+#   - salt/master/or_this_one
 
 # Passing very large events can cause the minion to consume large amounts of
 # memory. This value tunes the maximum size of a message allowed onto the
@@ -161,11 +195,11 @@
 # option, then the master will log a warning message.
 #
 # Include a config file from some other path:
-#include: /etc/salt/extra_config
+# include: /etc/salt/extra_config
 #
 # Include config from several files and directories:
-#include:
-#  - /etc/salt/extra_config
+# include:
+#   - /etc/salt/extra_config
 
 
 #####        Security settings       #####
@@ -180,7 +214,7 @@
 # public keys from the minions. Note that this is insecure.
 #auto_accept: False
 
-# Time in minutes that a incomming public key with a matching name found in
+# Time in minutes that a incoming public key with a matching name found in
 # pki_dir/minion_autosign/keyid is automatically accepted. Expired autosign keys
 # are removed when the master checks the minion_autosign directory.
 # 0 equals no timeout
@@ -226,6 +260,11 @@
 #  modules:
 #    - cmd
 
+# Enforce client_acl & client_acl_blacklist when users have sudo
+# access to the salt command. 
+#
+#sudo_acl: False
+
 # The external auth system uses the Salt auth modules to authenticate and
 # validate users to access areas of the Salt system.
 #external_auth:
@@ -259,6 +298,17 @@
 # will cause minion to throw an exception and drop the message.
 # sign_pub_messages: False
 
+#####     Salt-SSH Configuration     #####
+##########################################
+
+# Pass in an alternative location for the salt-ssh roster file
+#roster_file: /etc/salt/roster
+
+# Pass in minion option overrides that will be inserted into the SHIM for
+# salt-ssh calls. The local minion config is not used for salt-ssh. Can be
+# overridden on a per-minion basis in the roster (`minion_opts`)
+#ssh_minion_opts:
+#  gpg_keydir: /root/gpg
 
 #####    Master Module Management    #####
 ##########################################
@@ -297,19 +347,19 @@
 
 # The renderer to use on the minions to render the state data
 #renderer: yaml_jinja
-renderer: jinja | yaml | gpg
+
 # The Jinja renderer can strip extra carriage returns and whitespace
 # See http://jinja.pocoo.org/docs/api/#high-level-api
 #
 # If this is set to True the first newline after a Jinja block is removed
 # (block, not variable tag!). Defaults to False, corresponds to the Jinja
 # environment init variable "trim_blocks".
-# jinja_trim_blocks: False
+#jinja_trim_blocks: False
 #
 # If this is set to True leading spaces and tabs are stripped from the start
 # of a line to a block. Defaults to False, corresponds to the Jinja
 # environment init variable "lstrip_blocks".
-# jinja_lstrip_blocks: False
+#jinja_lstrip_blocks: False
 
 # The failhard option tells the minions to stop immediately after the first
 # failure detected in the state execution, defaults to False
@@ -329,13 +379,18 @@ renderer: jinja | yaml | gpg
 #state_output: full
 
 # Automatically aggregate all states that have support for mod_aggregate by
-# setting to True. Or pass a list of state module names to automatically
+# setting to 'True'. Or pass a list of state module names to automatically
 # aggregate just those types.
 #
 # state_aggregate:
 #   - pkg
 #
 #state_aggregate: False
+
+# Send progress events as each function in a state run completes execution
+# by setting to 'True'. Progress events are in the format
+# 'salt/job/<JID>/prog/<MID>/<RUN NUM>'.
+#state_events: False
 
 #####      File Server settings      #####
 ##########################################
@@ -404,9 +459,9 @@ renderer: jinja | yaml | gpg
 #  - roots
 #
 # To use multiple backends list them in the order they are searched:
-fileserver_backend:
-  - git
-  - roots
+#fileserver_backend:
+#  - git
+#  - roots
 #
 # Uncomment the line below if you do not want the file_server to follow
 # symlinks when walking the filesystem tree. This is set to True
@@ -450,30 +505,6 @@ fileserver_backend:
 #gitfs_remotes:
 #  - git://github.com/saltstack/salt-states.git
 #  - file:///var/git/saltmaster
-
-gitfs_provider: gitpython
-
-gitfs_remotes:
-  - https://github.com/jetstream-cloud/Jetstream-Salt-States.git:
-    - root: states
-    - base: tacc
-
-
-#pillar_roots:
-#  base:
-#    - /srv/pillar
-
-
-
-
-
-
-
-
-
-
-#    - root: states
-#  - git@github.iu.edu:jomlowe/Jetstream-AZ.git
 #
 # The gitfs_ssl_verify option specifies whether to ignore ssl certificate
 # errors when contacting the gitfs backend. You might want to set this to
@@ -495,19 +526,18 @@ gitfs_remotes:
 # Pillar is laid out in the same fashion as the file server, with environments,
 # a top file and sls files. However, pillar data does not need to be in the
 # highstate format, and is generally just key/value pairs.
+#pillar_roots:
+#  base:
+#    - /srv/pillar
+#
 #ext_pillar:
-#  - git: tacc https://github.com/jetstream-cloud/Jetstream-Salt-States.git root=pillar/TEST
-
-ext_pillar:
-  - git:
-    - tacc https://github.com/jetstream-cloud/Jetstream-Salt-States.git:
-      - root: pillar/TEST
-#      - env: tacc 
-
-#  - git: tacc https://github.com/jetstream-cloud/Jetstream-Salt-States.git root=pillar/TEST env=base
-#  - git: master git@github.iu.edu:jomlowe/Jetstream-AZ.git root=pillar 
 #  - hiera: /etc/hiera.yaml
 #  - cmd_yaml: cat /etc/salt/yaml
+
+# The ext_pillar_first option allows for external pillar sources to populate
+# before file system pillar. This allows for targeting file system pillar from
+# ext_pillar.
+#ext_pillar_first: False
 
 # The pillar_gitfs_ssl_verify option specifies whether to ignore ssl certificate
 # errors when contacting the pillar gitfs backend. You might want to set this to
@@ -519,7 +549,14 @@ ext_pillar:
 # The pillar_opts option adds the master configuration file data to a dict in
 # the pillar called "master". This is used to set simple configurations in the
 # master config file that can then be used on minions.
-#pillar_opts: True
+#pillar_opts: False
+
+# The pillar_safe_render_error option prevents the master from passing pillar
+# render errors to the minion. This is set on by default because the error could
+# contain templating data which would give that minion information it shouldn't
+# have, like a password! When set true the error message will only show:
+#   Rendering SLS 'my.sls' failed. Please see master log for details.
+#pillar_safe_render_error: True
 
 # The pillar_source_merging_strategy option allows you to configure merging strategy
 # between different sources. It accepts four values: recurse, aggregate, overwrite,
@@ -635,6 +672,10 @@ ext_pillar:
 
 # The level of messages to send to the console.
 # One of 'garbage', 'trace', 'debug', info', 'warning', 'error', 'critical'.
+#
+# The following log levels are considered INSECURE and may log sensitive data:
+# ['garbage', 'trace', 'debug']
+#
 #log_level: warning
 
 # The level of messages to send to the log file.
@@ -690,8 +731,8 @@ ext_pillar:
 # List of git repositories to include with the local repo:
 #win_gitrepos:
 #  - 'https://github.com/saltstack/salt-winrepo.git'
-#
 
-reactor:
-  - 'salt/fileserver/gitfs/update':
-    - /srv/reactor/update_fileserver.sls
+#####      Returner settings          ######
+############################################
+# Which returner(s) will be used for minion's result:
+#return: mysql
