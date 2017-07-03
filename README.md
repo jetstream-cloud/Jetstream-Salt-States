@@ -41,3 +41,17 @@ Hopefully now you have a working salt install. Clone the git repo
     cd Jetstream-Salt-States
     git checkout --track -b tacc origin/tacc
     ./pub
+
+
+
+  950  mkdir -p /etc/salt/gpgkeys
+  951  chmod 0700 /etc/salt/gpgkeys
+  952  gpg --gen-key --homedir /etc/salt/gpgkeys
+  953  yum install rngtools
+  954  yum install rng-tools
+  955  gpg --gen-key --homedir /etc/salt/gpgkeys
+  956  gpg-agent --homedir=/etc/salt/gpgkeys  --daemon
+  957  echo $GPG_AGENT_INFO
+  958  GPG_AGENT_INFO=/etc/salt/gpgkeys/S.gpg-agent:5834:1; export GPG_AGENT_INFO;
+  959  gpg --gen-key --homedir /etc/salt/gpgkeys
+
