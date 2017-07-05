@@ -8,5 +8,6 @@ rsync -avx /root/Jetstream-Salt-States/pillar/ /srv/pillar
 mkdir -p /srv/salt
 rsync -avx /root/Jetstream-Salt-States/states/ /srv/salt
 
+cp ~/passwords.sls /srv/pillar
 
 

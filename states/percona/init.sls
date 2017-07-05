@@ -19,13 +19,13 @@ percona-xtradb-cluster-56:
     - source: salt://percona/percona.cnf
     - template: jinja
     - context:
-      bkpuser_password: {{ pillar['mysql_cluster_passwords']['bkpuser_password'] }}
+      bkpuser_password: {{ pillar['bkpuser_password'] }}
 /etc/xinetd.d/mysqlchk:
   file.managed:
     - source: salt://percona/mysqlchk
     - template: jinja
     - context:
-      clustercheckuser_password: {{ pillar['mysql_cluster_passwords']['clustercheckuser_password'] }}
+      clustercheckuser_password: {{ pillar['clustercheckuser_password'] }}
 xinetd:
   pkg:
     - installed

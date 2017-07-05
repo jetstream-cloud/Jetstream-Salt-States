@@ -1,3 +1,4 @@
+
 {% if grains['os_family'] == 'RedHat' %}
 openstack-nova-api: openstack-nova-api
 openstack-nova-cert: openstack-nova-cert
@@ -25,6 +26,9 @@ openstack-keystone: openstack-keystone
 openstack-heat-api:  openstack-heat-api
 openstack-heat-api-cfn: openstack-heat-api-cfn
 openstack-heat-engine: openstack-heat-engine
+
+# distro_specific
+
 {% elif grains['os_family'] == 'Debian' %}
 openstack-nova-api: nova-api
 openstack-nova-cert: nova-cert
@@ -53,3 +57,42 @@ openstack-heat-engine: heat-engine
 openstack-heat-api-cfn: heat-api-cfn
 openstack-heat-api: heat-api
 {% endif %}
+
+mysqlhost: 172.16.128.2
+rabbit_hosts: 172.16.128.253,172.16.128.252,172.16.128.250
+keystonehost: jblb.jetstream-cloud.org
+keystonepublichost: jblb.jetstream-cloud.org
+glancepublichost: jblb.jetstream-cloud.org
+glanceprivatehost: jblb.jetstream-cloud.org 
+cinderpublichost: jblb.jetstream-cloud.org
+cinderprivatehost: jblb.jetstream-cloud.org
+novapublichost: jblb.jetstream-cloud.org
+novaprivatehost: jblb.jetstream-cloud.org
+novametadatahost: 172.16.128.2 
+neutronpublichost: jblb.jetstream-cloud.org
+neutronprivatehost: jblb.jetstream-cloud.org
+ceilometerpublichost: jblb.jetstream-cloud.org
+ceilometerprivatehost: jblb.jetstream-cloud.org
+gnocchi_url: https://jblb.jetstream-cloud.org:8041
+heathost: jblb.jetstream-cloud.org
+muranoprivatehost: jblb.jetstream-cloud.org
+mistralpublichost: jblb.jetstream-cloud.org
+memcached_servers: 172.16.129.48:11211,172.16.129.112:11211,172.16.129.176:11211
+
+# todo remove
+mcasta_src_ip: 10.10.10.10
+mcastb_src_ip: 10.10.10.11
+
+keepalived:
+  a_vi_1_state: MASTER
+  a_vi_2_state: BACKUP
+  a_vi_1_priority: 150
+  a_vi_2_priority: 100
+  a_mcast_src_ip1: 10.10.10.10
+  b_vi_1_state: BACKUP
+  b_vi_2_state: MASTER
+  b_vi_1_priority: 100
+  b_vi_2_priority: 150
+  b_mcast_src_ip2: 10.10.10.11
+
+

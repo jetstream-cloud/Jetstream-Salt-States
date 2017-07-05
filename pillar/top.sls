@@ -1,6 +1,5 @@
 base:
   '*':
-    - common
-    - distro_specific
-    - hosts
+    - vars
     - passwords
+    - noderoles

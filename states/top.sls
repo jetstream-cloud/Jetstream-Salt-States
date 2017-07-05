@@ -4,8 +4,11 @@ base:
     - saltup.minion
     - bootstrap
 
-  {{ pillar['salt-master-node'] }}:
+  {{ pillar['salt-master-nodes'] }}:
     - saltup.master
 
-  'js-129-114-104-9.*':
+  {{ pillar['nova-compute-nodes'] }}:
     - nova-compute
+
+  {{ pillar['neutron-network-nodes'] }}:
+    - neutron-network
