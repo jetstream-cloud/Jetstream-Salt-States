@@ -62,6 +62,7 @@ openstack-neutron-lbaas:
           min_l3_agents_per_router: 2
           l3_ha: True
           l3_ha_net_cidr: 169.254.192.0/18
+          dns_domain = jetstreamlocal
         nova:
           auth_url: https://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
@@ -96,6 +97,7 @@ openstack-neutron-lbaas:
   ini.options_present:
     - sections:
         ml2:
+          extension_drivers: dns
           type_drivers: flat,vlan,gre,vxlan
           tenant_network_types: vxlan,vlan
           mechanism_drivers: linuxbridge,l2population
