@@ -183,7 +183,7 @@ strongswan:
           tenant_network_types: vxlan
           mechanism_drivers: linuxbridge,l2population
           path_mtu: 9050
-          physical_network_mtus: "iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000,tg-cie160046-wrangler:9000"
+          physical_network_mtus: "public:9000,iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000,tg-cie160046-wrangler:9000"
         ml2_type_gre:
           tunnel_id_ranges: '1:1000'
         ml2_type_vxlan:
