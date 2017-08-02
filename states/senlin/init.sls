@@ -12,7 +12,7 @@
             admin_password: {{ pillar['senlin_pass'] }}
             admin_tenant_name: service
           authentication:
-            auth_url: https://{{ pillar['keystonehost' }}:5000/v3
+            auth_url: https://{{ pillar['keystonehost'] }}:5000/v3
             service_username: senlin
             service_password: {{ pillar['senlin_pass'] }}
             service_project_name: service
