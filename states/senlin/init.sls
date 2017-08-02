@@ -19,6 +19,7 @@
           oslo_messaging_rabbit:
             rabbit_userid: openstack
             rabbit_hosts: {{ pillar['rabbit_hosts'] }}
-            rabbit_password: {{ pillar['rabbit_pass'] }}
+            rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
+            rabbit_ha_queues: True
           oslo_messaging_notifications:
             driver: messaging
