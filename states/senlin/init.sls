@@ -3,7 +3,7 @@
       - separator: '='
       - sections:
           database:
-            connection: mysql+pymsql://senlin:{{ pillar['senlin_dbpass'] }}@{{ pillar['dbhost'] }}/senlin?charset=utf8
+            connection: mysql+pymsql://senlin:{{ pillar['senlin_dbpass'] }}@{{ pillar['mysqlhost'] }}/senlin?charset=utf8
           keystone_authtoken:
             auth_uri: https://{{ pillar['keystonehost'] }}:5000/v3
             auth_version: 3
