@@ -252,7 +252,7 @@ setsecret:
   ini.options_present:
     - sections:
         linux_bridge:
-          physical_interface_mappings: "iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362,tg-cie160046-wrangler:bond0.363"
+          physical_interface_mappings: "iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362,tg-cie160046-wrangler:bond0.363,tg-cie160051:bond0.364,jettest-wrangler:bond0.365,seagrid-wranger:bond0.366"
         vxlan:
 
           local_ip: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
@@ -270,7 +270,7 @@ setsecret:
           type_drivers: flat,vlan,gre,vxlan
           tenant_network_types: vxlan,vlan
           mechanism_drivers: linuxbridge,l2population
-          physical_network_mtus: "iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000,tg-cie160046-wrangler:9000"
+          physical_network_mtus: "iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000,tg-cie160046-wrangler:9000,tg-cie160051:9000,jettest-wrangler:9000,seagrid-wranger:9000"
           path_mtu: 9050
         ml2_type_gre:
           tunnel_id_ranges: "1:1000"
