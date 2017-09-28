@@ -2,4 +2,3 @@ base:
   '*':
     - vars
     - passwords
-    - noderoles

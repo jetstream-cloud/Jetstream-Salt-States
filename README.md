@@ -46,8 +46,6 @@ If using GPG to store encrypted configs:
 
     mkdir -p /etc/salt/gpgkeys
     chmod 0700 /etc/salt/gpgkeys
-    gpg --gen-key --homedir /etc/salt/gpgkeys
-    gpg --gen-key --homedir /etc/salt/gpgkeys
     gpg-agent --homedir=/etc/salt/gpgkeys --daemon
     #echo $GPG_AGENT_INFO
     #GPG_AGENT_INFO=/etc/salt/gpgkeys/S.gpg-agent:5834:1; export GPG_AGENT_INFO;
