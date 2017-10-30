@@ -329,7 +329,7 @@ openstack-ceilometer-compute:
     - running
     - watch:
       - ini: /etc/ceilometer/ceilometer.conf
-python-ceilometerclient:
+python2-ceilometerclient:
   pkg.installed
 
 /etc/ceilometer/ceilometer.conf:
