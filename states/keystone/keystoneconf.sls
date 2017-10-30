@@ -67,7 +67,7 @@
         database:
            connection: mysql+pymysql://keystone:{{ pillar['keystone_dbpass'] }}@{{ pillar['mysqlhost'] }}/keystone
         revoke:
-           driver: keystone.contrib.revoke.backends.sql.Revoke
+           driver: sql
         shadow_users:
            driver: sql
         token:
