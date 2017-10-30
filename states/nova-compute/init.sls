@@ -139,6 +139,8 @@ setsecret:
           verbose: True
           use_neutron: True
           my_ip: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
+          reserved_host_memory_mb: 1536
+          ram_allocation_ratio: 1
         placement:
           os_region_name: RegionOne
           project_domain_name: Default
