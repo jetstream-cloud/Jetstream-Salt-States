@@ -31,6 +31,7 @@
           rbd_store_chunk_size: 4
           rados_connect_timeout: -1
           glance_api_version: 2
+          report_discard_supported: True
         database:
           connection: mysql+pymysql://cinder:{{ pillar['cinder_dbpass'] }}@{{ pillar['mysqlhost'] }}/cinder
         keystone_authtoken:
