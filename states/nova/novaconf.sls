@@ -39,6 +39,9 @@
           ram_weight_multiplier: -1.0
           use_neutron: True
           reserved_host_memory_mb: 1536
+          vendordata_providers: StaticJSON
+          vendordata_jsonfile_path: /etc/nova/vendordata.json
+          osapi_max_limit: 10000
         conductor:
           workers: 4
         database:
@@ -86,3 +89,16 @@
           xvpvncproxy_base_url: https://{{ pillar['novapublichost'] }}:6081/console
         cache:
           memcache_servers: {{ pillar['memcached_servers'] }}
+          backend: oslo_cache.memcache_pool
+          enabled: true
+        placement:
+          os_region_name: RegionOne
+          auth_type: password
+          auth_url: https://{{ pillar['keystonehost'] }}:35357/v3
+          project_name: service
+          project_domain_name: Default
+          username: placement
+          user_domain_name: Default
+          password: {{ pillar['placement_pass'] }}
+        placement_database:
+          connection: mysql+pymysql://nova:{{ pillar['nova_dbpass'] }}@{{ pillar['mysqlhost'] }}/nova_api
