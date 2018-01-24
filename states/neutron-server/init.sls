@@ -88,6 +88,8 @@ openstack-neutron-lbaas:
           rabbit_hosts: {{ pillar['rabbit_hosts'] }}
           rabbit_userid: openstack
           rabbit_password: {{pillar['openstack_rabbit_pass'] }}
+        oslo_middleware:
+          enable_proxy_headers_parsing: True
         database:
           connection: mysql+pymysql://neutron:{{ pillar['neutron_dbpass'] }}@{{ pillar['mysqlhost'] }}/neutron
         service_providers:
