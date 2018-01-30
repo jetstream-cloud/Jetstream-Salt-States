@@ -62,6 +62,7 @@ openstack-neutron-lbaas:
           min_l3_agents_per_router: 2
           l3_ha: True
           l3_ha_net_cidr: 169.254.192.0/18
+          dns_domain = jetstreamlocal
         nova:
           auth_url: https://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
@@ -87,15 +88,18 @@ openstack-neutron-lbaas:
           rabbit_hosts: {{ pillar['rabbit_hosts'] }}
           rabbit_userid: openstack
           rabbit_password: {{pillar['openstack_rabbit_pass'] }}
+        oslo_middleware:
+          enable_proxy_headers_parsing: True
         database:
           connection: mysql+pymysql://neutron:{{ pillar['neutron_dbpass'] }}@{{ pillar['mysqlhost'] }}/neutron
         service_providers:
           service_provider: "LOADBALANCERV2:Haproxy:neutron_lbaas.drivers.haproxy.plugin_driver.HaproxyOnHostPluginDriver:default"
-          service_provider: "VPN:openswan:neutron_vpnaas.service.vpn.service_drivers.ipsec.IPsecVPNDriver:default"
+#          service_provider: "VPN:openswan:neutron_vpnaas.service.vpn.service_drivers.ipsec.IPsecVPNDriver:default"
 /etc/neutron/plugins/ml2/ml2_conf.ini:
   ini.options_present:
     - sections:
         ml2:
+          extension_drivers: dns
           type_drivers: flat,vlan,gre,vxlan
           tenant_network_types: vxlan,vlan
           mechanism_drivers: linuxbridge,l2population

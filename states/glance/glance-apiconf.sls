@@ -18,6 +18,7 @@
           database:
             connection: mysql+pymysql://glance:{{ pillar['glance_dbpass'] }}@{{ pillar['mysqlhost'] }}/glance
           keystone_authtoken:
+            memcached_servers: {{ pillar['memcached_servers'] }}
             auth_uri: https://{{ pillar['keystonehost'] }}:5000
             auth_url: https://{{ pillar['keystonehost'] }}:35357
             auth_plugin: password

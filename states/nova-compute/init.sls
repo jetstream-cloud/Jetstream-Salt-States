@@ -1,4 +1,6 @@
 {% set os_family = salt['grains.get']('os_family', '') %}
+{% set rabbit_credential = ['openstack',pillar['openstack_rabbit_pass']]|join(':') %}
+{% set rabbit_hosts_list = pillar['rabbit_hosts'].split(',') %}
 
 net.ipv4.conf.all.rp_filter:
   sysctl.present:
@@ -110,7 +112,6 @@ setsecret:
         DEFAULT:
           - network_api_class
           - security_group_api
-          - 
         libvirt:
           - live_migration_flag
         glance:
@@ -138,7 +139,17 @@ setsecret:
           verbose: True
           use_neutron: True
           my_ip: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
-
+          reserved_host_memory_mb: 3857 
+          ram_allocation_ratio: 1
+        placement:
+          os_region_name: RegionOne
+          project_domain_name: Default
+          project_name: service
+          auth_type: password
+          user_domain_name: Default
+          auth_url: https://{{ pillar['keystonehost'] }}:35357/v3
+          username: placement
+          password: {{ pillar['placement_pass'] }}
         vnc:
           enabled: True
           novncproxy_base_url: https://{{ pillar['novapublichost'] }}:6080/vnc_auto.html
@@ -161,6 +172,7 @@ setsecret:
           volume_clear: none
           live_migration_permit_auto_converge: True
           live_migration_permit_post_copy: True
+          transport_url: rabbit://{% for item in rabbit_hosts_list %}{{rabbit_credential}}@{{item}}:5672,{% endfor %}
         workarounds:
           disable_libvirt_livesnapshot: False
         oslo_messaging_rabbit:
@@ -191,7 +203,15 @@ setsecret:
           project_domain_name: Default
           user_domain_name:  Default
           region_name: RegionOne
-           
+
+/etc/neutron/neutron.conf-absent:
+  ini.options_absent:
+    - name: /etc/neutron/neutron.conf
+    - sections:
+        oslo_messaging_rabbit:
+          - rabbit_hosts
+          - rabbit_userid
+          - rabbit_password           
 /etc/neutron/neutron.conf:
   ini.options_present:
     - sections:
@@ -206,7 +226,9 @@ setsecret:
           notify_nova_on_port_data_changes: True
           nova_url: https://{{ pillar['novapublichost'] }}:8774/v2
           verbose: True
-          network_device_mtu: 9000 
+          network_device_mtu: 9000
+          global_physnet_mtu: 9050
+          transport_url: rabbit://{% for item in rabbit_hosts_list %}{{rabbit_credential}}@{{item}}:5672,{% endfor %}
         nova:
           auth_url: https://{{ pillar['keystonehost'] }}:35357
           auth_plugin: password
@@ -227,15 +249,16 @@ setsecret:
           password: {{ pillar['neutron_pass'] }}
         oslo_messaging_rabbit:
           rabbit_ha_queues: True
-          rabbit_hosts: {{ pillar['rabbit_hosts'] }}
-          rabbit_userid: openstack
-          rabbit_password: {{pillar['openstack_rabbit_pass'] }}
         
 /etc/neutron/plugins/ml2/linuxbridge_agent.ini:
   ini.options_present:
     - sections:
         linux_bridge:
+<<<<<<< HEAD
           physical_interface_mappings: "iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362,unavco-wrangler:bond0.367,asc-wrangler:bond0.368"
+=======
+          physical_interface_mappings: "public:bond0.330,iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362,tg-cie160046-wrangler:bond0.363,tg-cie160051-wrangler:bond0.364,jettest-wrangler:bond0.365,seagrid-wrangler:bond0.366,geode2-test:bond0.302"
+>>>>>>> b86ca30194f33ff9725778d976a10bc2e24f3941
         vxlan:
 
           local_ip: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
@@ -253,7 +276,12 @@ setsecret:
           type_drivers: flat,vlan,gre,vxlan
           tenant_network_types: vxlan,vlan
           mechanism_drivers: linuxbridge,l2population
+<<<<<<< HEAD
           physical_network_mtus: "iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000,unavco-wrangler:9000,sra-wrangler:9000"
+=======
+          physical_network_mtus: "public:9000,iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000,tg-cie160046-wrangler:9000,tg-cie160051-wrangler:9000,jettest-wrangler:9000,seagrid-wrangler:9000,geode2-test:9000"
+          path_mtu: 9050
+>>>>>>> b86ca30194f33ff9725778d976a10bc2e24f3941
         ml2_type_gre:
           tunnel_id_ranges: "1:1000"
         ml2_type_vxlan:
@@ -309,7 +337,7 @@ openstack-ceilometer-compute:
     - running
     - watch:
       - ini: /etc/ceilometer/ceilometer.conf
-python-ceilometerclient:
+python2-ceilometerclient:
   pkg.installed
 
 /etc/ceilometer/ceilometer.conf:
@@ -320,11 +348,9 @@ python-ceilometerclient:
           auth_strategy: keystone
           verbose: True
           host: {{ grains['host'] }}
+          transport_url: rabbit://{% for item in rabbit_hosts_list %}{{rabbit_credential}}@{{item}}:5672,{% endfor %}
         oslo_messaging_rabbit:
           rabbit_ha_queues: True
-          rabbit_hosts: {{ pillar['rabbit_hosts'] }}
-          rabbit_userid: openstack
-          rabbit_password: {{pillar['openstack_rabbit_pass'] }}
         keystone_authtoken:
           auth_uri: https://{{ pillar['keystonehost'] }}:5000
           auth_url: https://{{ pillar['keystonehost'] }}:35357

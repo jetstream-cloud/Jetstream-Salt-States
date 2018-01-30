@@ -1,4 +1,61 @@
 #!yaml|gpg
+senlin_dbpass: |
+  -----BEGIN PGP MESSAGE-----
+  Comment: GPGTools - http://gpgtools.org
+  
+  hQIMA4VjTU4mltuAARAAoiblrtv83xSRnOgFebx2pG5wdL9C/fytTmoxHYu8cO2Q
+  Ykq+VhrZ201vy0CrjiWwIjtzdCbrR878o14ddTKZyq7cfp0z2Ku3d4WOY+QBuSKu
+  W1w3O0Aa78ouKpQiH9ARDY+YzngWwv3tniPoF40czb4as90L6G7EwgeHkUsaEtyr
+  42GDZPOtanhZm+l+Zg9JS9sUovL927kbFEaZWyzcK3rnsCeKPreiRKM0586Ezayj
+  wj/1V/yBj8ylFpe1vf9GMjw96O8G5E6UfMPdF7DJewCj6yhA86MtAVrP3e9uu1zf
+  vRk4Wimue7b4fyBl5bHAvz6AVaTOiD1O0EsONpXacnWKM3hd75FuqBercG7K32s4
+  uD5GwJlRsnLWNPuISYTCGjjF78fMfUtT3rpyxX31qRHw5TptQGhMtvfYz5my7V00
+  PWOVy7R2T7w0Ft1jXSYr2iBS72NxGQR9DMu9tLv4aYgv/7rsmokdQPa1oAn17CKA
+  Een/KE0j5f+1pQUkV2ZlVZ9oik9/ButrZ3U/0qRoLDQGa9J8qJkwO96rOkns5Y9j
+  kUYq65rzof3f5d9QktN7nhQZWvGiTKvyDjevh2iKqzsm36JMkYrQ1BNaPKvCoJjJ
+  T6DoIJsZoVkC82uGMZA8qe0i3c+rmdp013PPk7mrkAvERM1UzCv3ml2ChMTxpd3S
+  UwGupLUDC1lsQ4ibE3BZ3uSu5QVWvoaw/OhMAraG3x7kxkTW7kEa2IfMgxwyWTzE
+  viGInBjnI6nysFr7oXXs5o1sW3ZBwxvnC9K4QeEZG59U+epf
+  =enie
+  -----END PGP MESSAGE-----
+senlin_pass: |
+  -----BEGIN PGP MESSAGE-----
+  Comment: GPGTools - http://gpgtools.org
+  
+  hQIMA4VjTU4mltuAARAAw3/KIzcOyQbb0j4LGq5q+o5xrDijPQWgRUsMWZeexgV/
+  sbizTkt2GPhpAFBMtIdlgGCoR53CLaePzeGklR7MR2X+zmd1yK86xVIMYRI7yWRE
+  Li1yHljr9a20s/8cKFvVaJwGoeyq/fhqgc/Qnq3vLQMGoIxAQ51uh9NQhyJ1mxT0
+  I2xRd8d7axmBudGr9LHcvR1iLsozN6iEjF3ZkwHwf52uIzDnN7CxvUS6qEaK+GgY
+  T1yyOJ2hHgR05d7+Y5i0PykxJLjgmwOyOVpjHcG373ex2Lw3Co+SA6dYH2Alye6X
+  greBTo+m06wwQY3t3c+VdVUa03HftRFH8ejj8hBbEyrgiBaYNtWILDdxbziNOHSG
+  eB32mgstt+AjATJ8USet/A20araWtQHt8gHRNK5qtvRcC9hpwvKxEMQeqzX/FBT+
+  ufAq+haf1xYPTp9Iy64gtG3FRjaXMZ0N8lE6D416eOEQoSC8kXgbAGztD4vzgcqY
+  DlEtVDM1IRbTbp1TJuOvjW7drPrfHPTzrkXmBFOumpkHi0cSBROCK3gBpYVrUlU4
+  D+fyTpyrU84x2OKYXYWf+i2YYWLQ/uHWASe/1gz4PHXKpnnlo4zdxK9B9yEzmYK5
+  NX7dxp8bgJlhYumHRI+rocqbXUDxu/VZffiX29J4J3X3NHvpYGnjCLW7x+DECEzS
+  UwFOaWIwm0a8+9iRrpEP2OLbdamG8XRsoa00EAOUI7ZivizbTPEYeBxBl/or6EF2
+  L1wbROYFSICE4oD9Nb6/KTr/PHWfOQpl4HryDZOLFSZ6pgmN
+  =vVbK
+  -----END PGP MESSAGE-----
+placement_pass: |
+  -----BEGIN PGP MESSAGE-----
+  Comment: GPGTools - http://gpgtools.org
+  
+  hQIMA4VjTU4mltuAARAAyunvKE1RDC3lOZzNPa8UODU20SPn4lhhSDaygc0YxjCx
+  I12jP1rAPGj+I5HkI+jBstfxaHcF+2+vuJgKIQGSVTKXrU1hkOXUR7Igs2vuRjF+
+  dUM6rjQ8pXNYVAScdAzcs1HH0Na3GPY28OTvLAwKmB+eB3LJJt9d8XlHDlexRT33
+  rUSXW8tlKtpxkptAY39G5nQ8wL6xbkcEjexam/H84FiltZ+ATwZSC+9sCcsny7e5
+  ZLMGFPXNPUsCCQoZhmydj5qBO5g7B5onQvtxppOekzG3GireFcHL/hMldoFyRGrG
+  3zJYXecVoCw5t0X3yD1SQzeQdOtPK6aHbtKs0s8OMAI+TMKNdPHPImAbmylvFjeX
+  TIFukGE5g/52LhXtmNPoF5wQ6XKRLEftI/oFw7SmtcR7axJ+MhRXrzepNXw66rxY
+  yqOJhdypV3112y2C9NCcaMKuxf1QdZ8SO1Op3RgFA2Nth33dYB/+1mw5VeYq1uu/
+  4DH0/5BLeaT0sGzMeDaM8nJkF9LaE9AMFQzM1J0OmDYdNHvfTPESZgCKUR5iK6p4
+  j8kwSomFzun/eQazzoz71iZDeg+hNpiFpNeYNQuwm7ovL2paK/hEcfrJ9JpS7mL4
+  4OZdWXgN1SbMDcjhdq4B6vq13e1yxKfh7WWn5fQi/mOJ+ojfABdDlYe9K96m93bS
+  UwFfAGXAa1ACPrVZvA2Q9aYmw2K9XjtHQ0a7ESsoChw6IWMf3DAWTSM9o3355xfp
+  dmzatPIXuFDtk7gRzPF9HisIFzwVKNqiHn7uzVIOj0M5itV1
+  =MFqh
+  -----END PGP MESSAGE-----
 tacc_ldap_pass: |
   -----BEGIN PGP MESSAGE-----
   Comment: GPGTools - http://gpgtools.org

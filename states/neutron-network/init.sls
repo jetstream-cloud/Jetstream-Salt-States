@@ -1,4 +1,6 @@
 {% set os_family = salt['grains.get']('os_family', '') %}
+{% set rabbit_credential = ['openstack',pillar['openstack_rabbit_pass']]|join(':') %}
+{% set rabbit_hosts_list = pillar['rabbit_hosts'].split(',') %}
 
 # this has been fixed
 #include:
@@ -146,6 +148,7 @@ strongswan:
           allow_overlapping_ips: True
           verbose: True
           network_device_mtu: 9000
+          global_physnet_mtu: 9050
           advertise_mtu: True
           dhcp_lease_duration: 300
         keystone_authtoken:
@@ -179,7 +182,12 @@ strongswan:
           type_drivers: flat,vxlan
           tenant_network_types: vxlan
           mechanism_drivers: linuxbridge,l2population
+<<<<<<< HEAD
           physical_network_mtus: "iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000,unavco-wrangler:9000,sra-wrangler:9000"
+=======
+          path_mtu: 9050
+          physical_network_mtus: "public:9000,iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000,tg-cie160046-wrangler:9000,tg-cie160051:9000,jettest-wrangler:9000,seagrid-wrangler:9000"
+>>>>>>> b86ca30194f33ff9725778d976a10bc2e24f3941
         ml2_type_gre:
           tunnel_id_ranges: '1:1000'
         ml2_type_vxlan:
@@ -192,7 +200,11 @@ strongswan:
         agent:
           tunnel_types: vxlan
         linux_bridge:
+<<<<<<< HEAD
           physical_interface_mappings: 'public:bond0.330,iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362,unavco-wrangler:9000,asc-wrangler:9000'
+=======
+          physical_interface_mappings: 'public:bond0.330,iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362,tg-cie160046-wrangler:bond0.363,tg-cie160051:bond0.364,jettest-wrangler:bond0.365,seagrid-wrangler:bond0.366'
+>>>>>>> b86ca30194f33ff9725778d976a10bc2e24f3941
         vxlan:
           l2_population: {{ pillar['unicast_vxlan'] }} 
           enable_vxlan: True
