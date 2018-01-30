@@ -235,7 +235,7 @@ setsecret:
   ini.options_present:
     - sections:
         linux_bridge:
-          physical_interface_mappings: "iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362"
+          physical_interface_mappings: "iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362,unavco-wrangler:bond0.367,asc-wrangler:bond0.368"
         vxlan:
 
           local_ip: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
@@ -253,7 +253,7 @@ setsecret:
           type_drivers: flat,vlan,gre,vxlan
           tenant_network_types: vxlan,vlan
           mechanism_drivers: linuxbridge,l2population
-          physical_network_mtus: "iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000"
+          physical_network_mtus: "iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000,unavco-wrangler:9000,sra-wrangler:9000"
         ml2_type_gre:
           tunnel_id_ranges: "1:1000"
         ml2_type_vxlan:
