@@ -256,7 +256,6 @@ setsecret:
         linux_bridge:
           physical_interface_mappings: "public:bond0.330,iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362,tg-cie160046-wrangler:bond0.363,tg-cie160051-wrangler:bond0.364,jettest-wrangler:bond0.365,seagrid-wrangler:bond0.366,geode2-test:bond0.302"
         vxlan:
-
           local_ip: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
           vxlan_group: 239.0.0.0/25
           l2_population: {{ pillar['unicast_vxlan'] }} 
