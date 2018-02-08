@@ -271,7 +271,7 @@ setsecret:
         ml2:
           type_drivers: flat,vlan,gre,vxlan
           tenant_network_types: vxlan,vlan
-          mechanism_drivers: linuxbridge,l2population
+          mechanism_drivers: linuxbridge
           physical_network_mtus: "public:9000,iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000,tg-cie160046-wrangler:9000,tg-cie160051-wrangler:9000,jettest-wrangler:9000,seagrid-wrangler:9000,geode2-test:9000"
           path_mtu: 9050
         ml2_type_gre:
