@@ -2,7 +2,7 @@
   ini.options_present:
     - sections:
         identity:
-          driver: keystone.identity.backends.ldap.Identity
+          driver: ldap
         ldap:
           user_attribute_ignore: description
           debug_level: -1
