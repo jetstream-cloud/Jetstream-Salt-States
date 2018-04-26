@@ -41,9 +41,10 @@ Hopefully now you have a working salt install. Clone the git repo:
     cd Jetstream-Salt-States
     git checkout --track -b tacc origin/tacc
 
-Create a vars.sls file that will contain variables specific to your cluster:
+Create vars & passwords files that will contain variables specific to your cluster:
 
     echo "salt-master-ip: [master_ip]" >> ~/vars.sls
+    touch ~/passwords.sls
     
 Run the pub script to copy everything into the standard salt directories:
 
