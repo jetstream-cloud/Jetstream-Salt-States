@@ -27,7 +27,7 @@ On master:
 On minions (including master):
 
     yum install -y salt-minion crudini
-    crudini --set /etc/salt/minion '' master [master_ip]
+    echo 'master: [master_ip' > /etc/salt/minion
     systemctl start salt-minion
 
 On master:
