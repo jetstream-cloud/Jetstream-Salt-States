@@ -27,7 +27,7 @@ On master:
 On minions (including master):
 
     yum install -y salt-minion crudini
-    echo 'master: [master_ip]' > /etc/salt/minion
+    echo "master: [master_ip]" > /etc/salt/minion
     systemctl start salt-minion
 
 On master:
@@ -40,7 +40,21 @@ Hopefully now you have a working salt install. Clone the git repo:
     git clone git@github.com:jetstream-cloud/Jetstream-Salt-States.git
     cd Jetstream-Salt-States
     git checkout --track -b tacc origin/tacc
+
+Create a vars.sls file that will contain variables specific to your cluster:
+
+    echo "salt-master-ip: [master_ip]" >> ~/vars.sls
+    
+Run the pub script to copy everything into the standard salt directories:
+
     ./pub
+
+Run salt to push state to all nodes:
+
+    salt '*' state.apply
+
+
+## GPG encryption
 
 If using GPG to store encrypted configs:
 
