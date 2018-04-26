@@ -16,7 +16,7 @@ Pick a master node.
 Ensure you can ssh as root from it to the other nodes. Then run on each:
 
     yum install -y epel-release
-    yum install -y salt git crudini GitPython rng-tools
+    yum install -y salt git GitPython rng-tools
 
 On master:
 
@@ -26,7 +26,7 @@ On master:
 
 On minions (including master):
 
-    yum install -y salt-minion
+    yum install -y salt-minion crudini
     crudini --set /etc/salt/minion '' master [master_ip]
     systemctl start salt-minion
 
