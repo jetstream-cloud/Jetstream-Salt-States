@@ -6,7 +6,7 @@ i40e-tarball:
    - name: /usr/src/
    - source: salt://i40e-2.4.6.tar.gz
    - archive_format: tar
-   - source_hash: md5=830e0b47c405d2dc0d2bbe46c3451ad0
+   - source_hash: md5=66455ad991f7fd81cf4ce3d2430db434
    - if_missing: /usr/src/i40e-2.4.6/
 /usr/src/i40e-2.4.6/dkms.conf:
   file.managed:
