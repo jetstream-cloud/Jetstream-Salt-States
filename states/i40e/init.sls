@@ -8,7 +8,7 @@ i40e-tarball:
    - archive_format: tar
    - source_hash: md5=379793d1e3eb408a1a46ddeee94bc27b
    - if_missing: /usr/src/i40e-2.4.10/
-/usr/src/i40e-2.4.6/dkms.conf:
+/usr/src/i40e-2.4.10/dkms.conf:
   file.managed:
     - source: salt://i40e/dkms.conf
     - mode: 644
