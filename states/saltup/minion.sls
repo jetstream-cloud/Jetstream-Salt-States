@@ -8,5 +8,5 @@ salt-minion:
 /etc/salt/minion:
   ini.options_present:
     - separator: ':'
-    - sections: 
-          master: {{ pillar['salt-master-ip'] }} 
+    - sections:
+        master: {{ pillar['salt-master-ip'] }} 

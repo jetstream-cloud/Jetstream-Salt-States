@@ -2,7 +2,7 @@ epel-release:
   pkg:
     - installed
 
-centos-release-openstack-newton:
+centos-release-openstack-queens:
   pkg:
     - installed
 

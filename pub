@@ -1,13 +1,20 @@
 #!/bin/bash
 
 #cp /root/Jetstream-Salt-States/master /etc/salt
+repo=/root/Jetstream-Salt-States
 
 mkdir -p /srv/pillar
-rsync -avx pillar/ /srv/pillar
+rsync -avx $repo/pillar/ /srv/pillar
 
 mkdir -p /srv/salt
-rsync -avx states/ /srv/salt
+rsync -avx $repo/states/ /srv/salt
 
+rsync -avx ~/mpackardtest /srv/salt
 
 cp -f ~/passwords.sls /srv/pillar
 cp -f ~/vars.sls /srv/pillar
+
+if [ -f ~/top.sls ]
+then
+  cp -f ~/top.sls /srv/salt
+fi

@@ -15,18 +15,17 @@ Pick a master node.
 
 Ensure you can ssh as root from it to the other nodes. Then run on each:
 
-    yum install -y epel-release
-    yum install -y salt git GitPython rng-tools
-
+    yum install -y https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm
+ 
 On master:
 
-    yum install -y salt-master salt-minion salt-ssh salt-syndic salt-cloud
+    yum install -y salt-master salt-ssh 
     systemctl enable salt-master
     systemctl start salt-master
 
-On minions (including master):
+On minions (including master node):
 
-    yum install -y salt-minion crudini
+    yum install -y salt-minion 
     echo "master: [master_ip]" > /etc/salt/minion
     systemctl enable salt-minion
     systemctl start salt-minion

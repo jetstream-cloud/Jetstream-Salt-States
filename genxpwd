@@ -1,23 +1,21 @@
 #!/bin/bash
 
-#usage() {
-#  echo "$0 [your_gpg_key]"
-#}
-#
-#if [ ! $1 ]
-#then
-#  usage
-#  exit 1
-#fi
-#
-#gpgkey=$1
+usage() {
+  echo "$0 [your_gpg_key]"
+}
 
-#pass="$HOME/passwords"
-pass="$HOME/passwords.sls"
-#passx="$HOME/passwords.sls"
+if [ ! $1 ]
+then
+  usage
+  exit 1
+fi
 
-#for i in $pass $passx
-for i in $pass 
+gpgkey=$1
+
+pass="$HOME/passwords"
+passx="$HOME/passwords.sls"
+
+for i in $pass $passx
 do
   if [ -f $i ]
   then
@@ -27,15 +25,15 @@ do
 done
 
 touch $pass
-#touch $passx
+touch $passx
 
-#echo "#!yaml|gpg" >> $passx
+echo "#!yaml|gpg" >> $passx
 
 for i in mistral_pass mistral_dbpass swift_keystone_pass magnum_domain_admin_pass magnum_dbpass magnum_pass murano_pass murano_dbpass murano_guest_rabbitmq_pass heat_domain_admin_pass heat_pass heat_dbpass gnocchi_pass gnocchi_dbpass ceilometer_dbpass ceilometer_pass openstack_rabbit_pass keystone_dbpass admin_token admin_pass glance_dbpass glance_pass cinder_dbpass cinder_pass nova_dbpass nova_pass neutron_pass neutron_dbpass libvirt_secret_uuid cephkey-gnocchi cephkey-glance cephkey-cinder cephkey-cinderbackup metadata_proxy_shared_secret bkpuser_password clustercheckuser_password mysql_root_password keepalived_pass lbstatsauth
 do
   p=`openssl rand -hex 12`
   echo "$i: $p" >> $pass
-#  echo "$i: |" >> $passx
-#  echo "$p" | gpg --armor --batch --trust-model always --encrypt -r $gpgkey | sed 's/^/  /' >> $passx
+  echo "$i: |" >> $passx
+  echo "$p" | gpg --armor --batch --trust-model always --encrypt -r $gpgkey | sed 's/^/  /' >> $passx
 done
 
