@@ -1,7 +1,7 @@
 [mysqld]
 max_connections = 600
 wsrep_provider=/usr/lib/galera3/libgalera_smm.so
-wsrep_cluster_address=gcomm://172.16.128.253,172.16.128.252,172.16.128.250
+wsrep_cluster_address="gcomm://{{ percona_hosts }}"
 wsrep_sst_method=rsync
 wsrep_slave_threads=8
 wsrep_sst_auth="bkpuser:{{ bkpuser_password }}"

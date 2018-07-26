@@ -13,8 +13,6 @@ rsync -avx ~/mpackardtest /srv/salt
 
 cp -f ~/passwords.sls /srv/pillar
 cp -f ~/vars.sls /srv/pillar
+cp -f ~/distro_specific.sls /srv/pillar
 
-if [ -f ~/top.sls ]
-then
-  cp -f ~/top.sls /srv/salt
-fi
+cp -f ~/top.sls /srv/salt

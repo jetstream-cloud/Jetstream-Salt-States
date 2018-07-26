@@ -1,6 +1,14 @@
 {% set os_family = salt['grains.get']('os_family', '') %}
 {% set clustercheckuser_password = salt['pillar.get']('mysql_cluster_passwords:server:clustercheckuser_password', salt['grains.get']('server_id')) %}
 
+{% if os_family =='RedHat' %}
+percona-release:
+  pkg.installed:
+    - sources: 
+      - foo: http://www.percona.com/downloads/percona-release/redhat/0.1-6/percona-release-0.1-6.noarch.rpm
+{% endif %}
+
+{% if os_family =='Debian' %}
 perconarepo:
   pkgrepo.managed:
     - humanname: Percona Repo
@@ -9,23 +17,27 @@ perconarepo:
     - keyserver: keys.gnupg.net 
     - keyid: CD2EFD2A 
     - require_in:
-      - pkg: percona-xtradb-cluster-56
+      - pkg: Percona-XtraDB-Cluster-57
+{% endif %}   
 
-percona-xtradb-cluster-56:
+Percona-XtraDB-Cluster-57:
   pkg.installed
 
-/etc/mysql/conf.d/percona.cnf:
+"{{ pillar['mysql-confdir'] }}/percona.cnf":
   file.managed:
     - source: salt://percona/percona.cnf
     - template: jinja
     - context:
-      bkpuser_password: {{ pillar['bkpuser_password'] }}
+        bkpuser_password: {{ pillar['bkpuser_password'] }}
+        percona_hosts: {{ pillar['percona_hosts'] }}
+
 /etc/xinetd.d/mysqlchk:
   file.managed:
     - source: salt://percona/mysqlchk
     - template: jinja
     - context:
       clustercheckuser_password: {{ pillar['clustercheckuser_password'] }}
+
 xinetd:
   pkg:
     - installed
@@ -42,7 +54,7 @@ mysql:
     - running
     - enable: True
     - watch:
-      - file: /etc/mysql/conf.d/percona.cnf
+      - file: "{{ pillar['mysql-confdir'] }}/percona.cnf"
 {% if os_family =='RedHat' %}
 MySQL-python:
   pkg.installed 
