@@ -3,11 +3,11 @@ cephrepo:
   pkgrepo.managed:
     - humanname: Ceph Repo
 {% if os_family == 'RedHat' %}
-    - baseurl: http://download.ceph.com/rpm-luminous/el7/x86_64/
+    - baseurl: http://download.ceph.com/rpm-mimic/el7/x86_64/
     - gpgcheck: 1
     - gpgkey: https://git.ceph.com/release.asc
 {% elif os_family == 'Debian' %}
-    - name: deb http://ceph.com/debian-luminous/ trusty main
+    - name: deb http://ceph.com/debian-mimic/ trusty main
     - file: /etc/apt/sources.list.d/ceph.list
     - key_url: https://git.ceph.com/release.asc 
 {% endif %}
