@@ -141,6 +141,7 @@ setsecret:
           my_ip: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
           reserved_host_memory_mb: 3857 
           ram_allocation_ratio: 1
+          vif_plugging_is_fatal: False
         placement:
           os_region_name: RegionOne
           project_domain_name: Default
