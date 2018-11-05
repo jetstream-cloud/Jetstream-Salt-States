@@ -204,7 +204,8 @@ setsecret:
           project_domain_name: Default
           user_domain_name:  Default
           region_name: RegionOne
-
+        notifications:
+          notification_format: unversioned
 /etc/neutron/neutron.conf-absent:
   ini.options_absent:
     - name: /etc/neutron/neutron.conf
