@@ -18,6 +18,7 @@
             - memcached_servers
             - ec2_workers
             - notification_driver
+            - notify_on_state_change
           keystone_authtoken:
             - auth_plugin
 /etc/nova/nova.conf:
@@ -42,6 +43,9 @@
           vendordata_providers: StaticJSON
           vendordata_jsonfile_path: /etc/nova/vendordata.json
           osapi_max_limit: 10000
+        notifications:
+          notification_format: unversioned
+          notify_on_state_change: vm_and_task_state
         conductor:
           workers: 4
         database:
