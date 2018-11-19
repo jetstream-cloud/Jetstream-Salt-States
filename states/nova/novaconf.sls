@@ -43,6 +43,11 @@
           vendordata_providers: StaticJSON
           vendordata_jsonfile_path: /etc/nova/vendordata.json
           osapi_max_limit: 10000
+        scheduler:
+          driver: filter_scheduler
+        filter_scheduler:
+          available_filters: nova.scheduler.filters.all_filters
+          enabled_filters: RetryFilter, AvailabilityZoneFilter, ComputeFilter, ComputeCapabilitiesFilter, CoreFilter, RamFilter, ImagePropertiesFilter, ServerGroupAntiAffinityFilter, ServerGroupAffinityFilter
         notifications:
           notification_format: unversioned
           notify_on_state_change: vm_and_task_state
