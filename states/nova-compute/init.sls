@@ -142,6 +142,8 @@ setsecret:
           reserved_host_memory_mb: 3857 
           ram_allocation_ratio: 1
           vif_plugging_is_fatal: False
+          scheduler_instance_sync_interval: 300
+          update_resources_interval: 300
         placement:
           os_region_name: RegionOne
           project_domain_name: Default
