@@ -119,6 +119,7 @@ setsecret:
           - protocol
         neutron:
           - auth_strategy
+          - url
 /etc/nova/nova.conf:
   ini.options_present:
     -  sections:
@@ -154,6 +155,8 @@ setsecret:
           username: placement
           password: {{ pillar['placement_pass'] }}
           timeout: 10
+          insecure: True
+          endpoint_override: https://internal-lb:8778
         vnc:
           enabled: True
           novncproxy_base_url: https://{{ pillar['novapublichost'] }}:6080/vnc_auto.html
@@ -198,7 +201,7 @@ setsecret:
         oslo_concurrency:
           lock_path: /var/lock/nova
         neutron:
-          url: https://{{ pillar['neutronpublichost'] }}:9696
+          endpoint_override: https://internal-lb:9696
           auth_type: password
           auth_url: https://{{ pillar['keystonehost'] }}:35357
           project_name: service
@@ -207,6 +210,7 @@ setsecret:
           project_domain_name: Default
           user_domain_name:  Default
           region_name: RegionOne
+          insecure: True
         notifications:
           notification_format: unversioned
 /etc/neutron/neutron.conf-absent:
