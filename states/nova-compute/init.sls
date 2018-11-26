@@ -145,7 +145,7 @@ setsecret:
           scheduler_instance_sync_interval: 300
           update_resources_interval: 300
         placement:
-          os_region_name: RegionOne
+          region_name: RegionOne
           project_domain_name: Default
           project_name: service
           auth_type: password
@@ -153,6 +153,7 @@ setsecret:
           auth_url: https://{{ pillar['keystonehost'] }}:35357/v3
           username: placement
           password: {{ pillar['placement_pass'] }}
+          timeout: 10
         vnc:
           enabled: True
           novncproxy_base_url: https://{{ pillar['novapublichost'] }}:6080/vnc_auto.html
