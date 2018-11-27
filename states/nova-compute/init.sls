@@ -116,6 +116,8 @@ setsecret:
           - rpc_backend
           - auth_strategy
           - use_neutron
+          - firewall_driver
+          - linuxnet_interface_driver
         keystone_authtoken:
           - auth_plugin
         libvirt:
@@ -150,8 +152,6 @@ setsecret:
           instance_usage_audit: True
           instance_usage_audit_period: hour
           notification_driver: messagingv2
-          linuxnet_interface_driver: nova.network.linux_net.NeutronLinuxBridgeInterfaceDriver
-          firewall_driver: nova.virt.firewall.NoopFirewallDriver
           verbose: True
           my_ip: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
           reserved_host_memory_mb: 3857 
