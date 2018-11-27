@@ -112,14 +112,28 @@ setsecret:
         DEFAULT:
           - network_api_class
           - security_group_api
+          - notify_on_state_change
+          - rpc_backend
+          - auth_strategy
+          - use_neutron
         libvirt:
           - live_migration_flag
+          - live_migration_uri
         glance:
           - host
           - protocol
         neutron:
           - auth_strategy
           - url
+        placement:
+          - os_region_name
+        vnc:
+          - vncserver_proxyclient_address
+          - vncserver_listen
+        oslo_messaging_rabbit:
+          - rabbit_hosts
+          - rabbit_password
+          - rabbit_userid
 /etc/nova/nova.conf:
   ini.options_present:
     -  sections:
@@ -129,22 +143,21 @@ setsecret:
           state_path: /var/lib/nova
           compute_driver: libvirt.LibvirtDriver
           compute_monitors: ComputeDriverCPUMonitor,cpu.virt_driver
-          rpc_backend: rabbit
-          auth_strategy: keystone
           instance_usage_audit: True
           instance_usage_audit_period: hour
-          notify_on_state_change: vm_and_task_state
           notification_driver: messagingv2
           linuxnet_interface_driver: nova.network.linux_net.NeutronLinuxBridgeInterfaceDriver
           firewall_driver: nova.virt.firewall.NoopFirewallDriver
           verbose: True
-          use_neutron: True
           my_ip: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
           reserved_host_memory_mb: 3857 
           ram_allocation_ratio: 1
           vif_plugging_is_fatal: False
           scheduler_instance_sync_interval: 300
           update_resources_interval: 300
+          transport_url: rabbit://{% for item in rabbit_hosts_list %}{{rabbit_credential}}@{{item}}:5672,{% endfor %}
+        api:
+          auth_strategy: keystone
         placement:
           region_name: RegionOne
           project_domain_name: Default
@@ -160,12 +173,11 @@ setsecret:
         vnc:
           enabled: True
           novncproxy_base_url: https://{{ pillar['novapublichost'] }}:6080/vnc_auto.html
-          vncserver_listen:  0.0.0.0
-          vncserver_proxyclient_address: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
+          server_listen:  0.0.0.0
+          server_proxyclient_address: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
           xvpvncproxy_base_url: https://{{ pillar['novapublichost'] }}:6081/console         
         libvirt:
           cpu_mode: host-passthrough
-          live_migration_uri: qemu+ssh://%s/system
           inject_password: false
           inject_key: false
           inject_partition: -2
@@ -184,9 +196,6 @@ setsecret:
           disable_libvirt_livesnapshot: False
         oslo_messaging_rabbit:
           rabbit_ha_queues: True
-          rabbit_hosts: {{ pillar['rabbit_hosts'] }}
-          rabbit_userid: openstack
-          rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
         keystone_authtoken:
           auth_uri: https://{{ pillar['keystonehost'] }}:5000
           auth_url: https://{{ pillar['keystonehost'] }}:35357
@@ -213,6 +222,7 @@ setsecret:
           insecure: True
         notifications:
           notification_format: unversioned
+          notify_on_state_change: vm_and_task_state 
 /etc/neutron/neutron.conf-absent:
   ini.options_absent:
     - name: /etc/neutron/neutron.conf
