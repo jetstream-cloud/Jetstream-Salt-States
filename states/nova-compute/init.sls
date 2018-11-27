@@ -137,6 +137,7 @@ setsecret:
           - rabbit_hosts
           - rabbit_password
           - rabbit_userid
+
 /etc/nova/nova.conf:
   ini.options_present:
     -  sections:
