@@ -200,8 +200,9 @@ setsecret:
         oslo_messaging_rabbit:
           rabbit_ha_queues: True
         keystone_authtoken:
-          auth_uri: https://{{ pillar['keystonehost'] }}:5000
-          auth_url: https://{{ pillar['keystonehost'] }}:35357
+          auth_uri: https://internal-lb:5000
+          auth_url: https://internal-lb:35357
+          insecure: True
           auth_type: password
           project_domain_id: default
           user_domain_id: default
