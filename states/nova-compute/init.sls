@@ -116,12 +116,15 @@ setsecret:
           - rpc_backend
           - auth_strategy
           - use_neutron
+        keystone_authtoken:
+          - auth_plugin
         libvirt:
           - live_migration_flag
           - live_migration_uri
         glance:
           - host
           - protocol
+          - api_servers
         neutron:
           - auth_strategy
           - url
@@ -199,14 +202,15 @@ setsecret:
         keystone_authtoken:
           auth_uri: https://{{ pillar['keystonehost'] }}:5000
           auth_url: https://{{ pillar['keystonehost'] }}:35357
-          auth_plugin: password
+          auth_type: password
           project_domain_id: default
           user_domain_id: default
           project_name: service
           username: nova
           password: {{ pillar['nova_pass'] }}
         glance:
-          api_servers: https://{{ pillar['glancepublichost'] }}:9292
+          insecure: True
+          endpoint_override: https://internal-lb:9292
         oslo_concurrency:
           lock_path: /var/lock/nova
         neutron:
