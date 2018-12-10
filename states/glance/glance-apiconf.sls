@@ -23,7 +23,6 @@ glance-api.conf-deprecated:
             workers: 4
             show_image_direct_url: True
             verbose: True
-            notification_driver: messagingv2
             transport_url: rabbit://{% for item in rabbit_hosts_list %}{{rabbit_credential}}@{{item}}:5672,{% endfor %}
           glance_store:
             default_store: rbd
