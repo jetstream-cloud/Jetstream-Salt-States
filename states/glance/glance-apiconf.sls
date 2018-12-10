@@ -24,6 +24,8 @@ glance-api.conf-deprecated:
             show_image_direct_url: True
             verbose: True
             transport_url: rabbit://{% for item in rabbit_hosts_list %}{{rabbit_credential}}@{{item}}:5672,{% endfor %}
+            enable_v1_api: False
+            enable_v2_api: True 
           glance_store:
             default_store: rbd
             stores: rbd
