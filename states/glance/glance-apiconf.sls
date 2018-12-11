@@ -6,16 +6,17 @@ glance-api.conf-deprecated:
     - name: /etc/glance/glance-api.conf
     - sections:
         DEFAULT:
-          notification_driver
-          rpc_backend
-          show_multiple_locations
+          - notification_driver
+          - rpc_backend
+          - show_multiple_locations
         keystone_authtoken:
-          auth_plugin
-          auth_uri
+          - auth_plugin
+          - auth_uri
         oslo_messaging_rabbit:
-          rabbit_hosts
-          rabbit_userid
-          rabbit_password
+          - rabbit_hosts
+          - rabbit_userid
+          - rabbit_password
+
 /etc/glance/glance-api.conf:
   ini.options_present:
     - sections:
