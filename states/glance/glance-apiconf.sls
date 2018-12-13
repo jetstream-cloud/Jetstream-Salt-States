@@ -8,7 +8,6 @@ glance-api.conf-deprecated:
         DEFAULT:
           - notification_driver
           - rpc_backend
-          - show_multiple_locations
         keystone_authtoken:
           - auth_plugin
           - auth_uri
@@ -23,6 +22,7 @@ glance-api.conf-deprecated:
           DEFAULT:
             workers: 4
             show_image_direct_url: True
+            show_multiple_locations: True
             verbose: True
             transport_url: rabbit://{% for item in rabbit_hosts_list %}{{rabbit_credential}}@{{item}}:5672,{% endfor %}
             enable_v1_api: False
