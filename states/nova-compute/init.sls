@@ -193,6 +193,7 @@ setsecret:
           disk_cachemodes: "network=writeback"
           hw_disk_discard: unmap
           volume_clear: none
+          live_migration_scheme: ssh
           live_migration_permit_auto_converge: True
           live_migration_permit_post_copy: True
           transport_url: rabbit://{% for item in rabbit_hosts_list %}{{rabbit_credential}}@{{item}}:5672,{% endfor %}
