@@ -211,6 +211,9 @@ setsecret:
           project_name: service
           username: nova
           password: {{ pillar['nova_pass'] }}
+        cinder:
+          endpoint_template: https://internal-lb:8776/v3/%(project_id)s
+          insecure: True
         glance:
           insecure: True
           endpoint_override: https://internal-lb:9292
