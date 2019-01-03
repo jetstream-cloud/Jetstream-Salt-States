@@ -60,7 +60,7 @@
           notification_format: unversioned
           notify_on_state_change: vm_and_task_state
         conductor:
-          workers: 4
+          workers: 8 
         database:
           connection: mysql+pymysql://nova:{{ pillar['nova_dbpass']}}@{{ pillar['mysqlhost'] }}/nova
         api_database:
