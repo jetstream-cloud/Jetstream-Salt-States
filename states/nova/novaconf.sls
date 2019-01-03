@@ -76,6 +76,9 @@
           memcached_servers: {{ pillar['memcached_servers'] }} 
         glance:
           api_servers: https://{{ pillar['glancepublichost'] }}:9292
+        cinder:
+          endpoint_template: https://internal_lb:8776/v3/%(project_id)s
+          insecure: True
         oslo_concurrency:
           lock_path: /var/lock/nova
         neutron:
