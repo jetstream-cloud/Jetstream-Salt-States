@@ -1,3 +1,6 @@
+{% set rabbit_credential = ['openstack',pillar['openstack_rabbit_pass']]|join(':') %}
+{% set rabbit_hosts_list = pillar['rabbit_hosts'].split(',') %}
+
 /etc/nova/nova.conf-absent:
   ini.options_absent:
       - name: /etc/nova/nova.conf
@@ -21,6 +24,10 @@
             - notify_on_state_change
           keystone_authtoken:
             - auth_plugin
+          oslo_messaging_rabbit:
+            - rabbit_hosts
+            - rabbit_password
+            - rabbit_userid
 /etc/nova/nova.conf:
   ini.options_present:
     - separator: '='
@@ -43,6 +50,7 @@
           vendordata_providers: StaticJSON
           vendordata_jsonfile_path: /etc/nova/vendordata.json
           osapi_max_limit: 10000
+          transport_url: rabbit://{% for item in rabbit_hosts_list %}{{rabbit_credential}}@{{item}}:5672,{% endfor %}
         scheduler:
           driver: filter_scheduler
         filter_scheduler:
@@ -59,9 +67,6 @@
           connection: mysql+pymysql://nova:{{ pillar['nova_dbpass']}}@{{ pillar['mysqlhost'] }}/nova_api
         oslo_messaging_rabbit:
           rabbit_ha_queues: True
-          rabbit_hosts: {{ pillar['rabbit_hosts'] }}
-          rabbit_userid: openstack
-          rabbit_password: {{ pillar['openstack_rabbit_pass'] }}
         oslo_messaging_notifications:
           driver: messagingv2
         keystone_authtoken:
