@@ -31,9 +31,9 @@ On minions, including master node (change master_ip to yours):
     systemctl enable salt-minion
     systemctl start salt-minion
     
-On master:
+On master (answer Y to first command):
 
-    salt-key -A (Y)
+    salt-key -A
     salt '*' cmd.run 'uptime'
 
 Hopefully now you have a working salt install. Clone the git repo:
