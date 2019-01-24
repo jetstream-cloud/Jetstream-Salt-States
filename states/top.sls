@@ -2,5 +2,6 @@ base:
 
   '*':
     - saltup.minion
+    - bootstrap
 
 

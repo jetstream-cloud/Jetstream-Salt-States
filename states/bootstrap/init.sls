@@ -1,8 +1,6 @@
-epel-release:
-  pkg:
-    - installed
-
-centos-release-openstack-queens:
-  pkg:
-    - installed
-
+bootstrap_packages:
+  pkg.installed: 
+    - pkgs: 
+      - epel-release
+      - vim-enhanced 
+      - nmap-ncat

@@ -9,10 +9,11 @@ rsync -avx $repo/pillar/ /srv/pillar
 mkdir -p /srv/salt
 rsync -avx $repo/states/ /srv/salt
 
-rsync -avx ~/mpackardtest /srv/salt
+#rsync -avx ~/mpackardtest /srv/salt
 
 cp -f ~/passwords.sls /srv/pillar
 cp -f ~/vars.sls /srv/pillar
-cp -f ~/distro_specific.sls /srv/pillar
-
-cp -f ~/top.sls /srv/salt
+#cp -f ~/distro_specific.sls /srv/pillar
+#cp -f ~/top.sls /srv/salt
+touch /srv/pillar/distro_specific.sls
+touch /srv/salt/top.sls
