@@ -23,10 +23,11 @@ On master:
     systemctl enable salt-master
     systemctl start salt-master
 
-On minions (including master node):
+On minions, including master node (change master_ip to yours):
 
+    master_ip=192.168.100.1
     yum install -y salt-minion 
-    echo "master: [master_ip]" > /etc/salt/minion
+    echo "master: $master_ip" > /etc/salt/minion
     systemctl enable salt-minion
     systemctl start salt-minion
     
