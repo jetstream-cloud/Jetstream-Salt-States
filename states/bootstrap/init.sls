@@ -4,3 +4,4 @@ bootstrap_packages:
       - epel-release
       - vim-enhanced 
       - nmap-ncat
+      - centos-release-openstack-ocata
