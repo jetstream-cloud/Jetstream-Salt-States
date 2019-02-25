@@ -182,12 +182,8 @@ strongswan:
           type_drivers: flat,vxlan
           tenant_network_types: vxlan
           mechanism_drivers: linuxbridge,l2population
-<<<<<<< HEAD
-          physical_network_mtus: "iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000,unavco-wrangler:9000,sra-wrangler:9000"
-=======
           path_mtu: 9050
-          physical_network_mtus: "public:9000,iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000,tg-cie160046-wrangler:9000,tg-cie160051:9000,jettest-wrangler:9000,seagrid-wrangler:9000"
->>>>>>> b86ca30194f33ff9725778d976a10bc2e24f3941
+          physical_network_mtus: "public:9000,iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000,tg-cie160046-wrangler:9000,tg-cie160051:9000,jettest-wrangler:9000,seagrid-wrangler:9000,unavco-wrangler:9000,asc-wrangler:9000,vast-demo:9000,geode2-test:9000,nfss-wrangler:9000"
         ml2_type_gre:
           tunnel_id_ranges: '1:1000'
         ml2_type_vxlan:
@@ -200,11 +196,7 @@ strongswan:
         agent:
           tunnel_types: vxlan
         linux_bridge:
-<<<<<<< HEAD
-          physical_interface_mappings: 'public:bond0.330,iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362,unavco-wrangler:9000,asc-wrangler:9000'
-=======
-          physical_interface_mappings: 'public:bond0.330,iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362,tg-cie160046-wrangler:bond0.363,tg-cie160051:bond0.364,jettest-wrangler:bond0.365,seagrid-wrangler:bond0.366'
->>>>>>> b86ca30194f33ff9725778d976a10bc2e24f3941
+          physical_interface_mappings: 'geode2-test:bond0.302,public:bond0.330,iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362,tg-cie160046-wrangler:bond0.363,tg-cie160051:bond0.364,jettest-wrangler:bond0.365,seagrid-wrangler:bond0.366,unavco-wrangler:bond0.367,asc-wrangler:bond0.368,nfss-wrangler:bond0.369,vast-demo:bond0.370'
         vxlan:
           l2_population: {{ pillar['unicast_vxlan'] }} 
           enable_vxlan: True
