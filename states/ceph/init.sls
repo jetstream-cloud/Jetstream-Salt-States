@@ -1,55 +1,23 @@
-{% set os_family = salt['grains.get']('os_family', '') %}
-cephrepo:
-  pkgrepo.managed:
-    - humanname: Ceph Repo
-{% if os_family == 'RedHat' %}
-    - baseurl: http://ceph.com/rpm-hammer/el7/x86_64/
-    - gpgcheck: 1
-{% elif os_family == 'Debian' %}
-    - name: deb http://ceph.com/debian-hammer/ trusty main
-    - file: /etc/apt/sources.list.d/ceph.list
-{% endif %}
-    - key_url: https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/release.asc
-    - require_in:
-      - pkg: ceph
+ceph-repo-rpm:
+  cmd.run: 
+    - name: yum install -y https://download.ceph.com/rpm-mimic/el7/noarch/ceph-release-1-1.el7.noarch.rpm
+    - unless: rpm -q ceph-release-1-1.el7.noarch
 
-ceph:
-  pkg.installed
+ceph-packages:
+  pkg.installed: 
+    - pkgs: 
+      - python-cephfs
+      - ceph-selinux
+      - ceph-base
+      - libcephfs2
+      - ceph-common
+    - require:
+      - ceph-repo-rpm
 
-/etc/ceph/ceph.conf:
-  file.managed:
-    - source: salt://ceph/ceph.conf
-    - require:
-      - pkg: ceph
-/etc/ceph/ceph.client.glance.keyring:
-  file.managed:
-    - source: salt://ceph/ceph.client.glance.keyring
-    - owner: glance
-    - group: glance
-    - template: jinja
-    - require:
-      - pkg: ceph
-    - context:
-      cephkey: {{ pillar['cephkey-glance'] }}
+/etc/ceph:
+  file.recurse:
+    - source: salt://ceph/ceph-config
+    - include_empty: True
 
-/etc/ceph/ceph.client.cinder.keyring:
-  file.managed:
-    - source: salt://ceph/ceph.client.cinder.keyring
-    - owner: cinder
-    - group: cinder
-    - template: jinja
-    - require:
-      - pkg: ceph
-    - context:
-      cephkey: {{ pillar['cephkey-cinder'] }}
 
-/etc/ceph/ceph.client.cinder-backup.keyring:
-  file.managed:
-    - source: salt://ceph/ceph.client.cinder-backup.keyring
-    - owner: cinder
-    - group: cinder
-    - template: jinja
-    - require:
-      - pkg: ceph
-    - context:
-      cephkey: {{ pillar['cephkey-cinderbackup'] }}
+

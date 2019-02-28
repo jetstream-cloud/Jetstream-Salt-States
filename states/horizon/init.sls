@@ -2,3 +2,8 @@
   file.append:
     - text: 
       - "export OS_IDENTITY_API_VERSION=3"
+
+/etc/httpd/run/httpd.pid:
+  file.managed:
+     - user: apache
+

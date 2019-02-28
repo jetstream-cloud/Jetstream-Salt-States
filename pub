@@ -1,7 +1,9 @@
 #!/bin/bash
 
-#cp /root/Jetstream-Salt-States/master /etc/salt
-repo=/root/Jetstream-Salt-States
+# tacc specific 
+
+repo=/root/salt-tacc/Jetstream-Salt-States
+privrepo=/root/salt-tacc/tacc-private
 
 mkdir -p /srv/pillar
 rsync -avx $repo/pillar/ /srv/pillar
@@ -9,11 +11,7 @@ rsync -avx $repo/pillar/ /srv/pillar
 mkdir -p /srv/salt
 rsync -avx $repo/states/ /srv/salt
 
-#rsync -avx ~/mpackardtest /srv/salt
+cp -f $privrepo/salt/passwords.sls /srv/pillar
+cp -f $privrepo/salt/vars.sls /srv/pillar
 
-cp -f ~/passwords.sls /srv/pillar
-cp -f ~/vars.sls /srv/pillar
-#cp -f ~/distro_specific.sls /srv/pillar
-#cp -f ~/top.sls /srv/salt
-touch /srv/pillar/distro_specific.sls
-touch /srv/salt/top.sls
+rsync -avx $privrepo/salt/ceph-config /srv/salt/ceph
