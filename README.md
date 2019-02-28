@@ -51,22 +51,12 @@ Run the pub script to copy everything into the standard salt directories:
 
     ./pub
 
-Run salt to push state to all nodes:
+Now run salt commands to configure your nodes, e.g.:
 
+    salt node01 state.apply
     salt '*' state.apply
 
 
-## GPG encryption
-
-If using GPG to store encrypted configs:
-
-    mkdir -p /etc/salt/gpgkeys
-    chmod 0700 /etc/salt/gpgkeys
-    gpg-agent --homedir=/etc/salt/gpgkeys --daemon
-    #echo $GPG_AGENT_INFO
-    #GPG_AGENT_INFO=/etc/salt/gpgkeys/S.gpg-agent:5834:1; export GPG_AGENT_INFO;
-    export GPG_AGENT_INFO;
-    gpg --gen-key --homedir /etc/salt/gpgkeys
 
 
 
