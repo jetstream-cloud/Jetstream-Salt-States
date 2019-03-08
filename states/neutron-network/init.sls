@@ -223,7 +223,7 @@ strongswan:
         agent:
           tunnel_types: vxlan
         linux_bridge:
-          physical_interface_mappings: 'public:bond0.330,iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362,tg-cie160046-wrangler:bond0.363,tg-cie160051-wrangler:bond0.364,jettest-wrangler:bond0.365,seagrid-wranger:bond0.366,unavco-wrangler:bond0.367,asc-wrangler:bond0.368,nfss-wrangler:bond0.369,vast-demo:bond0.370'
+          physical_interface_mappings: 'public:bond0.330,iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362,tg-cie160046-wrangler:bond0.363,tg-cie160051-wrangler:bond0.364,jettest-wrangler:bond0.365,seagrid-wrangler:bond0.366,unavco-wrangler:bond0.367,asc-wrangler:bond0.368,nfss-wrangler:bond0.369,vast-demo:bond0.370'
         vxlan:
           arp_responder: {{ pillar['unicast_vxlan'] }}
           l2_population: {{ pillar['unicast_vxlan'] }} 
