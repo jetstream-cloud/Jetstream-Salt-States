@@ -283,7 +283,7 @@ setsecret:
   ini.options_present:
     - sections:
         linux_bridge:
-          physical_interface_mappings: "public:bond0.330,iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362,tg-cie160046-wrangler:bond0.363,tg-cie160051-wrangler:bond0.364,jettest-wrangler:bond0.365,seagrid-wrangler:bond0.366,geode2-test:bond0.302,unavco-wrangler:bond0.367,asc-wrangler:bond0.368,nfss-wrangler:bond0.369,vast-demo:bond0.370"
+          physical_interface_mappings: "public:bond0.330,iris-wrangler:bond0.360,unidata-wrangler:bond0.361,sra-wrangler:bond0.362,tg-cie160046-wrangler:bond0.363,tg-cie160051-wrangler:bond0.364,jettest-wrangler:bond0.365,seagrid-wrangler:bond0.366,geode2-test:bond0.302,unavco-wrangler:bond0.367,asc-wrangler:bond0.368,nfss-wrangler:bond0.369,vast-demo:bond0.370,red:bond0.371"
         vxlan:
           local_ip: {{ salt['grains.get']('ip4_interfaces:bond0:0') }}
           vxlan_group: 239.0.0.0/25
@@ -300,7 +300,7 @@ setsecret:
           type_drivers: flat,vlan,gre,vxlan
           tenant_network_types: vxlan,vlan
           mechanism_drivers: linuxbridge
-          physical_network_mtus: "public:9000,iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000,tg-cie160046-wrangler:9000,tg-cie160051-wrangler:9000,jettest-wrangler:9000,seagrid-wrangler:9000,geode2-test:9000,unavco-wrangler:9000,asc-wrangler:9000,nfss-wrangler:9000,vast-demo:9000"
+          physical_network_mtus: "public:9000,iris-wrangler:9000,unidata-wrangler:9000,sra-wrangler:9000,tg-cie160046-wrangler:9000,tg-cie160051-wrangler:9000,jettest-wrangler:9000,seagrid-wrangler:9000,geode2-test:9000,unavco-wrangler:9000,asc-wrangler:9000,nfss-wrangler:9000,vast-demo:9000,red:9000"
           path_mtu: 9050
         ml2_type_gre:
           tunnel_id_ranges: "1:1000"
