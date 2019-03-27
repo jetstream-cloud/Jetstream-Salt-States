@@ -14,7 +14,7 @@ base:
     - passwords
     - mysql
     - hosts
-  'r0[1-7]c[1234]b*':
+  'r0[1-8]c[1234]b*':
     - passwords
     - hosts
   'jbm1':
