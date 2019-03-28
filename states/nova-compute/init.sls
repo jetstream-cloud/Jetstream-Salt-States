@@ -23,6 +23,10 @@ firewalld:
     - enable: False
     - dead
 
+openstack-selinux:
+  pkg:
+    - required_in:
+      - service: openstack-neutron-linuxbridge
 openstack-nova-compute:
   pkg:
     - name: {{ pillar['openstack-nova-compute'] }}
