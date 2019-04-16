@@ -17,7 +17,7 @@ base:
   'r0[1-8]c[1234]b*':
     - passwords
     - hosts
-  'r08g*'
+  'r08g*':
     - passwords
     - hosts
   'jbm1':
