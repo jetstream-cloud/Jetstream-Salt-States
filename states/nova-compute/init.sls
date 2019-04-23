@@ -25,6 +25,7 @@ firewalld:
 
 openstack-selinux:
   pkg:
+    - installed
     - required_in:
       - service: openstack-neutron-linuxbridge
 openstack-nova-compute:
