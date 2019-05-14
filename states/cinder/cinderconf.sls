@@ -1,5 +1,7 @@
 /etc/cinder/cinder.conf:
   ini.options_present:
+    - require:
+      - cleanup_cinderconf
     - sections:
         DEFAULT:
           rpc_backend: rabbit

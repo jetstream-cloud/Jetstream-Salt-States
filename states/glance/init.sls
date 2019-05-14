@@ -1,46 +1,28 @@
 {% set os_family = salt['grains.get']('os_family', '') %}
-      
-      
+
+glance_packages:
+  pkg.installed:
+    - pkgs:
+      - python2-glanceclient
+      - {{ pillar['openstack-glance'] }}
+
+cleanup_glanceconf:
+  cmd.run:
+    - require:
+      - glance_packages
+    - name: |
+        sed -i '/^#/d' /etc/glance/glance-api.conf
+        sed -i '/^$/d' /etc/glance/glance-api.conf
+        sed -i '/^#/d' /etc/glance/glance-registry.conf
+        sed -i '/^$/d' /etc/glance/glance-registry.conf
+
 include:
   - glance.glance-apiconf
   - glance.glance-registryconf
   
-openstack-glance:
-  pkg:
-    - name: {{ pillar['openstack-glance'] }}
-    - installed
-    - required_in:
-      - ini: /etc/glance/glance-api.conf
-{% if os_family == 'RedHat' %}
-python-glance:
-  pkg.installed
+{% if pillar['debug-configonly'] == False %}
+glance_services:
+  service.running:
+    - {{ pillar['openstack-glance-api'] }}
+    - {{ pillar['openstack-glance-registry'] }}
 {% endif %}
-python-glanceclient:
-  pkg.installed
-
-
-openstack-glance-api:
-  service:
-    - name: {{ pillar['openstack-glance-api'] }}
-    - running
-    - enable: True
-    - watch:
-      - ini: /etc/glance/glance-api.conf
-    - require:
-      - cmd: openstack-glance-api
-  cmd.run:
-    - name: su -s /bin/sh -c "glance-manage db_sync" glance
-    - stateful: True
-    - require:
-      - pkg: openstack-glance
-      
-
-openstack-glance-registry:
-  service:
-    - name: {{ pillar['openstack-glance-registry'] }}
-    - running
-    - enable: True
-    - watch:
-      - ini: /etc/glance/glance-api.conf
-    - require:
-      - cmd: openstack-glance-api

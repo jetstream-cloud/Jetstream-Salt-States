@@ -1,4 +1,23 @@
-  
+
+keystone_packages:
+  pkg.installed: 
+    - pkgs: 
+      - python2-keystoneclient
+      - httpd
+      - mod_wsgi
+      - memcached
+      - python-memcached
+      - {{ pillar['openstack-keystone'] }}
+      - {{ pillar['python-memcached'] }}
+
+cleanup_keystoneconf:
+  cmd.run:
+    - require:
+      - keystone_packages
+    - name: |
+        sed -i '/^#/d' /etc/keystone/keystone.conf
+        sed -i '/^$/d' /etc/keystone/keystone.conf
+
 keystone-manage pki_setup --keystone-user keystone --keystone-group keystone:
   cmd.run:
     - creates: /etc/keystone/ssl
@@ -6,22 +25,6 @@ keystone-manage pki_setup --keystone-user keystone --keystone-group keystone:
 /etc/httpd/conf.d/wsgi-keystone.conf:
   file.managed:
     - source: salt://keystone/wsgi-keystone.conf
-openstack-keystone-httpd:
-  pkg:
-    - name: httpd
-    - installed
-  service:
-    - name: httpd
-    - running
-    - enable: True
-    - require:
-      - pkg: {{ pillar['openstack-keystone'] }}
-    - watch:
-      - file: /etc/httpd/conf.d/wsgi-keystone.conf
-      - ini: /etc/keystone/keystone.conf
-      - cmd: openstack-keystone
-mod_wsgi:
-  pkg.installed
 
 /etc/keystone/ssl:
   file.directory:
@@ -32,6 +35,7 @@ mod_wsgi:
       - user
       - mode
       - group
+
 /var/log/keystone:
   file.directory:
     - user: keystone
@@ -39,12 +43,13 @@ mod_wsgi:
     - recurse:
       - user
       - group
+
 include:
   - keystone.keystoneconf
+
+
+{% if pillar['debug-configonly'] == False %}
 openstack-keystone:
-  pkg:
-    - name: {{ pillar['openstack-keystone'] }}
-    - installed
     - require_in:
       - ini: /etc/keystone/keystone.conf
       - file: /var/log/keystone
@@ -125,15 +130,12 @@ service-project:
     - requires:
       - service: openstack-keystone-httpd
       - pkg: python-openstackclient
-python-openstackclient: 
-  pkg.installed
-memcached: 
-  pkg:
-    - installed
-  service:
-    - enable: True
-    - running
-python-memcached:
-  pkg:
-    - name: {{ pillar['python-memcached'] }}
-    - installed
+{% endif %}
+
+
+{% if pillar['debug-configonly'] == False %}
+keystone_services:
+  service.running:
+    - name: memcached
+    - name: httpd
+{% endif %}

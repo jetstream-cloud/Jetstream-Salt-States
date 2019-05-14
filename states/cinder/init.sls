@@ -1,60 +1,28 @@
 {% set os_family = salt['grains.get']('os_family', '') %}
 
+cinder_packages:
+  pkg.installed: 
+    - pkgs: 
+      - python2-cinderclient
+      - {{ pillar['openstack-cinder'] }}
+
+cleanup_cinderconf:
+  cmd.run:
+    - require:
+      - cinder_packages
+    - name: |
+        sed -i '/^#/d' /etc/cinder/cinder.conf
+        sed -i '/^$/d' /etc/cinder/cinder.conf
+
 include:
   - cinder.cinderconf
 
-openstack-cinder:
-  pkg:
-    - name: {{ pillar['openstack-cinder'] }}
-    - installed
-    - require_in:
-      - cmd: openstack-cinder-api
-      - ini: /etc/cinder/cinder.conf 
-python-cinderclient:
-  pkg.installed
-python-oslo-db:
-  pkg.installed
-
-openstack-cinder-api:
-  service:
+{% if pillar['debug-configonly'] == False %}
+cinder_services:
+  service.running: 
     - name: {{ pillar['openstack-cinder-api'] }}
-    - running
-    - enable: True
-    - watch:
-      - ini: /etc/cinder/cinder.conf
-    - require:
-      - cmd: openstack-cinder-api
-  cmd.run:
-    - name: su -s /bin/sh -c "cinder-manage db sync" cinder
-    - stateful: True
-
-openstack-cinder-volume:
-{% if os_family=='Debian' %}
-  pkg:
-    - name: cinder-volume
-    - installed
-{% endif %}
-  service:
     - name: {{ pillar['openstack-cinder-volume'] }}
-    - running
-    - enable: True
-    - watch:
-      - ini: /etc/cinder/cinder.conf
-    - require:
-      - cmd: openstack-cinder-api
-
-openstack-cinder-scheduler:
-{% if os_family=='Debian' %}
-  pkg:
-    - name: cinder-scheduler
-    - installed
-{% endif %}
-  service:
     - name: {{ pillar['openstack-cinder-scheduler'] }}
-    - running
-    - enable: True
-    - watch:
-      - ini: /etc/cinder/cinder.conf
-    - require:
-      - cmd: openstack-cinder-api
+{% endif %}
+
       

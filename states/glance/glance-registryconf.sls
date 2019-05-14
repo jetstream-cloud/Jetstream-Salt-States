@@ -1,5 +1,7 @@
 /etc/glance/glance-registry.conf:
   ini.options_present:
+    - require:
+      - cleanup_glanceconf
     - sections:
           DEFAULT:
             workers: 4

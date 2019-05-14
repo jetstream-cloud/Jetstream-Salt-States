@@ -18,3 +18,21 @@ bootstrap_packages:
       - curl
       - wget
 
+openstack_packages:
+  pkg.installed: 
+    - pkgs: 
+      - openstack-utils
+      - python-openstackclient
+
+America/Chicago:
+  timezone.system
+
+disabled:
+  selinux.mode
+
+/root/configcheck:
+  file.managed:
+    - source: salt://bootstrap/configcheck
+    - user: root
+    - group: root
+    - mode: 755

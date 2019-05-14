@@ -57,6 +57,18 @@ Now run salt commands to configure your nodes, e.g.:
     salt '*' state.apply
 
 
+## mysql
+
+Follow https://docs.openstack.org/install-guide/environment-sql-database-rdo.html
+
+
+## rabbitmq cluster
+
+Once rabbitmq is installed/running on the nodes, you'll need to join the cluster yourself. If 3 rabbit nodes, leave one running and do something like this on the other 2:
+
+    # rabbitmqctl stop_app
+    # rabbitmqctl join_cluster rabbit@mpackard-dev-2  
+
 
 
 

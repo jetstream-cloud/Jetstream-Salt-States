@@ -1,5 +1,7 @@
 /etc/keystone/keystone.conf:
   ini.options_present:
+    - require:
+      - cleanup_keystoneconf
     - sections:
         DEFAULT:
            debug: 'True'

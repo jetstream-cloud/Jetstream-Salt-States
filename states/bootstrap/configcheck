@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ ! $1 ]
+then
+  echo "boo"
+  exit 1
+fi
+
+# set this to nothing or = to include the = in output
+eek="="
+
+file=$1
+
+for section in `openstack-config --get $file`
+do
+  for param in `openstack-config --get $file $section`
+  do
+    echo -n "$section $param $eek $value"
+    openstack-config --get $file $section $param
+  done
+done
+
