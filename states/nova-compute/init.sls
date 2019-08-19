@@ -165,6 +165,7 @@ setsecret:
           scheduler_instance_sync_interval: 300
           update_resources_interval: 300
           transport_url: rabbit://{% for item in rabbit_hosts_list %}{{rabbit_credential}}@{{item}}:5672,{% endfor %}
+          default_ephemeral_format: ext4
         api:
           auth_strategy: keystone
         placement:
