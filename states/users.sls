@@ -48,7 +48,20 @@ plinden:
     - source: salt://sshkeys/plinden_id_rsa.pub
     - require:
       - user: plinden
-
+stebird:
+  user.present:
+    - groups:
+{% if os_family == 'RedHat' %}
+      - wheel
+{% endif %}
+      - adm
+      - sudo
+  ssh_auth:
+    - user: stebird
+    - present
+    - source: salt://sshkeys/stebird_id_rsa.pub
+    - require:
+      - user: stebird
 bret:
   user.present:
     - groups:
